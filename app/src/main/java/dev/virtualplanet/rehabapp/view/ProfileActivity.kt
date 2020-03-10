@@ -1,7 +1,8 @@
-package dev.virtualplanet.rehabapp
+package dev.virtualplanet.rehabapp.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import dev.virtualplanet.rehabapp.R
 
 class ProfileActivity : AppCompatActivity()  {
 

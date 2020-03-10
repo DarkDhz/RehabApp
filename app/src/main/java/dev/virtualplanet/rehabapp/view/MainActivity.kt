@@ -1,9 +1,10 @@
-package dev.virtualplanet.rehabapp
+package dev.virtualplanet.rehabapp.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import dev.virtualplanet.rehabapp.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,6 +16,14 @@ class MainActivity : AppCompatActivity() {
     fun goToProfileActivity(view: View) {
         val intent = Intent(this, ProfileActivity::class.java)
         startActivity(intent)
+
+    }
+
+    fun goToExercicesActivity(view: View) {
+
+    }
+
+    fun goToProgressActivity(view: View) {
 
     }
 }

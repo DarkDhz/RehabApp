@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
 
     <Button
         android:id="@+id/button"
@@ -16,6 +16,7 @@
         android:layout_marginEnd="162dp"
         android:layout_marginRight="162dp"
         android:text="@string/main_profile_button"
+        android:onClick="goToProfileActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
