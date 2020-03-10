@@ -20,8 +20,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goToExercicesActivity(view: View) {
-        val intent = Intent(this, ProfileActivity::class.java)
-        startActivity(intent)
     }
 
     fun goToProgressActivity(view: View) {
