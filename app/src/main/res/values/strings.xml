@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RehabApp</string>
+    <string name="main_title_button">RehabApp</string>
+    <string name="main_profile_button">Perfil</string>
+    <string name="main_exercices_button">Ejercicios</string>
+    <string name="main_progress_button">Progresso</string>
 </resources>
