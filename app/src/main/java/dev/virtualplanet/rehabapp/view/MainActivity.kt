@@ -11,12 +11,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //CHECK IF USER IS LOGED IF NOT requiereLogin()
     }
 
     fun goToProfileActivity(view: View) {
         val intent = Intent(this, ProfileActivity::class.java)
         startActivity(intent)
 
+    }
+
+    fun requiereLogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
     }
 
     fun goToExercicesActivity(view: View) {
