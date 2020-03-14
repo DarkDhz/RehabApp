@@ -1,8 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.EditProfileActivity">
+
+    <Button
+        android:id="@+id/e_edit_profile_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="274dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/edit_profile_save"
+        android:onClick="saveProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/e_cancel_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/e_cancel"
+        android:onClick="cancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/e_profile_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="125dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/e_profile_title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="50dp"
+            android:enabled="false"
+            android:text="@string/profile_title" />
+
+        <TextView
+            android:id="@+id/e_profile_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:enabled="false"
+            android:text="@string/UserName" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/e_age_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/e_profile_layout">
+
+        <TextView
+            android:id="@+id/e_textView_Age_Title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:paddingEnd="50dp"
+            android:text="@string/profile_age_title" />
+
+        <EditText
+            android:id="@+id/e_textView_Age_Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_age_value" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/e_height_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/e_age_layout">
+
+
+        <TextView
+            android:id="@+id/e_textView_Height_Title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:paddingEnd="50dp"
+            android:text="@string/profile_height_title" />
+
+        <EditText
+            android:id="@+id/e_textView_Height_Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_height_value" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/e_weight_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/e_height_layout">
+
+
+        <TextView
+            android:id="@+id/e_TextView_Weight_Title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:paddingEnd="50dp"
+            android:text="@string/profile_weight_title" />
+
+        <EditText
+            android:id="@+id/e_textView_Weight_Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_weight_value" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/e_imc_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/e_weight_layout">
+
+        <TextView
+            android:id="@+id/e_TextView_IMC_Title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:paddingEnd="50dp"
+            android:enabled="false"
+            android:text="@string/profile_IMC_title" />
+
+        <TextView
+            android:id="@+id/e_textView_IMC_Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/profile_IMC_value" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/e_wheel_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/e_imc_layout"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/e_TextView_WheelChair_Title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:paddingEnd="50dp"
+            android:text="@string/profile_chair_title" />
+
+        <EditText
+            android:id="@+id/e_textView_WheelChair_Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_wheel_value" />
+
+
+    </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
