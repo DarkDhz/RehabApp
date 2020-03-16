@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goToExercicesActivity(view: View) {
-        val intent = Intent(this, MainExerciciActivity::class.java)
+        val intent = Intent(this, SelectMuscleActivity::class.java)
         startActivity(intent)
     }
 
