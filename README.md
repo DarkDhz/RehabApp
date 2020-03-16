@@ -1,2 +1,2 @@
 # RehabApp
-PIS APP
+Our Rehab App for Android :)
