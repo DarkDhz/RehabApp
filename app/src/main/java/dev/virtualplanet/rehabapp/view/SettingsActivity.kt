@@ -20,4 +20,12 @@ class SettingsActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun modifyNotifications(view: View) {
+
+    }
+
+    fun modifySound(view: View) {
+
+    }
+
 }
