@@ -15,4 +15,13 @@
     <string name="profile_IMC_value">Ni puta idea</string>
     <string name="profile_chair_title">SILLA DE RUEDAS</string>
     <string name="profile_wheel_value">NO</string>
+    <string name="profile_title">Nombre</string>
+    <string name="profile_edit_bt">EDITAR</string>
+    <string name="edit_profile_save">Guardar</string>
+    <string name="global_cancel">X</string>
+    <string name="main_settings_bt">Ajustes</string>
+    <string name="stt_notify_title">Notificaciones:</string>
+    <string name="stt_notify_value">OFF</string>
+    <string name="stt_sound_title">Sonido</string>
+    <string name="stt_sound_value">ON</string>
 </resources>
