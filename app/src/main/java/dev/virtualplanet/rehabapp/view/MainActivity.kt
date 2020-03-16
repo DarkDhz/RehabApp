@@ -35,4 +35,9 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, ProgressActivity::class.java)
         startActivity(intent)
     }
+
+    fun goToSettingsActivity(view: View) {
+        val intent = Intent(this, SettingsActivity::class.java)
+        startActivity(intent)
+    }
 }

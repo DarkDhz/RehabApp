@@ -18,5 +18,6 @@
     <string name="profile_title">Nombre</string>
     <string name="profile_edit_bt">EDITAR</string>
     <string name="edit_profile_save">Guardar</string>
-    <string name="e_cancel">X</string>
+    <string name="global_cancel">X</string>
+    <string name="main_settings_bt">Ajustes</string>
 </resources>
