@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">RehabApp</string>
-    <string name="main_title_button">RehabApp</string>
+    <string name="main_title_button">ℝ𝕖𝕙𝕒𝕓𝔸𝕡𝕡</string>
     <string name="main_profile_button">Perfil</string>
     <string name="main_exercices_button">Ejercicios</string>
     <string name="main_progress_button">Progresso</string>
-    <string name="UserName">InsertName</string>
+    <string name="UserName">Martin Garrix</string>
     <string name="profile_age_title">EDAD</string>
     <string name="profile_age_value">18</string>
     <string name="profile_height_title">ALTURA</string>
@@ -12,7 +12,7 @@
     <string name="profile_weight_title">PESO</string>
     <string name="profile_weight_value">82</string>
     <string name="profile_IMC_title">IMC</string>
-    <string name="profile_IMC_value">Ni puta idea</string>
+    <string name="profile_IMC_value">Default IMC</string>
     <string name="profile_chair_title">SILLA DE RUEDAS</string>
     <string name="profile_wheel_value">NO</string>
     <string name="titulo_articulaciones">ARTICULACIONES</string>
@@ -26,4 +26,8 @@
     <string name="stt_sound_title">Sonido</string>
     <string name="stt_sound_value">ON</string>
     <string name="progress_main_title">PROGRESSO</string>
+    <string name="age_unit">años</string>
+    <string name="height_units">cm</string>
+    <string name="weight_units">kg</string>
+    <string name="main_copy">Copyright RehabApp Industries</string>
 </resources>

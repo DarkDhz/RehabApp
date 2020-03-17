@@ -25,12 +25,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="75dp"
         android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/main_app_title">
 
 
         <ImageView
@@ -51,8 +51,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
+            android:background="@color/common_google_signin_btn_text_light_default"
             android:onClick="goToProfileActivity"
             android:text="@string/main_profile_button"
+            android:textColor="@color/common_google_signin_btn_text_dark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -64,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
@@ -92,6 +94,8 @@
             android:layout_marginBottom="15dp"
             android:onClick="goToExercicesActivity"
             android:text="@string/main_exercices_button"
+            android:background="@color/common_google_signin_btn_text_light_default"
+            android:textColor="@color/common_google_signin_btn_text_dark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -104,14 +108,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exercice_layout"
-        app:layout_constraintVertical_bias="0.034">
+        app:layout_constraintTop_toBottomOf="@+id/exercice_layout">
 
         <ImageView
             android:layout_width="90dp"
@@ -130,24 +132,39 @@
 
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
+            android:background="@color/common_google_signin_btn_text_light_default"
             android:onClick="goToProgressActivity"
             android:text="@string/main_progress_button"
+            android:textColor="@color/common_google_signin_btn_text_dark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/setting_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="25dp"
-        android:text="@string/main_settings_bt"
+        app:srcCompat="@drawable/main_settings"
         android:onClick="goToSettingsActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/main_copyright_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="105dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="25dp"
+        android:text="@string/main_copy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

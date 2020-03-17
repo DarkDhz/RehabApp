@@ -22,19 +22,19 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     fun modifyNotifications(view: View) {
-        if (view.stt_notify_bt.text.equals("ON")) {
-            view.stt_notify_bt.text = "OFF"
+        /*if (view.stt_notify_bt.text.equals("ON ")) {
+            view.stt_notify_bt.text = "OFF "
         } else {
-            view.stt_notify_bt.text = "ON"
-        }
+            view.stt_notify_bt.text = "ON "
+        }*/
     }
 
     fun modifySound(view: View) {
-        if (view.stt_sound_bt.text.equals("ON")) {
-            view.stt_sound_bt.text = "OFF"
+        /*if (view.stt_sound_bt.text.equals("ON ")) {
+            view.stt_sound_bt.text = "OFF "
         } else {
-            view.stt_sound_bt.text = "ON"
-        }
+            view.stt_sound_bt.text = "ON "
+        }*/
     }
 
 }

@@ -6,30 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".view.EditProfileActivity">
 
-    <Button
+    <ImageButton
         android:id="@+id/e_edit_profile_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="274dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="25dp"
         android:onClick="saveProfile"
-        android:text="@string/edit_profile_save"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/save_img" />
 
-    <Button
-        android:id="@+id/e_cancel_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:id="@+id/global_return_bt"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/img_return"
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="407dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
-        android:text="@string/global_cancel"
-        android:onClick="cancel"
+        android:onClick="returnToMain"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 
     <LinearLayout
@@ -49,7 +49,7 @@
             android:id="@+id/e_profile_title"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:paddingRight="50dp"
+            android:paddingEnd="50dp"
             android:enabled="false"
             android:text="@string/profile_title" />
 
@@ -60,7 +60,6 @@
             android:layout_gravity="end"
             android:enabled="false"
             android:text="@string/UserName" />
-
 
     </LinearLayout>
 
@@ -86,8 +85,17 @@
             android:id="@+id/e_textView_Age_Value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/profile_age_value" />
+            android:inputType="numberSigned"
+            android:text="@string/profile_age_value"
+            android:importantForAutofill="no" />
 
+        <TextView
+            android:id="@+id/e_textView_Age_Units"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:text="@string/age_unit"
+            />
 
     </LinearLayout>
 
@@ -114,7 +122,17 @@
             android:id="@+id/e_textView_Height_Value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/profile_height_value" />
+            android:inputType="numberSigned"
+            android:text="@string/profile_height_value"
+            android:importantForAutofill="no" />
+
+        <TextView
+            android:id="@+id/e_textView_Height_Units"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:text="@string/height_units"
+            />
 
     </LinearLayout>
 
@@ -141,7 +159,17 @@
             android:id="@+id/e_textView_Weight_Value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/profile_weight_value" />
+            android:inputType="numberSigned"
+            android:text="@string/profile_weight_value"
+            android:importantForAutofill="no" />
+
+        <TextView
+            android:id="@+id/e_textView_Weight_Units"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:text="@string/weight_units"
+            />
 
     </LinearLayout>
 
@@ -193,11 +221,11 @@
             android:paddingEnd="50dp"
             android:text="@string/profile_chair_title" />
 
-        <EditText
+        <Switch
             android:id="@+id/e_textView_WheelChair_Value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/profile_wheel_value" />
+             />
 
 
     </LinearLayout>
