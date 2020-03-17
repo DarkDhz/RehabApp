@@ -25,4 +25,5 @@
     <string name="stt_notify_value">OFF</string>
     <string name="stt_sound_title">Sonido</string>
     <string name="stt_sound_value">ON</string>
+    <string name="progress_main_title">PROGRESSO</string>
 </resources>
