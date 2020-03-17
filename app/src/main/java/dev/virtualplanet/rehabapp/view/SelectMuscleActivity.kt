@@ -31,7 +31,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                         prueba.setText("x: " + x + " y: " + y)
                         if (x1>0.55 && x1<0.65){
                             prueba.setText("Hombro izquierdo")
-                            imagen.setImageResource(R.drawable.arts2_hombro_izquierdo)
+                            imagen.setImageResource(R.drawable.articulaciones_h_izq)
                         }
                     }
                     MotionEvent.ACTION_MOVE -> {
@@ -40,9 +40,9 @@ class SelectMuscleActivity : AppCompatActivity() {
 
                         if (x1>0.55 && x1<0.65){
                             prueba.setText("Hombro izquierdo")
-                            imagen.setImageResource(R.drawable.arts2_hombro_izquierdo)
+                            imagen.setImageResource(R.drawable.articulaciones_h_izq)
                         }
-                        else imagen.setImageResource(R.drawable.arts2_2)
+                        else imagen.setImageResource(R.drawable.articulaciones)
                     }
                     MotionEvent.ACTION_UP -> {
                         prueba.setText("x: " + x + " y: " + y)
