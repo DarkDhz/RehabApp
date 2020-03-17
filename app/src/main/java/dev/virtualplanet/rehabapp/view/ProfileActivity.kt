@@ -2,11 +2,16 @@ package dev.virtualplanet.rehabapp.view
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.SpannableStringBuilder
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import dev.virtualplanet.rehabapp.R
+import dev.virtualplanet.rehabapp.model.User
 import kotlinx.android.synthetic.main.activity_edit_profile.*
+import java.io.File
+
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -14,6 +19,8 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
         //this.initUser()
+
+
     }
 
     fun editProfile(view: View) {

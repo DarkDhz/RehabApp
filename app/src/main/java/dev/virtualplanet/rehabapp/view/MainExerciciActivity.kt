@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import dev.virtualplanet.rehabapp.R
+import java.io.File
 
 
 class MainExerciciActivity : AppCompatActivity() {
@@ -20,6 +21,8 @@ class MainExerciciActivity : AppCompatActivity() {
         val editor = pref.edit()
         editor.putString("NAME", "ARNAU")
         editor.apply()*/
+
+        val database = File("database.db")
     }
     fun goToMuscle(view: View) {
         val intent = Intent(this, SelectMuscleActivity::class.java)
