@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.SelectMuscleActivity"
-    android:background="#FFF0FF">
+    android:background="#F8F8F8">
 
     <ImageView
         android:id="@+id/cuerpo"

@@ -26,21 +26,95 @@ class SelectMuscleActivity : AppCompatActivity() {
                 var x : Float = p1!!.getRawX()
                 var y : Float = p1!!.getRawY()
                 var x1 : Float = x/displayMetrics.widthPixels
+                var y1 : Float = y/displayMetrics.heightPixels
                 when (p1?.action) {
                     MotionEvent.ACTION_DOWN -> {
                         prueba.setText("x: " + x + " y: " + y)
-                        if (x1>0.55 && x1<0.65){
-                            prueba.setText("Hombro izquierdo")
+                        if (x1>0.587 && x1<0.708 && y1>0.26 && y1<0.335){
+                            prueba.setText("x: " + x + " y: " + y)
                             imagen.setImageResource(R.drawable.articulaciones_h_izq)
                         }
+                        else if (x1>0.287 && x1<0.416 && y1>0.26 && y1<0.335){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_h_derecho)
+                        }
+                        else if(x1>0.645 && x1<0.75 && y1>0.318 && y1<0.45){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_c_derecho)
+                        }
+                        else if(x1>0.25 && x1<0.334 && y1>0.318 && y1<0.45){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_c_izquierdo)
+                        }
+                        else if(x1>0.69 && x1<0.787 && y1>0.507 && y1<0.535){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_m_izquierda)
+                        }
+                        else if(x1>0.2 && x1<0.287 && y1>0.507 && y1<0.535){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_m_derecha)
+                        }
+                        else if(x1>0.546 && x1<0.683 && y1>0.652 && y1<0.756){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_r_izquierda)
+                        }
+                        else if(x1>0.375 && x1<0.495 && y1>0.652 && y1<0.756){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_r_derecha)
+                        }
+                        else if(x1>0.546 && x1<0.683 && y1>0.845 && y1<0.903){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_t_izquierdo)
+                        }
+                        else if(x1>0.375 && x1<0.495 && y1>0.845 && y1<0.903){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_t_derecho)
+                        }
+                        else imagen.setImageResource(R.drawable.articulaciones)
                     }
                     MotionEvent.ACTION_MOVE -> {
                         p0!!.performClick()
                         prueba.setText("x: " + x + " y: " + y)
 
-                        if (x1>0.55 && x1<0.65){
-                            prueba.setText("Hombro izquierdo")
+                        if (x1>0.587 && x1<0.708 && y1>0.26 && y1<0.335){
+                            prueba.setText("x: " + x + " y: " + y)
                             imagen.setImageResource(R.drawable.articulaciones_h_izq)
+                        }
+                        else if (x1>0.287 && x1<0.416 && y1>0.26 && y1<0.335){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_h_derecho)
+                        }
+                        else if(x1>0.645 && x1<0.75 && y1>0.318 && y1<0.45){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_c_derecho)
+                        }
+                        else if(x1>0.25 && x1<0.334 && y1>0.318 && y1<0.45){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_c_izquierdo)
+                        }
+                        else if(x1>0.69 && x1<0.787 && y1>0.507 && y1<0.535){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_m_izquierda)
+                        }
+                        else if(x1>0.2 && x1<0.287 && y1>0.507 && y1<0.535){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_m_derecha)
+                        }
+                        else if(x1>0.546 && x1<0.683 && y1>0.652 && y1<0.756){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_r_izquierda)
+                        }
+                        else if(x1>0.375 && x1<0.495 && y1>0.652 && y1<0.756){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_r_derecha)
+                        }
+                        else if(x1>0.546 && x1<0.683 && y1>0.845 && y1<0.903){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_t_izquierdo)
+                        }
+                        else if(x1>0.375 && x1<0.495 && y1>0.845 && y1<0.903){
+                            prueba.setText("x: " + x + " y: " + y)
+                            imagen.setImageResource(R.drawable.articulaciones_t_derecho)
                         }
                         else imagen.setImageResource(R.drawable.articulaciones)
                     }
