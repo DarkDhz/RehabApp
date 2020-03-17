@@ -49,7 +49,7 @@
             android:id="@+id/e_profile_title"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:paddingRight="50dp"
+            android:paddingEnd="50dp"
             android:enabled="false"
             android:text="@string/profile_title" />
 
@@ -60,7 +60,6 @@
             android:layout_gravity="end"
             android:enabled="false"
             android:text="@string/UserName" />
-
 
     </LinearLayout>
 
@@ -87,8 +86,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberSigned"
-            android:text="@string/profile_age_value" />
+            android:text="@string/profile_age_value"
+            android:importantForAutofill="no" />
 
+        <TextView
+            android:id="@+id/e_textView_Age_Units"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:text="@string/age_unit"
+            />
 
     </LinearLayout>
 
@@ -116,7 +123,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberSigned"
-            android:text="@string/profile_height_value" />
+            android:text="@string/profile_height_value"
+            android:importantForAutofill="no" />
+
+        <TextView
+            android:id="@+id/e_textView_Height_Units"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:text="@string/height_units"
+            />
 
     </LinearLayout>
 
@@ -144,7 +160,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberSigned"
-            android:text="@string/profile_weight_value" />
+            android:text="@string/profile_weight_value"
+            android:importantForAutofill="no" />
+
+        <TextView
+            android:id="@+id/e_textView_Weight_Units"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:text="@string/weight_units"
+            />
 
     </LinearLayout>
 
