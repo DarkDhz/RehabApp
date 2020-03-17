@@ -1,7 +1,9 @@
 package dev.virtualplanet.rehabapp.view
 
 import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import dev.virtualplanet.rehabapp.R
 
 class LoginActivity : AppCompatActivity() {
@@ -10,4 +12,12 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
     }
+
+    fun goToRegisterActivity(view: View) {
+        val intent = Intent (this, RegisterActivity::class.java)
+        startActivity(intent)
+    }
+
+
+
 }
