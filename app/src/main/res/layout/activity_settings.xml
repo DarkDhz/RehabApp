@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="modifyNotifications"
-            android:text="@string/stt_notify_value" />
+             />
 
     </LinearLayout>
 
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="modifySound"
-            android:text="@string/stt_sound_value" />
+             />
 
     </LinearLayout>
 
