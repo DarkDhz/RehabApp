@@ -1,8 +1,10 @@
 package dev.virtualplanet.rehabapp.view
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import dev.virtualplanet.rehabapp.R
 
@@ -19,4 +21,9 @@ class MainExerciciActivity : AppCompatActivity() {
         editor.putString("NAME", "ARNAU")
         editor.apply()*/
     }
+    fun goToMuscle(view: View) {
+        val intent = Intent(this, SelectMuscleActivity::class.java)
+        startActivity(intent)
+    }
+
 }
