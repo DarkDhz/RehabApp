@@ -34,7 +34,7 @@ class EditProfileActivity : AppCompatActivity() {
 
     }
 
-    fun cancel(view: View) {
+    fun returnToMain(view: View) {
         val intent = Intent(this, ProfileActivity::class.java)
         startActivity(intent)
     }
