@@ -28,7 +28,7 @@
         android:id="@+id/stt_notify_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="125dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,17 +36,17 @@
 
         <TextView
             android:id="@+id/stt_notify_title"
-            android:layout_width="150dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:paddingRight="50dp"
-            android:text="@string/stt_notify_title" />
+            android:text="@string/stt_notify_title"
+            android:textSize="30dp" />
 
         <Switch
             android:id="@+id/stt_notify_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="modifyNotifications"
-            android:text="@string/stt_notify_value" />
+            android:onClick="modifyNotifications" />
 
     </LinearLayout>
 
@@ -54,8 +54,8 @@
         android:id="@+id/stt_sound_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="75dp"
         android:layout_marginBottom="460dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -64,17 +64,17 @@
 
         <TextView
             android:id="@+id/stt_sound_title"
-            android:layout_width="150dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:paddingRight="50dp"
-            android:text="@string/stt_sound_title" />
+            android:text="@string/stt_sound_title"
+            android:textSize="30dp" />
 
         <Switch
             android:id="@+id/stt_sound_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="modifySound"
-            android:text="@string/stt_sound_value" />
+            android:onClick="modifySound" />
 
     </LinearLayout>
 

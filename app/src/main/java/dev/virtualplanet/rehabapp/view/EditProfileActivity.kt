@@ -22,13 +22,15 @@ class EditProfileActivity : AppCompatActivity() {
         val new_age = this.e_textView_Age_Value.text
         val new_height = this.e_textView_Height_Value.text
         val new_weight = this.e_textView_Weight_Value.text
-        val new_wheel = this.e_textView_WheelChair_Value.text
+        //val new_wheel = this.e_textView_WheelChair_Value.get
 
         val intent = Intent(this, ProfileActivity::class.java).apply {
+            action = Intent.ACTION_SEND
             putExtra("AGE", new_age)
             putExtra("HEIGHT", new_height)
             putExtra("WEIGHT", new_weight)
-            putExtra("WHEEL", new_wheel)
+            //putExtra("WHEEL", new_wheel)
+            type = "text/plain"
         }
         startActivity(intent)
 
