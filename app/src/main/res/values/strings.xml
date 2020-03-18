@@ -28,4 +28,13 @@
     <string name="height_units">cm</string>
     <string name="weight_units">kg</string>
     <string name="main_copy">Copyright RehabApp Industries</string>
+    <string name="ec_wait_unit">sec</string>
+    <string name="ec_wait_value">12</string>
+    <string name="ec_wait_title">Tiempo de descanso:</string>
+    <string name="ec_ser_value">12</string>
+    <string name="e_ser_title">Numero de Series:</string>
+    <string name="ec_rep_value">12</string>
+    <string name="ec_rep_title">Numero de Repeticiones:</string>
+    <string name="ec_description">En este ejercicio realizaremos una serie de movimientos para el hombro</string>
+    <string name="ec_main_title">EXAMPLE EXERCICE</string>
 </resources>
