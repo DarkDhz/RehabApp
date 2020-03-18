@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.SelectMuscleActivity"
-    android:background="#F8F8F8">
+    android:background="#696969">
 
     <ImageView
         android:id="@+id/cuerpo"
@@ -13,7 +13,7 @@
         android:layout_height="616dp"
         android:layout_marginTop="80dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/articulaciones"
+        app:srcCompat="@drawable/original"
         tools:layout_editor_absoluteX="0dp" />
 
     <TextView
