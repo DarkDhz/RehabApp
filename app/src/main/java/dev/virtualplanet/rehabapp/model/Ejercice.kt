@@ -10,13 +10,13 @@ class Ejercice {
     var break_time = 0
     var video = File("")
 
-    constructor(n: String, des: String, rep: Int, ser: Int, time: Int, url: File) {
+    constructor(n: String, des: String, rep: Int, ser: Int, time: Int, url: String) {
         this.name = n
         this.description = des
         this.num_rep = rep
         this.num_ser = ser
         this.break_time = time
-        this.video = url
+        this.video = File(url)
     }
 
-} 
+}
