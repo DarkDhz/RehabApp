@@ -20,8 +20,9 @@ class MainExerciciActivity : AppCompatActivity() {
         val editor = pref.edit()
         editor.putString("NAME", "ARNAU")
         editor.apply()*/
-        
+
     }
+
     fun goToMuscle(view: View) {
         val intent = Intent(this, SelectMuscleActivity::class.java)
         startActivity(intent)

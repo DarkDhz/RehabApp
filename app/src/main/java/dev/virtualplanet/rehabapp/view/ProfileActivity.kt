@@ -7,6 +7,8 @@ import android.text.Editable
 import android.text.SpannableStringBuilder
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.model.User
 import kotlinx.android.synthetic.main.activity_edit_profile.*
@@ -29,9 +31,9 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun initUser() {
-        val pref = applicationContext.getSharedPreferences("USER", Context.MODE_PRIVATE)
-        val name = pref.getString("NAME", "")
-        this.e_profile_content.text = "$name"
+        val database = FirebaseDatabase.getInstance()
+
+
 
     }
 
