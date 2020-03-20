@@ -1,56 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".view.LoginActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/login_layout"
+        android:layout_width="321dp"
+        android:layout_height="107dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_title">
+
+        <ImageView
+            android:id="@+id/login_pass_icon"
+            android:layout_width="45dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_user_icon"
+            app:srcCompat="@drawable/password_icon" />
+
+        <ImageView
+            android:id="@+id/login_user_icon"
+            android:layout_width="44dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/login_user" />
+
+        <ImageButton
+            android:id="@+id/login_accept_button"
+            android:layout_width="43dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="32dp"
+            android:onClick="goToMainActivity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.562"
+            app:layout_constraintRight_toLeftOf="@id/password_login"
+            app:layout_constraintStart_toEndOf="@+id/username_login"
+            app:layout_constraintTop_toTopOf="@+id/username_login"
+            app:srcCompat="@drawable/flecha" />
+
+        <EditText
+            android:id="@+id/password_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="4dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            app:layout_constraintStart_toEndOf="@+id/login_pass_icon"
+            app:layout_constraintTop_toBottomOf="@+id/username_login" />
+
+        <EditText
+            android:id="@+id/username_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Usuario"
+            app:layout_constraintStart_toEndOf="@+id/login_user_icon"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="56dp"
+        android:background="@color/common_google_signin_btn_text_light_default"
+        android:onClick="goToRegisterActivity"
+        android:text="Register"
+        android:textColor="@color/common_google_signin_btn_text_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_layout" />
 
     <TextView
         android:id="@+id/login_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="160dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="248dp"
+        android:layout_marginEnd="160dp"
         android:text="Iniciar Sesión"
-        android:textSize="36sp" />
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/username_login"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="40dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Usuario" />
+        android:layout_marginTop="84dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/login_image" />
 
-    <EditText
-        android:id="@+id/password_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:ems="10"
-        android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/accept_login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="40dp"
-        android:text="Aceptar" />
-
-    <Button
-        android:id="@+id/register_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="80dp"
-        android:onClick="goToRegisterActivity"
-        android:text="Register" />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
