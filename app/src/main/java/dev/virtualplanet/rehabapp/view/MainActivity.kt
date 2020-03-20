@@ -1,16 +1,16 @@
 package dev.virtualplanet.rehabapp.view
 
 import android.content.Intent
-import android.graphics.ColorSpace
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
-import dev.virtualplanet.rehabapp.model.User
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    val data = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,29 +19,32 @@ class MainActivity : AppCompatActivity() {
         //CHECK IF USER IS LOGED IF NOT requiereLogin()
 
 
-        /*val myDB = FirebaseFirestore.getInstance()
 
-        val solarSystem = myDB.collection("solar_system")
 
-        solarSystem.add(mapOf(
-            "name" to "Mercury",
-            "number" to 1,
-            "gravity" to 3.7
-        ))
+        val users = data.collection("USERS")
 
-        solarSystem.add(mapOf(
-            "name" to "Venus",
-            "number" to 2,
-            "gravity" to 8.87
-        ))
+        var lista = ArrayList<String>()
 
-        myDB.collection("solar_system")
+        data.collection("USERS")
             .get().addOnSuccessListener {
                 it.forEach {
-                    this.exercice_bt.text = it.get("name").toString()
+                    lista.add(it.get("mail").toString())
                 }
             }
-        */
+
+        for (mail in lista) {
+            if ( ! mail.equals("example@gmail.com") ) {
+                users.document("example@gmail.com").set(mapOf(
+                    "name" to "Martin Garrix",
+                    "mail" to "example@gmail.com",
+                    "password" to "1234abcd",
+                    "age" to 23,
+                    "weight" to 80,
+                    "height" to 180,
+                    "wheel" to false
+                ))
+            }
+        }
     }
 
 

@@ -24,6 +24,9 @@ class User {
         mail = ma
     }
 
+
+
+
     fun getUser() : String {
         return user
     }
@@ -84,7 +87,8 @@ class User {
     }
 
     fun calculateIMC() : Int {
-        return (weight/(height+height))
+        //kg/m^2
+        return (weight/(height*height))
     }
 
 }
