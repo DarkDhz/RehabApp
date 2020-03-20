@@ -4,14 +4,11 @@ import android.content.Intent
 import android.graphics.ColorSpace
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.database.ValueEventListener
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.model.User
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,16 +19,29 @@ class MainActivity : AppCompatActivity() {
         //CHECK IF USER IS LOGED IF NOT requiereLogin()
 
 
-        /*val database = FirebaseFirestore.getInstance()
-        var exampleUser = User("Martin Garrix", "1234", "example@gmail.com")
+        /*val myDB = FirebaseFirestore.getInstance()
 
-        val example_user = hashMapOf(
-            "name" to exampleUser.getUser(),
-            "object" to exampleUser
-        )
+        val solarSystem = myDB.collection("solar_system")
 
-        database.collection("users").add(exampleUser)*/
+        solarSystem.add(mapOf(
+            "name" to "Mercury",
+            "number" to 1,
+            "gravity" to 3.7
+        ))
 
+        solarSystem.add(mapOf(
+            "name" to "Venus",
+            "number" to 2,
+            "gravity" to 8.87
+        ))
+
+        myDB.collection("solar_system")
+            .get().addOnSuccessListener {
+                it.forEach {
+                    this.exercice_bt.text = it.get("name").toString()
+                }
+            }
+        */
     }
 
 
