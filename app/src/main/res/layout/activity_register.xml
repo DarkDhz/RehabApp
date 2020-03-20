@@ -9,42 +9,92 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="291dp"
+        android:id="@+id/register_layout"
+        android:layout_width="321dp"
         android:layout_height="188dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="68dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.391"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.451">
+        app:layout_constraintTop_toBottomOf="@+id/register_title">
+
+        <ImageView
+            android:id="@+id/register_pass_icon2"
+            android:layout_width="44dp"
+            android:layout_height="41dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/register_pass_icon"
+            app:srcCompat="@drawable/password_icon" />
+
+        <EditText
+            android:id="@+id/register_confirm_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="Confirmar Contraseña"
+            app:layout_constraintStart_toEndOf="@+id/register_pass_icon2"
+            app:layout_constraintTop_toBottomOf="@+id/pass_register" />
+
+        <ImageView
+            android:id="@+id/register_pass_icon"
+            android:layout_width="44dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/register_user_icon"
+            app:srcCompat="@drawable/password_icon" />
+
+        <ImageView
+            android:id="@+id/register_user_icon"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/login_user" />
+
+        <ImageView
+            android:id="@+id/register_email"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/register_pass_icon2"
+            app:srcCompat="@drawable/register_email_icon" />
 
         <EditText
             android:id="@+id/email_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:ems="10"
+            android:hint="E-mail"
             android:inputType="textEmailAddress"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pass_register" />
+            app:layout_constraintStart_toEndOf="@+id/register_email"
+            app:layout_constraintTop_toBottomOf="@+id/register_confirm_pass" />
 
         <EditText
             android:id="@+id/pass_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:ems="10"
+            android:hint="Contraseña"
             android:inputType="textPassword"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/register_pass_icon"
             app:layout_constraintTop_toBottomOf="@+id/username_register" />
 
         <EditText
             android:id="@+id/username_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:ems="10"
+            android:hint="Usuario"
             android:inputType="textPersonName"
-            android:text="Usuario"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/register_user_icon"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -61,31 +111,20 @@
         android:text="Iniciar Sesión"
         android:textColor="@color/common_google_signin_btn_text_dark"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/register_layout" />
 
     <TextView
         android:id="@+id/register_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="150dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="248dp"
+        android:layout_marginEnd="160dp"
         android:text="Registrarse"
-        android:textSize="36dp"
+        android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/accept_register_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="40dp"
-        android:background="@color/common_google_signin_btn_text_light_default"
-        android:text="Aceptar"
-        android:textColor="@color/common_google_signin_btn_text_dark"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
