@@ -10,8 +10,11 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import dev.virtualplanet.rehabapp.R
+import dev.virtualplanet.rehabapp.controller.Controller
 
 class SelectMuscleActivity : AppCompatActivity() {
+
+    private val controller = Controller
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

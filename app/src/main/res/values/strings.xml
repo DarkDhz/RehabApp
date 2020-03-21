@@ -44,4 +44,8 @@
     <string name="stt_logout">Cerrar Sesión</string>
     <string name="main_profile_img_desc">Profile Image</string>
     <string name="titulo_cambiar_contrasena">Cambiar contraseña</string>
+    <string name="pswd_confirm_bt">Confirmar</string>
+    <string name="pswd_repeat_value">Repetir contraseña</string>
+    <string name="pswd_new_value">Contraseña nueva</string>
+    <string name="pswd_old_value">Contraseña antigua</string>
 </resources>

@@ -6,9 +6,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Switch
 import dev.virtualplanet.rehabapp.R
+import dev.virtualplanet.rehabapp.controller.Controller
 import kotlinx.android.synthetic.main.activity_settings.view.*
 
 class SettingsActivity : AppCompatActivity() {
+
+    private val controller = Controller
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

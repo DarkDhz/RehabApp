@@ -9,6 +9,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
+import dev.virtualplanet.rehabapp.controller.Controller
 import dev.virtualplanet.rehabapp.model.User
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -16,6 +17,8 @@ import java.io.File
 
 
 class ProfileActivity : AppCompatActivity() {
+
+    private val controller = Controller
 
     private val data = FirebaseFirestore.getInstance()
 

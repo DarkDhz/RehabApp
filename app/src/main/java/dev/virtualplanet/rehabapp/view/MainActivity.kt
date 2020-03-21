@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.view.View
 import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
-import kotlinx.android.synthetic.main.activity_main.*
+import dev.virtualplanet.rehabapp.controller.Controller
 
 class MainActivity : AppCompatActivity() {
+
+    private val controller = Controller
 
     private val data = FirebaseFirestore.getInstance()
 

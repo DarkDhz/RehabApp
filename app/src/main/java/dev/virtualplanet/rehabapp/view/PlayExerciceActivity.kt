@@ -5,8 +5,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import dev.virtualplanet.rehabapp.R
+import dev.virtualplanet.rehabapp.controller.Controller
 
 class PlayExerciceActivity : AppCompatActivity() {
+
+    private val controller = Controller
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
