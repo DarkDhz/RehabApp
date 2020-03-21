@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -30,72 +30,83 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-
+        android:layout_marginTop="50dp"
         android:shadowColor="@android:color/black"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="15"
         android:text="@string/titulo_cambiar_contrasena"
         android:textColor="@android:color/white"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="30dp"
-        android:paddingTop="80dp"
-        >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pswd_check_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo">
+
         <EditText
             android:id="@+id/pswd_old_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="50dp"
             android:ems="10"
             android:hint="Contraseña antigua"
+            android:importantForAutofill="no"
             android:inputType="textPassword"
-            android:paddingBottom="20dp"
-            android:layout_margin="40dp"
-            android:importantForAutofill="no" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <EditText
             android:id="@+id/pswd_new_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="15dp"
-            android:ems="10"
             android:layout_margin="40dp"
-            android:paddingBottom="20dp"
+            android:layout_marginTop="100dp"
+            android:ems="10"
             android:hint="Contraseña nueva"
+            android:importantForAutofill="no"
             android:inputType="textPassword"
-            android:importantForAutofill="no" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pswd_old_value" />
+
         <EditText
             android:id="@+id/pswd_repeat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="15dp"
+            android:layout_margin="40dp"
+            android:layout_marginTop="50dp"
             android:ems="10"
             android:hint="Repetir contraseña"
+            android:importantForAutofill="no"
             android:inputType="textPassword"
-            android:layout_margin="40dp"
-            android:paddingBottom="20dp"
-            android:importantForAutofill="no" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pswd_new_value" />
 
         <Button
-            android:layout_width="113dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/boton_1"
-            android:text="Confirmar"
-            android:gravity="center"
             android:layout_gravity="center"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/boton_1"
+            android:gravity="center"
+            android:text="Confirmar"
+            android:textAllCaps="false"
             android:textColor="@android:color/white"
-            android:textAllCaps="false" />
-    </LinearLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pswd_repeat" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
