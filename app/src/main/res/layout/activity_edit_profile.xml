@@ -27,6 +27,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
         android:onClick="returnToMain"
+        android:contentDescription="@string/global_returnbt_desc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -107,7 +108,6 @@
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/e_age_layout">
-
 
         <TextView
             android:id="@+id/e_textView_Height_Title"

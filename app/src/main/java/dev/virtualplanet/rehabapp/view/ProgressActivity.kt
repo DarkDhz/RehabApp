@@ -31,7 +31,9 @@ class ProgressActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun init() {
+
+
+    private fun init() {
         val sel_spiner = findViewById<Spinner>(R.id.select_static_spinner)
         val values = ArrayList<String>()
         values.add("Number of Exercices")
@@ -47,10 +49,13 @@ class ProgressActivity : AppCompatActivity() {
         progress_chart.setScaleEnabled(true)
 
         val y_values = ArrayList<Entry>()
-        y_values.add(Entry(0f, 60f))
-        y_values.add(Entry(1f, 30f))
-        y_values.add(Entry(2f, 70f))
-        y_values.add(Entry(3f, 50f))
+        y_values.add(Entry(0f, 6f))
+        y_values.add(Entry(1f, 3f))
+        y_values.add(Entry(2f, 7f))
+        y_values.add(Entry(3f, 5f))
+        y_values.add(Entry(4f, 5f))
+        y_values.add(Entry(5f, 4f))
+        y_values.add(Entry(6f, 5f))
 
         val set1 = LineDataSet(y_values, "Number of exercices")
         set1.lineWidth = 6f
@@ -59,19 +64,20 @@ class ProgressActivity : AppCompatActivity() {
         set1.setCircleColor(Color.LTGRAY)
         set1.setDrawCircleHole(false)
 
-
-
-
         val dataSets = ArrayList<ILineDataSet>()
         dataSets.add(set1)
 
         val data = LineData(dataSets)
 
+        progress_chart.data = data
+
         val desc = Description()
         desc.text = ""
         progress_chart.description = desc
-        progress_chart.data = data
 
+        progress_chart.axisLeft.setDrawLabels(false)
+        progress_chart.axisRight.setDrawLabels(false)
+        progress_chart.xAxis.setDrawLabels(false)
         progress_chart.setTouchEnabled(false)
     }
 

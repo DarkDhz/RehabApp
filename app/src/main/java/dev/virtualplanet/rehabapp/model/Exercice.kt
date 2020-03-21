@@ -2,7 +2,7 @@ package dev.virtualplanet.rehabapp.model
 
 import java.io.File
 
-class Ejercice {
+class Exercice {
     var name = String()
     var description = String()
     var num_rep = 0
@@ -17,6 +17,10 @@ class Ejercice {
         this.num_ser = ser
         this.break_time = time
         this.video = File(url)
+    }
+
+    fun playExercice() {
+
     }
 
 }

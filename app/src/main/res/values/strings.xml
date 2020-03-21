@@ -39,4 +39,5 @@
     <string name="ec_main_title">EXAMPLE EXERCICE</string>
     <string name="profile_sex_title">Sexo</string>
     <string name="profile_sex_value">Hombre</string>
+    <string name="global_returnbt_desc">Return Button</string>
 </resources>
