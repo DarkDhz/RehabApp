@@ -17,9 +17,96 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
         android:text="@string/global_cancel"
-        android:onClick="returnToMain"
+        android:onClick="goBack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pswd_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/pswd_old_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="25dp"
+            android:text="@string/password_old_title"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/pswd_old_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:hint=""
+            android:inputType="textPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pswd_old_title"
+            android:importantForAutofill="no" />
+
+        <TextView
+            android:id="@+id/pswd_new_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/password_new_title"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pswd_old_value" />
+
+        <EditText
+            android:id="@+id/pswd_new_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pswd_new_title"
+            android:importantForAutofill="no" />
+
+        <TextView
+            android:id="@+id/pswd_repeat_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/password_repeat_title"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pswd_new_value" />
+
+        <EditText
+            android:id="@+id/pswd_repeat_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pswd_repeat_title"
+            android:autofillHints="" />
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

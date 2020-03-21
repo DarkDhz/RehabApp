@@ -1,5 +1,6 @@
 package dev.virtualplanet.rehabapp.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -14,5 +15,10 @@ class ChangePswdActivity : AppCompatActivity() {
 
     fun changePasswd(view: View) {
         //TODO
+    }
+
+    fun goBack(view: View) {
+        val intent = Intent(this, SettingsActivity::class.java)
+        startActivity(intent)
     }
 }
