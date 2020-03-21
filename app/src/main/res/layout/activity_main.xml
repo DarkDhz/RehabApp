@@ -15,6 +15,7 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="160dp"
         android:text="@string/main_title_button"
+        android:textSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,10 +26,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_app_title">
 
@@ -54,10 +54,9 @@
             android:background="@color/common_google_signin_btn_text_light_default"
             android:onClick="goToProfileActivity"
             android:text="@string/main_profile_button"
-            android:textColor="@color/common_google_signin_btn_text_dark"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:textAllCaps="false"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -70,7 +69,6 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_layout">
 
@@ -112,7 +110,6 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exercice_layout">
 
@@ -130,7 +127,6 @@
             android:id="@+id/progress_bt"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:background="@color/common_google_signin_btn_text_light_default"
@@ -139,8 +135,9 @@
             android:textColor="@color/common_google_signin_btn_text_dark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
 
-            app:layout_constraintTop_toTopOf="parent" />
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

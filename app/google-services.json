@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "946199639827",
-    "firebase_url": "https://rehabapp-3b8ae.firebaseio.com",
-    "project_id": "rehabapp-3b8ae",
-    "storage_bucket": "rehabapp-3b8ae.appspot.com"
+    "project_number": "233627116344",
+    "firebase_url": "https://rehabapp-231a3.firebaseio.com",
+    "project_id": "rehabapp-231a3",
+    "storage_bucket": "rehabapp-231a3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:946199639827:android:8077899dc0ab5e6d840ce6",
+        "mobilesdk_app_id": "1:233627116344:android:ceb1cb5d31a6af350ad7cd",
         "android_client_info": {
           "package_name": "dev.virtualplanet.rehabapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "946199639827-n69a6a8i76dp07724ptmffvshgmedgaf.apps.googleusercontent.com",
+          "client_id": "233627116344-mi6vuig1tfetkb37a8fd3pm0ourfgpap.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB7dUHd24RpnSJnOFzCdG7P79VAd1Npk20"
+          "current_key": "AIzaSyBJh2hVWOhfX51SylTaanQUqaIuBFXXWR0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "946199639827-n69a6a8i76dp07724ptmffvshgmedgaf.apps.googleusercontent.com",
+              "client_id": "233627116344-mi6vuig1tfetkb37a8fd3pm0ourfgpap.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
