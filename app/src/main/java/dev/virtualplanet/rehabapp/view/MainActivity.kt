@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        
+        //BLOCKED FOR SECURITY
     }
 
 }

@@ -19,7 +19,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-
+        //BLOCKED FOR SECURITY
     }
 
 
