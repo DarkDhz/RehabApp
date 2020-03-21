@@ -1,6 +1,7 @@
 package dev.virtualplanet.rehabapp.view
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -16,6 +17,8 @@ class SelectMuscleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_muscle)
         var prueba : TextView = findViewById(R.id.prueba)
+        var tit : TextView = findViewById(R.id.titulo)
+
         var displayMetrics : DisplayMetrics = DisplayMetrics()
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics)
         prueba.setText("x: " + displayMetrics.widthPixels + " y: " + displayMetrics.heightPixels)

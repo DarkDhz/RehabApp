@@ -15,7 +15,7 @@
     <string name="profile_IMC_value">Default IMC</string>
     <string name="profile_chair_title">SILLA DE RUEDAS</string>
     <string name="profile_wheel_value">NO</string>
-    <string name="titulo_articulaciones">ARTICULACIONES</string>
+    <string name="titulo_articulaciones">SELECCIONE LA ARTICULACIÓN</string>
     <string name="profile_title">Nombre</string>
     <string name="profile_edit_bt">EDITAR</string>
     <string name="edit_profile_save">Guardar</string>

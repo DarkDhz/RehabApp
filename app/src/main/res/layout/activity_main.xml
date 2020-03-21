@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
-            android:background="@color/common_google_signin_btn_text_light_default"
+            android:background="@drawable/boton_1"
             android:onClick="goToProfileActivity"
             android:text="@string/main_profile_button"
             android:textColor="@color/common_google_signin_btn_text_dark"
