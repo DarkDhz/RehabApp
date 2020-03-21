@@ -36,19 +36,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/login_user" />
 
-        <ImageButton
-            android:id="@+id/login_accept_button"
-            android:layout_width="43dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="32dp"
-            android:onClick="goToMainActivity"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.562"
-            app:layout_constraintRight_toLeftOf="@id/password_login"
-            app:layout_constraintStart_toEndOf="@+id/username_login"
-            app:layout_constraintTop_toTopOf="@+id/username_login"
-            app:srcCompat="@drawable/flecha" />
-
         <EditText
             android:id="@+id/password_login"
             android:layout_width="wrap_content"
@@ -71,20 +58,6 @@
             app:layout_constraintStart_toEndOf="@+id/login_user_icon"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/register_button"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="56dp"
-        android:background="@color/common_google_signin_btn_text_light_default"
-        android:onClick="goToRegisterActivity"
-        android:text="Registrarse"
-
-        android:textColor="@color/common_google_signin_btn_text_dark"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_layout" />
 
     <TextView
         android:id="@+id/login_title"
@@ -109,6 +82,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/login_image" />
+
+    <TextView
+        android:id="@+id/login_forgot_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Has olivdado la contraseña?"
+        android:textColor="@android:color/holo_blue_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_login_button" />
+
+    <Button
+        android:id="@+id/login_login_button"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@android:color/holo_orange_light"
+        android:text="Iniciar Sesión"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_layout" />
+
+    <TextView
+        android:id="@+id/login_register_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="108dp"
+        android:text="No tienes una cuenta?"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_forgot_pass" />
+
+    <TextView
+        android:id="@+id/login_createAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="108dp"
+        android:text="Registrate"
+        android:onClick="goToRegisterActivity"
+        android:textColor="@android:color/holo_blue_light"
+        app:layout_constraintStart_toEndOf="@+id/login_register_info"
+        app:layout_constraintTop_toBottomOf="@+id/login_forgot_pass" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
