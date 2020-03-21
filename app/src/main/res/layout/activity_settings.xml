@@ -6,23 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".view.SettingsActivity">
 
-    <Button
-        android:id="@+id/stt_return_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:id="@+id/global_return_bt"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/img_return"
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="407dp"
+        android:contentDescription="@string/global_returnbt_desc"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
         android:text="@string/global_cancel"
         android:onClick="returnToMain"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 
     <LinearLayout
         android:id="@+id/stt_notify_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="125dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,17 +35,18 @@
 
         <TextView
             android:id="@+id/stt_notify_title"
-            android:layout_width="150dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:paddingRight="50dp"
-            android:text="@string/stt_notify_title" />
+            android:paddingEnd="50dp"
+            android:paddingStart="0dp"
+            android:text="@string/stt_notify_title"
+            android:textSize="30sp" />
 
-        <Button
+        <Switch
             android:id="@+id/stt_notify_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="modifyNotifications"
-            android:text="@string/stt_notify_value" />
+            android:onClick="modifyNotifications" />
 
     </LinearLayout>
 
@@ -48,8 +54,8 @@
         android:id="@+id/stt_sound_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="75dp"
         android:layout_marginBottom="460dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,18 +64,45 @@
 
         <TextView
             android:id="@+id/stt_sound_title"
-            android:layout_width="150dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:paddingRight="50dp"
-            android:text="@string/stt_sound_title" />
+            android:paddingEnd="50dp"
+            android:paddingStart="0dp"
+            android:text="@string/stt_sound_title"
+            android:textSize="30sp" />
 
-        <Button
+        <Switch
             android:id="@+id/stt_sound_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="modifySound"
-            android:text="@string/stt_sound_value" />
+            android:onClick="modifySound" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/stt_change_password_bt"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="25dp"
+        android:text="@string/stt_pswd_bt"
+        android:textColor="@color/common_google_signin_btn_text_dark"
+        android:background="@color/common_google_signin_btn_text_light_default"
+        android:onClick="changePassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/stt_logout_bt"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        android:background="@android:color/holo_red_light"
+        android:text="@string/stt_logout"
+        android:onClick="logOut"
+        android:textColor="@color/common_google_signin_btn_text_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

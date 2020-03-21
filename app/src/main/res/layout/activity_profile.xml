@@ -7,41 +7,41 @@
     tools:context=".view.ProfileActivity">
 
 
-    <Button
+    <ImageButton
         android:id="@+id/edit_profile_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="274dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="25dp"
         android:onClick="editProfile"
-        android:text="@string/profile_edit_bt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/edit_icon" />
 
 
-    <Button
-        android:id="@+id/e_cancel_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:id="@+id/global_return_bt"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/img_return"
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="407dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
-        android:text="@string/global_cancel"
         android:onClick="returnToMain"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/global_returnbt_desc"
+        />
+
 
     <LinearLayout
         android:id="@+id/profile_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="125dp"
+        android:layout_marginTop="120dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -50,7 +50,7 @@
             android:id="@+id/profile_title"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:paddingRight="50dp"
+            android:paddingEnd="50dp"
             android:text="@string/profile_title" />
 
         <TextView
@@ -63,6 +63,33 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/sex_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_layout">
+
+
+        <TextView
+            android:id="@+id/sex_title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:paddingEnd="50dp"
+            android:text="@string/profile_sex_title" />
+
+        <TextView
+            android:id="@+id/sex_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="@string/profile_sex_value" />
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/age_layout"
@@ -72,7 +99,7 @@
         android:layout_marginTop="50dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_layout">
+        app:layout_constraintTop_toBottomOf="@+id/sex_layout">
 
         <TextView
             android:id="@+id/textView_Age_Title"
@@ -87,6 +114,13 @@
             android:layout_height="wrap_content"
             android:text="@string/profile_age_value" />
 
+        <TextView
+            android:id="@+id/textView_Age_Units"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:text="@string/age_unit"
+            />
 
     </LinearLayout>
 
@@ -115,6 +149,13 @@
             android:layout_height="wrap_content"
             android:text="@string/profile_height_value" />
 
+        <TextView
+            android:id="@+id/e_textView_Height_Units"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/height_units"
+            />
+
     </LinearLayout>
 
 
@@ -141,6 +182,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/profile_weight_value" />
+
+        <TextView
+            android:id="@+id/e_textView_Weight_Units"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weight_units"
+            />
 
     </LinearLayout>
 

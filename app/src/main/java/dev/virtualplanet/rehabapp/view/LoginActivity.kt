@@ -18,9 +18,13 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+
     fun goToMainActivity(view: View) {
         val intent = Intent (this, MainActivity::class.java)
     }
 
+    override fun onBackPressed() {
+
+    }
 
 }

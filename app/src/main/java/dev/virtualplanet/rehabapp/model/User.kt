@@ -6,6 +6,7 @@ class User {
     private var password = String()
     private var mail = String()
 
+    private var sex = 0 // 0 man, 1 Woman
 
     //HEALTH VARS
     private var age = 0
@@ -23,6 +24,9 @@ class User {
         password = pass
         mail = ma
     }
+
+
+
 
     fun getUser() : String {
         return user
@@ -84,7 +88,8 @@ class User {
     }
 
     fun calculateIMC() : Int {
-        return (weight/(height+height))
+        //kg/m^2
+        return (weight/(height*height))
     }
 
 }
