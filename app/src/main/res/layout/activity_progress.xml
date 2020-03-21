@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/progress_main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -29,20 +30,29 @@
         android:layout_marginStart="160dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="160dp"
+        android:textSize="25sp"
         android:text="@string/progress_main_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/progress_char"
+    <Spinner
+        android:id="@+id/select_static_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="160dp"
+        android:prompt = "@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_app_title" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/progress_content"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_static_spinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
