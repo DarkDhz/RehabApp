@@ -37,4 +37,6 @@
     <string name="ec_rep_title">Numero de Repeticiones:</string>
     <string name="ec_description">En este ejercicio realizaremos una serie de movimientos para el hombro</string>
     <string name="ec_main_title">EXAMPLE EXERCICE</string>
+    <string name="profile_sex_title">Sexo</string>
+    <string name="profile_sex_value">Hombre</string>
 </resources>

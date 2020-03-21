@@ -28,16 +28,21 @@ class ProfileActivity : AppCompatActivity() {
 
         data.collection("USERS").document("example@gmail.com")
             .get().addOnSuccessListener {
-                val name = it.get("name")
-                this.profile_content.text = name.toString()
-                this.textView_Age_Value.text = it.get("age").toString()
-                this.textView_Height_Value.text = it.get("height").toString()
-                this.textView_Weight_Value.text = it.get("weight").toString()
+                val name = it.get("name").toString()
+                val age = it.get("age").toString()
+                val height = it.get("height").toString()
+                val weight = it.get("weight").toString()
+                this.profile_content.text = name
+                this.textView_Age_Value.text = age
+                this.textView_Height_Value.text = height
+                this.textView_Weight_Value.text = weight
                 if (it.get("wheel").toString().toBoolean()) {
                     this.textView_WheelChair_Value.text = "SI"
                 } else {
                     this.textView_WheelChair_Value.text = "SI"
                 }
+                val imc = calculateIMC(weight.toDouble(), (height.toDouble()/100))
+                this.textView_IMC_Value.text = imc.toString()
             }
 
     }
@@ -47,11 +52,9 @@ class ProfileActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun initUser() {
-
-
-
-
+    fun calculateIMC(weight: Double, height: Double) : Double {
+        //kg/m^2
+        return (weight/(height*height))
     }
 
     fun returnToMain(view: View) {

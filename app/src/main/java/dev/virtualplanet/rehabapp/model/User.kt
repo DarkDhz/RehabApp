@@ -6,6 +6,7 @@ class User {
     private var password = String()
     private var mail = String()
 
+    private var sex = 0 // 0 man, 1 Woman
 
     //HEALTH VARS
     private var age = 0
