@@ -27,6 +27,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
         android:onClick="returnToMain"
+        android:contentDescription="@string/global_returnbt_desc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -39,8 +40,6 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="125dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -49,8 +48,8 @@
             android:id="@+id/e_profile_title"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:paddingEnd="50dp"
             android:enabled="false"
+            android:paddingEnd="50dp"
             android:text="@string/profile_title" />
 
         <TextView
@@ -109,7 +108,6 @@
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/e_age_layout">
-
 
         <TextView
             android:id="@+id/e_textView_Height_Title"

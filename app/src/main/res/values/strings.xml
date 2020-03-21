@@ -23,7 +23,7 @@
     <string name="main_settings_bt">Ajustes</string>
     <string name="stt_notify_title">Notificaciones</string>
     <string name="stt_sound_title">Sonido</string>
-    <string name="progress_main_title">ESTADÍSTICAS MENSUALES</string>
+    <string name="progress_main_title">𝔼𝕤𝕥𝕒𝕕í𝕤𝕥𝕚𝕔𝕒𝕤</string>
     <string name="age_unit">años</string>
     <string name="height_units">cm</string>
     <string name="weight_units">kg</string>
@@ -37,4 +37,10 @@
     <string name="ec_rep_title">Numero de Repeticiones:</string>
     <string name="ec_description">En este ejercicio realizaremos una serie de movimientos para el hombro</string>
     <string name="ec_main_title">EXAMPLE EXERCICE</string>
+    <string name="profile_sex_title">Sexo</string>
+    <string name="profile_sex_value">Hombre</string>
+    <string name="global_returnbt_desc">Return Button</string>
+    <string name="stt_pswd_bt">Cambiar Contraseña</string>
+    <string name="stt_logout">Cerrar Sesión</string>
+    <string name="main_profile_img_desc">Profile Image</string>
 </resources>

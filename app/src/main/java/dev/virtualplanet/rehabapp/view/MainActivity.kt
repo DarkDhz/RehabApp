@@ -1,19 +1,16 @@
 package dev.virtualplanet.rehabapp.view
 
 import android.content.Intent
-import android.graphics.ColorSpace
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.database.ValueEventListener
 import dev.virtualplanet.rehabapp.R
-import dev.virtualplanet.rehabapp.model.User
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private val data = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,20 +18,40 @@ class MainActivity : AppCompatActivity() {
 
         //CHECK IF USER IS LOGED IF NOT requiereLogin()
 
-
-        /*val database = FirebaseFirestore.getInstance()
-        var exampleUser = User("Martin Garrix", "1234", "example@gmail.com")
-
-        val example_user = hashMapOf(
-            "name" to exampleUser.getUser(),
-            "object" to exampleUser
-        )
-
-        database.collection("users").add(exampleUser)*/
-
+        this.init()
     }
 
+    private fun init() {
+        //DATABASE TESTING "IGNORE"
 
+        val users = data.collection("USERS")
+
+        var lista = ArrayList<String>()
+
+        data.collection("USERS")
+            .get().addOnSuccessListener {
+                it.forEach {
+                    lista.add(it.get("mail").toString())
+                }
+            }
+
+        for (mail in lista) {
+            if ( ! mail.equals("example@gmail.com") ) {
+                users.document("example@gmail.com").set(mapOf(
+                    "name" to "Martin Garrix",
+                    "mail" to "example@gmail.com",
+                    "password" to "1234abcd",
+                    "sex" to "man",
+                    "age" to 23,
+                    "weight" to 80,
+                    "height" to 180,
+                    "wheel" to false
+                ))
+            }
+        }
+
+        // END OF DATABASE TESTING
+    }
 
     fun goToProfileActivity(view: View) {
         val intent = Intent(this, ProfileActivity::class.java)
@@ -42,7 +59,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun requiereLogin() {
+    private fun requiereLogin() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }
