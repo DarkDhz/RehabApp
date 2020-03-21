@@ -20,7 +20,8 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         //BLOCKED FOR SECURITY
-
+    }
+    
     fun goToMainActivity(view: View) {
         val intent = Intent (this, MainActivity::class.java)
     }
