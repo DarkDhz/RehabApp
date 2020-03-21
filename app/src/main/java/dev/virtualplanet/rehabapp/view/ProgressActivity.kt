@@ -18,7 +18,6 @@ import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
 
 
-const val TAG = "ProgressActivity"
 class ProgressActivity : AppCompatActivity() {
 
     private val controller = Controller
