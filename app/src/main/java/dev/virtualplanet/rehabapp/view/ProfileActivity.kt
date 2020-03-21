@@ -17,14 +17,29 @@ import java.io.File
 
 class ProfileActivity : AppCompatActivity() {
 
-    val data = FirebaseFirestore.getInstance()
+    private val data = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-        //this.initUser()
 
-        var lista = ArrayList<String>()
+        this.init()
+
+    }
+
+    fun editProfile(view: View) {
+        val intent = Intent(this, EditProfileActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun calculateIMC(weight: Double, height: Double) : Double {
+        //kg/m^2
+        //DOUBLE TO GET ALL DECIMALS
+        return (weight/(height*height))
+    }
+
+    private fun init() {
+        //DATABASE TESTING "IGNORE"
 
         data.collection("USERS").document("example@gmail.com")
             .get().addOnSuccessListener {
@@ -45,16 +60,7 @@ class ProfileActivity : AppCompatActivity() {
                 this.textView_IMC_Value.text = imc.toString()
             }
 
-    }
-
-    fun editProfile(view: View) {
-        val intent = Intent(this, EditProfileActivity::class.java)
-        startActivity(intent)
-    }
-
-    fun calculateIMC(weight: Double, height: Double) : Double {
-        //kg/m^2
-        return (weight/(height*height))
+        // END OF DATABASE TESTING
     }
 
     fun returnToMain(view: View) {

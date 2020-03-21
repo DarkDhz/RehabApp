@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    val data = FirebaseFirestore.getInstance()
+    private val data = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,8 +18,11 @@ class MainActivity : AppCompatActivity() {
 
         //CHECK IF USER IS LOGED IF NOT requiereLogin()
 
+        this.init()
+    }
 
-
+    private fun init() {
+        //DATABASE TESTING "IGNORE"
 
         val users = data.collection("USERS")
 
@@ -38,6 +41,7 @@ class MainActivity : AppCompatActivity() {
                     "name" to "Martin Garrix",
                     "mail" to "example@gmail.com",
                     "password" to "1234abcd",
+                    "sex" to "man",
                     "age" to 23,
                     "weight" to 80,
                     "height" to 180,
@@ -45,9 +49,9 @@ class MainActivity : AppCompatActivity() {
                 ))
             }
         }
+
+        // END OF DATABASE TESTING
     }
-
-
 
     fun goToProfileActivity(view: View) {
         val intent = Intent(this, ProfileActivity::class.java)
@@ -55,7 +59,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun requiereLogin() {
+    private fun requiereLogin() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }
