@@ -15,4 +15,7 @@ class ChangePswdActivity : AppCompatActivity() {
     fun changePasswd(view: View) {
         //TODO
     }
+    fun goBack(view: View) {
+        //TODO
+    }
 }
