@@ -53,6 +53,7 @@
             android:layout_height="wrap_content"
             android:enabled="false"
             android:paddingEnd="50dp"
+            android:paddingStart="0dp"
             android:text="@string/profile_title" />
 
         <TextView
@@ -80,7 +81,9 @@
             android:id="@+id/e_textView_Age_Title"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
             android:paddingEnd="50dp"
+            android:paddingStart="0dp"
             android:text="@string/profile_age_title" />
 
         <EditText
@@ -89,6 +92,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberSigned"
             android:hint="@string/profile_age_value"
+            android:textColor="@android:color/black"
             android:importantForAutofill="no" />
 
         <TextView
@@ -96,7 +100,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="10dp"
+            android:paddingEnd="0dp"
             android:text="@string/age_unit"
+            android:textColor="@android:color/black"
             />
 
     </LinearLayout>
@@ -117,6 +123,8 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:paddingEnd="50dp"
+            android:paddingStart="0dp"
+            android:textColor="@android:color/black"
             android:text="@string/profile_height_title" />
 
         <EditText
@@ -125,6 +133,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberSigned"
             android:hint="@string/profile_height_value"
+            android:textColor="@android:color/black"
             android:importantForAutofill="no" />
 
         <TextView
@@ -132,6 +141,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="10dp"
+            android:paddingEnd="0dp"
+            android:textColor="@android:color/black"
             android:text="@string/height_units"
             />
 
@@ -154,6 +165,8 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:paddingEnd="50dp"
+            android:paddingStart="0dp"
+            android:textColor="@android:color/black"
             android:text="@string/profile_weight_title" />
 
         <EditText
@@ -162,6 +175,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberSigned"
             android:hint="@string/profile_weight_value"
+            android:textColor="@android:color/black"
             android:importantForAutofill="no" />
 
         <TextView
@@ -169,6 +183,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="10dp"
+            android:paddingEnd="0dp"
+            android:textColor="@android:color/black"
             android:text="@string/weight_units"
             />
 
@@ -190,6 +206,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:paddingEnd="50dp"
+            android:paddingStart="0dp"
             android:enabled="false"
             android:text="@string/profile_IMC_title" />
 
@@ -220,6 +237,8 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:paddingEnd="50dp"
+            android:textColor="@android:color/black"
+            android:paddingStart="0dp"
             android:text="@string/profile_chair_title" />
 
         <Switch
