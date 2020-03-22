@@ -9,11 +9,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/login_layout"
-        android:layout_width="321dp"
-        android:layout_height="107dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,17 +20,16 @@
         <ImageView
             android:id="@+id/login_pass_icon"
             android:layout_width="44dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="4dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="5dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_user_icon"
             app:srcCompat="@drawable/password_icon" />
 
         <ImageView
             android:id="@+id/login_user_icon"
-            android:layout_width="41dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="4dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/login_user" />
@@ -40,22 +37,25 @@
         <EditText
             android:id="@+id/password_login"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Contraseña"
+            android:layout_height="44dp"
             android:layout_marginStart="4dp"
+            android:layout_marginTop="5dp"
             android:ems="10"
+            android:hint="Contraseña"
             android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/login_pass_icon"
             app:layout_constraintTop_toBottomOf="@+id/username_login" />
 
         <EditText
             android:id="@+id/username_login"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="4dp"
             android:ems="10"
             android:hint="Usuario"
             android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/login_user_icon"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -64,20 +64,18 @@
         android:id="@+id/login_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="248dp"
-        android:layout_marginEnd="160dp"
+        android:layout_marginTop="50dp"
         android:text="Iniciar Sesión"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="85dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -87,7 +85,7 @@
         android:id="@+id/login_forgot_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:text="Has olvidado la contraseña?"
         android:textColor="@android:color/holo_blue_dark"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,12 +96,12 @@
         android:id="@+id/login_login_button"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/boton2"
+        android:onClick="goToMainActivity"
         android:text="Iniciar Sesión"
         android:textColor="@android:color/white"
         android:textSize="20dp"
-        android:onClick="goToMainActivity"
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +112,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="70dp"
         android:text="No tienes una cuenta?"
 
         app:layout_constraintStart_toStartOf="parent"
@@ -125,9 +123,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="108dp"
-        android:text="Registrate"
+        android:layout_marginTop="70dp"
         android:onClick="goToRegisterActivity"
+        android:text="Registrate"
         android:textColor="@android:color/holo_blue_dark"
         app:layout_constraintStart_toEndOf="@+id/login_register_info"
         app:layout_constraintTop_toBottomOf="@+id/login_forgot_pass" />
