@@ -1,18 +1,15 @@
 package dev.virtualplanet.rehabapp.view
 
-
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.VideoView
+import androidx.appcompat.app.AppCompatActivity
 import dev.virtualplanet.rehabapp.R
 
-class ViewExerciseAtivity : AppCompatActivity() {
-
+class ViewExerciceActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -62,17 +59,17 @@ class ViewExerciseAtivity : AppCompatActivity() {
         val fab = findViewById<Button>(R.id.fab)
         val progressBar = findViewById<ProgressBar>(R.id.progressBar_horizontal)
 
+
         progressBar.progress = 0
 
         fab.setOnClickListener {
-            progressBar.progress = (progressBar.progress + 20) % 120
+            progressBar.progress = (progressBar.progress + 20) % 100
         }
     }
 
     fun goBack(view: View) {
-        val intent = Intent(this, MainExerciciActivity::class.java)
-        startActivity(intent)
+
     }
 
-
+    
 }
