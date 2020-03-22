@@ -3,8 +3,6 @@ package dev.virtualplanet.rehabapp.view
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -16,7 +14,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
-import kotlinx.android.synthetic.main.activity_select_muscle.*
 
 class selMus2Activity : AppCompatActivity() {
 
@@ -39,7 +36,7 @@ class selMus2Activity : AppCompatActivity() {
                 var y : Float = p1.rawY
                 var x1 : Float = x/displayMetrics.widthPixels
                 var y1 : Float = y/displayMetrics.heightPixels
-                var i : Intent = getIntent()
+                var i : Intent = Intent(this@selMus2Activity, ViewExercicesActivity::class.java)
                 when (p1.action) {
                     MotionEvent.ACTION_DOWN -> {
                         //prueba.text = "x: " + x1 + " y: " + y1
@@ -342,9 +339,8 @@ class selMus2Activity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.muneca_izq)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el hombro derecho").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "muneca_izq")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                i.putExtra("muneca_izquierda", "muneca_izquierda")
+                                startActivity(i)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)

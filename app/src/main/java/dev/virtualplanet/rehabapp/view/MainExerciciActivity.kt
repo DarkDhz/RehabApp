@@ -1,14 +1,16 @@
 package dev.virtualplanet.rehabapp.view
-
 import android.app.ListActivity
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import dev.virtualplanet.rehabapp.R
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+
 import dev.virtualplanet.rehabapp.controller.Controller
 import java.lang.AssertionError
 import java.lang.reflect.Array
@@ -23,16 +25,44 @@ class MainExerciciActivity : ListActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_exercici)
+
+        var choice = false
+
+        /*applicationContext.deleteSharedPreferences("USER")
+        val pref = applicationContext.getSharedPreferences("USER", Context.MODE_PRIVATE)
+        val editor = pref.edit()
+        editor.putString("NAME", "ARNAU")
+        editor.apply()*/
+
+        val option = findViewById<Spinner>(R.id.spinner)
+
+        val options = arrayOf("Full-Body", "Hombro")
+        option.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, options)
+
+
+
     }
-    fun startExercise(view: View) {
-        val intent = Intent(this, ViewExerciseAtivity::class.java)
+
+    fun startExercices(view: View) {
+        val intent = Intent(this, ViewExercicesActivity::class.java)
+        val option = findViewById<Spinner>(R.id.spinner)
+        if (option.selectedItemPosition > 1) {
+            intent.putExtra("Full-Body", "fullbody")
+
+        } else {
+            intent.putExtra("Rodilla", "rodilla")
+
+        }
         startActivity(intent)
+
+
     }
 
     fun goToMuscle(view: View) {
         val intent = Intent(this, selMus2Activity::class.java)
         startActivityForResult(intent,1234)
     }
+
 
     fun ListarMusclus(){
         var adapt : Adaptador = Adaptador(this, musculos)
@@ -52,3 +82,8 @@ class MainExerciciActivity : ListActivity() {
         añadir(musculo)
     }
 }
+
+
+
+
+
