@@ -62,4 +62,8 @@
     <string name="register_mail">E-mail</string>
     <string name="register_password">Contraseña</string>
     <string name="register_username">Usuario</string>
+    <string name="recover_main_title">¿Has olvidado tu contraseña?</string>
+    <string name="recover_insert_title">Introduce tu correo y te mandaremos una nueva</string>
+    <string name="recover_insert_value">Correo electronico</string>
+    <string name="recover_send_bt">Enviar</string>
 </resources>
