@@ -9,17 +9,16 @@
     android:background="@drawable/background4"
     >
 
-    <Button
+    <ImageButton
         android:id="@+id/global_return_bt"
-        android:layout_width="29dp"
-        android:layout_height="27dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/global_returnbt_desc"
         android:onClick="goBack"
-        android:text="X"
-        android:textSize="20dp"
+        app:srcCompat="@drawable/img_return"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
