@@ -1,5 +1,6 @@
 package dev.virtualplanet.rehabapp.view
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -12,13 +13,14 @@ import android.widget.TextView
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
 
-class SelectMuscleActivity : AppCompatActivity() {
+class selMus2Activity : AppCompatActivity() {
 
     private val controller = Controller
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_select_muscle)
+        setContentView(R.layout.activity_sel_mus2)
         var prueba : TextView = findViewById(R.id.prueba)
         var tit : TextView = findViewById(R.id.titulo)
 
@@ -56,7 +58,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                             prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.muneca_derecha)
                         }
-                        else if(x1>0.2 && x1<0.287 && y1>0.507 && y1<0.535){
+                        else if(x1>0.2 && x1<0.3 && y1>0.5 && y1<0.6){
                             prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.muneca_izq)
                         }
@@ -126,7 +128,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                     }
                     MotionEvent.ACTION_UP -> {
                         prueba.text = "x: " + x + " y: " + y
-                        var intent : Intent = Intent(this@SelectMuscleActivity, Hombro_izquierdo::class.java)
+                        var intent  = Intent(this@selMus2Activity, Hombro_izquierdo::class.java)
                     }
                 }
                 return true
@@ -134,6 +136,5 @@ class SelectMuscleActivity : AppCompatActivity() {
 
         }
         )
-        }
     }
-
+}
