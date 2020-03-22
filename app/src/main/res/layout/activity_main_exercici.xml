@@ -1,57 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="16dp"
-
-    android:paddingRight="16dp"
+    android:background="@drawable/background2"
     tools:context=".view.MainExerciciActivity">
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.9" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.1" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0" />
+        android:layout_marginTop="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.2"
-        android:onClick="startExercise"
-        android:text="Empezar" />
-
-    <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0" />
+        android:layout_marginTop="50dp"
+        android:onClick="startExercise"
+        android:text="Empezar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="15dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/boton_1"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
 
     <Button
         android:id="@+id/new_exercise"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
         android:onClick="goToMuscle"
-        android:text="Nuevo Ejercicio" />
+        android:text="Nuevo Ejercicio"
+        android:padding="15dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/boton_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
 
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,6 +39,8 @@
         android:shadowDy="0"
         android:shadowColor="@android:color/black"
         android:shadowRadius="15"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
