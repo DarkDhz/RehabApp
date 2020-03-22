@@ -14,14 +14,13 @@
         app:srcCompat="@drawable/img_return"
         tools:layout_editor_absoluteX="121dp"
         tools:layout_editor_absoluteY="407dp"
-        android:contentDescription="@string/global_returnbt_desc"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
-        android:text="@string/global_cancel"
         android:onClick="returnToMain"
+        android:background="@android:color/transparent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        android:contentDescription="@string/global_returnbt_desc" />
 
 
     <LinearLayout

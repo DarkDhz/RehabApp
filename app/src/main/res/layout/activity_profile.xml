@@ -29,6 +29,7 @@
         tools:layout_editor_absoluteY="407dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
+        android:background="@android:color/transparent"
         android:onClick="returnToMain"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
