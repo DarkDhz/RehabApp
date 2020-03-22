@@ -26,7 +26,7 @@ class selMus2Activity : AppCompatActivity() {
 
         var displayMetrics : DisplayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
-        this.prueba.text = "x: " + displayMetrics.widthPixels + " y: " + displayMetrics.heightPixels
+        //this.prueba.text = "x: " + displayMetrics.widthPixels + " y: " + displayMetrics.heightPixels
         var imagen : ImageView = findViewById(R.id.cuerpo)
         imagen.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
