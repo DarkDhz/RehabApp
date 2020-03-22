@@ -23,7 +23,7 @@
     <string name="main_settings_bt">Ajustes</string>
     <string name="stt_notify_title">Notificaciones</string>
     <string name="stt_sound_title">Sonido</string>
-    <string name="progress_main_title">𝔼𝕤𝕥𝕒𝕕í𝕤𝕥𝕚𝕔𝕒𝕤</string>
+    <string name="progress_main_title">Estadísticas</string>
     <string name="age_unit">años</string>
     <string name="height_units">cm</string>
     <string name="weight_units">kg</string>
