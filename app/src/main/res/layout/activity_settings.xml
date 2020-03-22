@@ -23,7 +23,7 @@
         android:contentDescription="@string/global_returnbt_desc" />
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/stt_notify_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,19 +42,26 @@
             android:paddingStart="0dp"
             android:paddingEnd="50dp"
             android:text="@string/stt_notify_title"
-            android:textStyle="bold"
             android:textColor="#FFFFFF"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Switch
             android:id="@+id/stt_notify_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="modifyNotifications" />
+            android:layout_marginStart="15dp"
+            android:onClick="modifyNotifications"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/stt_notify_title"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/stt_sound_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,15 +83,22 @@
             android:text="@string/stt_sound_title"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Switch
             android:id="@+id/stt_sound_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="modifySound" />
+            android:layout_marginStart="15dp"
+            android:onClick="modifySound"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/stt_sound_title"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/stt_change_password_bt"
