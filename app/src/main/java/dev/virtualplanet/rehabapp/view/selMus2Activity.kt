@@ -3,6 +3,7 @@ package dev.virtualplanet.rehabapp.view
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -10,6 +11,8 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
 import kotlinx.android.synthetic.main.activity_select_muscle.*
@@ -23,7 +26,8 @@ class selMus2Activity : AppCompatActivity() {
         setContentView(R.layout.activity_sel_mus2)
         //var prueba : TextView = findViewById(R.id.prueba)
         var tit : TextView = findViewById(R.id.titulo)
-
+        lateinit var tostada : Toast
+        val builder = AlertDialog.Builder(this@selMus2Activity, R.style.AlertDialog)
         var displayMetrics : DisplayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         //this.prueba.text = "x: " + displayMetrics.widthPixels + " y: " + displayMetrics.heightPixels
@@ -41,44 +45,62 @@ class selMus2Activity : AppCompatActivity() {
                         if (x1>0.587 && x1<0.708 && y1>0.26 && y1<0.4){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.hombro_derecho)
-
+                            tostada = Toast.makeText(applicationContext, "Hombro Derecho", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else if (x1>0.287 && x1<0.416 && y1>0.26 && y1<0.4){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.hombro_izq)
-
+                            tostada = Toast.makeText(applicationContext, "Hombro Izquierdo", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else if(x1>0.645 && x1<0.75 && y1>0.45 && y1<0.5){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.codo_derecho)
+                            tostada = Toast.makeText(applicationContext, "Codo Derecho", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else if(x1>0.25 && x1<0.334 && y1>0.45 && y1<0.5){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.codo_izq)
+                            tostada = Toast.makeText(applicationContext, "Codo Izquierdo", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else if(x1>0.69 && x1<0.787 && y1>0.5 && y1<0.6){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.muneca_derecha)
+                            tostada = Toast.makeText(applicationContext, "Muñeca Derecha", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else if(x1>0.2 && x1<0.3 && y1>0.5 && y1<0.6){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.muneca_izq)
+                            tostada = Toast.makeText(applicationContext, "Muñeca Izquierda", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else if(x1>0.55 && x1<0.7 && y1>0.65 && y1<0.8){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.rodilla_derecha)
+                            tostada = Toast.makeText(applicationContext, "Rodilla Derecha", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else if(x1>0.375 && x1<0.5 && y1>0.65 && y1<0.8){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.rodilla_izq)
+                            tostada = Toast.makeText(applicationContext, "Rodilla Izquierda", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else if(x1>0.54 && x1<0.7 && y1>0.84 && y1<1.0){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.tobillo_derecho)
+                            tostada = Toast.makeText(applicationContext, "Tobillo Derecho", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else if(x1>0.35 && x1<0.5 && y1>0.84 && y1<1.0){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.tobillo_izq)
+                            tostada = Toast.makeText(applicationContext, "Tobillo Izquierdo", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else imagen.setImageResource(R.drawable.original)
                     }
@@ -89,42 +111,62 @@ class selMus2Activity : AppCompatActivity() {
                         if (x1>0.587 && x1<0.708 && y1>0.26 && y1<0.4){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.hombro_derecho)
+                            tostada = Toast.makeText(applicationContext, "Hombro Derecho", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else if (x1>0.287 && x1<0.416 && y1>0.26 && y1<0.4){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.hombro_izq)
+                            tostada = Toast.makeText(applicationContext, "Hombro Izquierdo", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
-                        else if(x1>0.645 && x1<0.75 && y1>0.4 && y1<0.45){
+                        else if(x1>0.645 && x1<0.75 && y1>0.45 && y1<0.5){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.codo_derecho)
+                            tostada = Toast.makeText(applicationContext, "Codo Derecho", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
-                        else if(x1>0.25 && x1<0.334 && y1>0.4 && y1<0.45){
+                        else if(x1>0.25 && x1<0.334 && y1>0.45 && y1<0.5){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.codo_izq)
+                            tostada = Toast.makeText(applicationContext, "Codo Izquierdo", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else if(x1>0.69 && x1<0.787 && y1>0.5 && y1<0.6){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.muneca_derecha)
+                            tostada = Toast.makeText(applicationContext, "Muñeca Derecha", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else if(x1>0.2 && x1<0.3 && y1>0.5 && y1<0.6){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.muneca_izq)
+                            tostada = Toast.makeText(applicationContext, "Muñeca Izquierda", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else if(x1>0.55 && x1<0.7 && y1>0.65 && y1<0.8){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.rodilla_derecha)
+                            tostada = Toast.makeText(applicationContext, "Rodilla Derecha", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else if(x1>0.375 && x1<0.5 && y1>0.65 && y1<0.8){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.rodilla_izq)
+                            tostada = Toast.makeText(applicationContext, "Rodilla Izquierda", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else if(x1>0.54 && x1<0.7 && y1>0.84 && y1<1.0){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.tobillo_derecho)
+                            tostada = Toast.makeText(applicationContext, "Tobillo Derecho", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else if(x1>0.35 && x1<0.5 && y1>0.84 && y1<1.0){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.tobillo_izq)
+                            tostada = Toast.makeText(applicationContext, "Tobillo Izquierdo", Toast.LENGTH_LONG)
+                            tostada.show()
                         }
                         else imagen.setImageResource(R.drawable.original)
                     }
@@ -132,62 +174,132 @@ class selMus2Activity : AppCompatActivity() {
                         if (x1>0.587 && x1<0.708 && y1>0.26 && y1<0.4){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.hombro_derecho)
-                            i.putExtra("hombro_derecho", "hombro_derecho")
-                            startActivity(i)
+                            builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el hombro derecho").setPositiveButton("SÍ"){
+                                    dialog, which ->
+                                i.putExtra("hombro_derecho", "hombro_derecho")
+                                startActivity(i)
+                            }.setNegativeButton("NO"){dialog,which ->
+                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                            }
+                            val dialogo: AlertDialog = builder.create()
+                            dialogo.show()
                         }
                         else if (x1>0.287 && x1<0.416 && y1>0.26 && y1<0.4){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.hombro_izq)
-                            i.putExtra("hombro_izquierdo", "hombro_izquierdo")
-                            startActivity(i)
+                            builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el hombro derecho").setPositiveButton("SÍ"){
+                                    dialog, which ->
+                                i.putExtra("hombro_izquierdo", "hombro_izquierdo")
+                                startActivity(i)
+                            }.setNegativeButton("NO"){dialog,which ->
+                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                            }
+                            val dialogo: AlertDialog = builder.create()
+                            dialogo.show()
                         }
                         else if(x1>0.645 && x1<0.75 && y1>0.45 && y1<0.5){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.codo_derecho)
-                            i.putExtra("codo_derecho", "codo_derecho")
-                            startActivity(i)
+                            builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el hombro derecho").setPositiveButton("SÍ"){
+                                    dialog, which ->
+                                i.putExtra("codo_derecho", "codo_derecho")
+                                startActivity(i)
+                            }.setNegativeButton("NO"){dialog,which ->
+                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                            }
+                            val dialogo: AlertDialog = builder.create()
+                            dialogo.show()
                         }
                         else if(x1>0.25 && x1<0.334 && y1>0.45 && y1<0.5){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.codo_izq)
-                            i.putExtra("codo_izquierdo", "codo_izquierdo")
-                            startActivity(i)
+                            builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el hombro derecho").setPositiveButton("SÍ"){
+                                    dialog, which ->
+                                i.putExtra("codo_izquierdo", "codo_izquierdo")
+                                startActivity(i)
+                            }.setNegativeButton("NO"){dialog,which ->
+                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                            }
+                            val dialogo: AlertDialog = builder.create()
+                            dialogo.show()
                         }
                         else if(x1>0.69 && x1<0.787 && y1>0.5 && y1<0.6){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.muneca_derecha)
-                            i.putExtra("muneca_derecha", "muneca_derecha")
-                            startActivity(i)
+                            builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el hombro derecho").setPositiveButton("SÍ"){
+                                    dialog, which ->
+                                i.putExtra("muneca_derecha", "muneca_derecha")
+                                startActivity(i)
+                            }.setNegativeButton("NO"){dialog,which ->
+                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                            }
+                            val dialogo: AlertDialog = builder.create()
+                            dialogo.show()
                         }
                         else if(x1>0.2 && x1<0.3 && y1>0.5 && y1<0.6){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.muneca_izq)
-                            i.putExtra("muneca_izq", "muneca_izq")
-                            startActivity(i)
+                            builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el hombro derecho").setPositiveButton("SÍ"){
+                                    dialog, which ->
+                                i.putExtra("muneca_izq", "muneca_izq")
+                                startActivity(i)
+                            }.setNegativeButton("NO"){dialog,which ->
+                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                            }
+                            val dialogo: AlertDialog = builder.create()
+                            dialogo.show()
                         }
                         else if(x1>0.55 && x1<0.7 && y1>0.65 && y1<0.8){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.rodilla_derecha)
-                            i.putExtra("rodilla_derecha", "rodilla_derecha")
-                            startActivity(i)
+                            builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el hombro derecho").setPositiveButton("SÍ"){
+                                    dialog, which ->
+                                i.putExtra("rodilla_derecha", "rodilla_derecha")
+                                startActivity(i)
+                            }.setNegativeButton("NO"){dialog,which ->
+                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                            }
+                            val dialogo: AlertDialog = builder.create()
+                            dialogo.show()
                         }
                         else if(x1>0.375 && x1<0.5 && y1>0.65 && y1<0.8){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.rodilla_izq)
-                            i.putExtra("rodilla_izquierda", "rodilla_izquierda")
-                            startActivity(i)
+                            builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el hombro derecho").setPositiveButton("SÍ"){
+                                    dialog, which ->
+                                i.putExtra("rodilla_izquierda", "rodilla_izquierda")
+                                startActivity(i)
+                            }.setNegativeButton("NO"){dialog,which ->
+                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                            }
+                            val dialogo: AlertDialog = builder.create()
+                            dialogo.show()
                         }
                         else if(x1>0.54 && x1<0.7 && y1>0.84 && y1<1.0){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.tobillo_derecho)
-                            i.putExtra("tobillo_derecho", "tobillo_derecho")
-                            startActivity(i)
+                            builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el hombro derecho").setPositiveButton("SÍ"){
+                                    dialog, which ->
+                                i.putExtra("tobillo_derecho", "tobillo_derecho")
+                                startActivity(i)
+                            }.setNegativeButton("NO"){dialog,which ->
+                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                            }
+                            val dialogo: AlertDialog = builder.create()
+                            dialogo.show()
                         }
                         else if(x1>0.35 && x1<0.5 && y1>0.84 && y1<1.0){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.tobillo_izq)
-                            i.putExtra("tobillo_izquierdo", "tobillo_izquierdo")
-                            startActivity(i)
+                            builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el hombro derecho").setPositiveButton("SÍ"){
+                                    dialog, which ->
+                                i.putExtra("tobillo_izquierdo", "tobillo_izquierdo")
+                                startActivity(i)
+                            }.setNegativeButton("NO"){dialog,which ->
+                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                            }
+                            val dialogo: AlertDialog = builder.create()
+                            dialogo.show()
                         }
                     }
                 }
