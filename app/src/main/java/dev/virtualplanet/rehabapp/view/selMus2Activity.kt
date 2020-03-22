@@ -38,7 +38,7 @@ class selMus2Activity : AppCompatActivity() {
                 var y : Float = p1.rawY
                 var x1 : Float = x/displayMetrics.widthPixels
                 var y1 : Float = y/displayMetrics.heightPixels
-                var i : Intent = Intent(this@selMus2Activity, PlayExerciceActivity::class.java)
+                var i : Intent = Intent(this@selMus2Activity, ViewExerciseAtivity::class.java)
                 when (p1.action) {
                     MotionEvent.ACTION_DOWN -> {
                         //prueba.text = "x: " + x1 + " y: " + y1
