@@ -62,11 +62,11 @@ class selMus2Activity : AppCompatActivity() {
                             prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.muneca_izq)
                         }
-                        else if(x1>0.546 && x1<0.683 && y1>0.652 && y1<0.756){
+                        else if(x1>0.55 && x1<0.7 && y1>0.65 && y1<0.8){
                             prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.rodilla_derecha)
                         }
-                        else if(x1>0.375 && x1<0.495 && y1>0.652 && y1<0.756){
+                        else if(x1>0.375 && x1<0.5 && y1>0.65 && y1<0.8){
                             prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.rodilla_izq)
                         }
