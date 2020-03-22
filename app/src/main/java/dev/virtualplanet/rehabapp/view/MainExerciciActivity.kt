@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
@@ -24,7 +25,9 @@ class MainExerciciActivity : AppCompatActivity() {
         editor.putString("NAME", "ARNAU")
         editor.apply()*/
 
+
     }
+
     fun startExercise(view: View) {
         val intent = Intent(this, ViewExerciseAtivity::class.java)
         startActivity(intent)
@@ -32,6 +35,11 @@ class MainExerciciActivity : AppCompatActivity() {
 
     fun goToMuscle(view: View) {
         val intent = Intent(this, selMus2Activity::class.java)
+        startActivity(intent)
+    }
+
+    fun returnToMain(view: View) {
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 

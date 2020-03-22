@@ -246,7 +246,7 @@ class selMus2Activity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.muneca_izq)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el hombro derecho").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("muneca_izq", "muneca_izq")
+                                i.putExtra("muneca_izquierda", "muneca_izquierda")
                                 startActivity(i)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
