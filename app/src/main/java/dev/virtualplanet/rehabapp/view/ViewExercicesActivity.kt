@@ -1,5 +1,6 @@
 package dev.virtualplanet.rehabapp.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -28,7 +29,7 @@ class ViewExercicesActivity : AppCompatActivity() {
         var tobillo = intent.getStringExtra("tobillo_derecho")
         var tobilloi = intent.getStringExtra("tobillo_izquierdo")
         val resultTitle = findViewById<TextView>(R.id.ce_title_txt)
-        val resultVideo = findViewById<VideoView>(R.id.videoView)
+        val resultVideo = findViewById<VideoView>(R.id.ce_videoView)
 
         if (!hombro.isNullOrEmpty()) {
             resultTitle.text = "Hombro Derecho"
@@ -56,19 +57,20 @@ class ViewExercicesActivity : AppCompatActivity() {
         }
 
 
-        val fab = findViewById<Button>(R.id.fab)
-        val progressBar = findViewById<ProgressBar>(R.id.progressBar_horizontal)
+        val fab = findViewById<Button>(R.id.ce_fab)
+        val progressBar = findViewById<ProgressBar>(R.id.ce_progressBar)
 
 
         progressBar.progress = 0
 
         fab.setOnClickListener {
-            progressBar.progress = (progressBar.progress + 20) % 100
+            progressBar.progress = (progressBar.progress + 20) % 120
         }
     }
 
     fun goBack(view: View) {
-
+        val intent = Intent(this, MainExerciciActivity::class.java)
+        startActivity(intent)
     }
 
     
