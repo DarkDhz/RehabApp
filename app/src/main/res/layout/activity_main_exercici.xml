@@ -32,7 +32,8 @@
         android:layout_height="20dp"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.2"
-        android:text="Select" />
+        android:onClick="startExercise"
+        android:text="Empezar" />
 
     <TextView
         android:layout_width="match_parent"

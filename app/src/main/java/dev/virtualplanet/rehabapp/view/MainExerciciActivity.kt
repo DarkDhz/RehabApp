@@ -25,6 +25,10 @@ class MainExerciciActivity : AppCompatActivity() {
         editor.apply()*/
 
     }
+    fun startExercise(view: View) {
+        val intent = Intent(this, ViewExerciseAtivity::class.java)
+        startActivity(intent)
+    }
 
     fun goToMuscle(view: View) {
         val intent = Intent(this, selMus2Activity::class.java)

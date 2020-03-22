@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
@@ -27,9 +28,11 @@ class PlayExerciceActivity : AppCompatActivity() {
         var tobillo = intent.getStringExtra("hombro_derecho")
         var tobilloi = intent.getStringExtra("hombro_izquiero")
         val resultTitle = findViewById<TextView>(R.id.ce_title_txt)
+        val resultVideo =findViewById<VideoView>(R.id.videoView)
 
         if (!hombro.isNullOrEmpty()) {
             resultTitle.text = hombro
+
         } else if (!hombroi.isNullOrEmpty()) {
             resultTitle.text = hombroi
         } else if (!codo.isNullOrEmpty()) {
