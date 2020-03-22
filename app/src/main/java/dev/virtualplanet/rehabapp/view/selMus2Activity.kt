@@ -180,6 +180,7 @@ class selMus2Activity : AppCompatActivity() {
                                 startActivity(i)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
                             dialogo.show()
@@ -193,6 +194,7 @@ class selMus2Activity : AppCompatActivity() {
                                 startActivity(i)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
                             dialogo.show()
@@ -206,6 +208,7 @@ class selMus2Activity : AppCompatActivity() {
                                 startActivity(i)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
                             dialogo.show()
@@ -219,6 +222,7 @@ class selMus2Activity : AppCompatActivity() {
                                 startActivity(i)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
                             dialogo.show()
@@ -232,6 +236,7 @@ class selMus2Activity : AppCompatActivity() {
                                 startActivity(i)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
                             dialogo.show()
@@ -245,6 +250,7 @@ class selMus2Activity : AppCompatActivity() {
                                 startActivity(i)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
                             dialogo.show()
@@ -258,6 +264,7 @@ class selMus2Activity : AppCompatActivity() {
                                 startActivity(i)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
                             dialogo.show()
@@ -271,6 +278,7 @@ class selMus2Activity : AppCompatActivity() {
                                 startActivity(i)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
                             dialogo.show()
@@ -284,6 +292,7 @@ class selMus2Activity : AppCompatActivity() {
                                 startActivity(i)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
                             dialogo.show()
@@ -297,6 +306,7 @@ class selMus2Activity : AppCompatActivity() {
                                 startActivity(i)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
                             dialogo.show()
