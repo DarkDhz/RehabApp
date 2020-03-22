@@ -19,6 +19,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
         android:onClick="goBack"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/global_returnbt_desc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
