@@ -38,19 +38,19 @@ class selMus2Activity : AppCompatActivity() {
                 when (p1.action) {
                     MotionEvent.ACTION_DOWN -> {
                         //prueba.text = "x: " + x1 + " y: " + y1
-                        if (x1>0.587 && x1<0.708 && y1>0.26 && y1<0.335){
+                        if (x1>0.587 && x1<0.708 && y1>0.26 && y1<0.36){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.hombro_derecho)
                         }
-                        else if (x1>0.287 && x1<0.416 && y1>0.26 && y1<0.335){
+                        else if (x1>0.287 && x1<0.416 && y1>0.26 && y1<0.36){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.hombro_izq)
                         }
-                        else if(x1>0.645 && x1<0.75 && y1>0.318 && y1<0.45){
+                        else if(x1>0.645 && x1<0.75 && y1>0.4 && y1<0.45){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.codo_derecho)
                         }
-                        else if(x1>0.25 && x1<0.334 && y1>0.318 && y1<0.45){
+                        else if(x1>0.25 && x1<0.334 && y1>0.4 && y1<0.45){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.codo_izq)
                         }
@@ -84,19 +84,19 @@ class selMus2Activity : AppCompatActivity() {
                         p0!!.performClick()
                         //prueba.text = "x: " + x1 + " y: " + y1
 
-                        if (x1>0.587 && x1<0.708 && y1>0.26 && y1<0.335){
+                        if (x1>0.587 && x1<0.708 && y1>0.26 && y1<0.36){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.hombro_derecho)
                         }
-                        else if (x1>0.287 && x1<0.416 && y1>0.26 && y1<0.335){
+                        else if (x1>0.287 && x1<0.416 && y1>0.26 && y1<0.36){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.hombro_izq)
                         }
-                        else if(x1>0.645 && x1<0.75 && y1>0.318 && y1<0.45){
+                        else if(x1>0.645 && x1<0.75 && y1>0.4 && y1<0.45){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.codo_derecho)
                         }
-                        else if(x1>0.25 && x1<0.334 && y1>0.318 && y1<0.45){
+                        else if(x1>0.25 && x1<0.334 && y1>0.4 && y1<0.45){
                             //prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.codo_izq)
                         }
