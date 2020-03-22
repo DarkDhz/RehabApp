@@ -54,7 +54,7 @@ class selMus2Activity : AppCompatActivity() {
                             prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.codo_izq)
                         }
-                        else if(x1>0.69 && x1<0.787 && y1>0.507 && y1<0.535){
+                        else if(x1>0.69 && x1<0.787 && y1>0.5 && y1<0.6){
                             prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.muneca_derecha)
                         }
@@ -70,11 +70,11 @@ class selMus2Activity : AppCompatActivity() {
                             prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.rodilla_izq)
                         }
-                        else if(x1>0.546 && x1<0.683 && y1>0.845 && y1<0.903){
+                        else if(x1>0.54 && x1<0.7 && y1>0.84 && y1<1.0){
                             prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.tobillo_derecho)
                         }
-                        else if(x1>0.375 && x1<0.495 && y1>0.845 && y1<0.903){
+                        else if(x1>0.35 && x1<0.5 && y1>0.84 && y1<1.0){
                             prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.tobillo_izq)
                         }
