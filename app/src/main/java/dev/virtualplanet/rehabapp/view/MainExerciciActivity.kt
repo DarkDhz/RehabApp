@@ -64,7 +64,7 @@ class MainExerciciActivity : AppCompatActivity() {
     }
 
     fun startExercise(view: View) {
-        val intent = Intent(this, PlayExerciceActivity::class.java)
+        val intent = Intent(this, ViewExerciseAtivity::class.java)
         startActivity(intent)
     }
 

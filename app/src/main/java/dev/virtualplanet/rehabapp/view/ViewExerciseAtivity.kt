@@ -1,8 +1,10 @@
 package dev.virtualplanet.rehabapp.view
 
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -63,8 +65,13 @@ class ViewExerciseAtivity : AppCompatActivity() {
         progressBar.progress = 0
 
         fab.setOnClickListener {
-            progressBar.progress = (progressBar.progress + 20) % 100
+            progressBar.progress = (progressBar.progress + 20) % 120
         }
+    }
+
+    fun goBack(view: View) {
+        val intent = Intent(this, MainExerciciActivity::class.java)
+        startActivity(intent)
     }
 
 
