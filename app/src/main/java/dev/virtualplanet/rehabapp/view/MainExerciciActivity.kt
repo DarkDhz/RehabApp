@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import dev.virtualplanet.rehabapp.R
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ListView
 import android.widget.Spinner
 
 import dev.virtualplanet.rehabapp.controller.Controller
@@ -21,10 +22,12 @@ class MainExerciciActivity : ListActivity() {
     private val controller = Controller
     lateinit var musculo : String
     val musculos = ArrayList<String>()
-
+    lateinit var l : ListView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_exercici)
+        l = findViewById(android.R.id.list)
+
     }
 
     fun startExercices(view: View) {
@@ -51,6 +54,10 @@ class MainExerciciActivity : ListActivity() {
     fun ListarMusclus(){
         var adapt : Adaptador = Adaptador(this, musculos)
         listAdapter=adapt
+        l.setOnItemClickListener(AdapterView.OnItemClickListener(){ adapterView: AdapterView<*>, view1: View, i: Int, l: Long ->
+            var i : Intent = Intent(this, ViewExercicesActivity::class.java)
+            startActivity(i)
+        })
     }
     fun añadir(s : String){
         musculos.add(s)
