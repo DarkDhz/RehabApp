@@ -422,4 +422,9 @@ class selMus2Activity : AppCompatActivity() {
         val intent = Intent(this, SelectMuscleActivity::class.java)
         startActivity(intent)
     }
+
+    override fun onBackPressed() {
+        //BLOCKED FOR SECURITY
+    }
+
 }

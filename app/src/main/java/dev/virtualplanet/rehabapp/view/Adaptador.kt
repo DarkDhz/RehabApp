@@ -30,7 +30,6 @@ class Adaptador : BaseAdapter {
         var icono : ImageView = vista.findViewById(android.R.id.icon)
         texto.setTextColor(Color.WHITE)
         texto.setText(lista[p0])
-        
         vista.setPadding(15)
         texto.setTextSize(25F)
         icono.setImageResource(android.R.drawable.star_off)
