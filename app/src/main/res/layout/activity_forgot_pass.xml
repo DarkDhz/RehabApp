@@ -4,10 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ChangePswdActivity"
-    android:orientation="vertical"
-    android:background="@drawable/background4"
-    >
+    android:background="@drawable/background"
+    tools:context=".view.ForgotPassActivity">
 
     <ImageButton
         android:id="@+id/global_return_bt"
@@ -16,16 +14,17 @@
         app:srcCompat="@drawable/img_return"
         tools:layout_editor_absoluteX="121dp"
         tools:layout_editor_absoluteY="407dp"
+        android:contentDescription="@string/global_returnbt_desc"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
+        android:text="@string/global_cancel"
         android:onClick="goBack"
-        android:contentDescription="@string/global_returnbt_desc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
 
     <TextView
-        android:id="@+id/pswd_title"
+        android:id="@+id/forg_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -34,7 +33,7 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="15"
-        android:text="@string/titulo_cambiar_contrasena"
+        android:text="Recuperar Contraseña"
         android:textColor="@android:color/white"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,75 +41,47 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/pswd_check_layout"
+        android:id="@+id/forg_content_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pswd_title">
+        app:layout_constraintTop_toBottomOf="@+id/forg_title">
 
         <EditText
-            android:id="@+id/pswd_old_value"
+            android:id="@+id/forg_mail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:ems="10"
-            android:hint="@string/pswd_old_value"
+            android:hint="Cuenta de correo"
             android:importantForAutofill="no"
-            android:inputType="textPassword"
+            android:inputType="textEmailAddress"
             android:paddingBottom="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/pswd_new_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="40dp"
-            android:layout_marginTop="100dp"
-            android:ems="10"
-            android:hint="@string/pswd_new_value"
-            android:importantForAutofill="no"
-            android:inputType="textPassword"
-            android:paddingBottom="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pswd_old_value" />
-
-        <EditText
-            android:id="@+id/pswd_repeat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="40dp"
-            android:layout_marginTop="50dp"
-            android:ems="10"
-            android:hint="@string/pswd_repeat_value"
-            android:importantForAutofill="no"
-            android:inputType="textPassword"
-            android:paddingBottom="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pswd_new_value" />
-
         <Button
-            android:id="@+id/pswd_save_bt"
+            android:id="@+id/forg_send_bt"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="100dp"
             android:background="@drawable/boton_1"
             android:gravity="center"
-            android:onClick="savePass"
-            android:text="@string/pswd_confirm_bt"
+            android:onClick="sendMail"
+            android:text="Enviar correo"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pswd_repeat" />
+            app:layout_constraintTop_toBottomOf="@+id/forg_mail" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -49,7 +49,7 @@
     <string name="pswd_new_value">Contraseña nueva</string>
     <string name="pswd_old_value">Contraseña antigua</string>
     <string name="login_main_title">Iniciar Sesión</string>
-    <string name="login_insert_user">Usuario</string>
+    <string name="login_insert_user">Cuenta de correo</string>
     <string name="login_insert_pass">Contraseña</string>
     <string name="login_forgot_pass">Has olvidado la contraseña?</string>
     <string name="login_login_bt">Iniciar Sesión</string>

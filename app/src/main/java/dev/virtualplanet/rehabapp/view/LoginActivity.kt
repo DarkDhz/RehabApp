@@ -30,5 +30,10 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun goToRecoverPass(view: View) {
+        val intent = Intent (this, ForgotPassActivity::class.java)
+        startActivity(intent)
+    }
+
 
 }
