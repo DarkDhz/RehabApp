@@ -39,17 +39,5 @@
         app:layout_constraintTop_toBottomOf="@+id/titulo"
         app:srcCompat="@drawable/original" />
 
-    <TextView
-        android:id="@+id/prueba"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|bottom"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
-        android:text=""
-        android:textColor="@android:color/black"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
