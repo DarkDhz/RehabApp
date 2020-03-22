@@ -11,5 +11,14 @@ object Controller {
         return ex_list.getExerciceByName(name)
     }
 
+    fun getExerciceByID(id: String) : Exercice? {
+        return null
+    }
+
+    fun getUser() {
+
+    }
+
+
 
 }
