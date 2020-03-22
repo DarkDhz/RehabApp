@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.ProgressBar
 import dev.virtualplanet.rehabapp.R
 
-class ViewExerciseAtivity : AppCompatActivity() {
+class ViewExerciseActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,6 +16,7 @@ class ViewExerciseAtivity : AppCompatActivity() {
         setContentView(R.layout.exercise_viewpager_layout)
         val fab = findViewById<Button>(R.id.fab)
         val progressBar = findViewById<ProgressBar>(R.id.progressBar_horizontal)
+
 
 
         progressBar.progress = 0
