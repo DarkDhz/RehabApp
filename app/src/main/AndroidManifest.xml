@@ -16,11 +16,11 @@
         <activity android:name=".view.ProgressActivity" />
         <activity android:name=".view.SelectMuscleActivity" />
         <activity android:name=".view.RegisterActivity" />
-        <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.MainActivity" />
         <activity android:name=".view.MainExerciciActivity" />
         <activity android:name=".view.PlayExerciceActivity" />
         <activity android:name=".view.ProfileActivity" />
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
