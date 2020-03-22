@@ -127,7 +127,7 @@ class selMus2Activity : AppCompatActivity() {
                         else imagen.setImageResource(R.drawable.original)
                     }
                     MotionEvent.ACTION_UP -> {
-                        prueba.text = "x: " + x1 + " y: " + y1
+                        //prueba.text = "x: " + x1 + " y: " + y1
                         var intent  = Intent(this@selMus2Activity, Hombro_izquierdo::class.java)
                     }
                 }
