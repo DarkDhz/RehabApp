@@ -39,10 +39,6 @@ class MainExerciciActivity : AppCompatActivity() {
 
     }
 
-    fun startExercice(view: View) {
-
-    }
-
     fun startExercices(view: View) {
         val intent = Intent(this, ViewExercicesActivity::class.java)
         val option = findViewById<Spinner>(R.id.spinner)
