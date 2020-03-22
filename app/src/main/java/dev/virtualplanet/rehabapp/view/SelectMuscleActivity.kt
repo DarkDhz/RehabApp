@@ -19,12 +19,10 @@ class SelectMuscleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_muscle)
-        var prueba : TextView = findViewById(R.id.prueba)
         var tit : TextView = findViewById(R.id.titulo)
-
+        var i : Intent = Intent(this, MainActivity::class.java)
         var displayMetrics : DisplayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
-        prueba.text = "x: " + displayMetrics.widthPixels + " y: " + displayMetrics.heightPixels
         var imagen : ImageView = findViewById(R.id.cuerpo)
         imagen.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
@@ -35,98 +33,80 @@ class SelectMuscleActivity : AppCompatActivity() {
 
                 when (p1.action) {
                     MotionEvent.ACTION_DOWN -> {
-                        prueba.text = "x: " + x1 + " y: " + y1
                         if (x1>0.587 && x1<0.708 && y1>0.26 && y1<0.335){
-                            prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.hombro_derecho)
+                            i.putExtra("hombro_derecho","hombro_derecho")
                         }
                         else if (x1>0.287 && x1<0.416 && y1>0.26 && y1<0.335){
-                            prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.hombro_izq)
+                            i.putExtra("hombro_izquierdo","hombro_izquierdo")
                         }
                         else if(x1>0.645 && x1<0.75 && y1>0.318 && y1<0.45){
-                            prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.codo_derecho)
+                            i.putExtra("hombro_izquierdo","hombro_izquierdo")
                         }
                         else if(x1>0.25 && x1<0.334 && y1>0.318 && y1<0.45){
-                            prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.codo_izq)
+                            i.putExtra("hombro_izquierdo","hombro_izquierdo")
                         }
                         else if(x1>0.69 && x1<0.787 && y1>0.507 && y1<0.535){
-                            prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.muneca_derecha)
+                            i.putExtra("hombro_izquierdo","hombro_izquierdo")
                         }
                         else if(x1>0.2 && x1<0.287 && y1>0.507 && y1<0.535){
-                            prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.muneca_izq)
+                            i.putExtra("hombro_izquierdo","hombro_izquierdo")
                         }
                         else if(x1>0.546 && x1<0.683 && y1>0.652 && y1<0.756){
-                            prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.rodilla_derecha)
+                            i.putExtra("hombro_izquierdo","hombro_izquierdo")
                         }
                         else if(x1>0.375 && x1<0.495 && y1>0.652 && y1<0.756){
-                            prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.rodilla_izq)
                         }
                         else if(x1>0.546 && x1<0.683 && y1>0.845 && y1<0.903){
-                            prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.tobillo_derecho)
                         }
                         else if(x1>0.375 && x1<0.495 && y1>0.845 && y1<0.903){
-                            prueba.text = "x: " + x1 + " y: " + y1
                             imagen.setImageResource(R.drawable.tobillo_izq)
                         }
                         else imagen.setImageResource(R.drawable.original)
                     }
                     MotionEvent.ACTION_MOVE -> {
                         p0!!.performClick()
-                        prueba.text = "x: " + x + " y: " + y
-
                         if (x1>0.587 && x1<0.708 && y1>0.26 && y1<0.335){
-                            prueba.text = "x: " + x + " y: " + y
                             imagen.setImageResource(R.drawable.hombro_derecho)
                         }
                         else if (x1>0.287 && x1<0.416 && y1>0.26 && y1<0.335){
-                            prueba.text = "x: " + x + " y: " + y
                             imagen.setImageResource(R.drawable.hombro_izq)
                         }
                         else if(x1>0.645 && x1<0.75 && y1>0.318 && y1<0.45){
-                            prueba.text = "x: " + x + " y: " + y
                             imagen.setImageResource(R.drawable.codo_derecho)
                         }
                         else if(x1>0.25 && x1<0.334 && y1>0.318 && y1<0.45){
-                            prueba.text = "x: " + x + " y: " + y
                             imagen.setImageResource(R.drawable.codo_izq)
                         }
                         else if(x1>0.69 && x1<0.787 && y1>0.507 && y1<0.535){
-                            prueba.text = "x: " + x + " y: " + y
                             imagen.setImageResource(R.drawable.muneca_derecha)
                         }
                         else if(x1>0.2 && x1<0.287 && y1>0.507 && y1<0.535){
-                            prueba.text = "x: " + x + " y: " + y
                             imagen.setImageResource(R.drawable.muneca_izq)
                         }
                         else if(x1>0.546 && x1<0.683 && y1>0.652 && y1<0.756){
-                            prueba.text = "x: " + x + " y: " + y
                             imagen.setImageResource(R.drawable.rodilla_derecha)
                         }
                         else if(x1>0.375 && x1<0.495 && y1>0.652 && y1<0.756){
-                            prueba.text = "x: " + x + " y: " + y
                             imagen.setImageResource(R.drawable.rodilla_izq)
                         }
                         else if(x1>0.546 && x1<0.683 && y1>0.845 && y1<0.903){
-                            prueba.text = "x: " + x + " y: " + y
                             imagen.setImageResource(R.drawable.tobillo_derecho)
                         }
                         else if(x1>0.375 && x1<0.495 && y1>0.845 && y1<0.903){
-                            prueba.text = "x: " + x + " y: " + y
                             imagen.setImageResource(R.drawable.tobillo_izq)
                         }
                         else imagen.setImageResource(R.drawable.original)
                     }
                     MotionEvent.ACTION_UP -> {
-                        prueba.text = "x: " + x + " y: " + y
-                        var intent : Intent = Intent(this@SelectMuscleActivity, Hombro_izquierdo::class.java)
                     }
                 }
                 return true
