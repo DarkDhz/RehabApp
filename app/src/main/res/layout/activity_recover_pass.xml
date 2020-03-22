@@ -8,7 +8,7 @@
     android:background="@drawable/background2">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/recover_main_img"
         android:layout_width="149dp"
         android:layout_height="124dp"
         android:layout_marginStart="131dp"
@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/index" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/recover_forgot_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -38,18 +38,18 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/recover_mail_title"
         android:layout_width="271dp"
         android:layout_height="64dp"
         android:gravity="center"
-        android:text="Introduce tu correo y te mandaremos una nueva"
+        android:text="@string/recover_insert_title"
         android:textColor="@android:color/darker_gray"
         android:textSize="17dp"
         tools:layout_editor_absoluteX="70dp"
         tools:layout_editor_absoluteY="333dp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/recover_mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -64,17 +64,18 @@
         tools:layout_editor_absoluteY="439dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/recover_save_bt"
         android:layout_width="247dp"
         android:layout_height="54dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="61dp"
         android:background="@drawable/boton_1"
-        android:text="Enviar"
+        android:text="@string/recover_send_bt"
+        android:textColor="@android:color/white"
         android:textAllCaps="false"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.796"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/recover_mail" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,6 +22,7 @@
         <activity android:name=".view.MainExerciciActivity" />
         <activity android:name=".view.PlayExerciceActivity" />
         <activity android:name=".view.ProfileActivity" />
+        <activity android:name=".view.ViewExerciseAtivity"/>
         <activity android:name=".view.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

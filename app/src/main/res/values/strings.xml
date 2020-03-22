@@ -23,7 +23,7 @@
     <string name="main_settings_bt">Ajustes</string>
     <string name="stt_notify_title">Notificaciones</string>
     <string name="stt_sound_title">Sonido</string>
-    <string name="progress_main_title">𝔼𝕤𝕥𝕒𝕕í𝕤𝕥𝕚𝕔𝕒𝕤</string>
+    <string name="progress_main_title">Estadísticas</string>
     <string name="age_unit">años</string>
     <string name="height_units">cm</string>
     <string name="weight_units">kg</string>
@@ -32,9 +32,9 @@
     <string name="ec_wait_value">12</string>
     <string name="ec_wait_title">Tiempo de descanso:</string>
     <string name="ec_ser_value">12</string>
-    <string name="e_ser_title">Numero de Series:</string>
+    <string name="e_ser_title">Número de Series:</string>
     <string name="ec_rep_value">12</string>
-    <string name="ec_rep_title">Numero de Repeticiones:</string>
+    <string name="ec_rep_title">Número de Repeticiones:</string>
     <string name="ec_description">En este ejercicio realizaremos una serie de movimientos para el hombro</string>
     <string name="ec_main_title">EXAMPLE EXERCICE</string>
     <string name="profile_sex_title">Sexo</string>
@@ -51,15 +51,19 @@
     <string name="login_main_title">Iniciar Sesión</string>
     <string name="login_insert_user">Cuenta de correo</string>
     <string name="login_insert_pass">Contraseña</string>
-    <string name="login_forgot_pass">Has olvidado la contraseña?</string>
+    <string name="login_forgot_pass">¿Has olvidado tu contraseña?</string>
     <string name="login_login_bt">Iniciar Sesión</string>
-    <string name="login_register_text">No tienes una cuenta?</string>
+    <string name="login_register_text">¿No tienes una cuenta?</string>
     <string name="login_register_bt">Registrate</string>
     <string name="register_main_title">Crear Cuenta</string>
-    <string name="register_have_account">Ya tienes una cuenta?</string>
+    <string name="register_have_account">¿Ya tienes una cuenta?</string>
     <string name="register_login_go">Inicia Sesión</string>
     <string name="register_repeat_pass">Confirmar Contraseña</string>
     <string name="register_mail">E-mail</string>
     <string name="register_password">Contraseña</string>
     <string name="register_username">Usuario</string>
+    <string name="recover_main_title">¿Has olvidado tu contraseña?</string>
+    <string name="recover_insert_title">Introduce tu correo y te mandaremos una nueva</string>
+    <string name="recover_insert_value">Correo electrónico</string>
+    <string name="recover_send_bt">Enviar</string>
 </resources>
