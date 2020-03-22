@@ -48,4 +48,11 @@
     <string name="pswd_repeat_value">Repetir contraseña</string>
     <string name="pswd_new_value">Contraseña nueva</string>
     <string name="pswd_old_value">Contraseña antigua</string>
+    <string name="login_main_title">Iniciar Sesión</string>
+    <string name="login_insert_user">Usuario</string>
+    <string name="login_insert_pass">Contraseña</string>
+    <string name="login_forgot_pass">Has olvidado la contraseña?</string>
+    <string name="login_login_bt">Iniciar Sesión</string>
+    <string name="login_register_text">No tienes una cuenta?</string>
+    <string name="login_register_bt">Registrate</string>
 </resources>
