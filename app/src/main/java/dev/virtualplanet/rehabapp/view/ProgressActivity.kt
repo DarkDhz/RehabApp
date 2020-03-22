@@ -15,10 +15,12 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import dev.virtualplanet.rehabapp.R
+import dev.virtualplanet.rehabapp.controller.Controller
 
 
-const val TAG = "ProgressActivity"
 class ProgressActivity : AppCompatActivity() {
+
+    private val controller = Controller
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background4"
     tools:context=".view.ProfileActivity">
 
 
@@ -28,6 +29,7 @@
         tools:layout_editor_absoluteY="407dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
+        android:background="@android:color/transparent"
         android:onClick="returnToMain"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -51,6 +53,8 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:paddingEnd="50dp"
+            android:textColor="@android:color/black"
+            android:paddingStart="0dp"
             android:text="@string/profile_title" />
 
         <TextView
@@ -58,6 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:textColor="@android:color/black"
             android:text="@string/UserName" />
 
 
@@ -79,6 +84,8 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:paddingEnd="50dp"
+            android:textColor="@android:color/black"
+            android:paddingStart="0dp"
             android:text="@string/profile_sex_title" />
 
         <TextView
@@ -86,6 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:textColor="@android:color/black"
             android:text="@string/profile_sex_value" />
 
 
@@ -106,12 +114,15 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:paddingEnd="50dp"
+            android:textColor="@android:color/black"
+            android:paddingStart="0dp"
             android:text="@string/profile_age_title" />
 
         <TextView
             android:id="@+id/textView_Age_Value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
             android:text="@string/profile_age_value" />
 
         <TextView
@@ -119,6 +130,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="4dp"
+            android:textColor="@android:color/black"
+            android:paddingEnd="0dp"
             android:text="@string/age_unit"
             />
 
@@ -141,18 +154,22 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:paddingEnd="50dp"
+            android:textColor="@android:color/black"
+            android:paddingStart="0dp"
             android:text="@string/profile_height_title" />
 
         <TextView
             android:id="@+id/textView_Height_Value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
             android:text="@string/profile_height_value" />
 
         <TextView
             android:id="@+id/e_textView_Height_Units"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
             android:text="@string/height_units"
             />
 
@@ -175,18 +192,22 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:paddingEnd="50dp"
+            android:textColor="@android:color/black"
+            android:paddingStart="0dp"
             android:text="@string/profile_weight_title" />
 
         <TextView
             android:id="@+id/textView_Weight_Value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
             android:text="@string/profile_weight_value" />
 
         <TextView
             android:id="@+id/e_textView_Weight_Units"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
             android:text="@string/weight_units"
             />
 
@@ -208,12 +229,15 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:paddingEnd="50dp"
+            android:textColor="@android:color/black"
+            android:paddingStart="0dp"
             android:text="@string/profile_IMC_title" />
 
         <TextView
             android:id="@+id/textView_IMC_Value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
             android:text="@string/profile_IMC_value" />
 
     </LinearLayout>
@@ -236,12 +260,15 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:paddingEnd="50dp"
+            android:textColor="@android:color/black"
+            android:paddingStart="0dp"
             android:text="@string/profile_chair_title" />
 
         <TextView
             android:id="@+id/textView_WheelChair_Value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
             android:text="@string/profile_wheel_value" />
 
 

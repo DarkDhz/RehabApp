@@ -17,7 +17,7 @@
         />
 
     <TextView
-        android:id="@+id/titulo"
+        android:id="@+id/select_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|top"
@@ -30,13 +30,4 @@
         android:shadowRadius="15"
         android:textSize="25dp" />
 
-    <TextView
-        android:id="@+id/prueba"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="@android:color/black"
-        android:textSize="25sp"
-        android:layout_gravity="center|bottom"
-        android:layout_marginBottom="30dp"/>
 </FrameLayout>
