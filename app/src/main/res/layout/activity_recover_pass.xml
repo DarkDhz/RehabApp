@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ContrasenaOlvidada"
+    tools:context=".view.RecoverPassActivity"
     android:background="@drawable/background2">
 
     <ImageView
@@ -24,8 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
         android:layout_marginEnd="21dp"
+        android:layout_marginBottom="456dp"
         android:text="¿Has olvidado tu contraseña?"
         android:textColor="@android:color/white"
         android:textSize="28sp"
@@ -34,34 +34,48 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/recover_main_img"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/recover_mail_title"
         android:layout_width="271dp"
         android:layout_height="64dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="82dp"
         android:gravity="center"
         android:text="@string/recover_insert_title"
         android:textColor="@android:color/darker_gray"
         android:textSize="17dp"
-        tools:layout_editor_absoluteX="70dp"
-        tools:layout_editor_absoluteY="333dp" />
+        app:layout_constraintBottom_toTopOf="@+id/recover_mail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recover_forgot_title"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/recover_mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="160dp"
         android:background="@android:color/transparent"
-        android:hint="Correo electronico"
-        android:drawablePadding="15dp"
         android:drawableLeft="@drawable/login_user"
+        android:drawablePadding="15dp"
+        android:ems="10"
+        android:hint="Correo electronico"
         android:inputType="textPersonName"
         android:padding="10dp"
         android:textSize="20dp"
-        tools:layout_editor_absoluteX="81dp"
-        tools:layout_editor_absoluteY="439dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recover_forgot_title"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/recover_save_bt"
@@ -71,11 +85,13 @@
         android:layout_marginEnd="61dp"
         android:background="@drawable/boton_1"
         android:text="@string/recover_send_bt"
-        android:textColor="@android:color/white"
         android:textAllCaps="false"
+        android:textColor="@android:color/white"
         android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.796"
+        app:layout_constraintHorizontal_bias="0.776"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recover_mail" />
+        app:layout_constraintTop_toBottomOf="@+id/recover_mail"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
