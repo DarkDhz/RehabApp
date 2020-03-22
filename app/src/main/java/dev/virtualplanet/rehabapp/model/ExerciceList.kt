@@ -5,6 +5,8 @@ class ExerciceList {
     var content = ArrayList<Exercice>()
 
     constructor(content: ArrayList<Exercice>) {
+
         this.content = content
     }
+
 }
