@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.setPadding
 import dev.virtualplanet.rehabapp.R
 
 class Adaptador : BaseAdapter {
@@ -27,7 +28,9 @@ class Adaptador : BaseAdapter {
         var icono : ImageView = vista.findViewById(android.R.id.icon)
         texto.setTextColor(Color.WHITE)
         texto.setText(lista[p0])
-        icono.setImageResource(android.R.drawable.stat_sys_upload_done)
+        vista.setPadding(15)
+        texto.setTextSize(25F)
+        icono.setImageResource(android.R.drawable.star_off)
         return vista
     }
 
