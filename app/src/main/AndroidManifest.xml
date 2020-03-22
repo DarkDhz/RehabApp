@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".view.Hombro_izquierdo"></activity>
-        <activity android:name=".view.SettingsActivity"></activity>
+        <activity android:name=".view.ChangePswdActivity"></activity>
+        <activity android:name=".view.Hombro_izquierdo" />
+        <activity android:name=".view.SettingsActivity" />
         <activity android:name=".view.EditProfileActivity" />
         <activity android:name=".view.ProgressActivity" />
         <activity android:name=".view.SelectMuscleActivity" />
