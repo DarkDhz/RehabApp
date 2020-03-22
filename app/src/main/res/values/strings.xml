@@ -3,7 +3,7 @@
     <string name="main_title_button">ℝ𝕖𝕙𝕒𝕓𝔸𝕡𝕡</string>
     <string name="main_profile_button">Perfil</string>
     <string name="main_exercices_button">Ejercicios</string>
-    <string name="main_progress_button">Progresso</string>
+    <string name="main_progress_button">Progreso</string>
     <string name="UserName">Martin Garrix</string>
     <string name="profile_age_title">EDAD</string>
     <string name="profile_age_value">18</string>
@@ -32,9 +32,9 @@
     <string name="ec_wait_value">12</string>
     <string name="ec_wait_title">Tiempo de descanso:</string>
     <string name="ec_ser_value">12</string>
-    <string name="e_ser_title">Numero de Series:</string>
+    <string name="e_ser_title">Número de Series:</string>
     <string name="ec_rep_value">12</string>
-    <string name="ec_rep_title">Numero de Repeticiones:</string>
+    <string name="ec_rep_title">Número de Repeticiones:</string>
     <string name="ec_description">En este ejercicio realizaremos una serie de movimientos para el hombro</string>
     <string name="ec_main_title">EXAMPLE EXERCICE</string>
     <string name="profile_sex_title">Sexo</string>
@@ -44,4 +44,26 @@
     <string name="stt_logout">Cerrar Sesión</string>
     <string name="main_profile_img_desc">Profile Image</string>
     <string name="titulo_cambiar_contrasena">Cambiar contraseña</string>
+    <string name="pswd_confirm_bt">Confirmar</string>
+    <string name="pswd_repeat_value">Repetir contraseña</string>
+    <string name="pswd_new_value">Contraseña nueva</string>
+    <string name="pswd_old_value">Contraseña antigua</string>
+    <string name="login_main_title">Iniciar Sesión</string>
+    <string name="login_insert_user">Cuenta de correo</string>
+    <string name="login_insert_pass">Contraseña</string>
+    <string name="login_forgot_pass">¿Has olvidado tu contraseña?</string>
+    <string name="login_login_bt">Iniciar Sesión</string>
+    <string name="login_register_text">¿No tienes una cuenta?</string>
+    <string name="login_register_bt">Registrate</string>
+    <string name="register_main_title">Crear Cuenta</string>
+    <string name="register_have_account">¿Ya tienes una cuenta?</string>
+    <string name="register_login_go">Inicia Sesión</string>
+    <string name="register_repeat_pass">Confirmar Contraseña</string>
+    <string name="register_mail">E-mail</string>
+    <string name="register_password">Contraseña</string>
+    <string name="register_username">Usuario</string>
+    <string name="recover_main_title">¿Has olvidado tu contraseña?</string>
+    <string name="recover_insert_title">Introduce tu correo y te mandaremos una nueva</string>
+    <string name="recover_insert_value">Correo electrónico</string>
+    <string name="recover_send_bt">Enviar</string>
 </resources>

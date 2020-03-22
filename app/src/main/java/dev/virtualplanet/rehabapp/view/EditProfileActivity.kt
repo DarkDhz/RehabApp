@@ -7,10 +7,13 @@ import android.os.Bundle
 import android.view.View
 import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
+import dev.virtualplanet.rehabapp.controller.Controller
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_edit_profile.view.*
 
 class EditProfileActivity : AppCompatActivity() {
+
+    private val controller = Controller
 
     private val data = FirebaseFirestore.getInstance()
 
@@ -21,9 +24,9 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
     fun saveProfile(view: View) {
-        val new_age = this.e_textView_Age_Value.text
-        val new_height = this.e_textView_Height_Value.text
-        val new_weight = this.e_textView_Weight_Value.text
+        val new_age = this.e_textView_Age_Value.text.toString()
+        val new_height = this.e_textView_Height_Value.text.toString()
+        val new_weight = this.e_textView_Weight_Value.text.toString()
         //val new_wheel = this.e_textView_WheelChair_Value.get
 
         val intent = Intent(this, ProfileActivity::class.java).apply {

@@ -9,26 +9,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".view.ChangePswdActivity"></activity>
+        <activity android:name=".view.selMus2Activity" />
+        <activity android:name=".view.ChangePswdActivity" />
         <activity android:name=".view.Hombro_izquierdo" />
         <activity android:name=".view.SettingsActivity" />
         <activity android:name=".view.EditProfileActivity" />
         <activity android:name=".view.ProgressActivity" />
         <activity android:name=".view.SelectMuscleActivity" />
         <activity android:name=".view.RegisterActivity" />
-        <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.MainActivity" />
+        <activity android:name=".view.RecoverPassActivity" />
         <activity android:name=".view.MainExerciciActivity" />
         <activity android:name=".view.PlayExerciceActivity" />
         <activity android:name=".view.ProfileActivity" />
         <activity android:name=".view.ViewExerciseAtivity"/>
-        <activity android:name=".view.MainActivity"
-            >
+        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
