@@ -1,9 +1,6 @@
 package dev.virtualplanet.rehabapp.view
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -15,7 +12,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
-import kotlinx.android.synthetic.main.activity_select_muscle.*
 
 class selMus2Activity : AppCompatActivity() {
 
@@ -38,7 +34,7 @@ class selMus2Activity : AppCompatActivity() {
                 var y : Float = p1.rawY
                 var x1 : Float = x/displayMetrics.widthPixels
                 var y1 : Float = y/displayMetrics.heightPixels
-                var i : Intent = Intent(this@selMus2Activity, ViewExerciceActivity::class.java)
+                var i : Intent = Intent(this@selMus2Activity, ViewExercicesActivity::class.java)
                 when (p1.action) {
                     MotionEvent.ACTION_DOWN -> {
                         //prueba.text = "x: " + x1 + " y: " + y1

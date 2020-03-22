@@ -9,7 +9,7 @@ import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
 import dev.virtualplanet.rehabapp.R
 
-class ViewExerciceActivity : AppCompatActivity() {
+class ViewExercicesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 

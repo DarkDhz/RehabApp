@@ -21,7 +21,7 @@ class MainExerciciActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_exercici)
 
-        lateinit var option: Spinner
+
         var choice = false
 
         /*applicationContext.deleteSharedPreferences("USER")
@@ -30,33 +30,32 @@ class MainExerciciActivity : AppCompatActivity() {
         editor.putString("NAME", "ARNAU")
         editor.apply()*/
 
-        option = findViewById(R.id.spinner)
+        val option = findViewById<Spinner>(R.id.spinner)
 
-        var options = arrayOf("Full-Body", "Hombro")
+        val options = arrayOf("Full-Body", "Hombro")
         option.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, options)
 
-        option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-
-            }
-
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-            //TODO
-        }
 
 
     }
 
-    fun startExercise(view: View) {
-        val intent = Intent(this, ViewExerciceActivity::class.java)
+    fun startExercice(view: View) {
+
+    }
+
+    fun startExercices(view: View) {
+        val intent = Intent(this, ViewExercicesActivity::class.java)
+        val option = findViewById<Spinner>(R.id.spinner)
         if (option.selectedItemPosition > 1) {
             intent.putExtra("Full-Body", "fullbody")
 
-        } else
+        } else {
             intent.putExtra("Rodilla", "rodilla")
 
-    }
+        }
         startActivity(intent)
+
+
     }
 
     fun goToMuscle(view: View) {
