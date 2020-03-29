@@ -16,6 +16,7 @@ class MainExerciciActivity : ListActivity() {
     lateinit var musculo : String
     val musculos = ArrayList<String>()
     lateinit var l : ListView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_exercici)

@@ -102,12 +102,11 @@
         android:layout_height="60dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/boton2"
-        android:onClick="goToMainActivity"
+        android:onClick="login"
         android:text="@string/login_login_bt"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_layout" />
 

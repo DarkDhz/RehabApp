@@ -66,4 +66,5 @@
     <string name="recover_insert_title">Introduce tu correo y te mandaremos una nueva</string>
     <string name="recover_insert_value">Correo electrónico</string>
     <string name="recover_send_bt">Enviar</string>
+    <string name="register_go_button">Registrarse</string>
 </resources>
