@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.firestore.FirebaseFirestore
+//import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -15,7 +15,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private val controller = Controller
 
-    private val data = FirebaseFirestore.getInstance()
+    //private val data = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +50,7 @@ class ProfileActivity : AppCompatActivity() {
             this.textView_Weight_Value.text = extras.getString("WEIGHT")
         } else {
             //DATABASE TESTING "IGNORE"1
+            /*
             data.collection("USERS").document("example@gmail.com")
                 .get().addOnSuccessListener {
                     val name = it.get("name").toString()
@@ -68,7 +69,7 @@ class ProfileActivity : AppCompatActivity() {
                     val imc = calculateIMC(weight.toDouble(), (height.toDouble()/100))
                     this.textView_IMC_Value.text = imc.toString()
                 }
-
+            */
             // END OF DATABASE TESTING
         }
 

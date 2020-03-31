@@ -32,21 +32,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun login(view: View) {
-        val mail = this.username_login.text.toString()
+        /*val mail = this.username_login.text.toString()
         val pass = this.password_login.text.toString()
-
-        val users = data.collection("USERS")
-
-        /*users.document("test").set(mapOf(
-            "name" to "Martin Garrix",
-            "mail" to "test",
-            "password" to "1234abcd",
-            "sex" to "man",
-            "age" to 23,
-            "weight" to 80,
-            "height" to 180,
-            "wheel" to false
-        ))*/
 
         if (mail != "") {
             data.collection("USERS").document(mail)
@@ -69,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
         } else {
             val message = Toast.makeText(applicationContext, "Alguno de los campos esta vacio", Toast.LENGTH_LONG)
             message.show()
-        }
+        }*/
     }
 
     fun goToRecoverPass(view: View) {
