@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun login(view: View) {
-        /*val mail = this.username_login.text.toString()
+        val mail = this.username_login.text.toString()
         val pass = this.password_login.text.toString()
 
         if (mail != "") {
@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
         } else {
             val message = Toast.makeText(applicationContext, "Alguno de los campos esta vacio", Toast.LENGTH_LONG)
             message.show()
-        }*/
+        }
     }
 
     fun goToRecoverPass(view: View) {

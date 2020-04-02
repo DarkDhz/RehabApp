@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-//import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
 import kotlinx.android.synthetic.main.activity_register.*
@@ -14,7 +14,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private val controller = Controller
 
-    //private val data = FirebaseFirestore.getInstance()
+    private val data = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,7 @@ class RegisterActivity : AppCompatActivity() {
         val mail = this.email_register.text.toString()
 
 
-        /*val users = data.collection("USERS")
+        val users = data.collection("USERS")
 
         if ((user == "") || (pass == "") || (confirm == "") || (mail == "")) {
             val message = Toast.makeText(applicationContext, "Alguno de los campos esta vacio", Toast.LENGTH_LONG)
@@ -66,7 +66,7 @@ class RegisterActivity : AppCompatActivity() {
                 message.show()
             }
         }
-        */
+
 
     }
 }
