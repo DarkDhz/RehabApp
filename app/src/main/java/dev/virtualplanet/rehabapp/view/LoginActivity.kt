@@ -32,31 +32,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun login(view: View) {
-        val mail = this.username_login.text.toString()
-        val pass = this.password_login.text.toString()
-
-        if (mail != "") {
-            data.collection("USERS").document(mail)
-                .get().addOnSuccessListener {
-                    val check_pass = it.get("password").toString()
-                    if (check_pass == pass) {
-                        val message = Toast.makeText(applicationContext, "Contraseña correcta", Toast.LENGTH_LONG)
-                        message.show()
-                        val intent = Intent (this, MainActivity::class.java)
-                        startActivity(intent)
-                    } else {
-                        val message = Toast.makeText(applicationContext, "Contraseña incorrecta", Toast.LENGTH_LONG)
-                        message.show()
-                    }
-                }.addOnFailureListener {
-                    val message = Toast.makeText(applicationContext, "Contraseña o usuario incorrecto", Toast.LENGTH_LONG)
-                    message.show()
-                }
-
-        } else {
-            val message = Toast.makeText(applicationContext, "Alguno de los campos esta vacio", Toast.LENGTH_LONG)
-            message.show()
-        }
+        controller.validateLogin(this.password_login.text.toString(), this.password_login.text.toString(), view)
     }
 
     fun goToRecoverPass(view: View) {
