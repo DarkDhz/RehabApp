@@ -105,7 +105,7 @@ object Controller {
             val message = Toast.makeText(view.context, "Alguno de los campos esta vacio", Toast.LENGTH_LONG)
             message.show()
         } else {
-        
+
         }
 
     }
