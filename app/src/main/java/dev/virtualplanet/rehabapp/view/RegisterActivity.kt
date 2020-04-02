@@ -32,41 +32,7 @@ class RegisterActivity : AppCompatActivity() {
         val pass = this.pass_register.text.toString()
         val confirm = this.register_confirm_pass.text.toString()
         val mail = this.email_register.text.toString()
-
-
-        val users = data.collection("USERS")
-
-        if ((user == "") || (pass == "") || (confirm == "") || (mail == "")) {
-            val message = Toast.makeText(applicationContext, "Alguno de los campos esta vacio", Toast.LENGTH_LONG)
-            message.show()
-        } else {
-            if (pass == confirm) {
-                var exist = false
-                data.collection("USERS").document(mail)
-                    .get().addOnSuccessListener {
-                        exist = true
-                    }
-                if (!exist) {
-                    users.document(mail).set(mapOf(
-                        "name" to user,
-                        "mail" to mail,
-                        "password" to pass,
-                        "sex" to "Not Set",
-                        "age" to "Not Set",
-                        "weight" to "Not Set",
-                        "height" to "Not Set",
-                        "wheel" to false
-                    ))
-                    val intent = Intent (this, MainActivity::class.java)
-                    startActivity(intent)
-                }
-
-            } else {
-                val message = Toast.makeText(applicationContext, "Las contraseñas no coinciden", Toast.LENGTH_LONG)
-                message.show()
-            }
-        }
-
+        controller.validateRegister(user, pass, confirm, mail, view)
 
     }
 }
