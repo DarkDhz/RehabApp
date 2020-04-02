@@ -104,10 +104,12 @@ object Controller {
         if ((old == "") || (new == "") || (confirm == "")) {
             val message = Toast.makeText(view.context, "Alguno de los campos esta vacio", Toast.LENGTH_LONG)
             message.show()
+        } else if (user == "") {
+            val message = Toast.makeText(view.context, "Error Shared Preferences", Toast.LENGTH_LONG)
+            message.show()
         } else {
 
         }
-
     }
 
 

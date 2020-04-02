@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
+import kotlinx.android.synthetic.main.activity_change_pswd.*
 
 class ChangePswdActivity : AppCompatActivity() {
 
@@ -18,8 +19,10 @@ class ChangePswdActivity : AppCompatActivity() {
 
     fun savePass(view: View) {
         //TODO
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        controller.changePass("", this.pswd_old_value.text.toString(), this.pswd_new_value.text.toString(),
+            this.pswd_repeat.toString(), view)
+        //val intent = Intent(this, MainActivity::class.java)
+        //sstartActivity(intent)
     }
 
     fun goBack(view: View) {
