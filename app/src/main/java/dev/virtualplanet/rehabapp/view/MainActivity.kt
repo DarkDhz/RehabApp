@@ -1,5 +1,6 @@
 package dev.virtualplanet.rehabapp.view
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.view.View
 import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         //CHECK IF USER IS LOGED IF NOT requiereLogin()
 
         this.init()
+        val userPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+        val abuela = userPreferences.getString("email", "")
+
     }
 
     private fun init() {

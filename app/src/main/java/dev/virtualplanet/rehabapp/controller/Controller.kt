@@ -1,6 +1,8 @@
 package dev.virtualplanet.rehabapp.controller
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
@@ -11,6 +13,7 @@ import dev.virtualplanet.rehabapp.model.Exercice
 import dev.virtualplanet.rehabapp.model.ExerciceList
 import dev.virtualplanet.rehabapp.view.LoginActivity
 import dev.virtualplanet.rehabapp.view.MainActivity
+import kotlinx.android.synthetic.main.activity_login.*
 
 
 object Controller {
@@ -50,6 +53,13 @@ object Controller {
                     if (check_pass == pass) {
                         val message = Toast.makeText(view.context, "Contraseña correcta", Toast.LENGTH_LONG)
                         message.show()
+
+                        val userPreferences = view.context.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+                        val editor: SharedPreferences.Editor = userPreferences.edit()
+
+                        editor.putString("email", user)
+                        editor.apply()
+
                         val intent = Intent(view.context, MainActivity::class.java)
                         view.context.startActivity(intent)
                     } else {
