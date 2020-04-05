@@ -4,15 +4,18 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
+import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.model.Exercice
 import dev.virtualplanet.rehabapp.model.ExerciceList
 import dev.virtualplanet.rehabapp.view.LoginActivity
 import dev.virtualplanet.rehabapp.view.MainActivity
+import dev.virtualplanet.rehabapp.view.ProfileActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_profile.view.*
 
@@ -174,30 +177,46 @@ object Controller {
         context.startActivity(intent)
     }
 
-    fun loadProfile(view: View){
-        val userPreferences = view.context.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+    fun loadProfile(context: ProfileActivity){
+        val userPreferences = context.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
         if (user != "") {
             data.collection("USERS").document(user.toString())
                 .get().addOnSuccessListener {
                     val name = it.get("name").toString()
                     val age = it.get("age").toString()
+                    val sex = it.get("sex").toString()
                     val height = it.get("height").toString()
                     val weight = it.get("weight").toString()
-                    view.profile_content.text = name
-                    view.textView_Age_Value.text = age
-                    view.textView_Height_Value.text = height
-                    view.textView_Weight_Value.text = weight
-                    if (it.get("wheel").toString().toBoolean()) {
-                        view.textView_WheelChair_Value.text = "SI"
-                    } else {
-                        view.textView_WheelChair_Value.text = "SI"
+                    context.findViewById<TextView>(R.id.profile_content).text = name
+                    context.findViewById<TextView>(R.id.textView_Age_Value).text = age
+                    if (age.equals("Not Set")) {
+                        context.findViewById<TextView>(R.id.textView_Age_Units).text = ""
                     }
-                    val imc = calculateIMC(weight.toDouble(), (height.toDouble()/100))
-                    view.textView_IMC_Value.text = imc.toString()
+                    context.findViewById<TextView>(R.id.textView_Age_Value).text = sex
+                    context.findViewById<TextView>(R.id.textView_Height_Value).text = height
+                    if (height.equals("Not Set")) {
+                        context.findViewById<TextView>(R.id.textView_Height_Units).text = ""
+                    }
+                    context.findViewById<TextView>(R.id.textView_Weight_Value).text = weight
+                    if (weight.equals("Not Set")) {
+                        context.findViewById<TextView>(R.id.textView_Weight_Units).text = ""
+                    }
+
+                    if (it.get("wheel").toString().toBoolean()) {
+                        context.findViewById<TextView>(R.id.textView_WheelChair_Value).text = "SI"
+                    } else {
+                        context.findViewById<TextView>(R.id.textView_WheelChair_Value).text = "NO"
+                    }
+
+                    if (height.equals("Not Set") || weight.equals("Not Set")) {
+                        context.findViewById<TextView>(R.id.textView_IMC_Value).text = "No se puede calcular sin altura y peso"
+                    } else {
+                        context.findViewById<TextView>(R.id.textView_IMC_Value).text =
+                            calculateIMC(weight.toDouble(), (height.toDouble()/100)).toString()
+                    }
                 }
         }
-
     }
 
     private fun calculateIMC(weight: Double, height: Double) : Double {

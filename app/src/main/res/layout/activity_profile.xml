@@ -166,7 +166,7 @@
             android:text="@string/profile_height_value" />
 
         <TextView
-            android:id="@+id/e_textView_Height_Units"
+            android:id="@+id/textView_Height_Units"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
@@ -204,7 +204,7 @@
             android:text="@string/profile_weight_value" />
 
         <TextView
-            android:id="@+id/e_textView_Weight_Units"
+            android:id="@+id/textView_Weight_Units"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
