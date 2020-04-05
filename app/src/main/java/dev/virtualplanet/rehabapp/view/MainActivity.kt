@@ -23,8 +23,6 @@ class MainActivity : AppCompatActivity() {
         //CHECK IF USER IS LOGED IF NOT requiereLogin()
 
         this.init()
-        val userPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE)
-        val abuela = userPreferences.getString("email", "")
 
     }
 

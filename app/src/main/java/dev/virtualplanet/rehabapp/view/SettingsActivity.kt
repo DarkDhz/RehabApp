@@ -35,14 +35,14 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     fun logOut(view: View) {
-        //TODO Remove from internal files actual-USER
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
+        Controller.removeUser(this)
+
     }
 
     fun changePassword(view: View) {
         val intent = Intent(this, ChangePswdActivity::class.java)
         startActivity(intent)
     }
+
 
 }

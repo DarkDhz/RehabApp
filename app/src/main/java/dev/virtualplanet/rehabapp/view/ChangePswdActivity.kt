@@ -19,10 +19,8 @@ class ChangePswdActivity : AppCompatActivity() {
 
     fun savePass(view: View) {
         //TODO
-        controller.changePass("", this.pswd_old_value.text.toString(), this.pswd_new_value.text.toString(),
-            this.pswd_repeat.toString(), view)
-        //val intent = Intent(this, MainActivity::class.java)
-        //sstartActivity(intent)
+        controller.changePass(this.pswd_old_value.text.toString(), this.pswd_new_value.text.toString(),
+            this.pswd_repeat.text.toString(), view)
     }
 
     fun goBack(view: View) {
