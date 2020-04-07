@@ -9,6 +9,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
 import kotlinx.android.synthetic.main.activity_main.*
+import java.time.LocalDateTime
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,35 +28,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        //DATABASE TESTING "IGNORE"
-        /*
-        val users = data.collection("USERS")
 
-        var lista = ArrayList<String>()
-
-        data.collection("USERS")
-            .get().addOnSuccessListener {
-                it.forEach {
-                    lista.add(it.get("mail").toString())
-                }
-            }
-
-        for (mail in lista) {
-            if ( ! mail.equals("example@gmail.com") ) {
-                users.document("example@gmail.com").set(mapOf(
-                    "name" to "Martin Garrix",
-                    "mail" to "example@gmail.com",
-                    "password" to "1234abcd",
-                    "sex" to "man",
-                    "age" to 23,
-                    "weight" to 80,
-                    "height" to 180,
-                    "wheel" to false
-                ))
-            }
-        }*/
-
-        // END OF DATABASE TESTING
     }
 
     fun goToProfileActivity(view: View) {

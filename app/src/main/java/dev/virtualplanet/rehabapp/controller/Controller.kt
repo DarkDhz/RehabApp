@@ -18,6 +18,8 @@ import dev.virtualplanet.rehabapp.view.MainActivity
 import dev.virtualplanet.rehabapp.view.ProfileActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_profile.view.*
+import java.time.LocalDateTime
+import java.util.*
 
 
 object Controller {
@@ -99,6 +101,11 @@ object Controller {
                             "weight" to "Not Set",
                             "height" to "Not Set",
                             "wheel" to false
+                        ))
+                        var dataFormat = "" + LocalDateTime.now().dayOfMonth + "/" +
+                            LocalDateTime.now().month + "/" + LocalDateTime.now().year
+                        data.collection("PROGRESS").document(mail).set(mapOf(
+                            dataFormat to 0
                         ))
 
                         val userPreferences = view.context.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
