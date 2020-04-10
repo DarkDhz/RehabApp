@@ -24,10 +24,29 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
     fun saveProfile(view: View) {
-        val new_age = this.e_textView_Age_Value.text.toString()
-        val new_height = this.e_textView_Height_Value.text.toString()
-        val new_weight = this.e_textView_Weight_Value.text.toString()
+        val new_age : String
+        val new_height : String
+        val new_weight : String
+
+        if (this.e_textView_Age_Value.text.toString().isBlank())
+            new_age = "Not set"
+        else
+            new_age = this.e_textView_Age_Value.text.toString()
+
+        if (this.e_textView_Height_Value.text.toString().isBlank())
+            new_height = "Not set"
+        else
+            new_height = this.e_textView_Height_Value.text.toString()
+
+        if (this.e_textView_Weight_Value.text.toString().isBlank())
+            new_weight = "Not set"
+        else
+            new_weight = this.e_textView_Weight_Value.text.toString()
+
+
         //val new_wheel = this.e_textView_WheelChair_Value.get
+
+        controller.saveProfileData(this, new_age, new_weight, new_height)
 
         val intent = Intent(this, ProfileActivity::class.java).apply {
             action = Intent.ACTION_SEND

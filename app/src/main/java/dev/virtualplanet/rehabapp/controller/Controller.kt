@@ -225,7 +225,21 @@ object Controller {
         return (weight/(height*height))
     }
 
+    fun saveProfileData(context: Context, age: String, weight: String, height: String) {
 
+        val userPreferneces = context.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+        val user = userPreferneces.getString("email", "")
 
+        if (user != "") {
+            data.collection("USERS").document(user.toString()).get().addOnSuccessListener {
+                data.collection("USERS").document(user.toString()).update(mapOf(
+                    "age" to age,
+                    "height" to height,
+                    "weight" to weight
+                ))
+            }
+        }
+
+    }
 
 }
