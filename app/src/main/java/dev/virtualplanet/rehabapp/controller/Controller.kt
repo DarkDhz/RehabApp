@@ -3,6 +3,7 @@ package dev.virtualplanet.rehabapp.controller
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.provider.ContactsContract
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -177,6 +178,47 @@ object Controller {
         context.startActivity(intent)
     }
 
+    fun changeProfile(context: ProfileActivity, age: String, height: String, weight: String, wheelchair: Boolean) {
+
+        context.findViewById<TextView>(R.id.textView_Age_Value).text = age
+        if (age.equals("Not Set")) {
+            context.findViewById<TextView>(R.id.textView_Age_Units).text = ""
+        }
+
+        context.findViewById<TextView>(R.id.textView_Height_Value).text = height
+        if (height.equals("Not Set")) {
+            context.findViewById<TextView>(R.id.textView_Height_Units).text = ""
+        }
+        context.findViewById<TextView>(R.id.textView_Weight_Value).text = weight
+        if (weight.equals("Not Set")) {
+            context.findViewById<TextView>(R.id.textView_Weight_Units).text = ""
+        }
+
+        if (wheelchair) {
+            context.findViewById<TextView>(R.id.textView_WheelChair_Value).text = "SI"
+        } else {
+            context.findViewById<TextView>(R.id.textView_WheelChair_Value).text = "NO"
+        }
+
+        if (height.equals("Not Set") || weight.equals("Not Set")) {
+            context.findViewById<TextView>(R.id.textView_IMC_Value).text = "No se puede calcular sin altura y peso"
+        } else {
+            context.findViewById<TextView>(R.id.textView_IMC_Value).text =
+                calculateIMC(weight.toDouble(), (height.toDouble()/100)).toString()
+        }
+    }
+
+    fun changeProfile(context: ProfileActivity, name: String, age: String, sex: String, height: String,
+                      weight: String, wheelchair: Boolean) {
+
+        changeProfile(context, age, height, weight, wheelchair)
+        context.findViewById<TextView>(R.id.profile_content).text = name
+        context.findViewById<TextView>(R.id.textView_Age_Value).text = sex
+
+
+    }
+
+
     fun loadProfile(context: ProfileActivity){
         val userPreferences = context.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
@@ -188,33 +230,9 @@ object Controller {
                     val sex = it.get("sex").toString()
                     val height = it.get("height").toString()
                     val weight = it.get("weight").toString()
-                    context.findViewById<TextView>(R.id.profile_content).text = name
-                    context.findViewById<TextView>(R.id.textView_Age_Value).text = age
-                    if (age.equals("Not Set")) {
-                        context.findViewById<TextView>(R.id.textView_Age_Units).text = ""
-                    }
-                    context.findViewById<TextView>(R.id.textView_Age_Value).text = sex
-                    context.findViewById<TextView>(R.id.textView_Height_Value).text = height
-                    if (height.equals("Not Set")) {
-                        context.findViewById<TextView>(R.id.textView_Height_Units).text = ""
-                    }
-                    context.findViewById<TextView>(R.id.textView_Weight_Value).text = weight
-                    if (weight.equals("Not Set")) {
-                        context.findViewById<TextView>(R.id.textView_Weight_Units).text = ""
-                    }
+                    val wheelchair = it.get("wheel").toString().toBoolean()
 
-                    if (it.get("wheel").toString().toBoolean()) {
-                        context.findViewById<TextView>(R.id.textView_WheelChair_Value).text = "SI"
-                    } else {
-                        context.findViewById<TextView>(R.id.textView_WheelChair_Value).text = "NO"
-                    }
-
-                    if (height.equals("Not Set") || weight.equals("Not Set")) {
-                        context.findViewById<TextView>(R.id.textView_IMC_Value).text = "No se puede calcular sin altura y peso"
-                    } else {
-                        context.findViewById<TextView>(R.id.textView_IMC_Value).text =
-                            calculateIMC(weight.toDouble(), (height.toDouble()/100)).toString()
-                    }
+                    changeProfile(context, name, age, sex, height, weight, wheelchair)
                 }
         }
     }

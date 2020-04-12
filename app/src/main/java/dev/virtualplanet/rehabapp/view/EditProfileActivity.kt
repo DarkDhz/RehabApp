@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
@@ -23,23 +24,29 @@ class EditProfileActivity : AppCompatActivity() {
 
     }
 
+    /* Hay que dejar un timpo entre que los nuevos datos se guarden y que estos se carguen
+    en el firebase, pues firebase tarda en actualizarse. Por eso no nos vamos a la pantalla del
+    perfil al guardar, sino que mostramos un mensaje de que los datos se han guardado.
+    */
     fun saveProfile(view: View) {
+
         val new_age : String
         val new_height : String
         val new_weight : String
 
+
         if (this.e_textView_Age_Value.text.toString().isBlank())
-            new_age = "Not set"
+            new_age = "Not Set"
         else
             new_age = this.e_textView_Age_Value.text.toString()
 
         if (this.e_textView_Height_Value.text.toString().isBlank())
-            new_height = "Not set"
+            new_height = "Not Set"
         else
             new_height = this.e_textView_Height_Value.text.toString()
 
         if (this.e_textView_Weight_Value.text.toString().isBlank())
-            new_weight = "Not set"
+            new_weight = "Not Set"
         else
             new_weight = this.e_textView_Weight_Value.text.toString()
 
@@ -47,16 +54,7 @@ class EditProfileActivity : AppCompatActivity() {
         //val new_wheel = this.e_textView_WheelChair_Value.get
 
         controller.saveProfileData(this, new_age, new_weight, new_height)
-
-        val intent = Intent(this, ProfileActivity::class.java).apply {
-            action = Intent.ACTION_SEND
-            putExtra("AGE", new_age)
-            putExtra("HEIGHT", new_height)
-            putExtra("WEIGHT", new_weight)
-            //putExtra("WHEEL", new_wheel)
-            type = "text/plain"
-        }
-        startActivity(intent)
+        Toast.makeText(this, "Datos Guardados", Toast.LENGTH_LONG).show()
     }
 
     fun returnToMain(view: View) {
