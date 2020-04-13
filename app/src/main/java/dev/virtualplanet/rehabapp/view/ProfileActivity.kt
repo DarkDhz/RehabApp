@@ -32,7 +32,11 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        Controller.loadProfile(this)
+        if (intent.extras != null) {
+            //TODO LOAD INTENT
+        } else {
+            Controller.loadProfile(this)
+        }
     }
 
     fun returnToMain(view: View) {

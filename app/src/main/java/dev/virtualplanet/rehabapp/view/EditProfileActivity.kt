@@ -21,7 +21,11 @@ class EditProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
+        this.init()
+    }
 
+    fun init() {
+        Controller.loadProfileHints(this)
     }
 
     /* Hay que dejar un timpo entre que los nuevos datos se guarden y que estos se carguen
@@ -55,6 +59,7 @@ class EditProfileActivity : AppCompatActivity() {
 
         controller.saveProfileData(this, new_age, new_weight, new_height)
         Toast.makeText(this, "Datos Guardados", Toast.LENGTH_LONG).show()
+
     }
 
     fun returnToMain(view: View) {

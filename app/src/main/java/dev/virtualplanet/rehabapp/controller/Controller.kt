@@ -5,6 +5,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.provider.ContactsContract
 import android.view.View
+import android.widget.EditText
+import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
@@ -14,6 +16,7 @@ import com.google.firebase.firestore.QuerySnapshot
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.model.Exercice
 import dev.virtualplanet.rehabapp.model.ExerciceList
+import dev.virtualplanet.rehabapp.view.EditProfileActivity
 import dev.virtualplanet.rehabapp.view.LoginActivity
 import dev.virtualplanet.rehabapp.view.MainActivity
 import dev.virtualplanet.rehabapp.view.ProfileActivity
@@ -53,7 +56,7 @@ object Controller {
         ))*/
 
     fun validateLogin(user: String, pass: String, view: View) {
-        if (user != "") {
+        if (!user.isBlank() && !pass.isBlank()) {
             data.collection("USERS").document(user)
                 .get().addOnSuccessListener {
                     val check_pass = it.get("password").toString()
@@ -83,7 +86,7 @@ object Controller {
     }
 
     fun validateRegister(user: String, pass: String, confirm: String, mail: String, view: View) {
-        if ((user == "") || (pass == "") || (confirm == "") || (mail == "")) {
+        if ((user.isBlank()) || (pass.isBlank()) || (confirm.isBlank()) || (mail.isBlank())) {
             val message = Toast.makeText(view.context, "Alguno de los campos esta vacio", Toast.LENGTH_LONG)
             message.show()
         } else {
@@ -220,7 +223,7 @@ object Controller {
 
         changeProfile(context, age, height, weight, wheelchair)
         context.findViewById<TextView>(R.id.profile_content).text = name
-        context.findViewById<TextView>(R.id.textView_Age_Value).text = sex
+        context.findViewById<TextView>(R.id.textView_Age_Value).text = age
 
 
     }
@@ -266,5 +269,44 @@ object Controller {
         }
 
     }
+
+    fun loadProfileHints(context: EditProfileActivity) {
+        val userPreferences = context.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+        val user = userPreferences.getString("email", "")
+        if (user != "") {
+            data.collection("USERS").document(user.toString())
+                .get().addOnSuccessListener {
+                    val name = it.get("name").toString()
+                    val age = it.get("age").toString()
+                    val sex = it.get("sex").toString()
+                    val height = it.get("height").toString()
+                    val weight = it.get("weight").toString()
+                    val wheelchair = it.get("wheel").toString().toBoolean()
+
+
+                    context.findViewById<TextView>(R.id.e_profile_content).text = name
+                    if (!age.equals("Not Set")) {
+                        context.findViewById<EditText>(R.id.e_textView_Age_Value).hint = age
+                    }
+
+                    if (!height.equals("Not Set")) {
+                        context.findViewById<TextView>(R.id.e_textView_Height_Value).hint = height
+                    }
+                    if (!weight.equals("Not Set")) {
+                        context.findViewById<TextView>(R.id.e_textView_Weight_Value).hint = weight
+                    }
+
+
+                    /*TODO
+                    if (wheelchair) {
+                        context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).text = "SI"
+                    } else {
+                        context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).
+                    }*/
+
+                }
+        }
+    }
+
 
 }
