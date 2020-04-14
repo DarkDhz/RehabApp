@@ -260,11 +260,21 @@ object Controller {
 
         if (user != "") {
             data.collection("USERS").document(user.toString()).get().addOnSuccessListener {
-                data.collection("USERS").document(user.toString()).update(mapOf(
-                    "age" to age,
-                    "height" to height,
-                    "weight" to weight
-                ))
+                if (!age.equals("Not Set")) {
+                    data.collection("USERS").document(user.toString()).update(mapOf(
+                        "age" to age
+                    ))
+                }
+                if (!weight.equals("Not Set")) {
+                    data.collection("USERS").document(user.toString()).update(mapOf(
+                        "weight" to weight
+                    ))
+                }
+                if (!height.equals("Not Set")) {
+                    data.collection("USERS").document(user.toString()).update(mapOf(
+                        "height" to height
+                    ))
+                }
             }
         }
 
