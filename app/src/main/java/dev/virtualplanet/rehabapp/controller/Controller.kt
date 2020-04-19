@@ -253,7 +253,7 @@ object Controller {
         return (weight/(height*height))
     }
 
-    fun saveProfileData(context: Context, age: String, weight: String, height: String) {
+    fun saveProfileData(context: Context, age: String, weight: String, height: String, wheelChair : Boolean) {
 
         val userPreferneces = context.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
         val user = userPreferneces.getString("email", "")
@@ -275,6 +275,9 @@ object Controller {
                         "height" to height
                     ))
                 }
+                data.collection("USERS").document(user.toString()).update(mapOf(
+                    "wheel" to wheelChair
+                ))
             }
         }
 
@@ -306,13 +309,11 @@ object Controller {
                         context.findViewById<TextView>(R.id.e_textView_Weight_Value).hint = weight
                     }
 
-
-                    /*TODO
                     if (wheelchair) {
                         context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).text = "SI"
                     } else {
-                        context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).
-                    }*/
+                        context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).text = "NO"
+                    }
 
                 }
         }

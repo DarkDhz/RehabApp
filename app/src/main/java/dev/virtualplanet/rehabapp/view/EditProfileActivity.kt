@@ -37,7 +37,7 @@ class EditProfileActivity : AppCompatActivity() {
         val new_age : String
         val new_height : String
         val new_weight : String
-
+        val new_wheelChair : Boolean
 
         if (this.e_textView_Age_Value.text.toString().isBlank())
             new_age = "Not Set"
@@ -54,10 +54,9 @@ class EditProfileActivity : AppCompatActivity() {
         else
             new_weight = this.e_textView_Weight_Value.text.toString()
 
+        new_wheelChair = this.e_textView_WheelChair_Value.isChecked
 
-        //val new_wheel = this.e_textView_WheelChair_Value.get
-
-        controller.saveProfileData(this, new_age, new_weight, new_height)
+        controller.saveProfileData(this, new_age, new_weight, new_height, new_wheelChair)
         Toast.makeText(this, "Datos Guardados", Toast.LENGTH_LONG).show()
 
     }
