@@ -44,42 +44,9 @@ class ProgressActivity : AppCompatActivity() {
         val sel_adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, values)
         sel_spiner.adapter = sel_adapter
 
-        val progress_chart = findViewById<LineChart>(R.id.progress_content)
+        Controller.loadProgressData(this)
 
-        progress_chart.isDragEnabled = true
-        progress_chart.setScaleEnabled(true)
 
-        val y_values = ArrayList<Entry>()
-        y_values.add(Entry(0f, 6f))
-        y_values.add(Entry(1f, 3f))
-        y_values.add(Entry(2f, 7f))
-        y_values.add(Entry(3f, 5f))
-        y_values.add(Entry(4f, 5f))
-        y_values.add(Entry(5f, 4f))
-        y_values.add(Entry(6f, 5f))
-
-        val set1 = LineDataSet(y_values, "Number of exercices")
-        set1.lineWidth = 6f
-        set1.circleRadius = 6f
-        set1.valueTextSize = 15f
-        set1.setCircleColor(Color.LTGRAY)
-        set1.setDrawCircleHole(false)
-
-        val dataSets = ArrayList<ILineDataSet>()
-        dataSets.add(set1)
-
-        val data = LineData(dataSets)
-
-        progress_chart.data = data
-
-        val desc = Description()
-        desc.text = ""
-        progress_chart.description = desc
-
-        progress_chart.axisLeft.setDrawLabels(false)
-        progress_chart.axisRight.setDrawLabels(false)
-        progress_chart.xAxis.setDrawLabels(true)
-        progress_chart.setTouchEnabled(false)
     }
 
 }
