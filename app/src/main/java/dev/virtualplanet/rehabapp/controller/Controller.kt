@@ -100,7 +100,7 @@ object Controller {
                             "wheel" to false
                         ))
                         var dataFormat = craftData()
-                        data.collection(userTable).document(mail).set(mapOf(
+                        data.collection(progressTable).document(mail).set(mapOf(
                             dataFormat to 15
                         ))
 
@@ -178,6 +178,12 @@ object Controller {
 
     private fun craftData() : String {
         return "" + LocalDateTime.now().dayOfMonth + "/" +
+                LocalDateTime.now().month + "/" + LocalDateTime.now().year
+
+    }
+
+    private fun craftData(day: Int) : String {
+        return "" + day + "/" +
                 LocalDateTime.now().month + "/" + LocalDateTime.now().year
 
     }
@@ -337,28 +343,59 @@ object Controller {
         progress_chart.setTouchEnabled(false)
 
 
-        val y_values = ArrayList<Entry>()
-        y_values.add(Entry(0f, 6f))
-        y_values.add(Entry(1f, 3f))
-        y_values.add(Entry(2f, 7f))
-        y_values.add(Entry(3f, 5f))
-        y_values.add(Entry(4f, 5f))
-        y_values.add(Entry(5f, 4f))
-        y_values.add(Entry(6f, 5f))
 
-        val set1 = LineDataSet(y_values, "Number of exercices")
-        set1.lineWidth = 6f
-        set1.circleRadius = 6f
-        set1.valueTextSize = 15f
-        set1.setCircleColor(Color.LTGRAY)
-        set1.setDrawCircleHole(false)
 
-        val dataSets = ArrayList<ILineDataSet>()
-        dataSets.add(set1)
+        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        val user = userPreferences.getString("email", "")
+        if (user != "") {
+            data.collection(progressTable).document(user!!).get().addOnSuccessListener {
+                val y_values = ArrayList<Entry>()
+                for (x in 0 until 32) {
+                    val actual : String? = it.get(craftData(x)).toString()
+                    if (actual != null) {
+                        y_values.add(Entry(x.toFloat(), actual.toFloat()))
+                    }
 
-        val data = LineData(dataSets)
+                }
+                val set1 = LineDataSet(y_values, "Number of exercices")
+                set1.lineWidth = 6f
+                set1.circleRadius = 6f
+                set1.valueTextSize = 15f
+                set1.setCircleColor(Color.LTGRAY)
+                set1.setDrawCircleHole(false)
 
-        progress_chart.data = data
+                val dataSets = ArrayList<ILineDataSet>()
+                dataSets.add(set1)
+
+                val data = LineData(dataSets)
+
+                progress_chart.data = data
+            }
+        } else {
+            val y_values = ArrayList<Entry>()
+            y_values.add(Entry(0f, 6f))
+            y_values.add(Entry(1f, 3f))
+            y_values.add(Entry(2f, 7f))
+            y_values.add(Entry(3f, 5f))
+            y_values.add(Entry(4f, 5f))
+            y_values.add(Entry(5f, 4f))
+            y_values.add(Entry(6f, 5f))
+
+            val set1 = LineDataSet(y_values, "Number of exercices")
+            set1.lineWidth = 6f
+            set1.circleRadius = 6f
+            set1.valueTextSize = 15f
+            set1.setCircleColor(Color.LTGRAY)
+            set1.setDrawCircleHole(false)
+
+            val dataSets = ArrayList<ILineDataSet>()
+            dataSets.add(set1)
+
+            val data = LineData(dataSets)
+
+            progress_chart.data = data
+        }
+
 
 
     }
