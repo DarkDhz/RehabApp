@@ -33,7 +33,14 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun init() {
         if (intent.extras != null) {
-            //TODO LOAD INTENT
+
+            val age = intent.getStringExtra("AGE")
+            val height = intent.getStringExtra("HEIGHT")
+            val weight = intent.getStringExtra("WEIGHT")
+            val wheel = intent.getBooleanExtra("WHEEL", false)
+
+            Controller.changeProfile(this, age, height, weight, wheel)
+
         } else {
             Controller.loadProfile(this)
         }

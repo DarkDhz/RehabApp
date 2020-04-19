@@ -311,6 +311,7 @@ object Controller {
 
                     if (wheelchair) {
                         context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).text = "SI"
+                        context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).setChecked(true)
                     } else {
                         context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).text = "NO"
                     }
