@@ -3,6 +3,7 @@ package dev.virtualplanet.rehabapp.controller
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.provider.ContactsContract
 import android.view.View
 import android.widget.EditText
@@ -10,25 +11,32 @@ import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.Description
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.model.Exercice
 import dev.virtualplanet.rehabapp.model.ExerciceList
-import dev.virtualplanet.rehabapp.view.EditProfileActivity
-import dev.virtualplanet.rehabapp.view.LoginActivity
-import dev.virtualplanet.rehabapp.view.MainActivity
-import dev.virtualplanet.rehabapp.view.ProfileActivity
+import dev.virtualplanet.rehabapp.view.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_profile.view.*
 import java.time.LocalDateTime
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 object Controller {
 
     private val data = FirebaseFirestore.getInstance()
+    private val userTable = "USERS"
+    private val progressTable = "PROGRESS"
+    private val sharedTable = "userInfo"
 
     val ex_list = ExerciceList()
 
@@ -40,28 +48,13 @@ object Controller {
         return null
     }
 
-    fun getUser() {
-
-    }
-
-    /*users.document("test").set(mapOf(
-            "name" to "Martin Garrix",
-            "mail" to "test",
-            "password" to "1234abcd",
-            "sex" to "man",
-            "age" to 23,
-            "weight" to 80,
-            "height" to 180,
-            "wheel" to false
-        ))*/
-
     fun validateLogin(user: String, pass: String, view: View) {
         if (!user.isBlank() && !pass.isBlank()) {
-            data.collection("USERS").document(user)
+            data.collection(userTable).document(user)
                 .get().addOnSuccessListener {
                     val check_pass = it.get("password").toString()
                     if (check_pass == pass) {
-                        val userPreferences = view.context.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+                        val userPreferences = view.context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
                         val editor: SharedPreferences.Editor = userPreferences.edit()
 
                         editor.putString("email", user)
@@ -91,12 +84,12 @@ object Controller {
             message.show()
         } else {
             if (pass == confirm) {
-                data.collection("USERS").document(mail)
+                data.collection(userTable).document(mail)
                     .get().addOnSuccessListener {
                         val message = Toast.makeText(view.context, "Esta cuenta ya existe", Toast.LENGTH_LONG)
                         message.show()
                     }.addOnFailureListener {
-                        data.collection("USERS").document(mail).set(mapOf(
+                        data.collection(userTable).document(mail).set(mapOf(
                             "name" to user,
                             "mail" to mail,
                             "password" to pass,
@@ -106,13 +99,12 @@ object Controller {
                             "height" to "Not Set",
                             "wheel" to false
                         ))
-                        var dataFormat = "" + LocalDateTime.now().dayOfMonth + "/" +
-                            LocalDateTime.now().month + "/" + LocalDateTime.now().year
-                        data.collection("PROGRESS").document(mail).set(mapOf(
-                            dataFormat to 0
+                        var dataFormat = craftData()
+                        data.collection(progressTable).document(mail).set(mapOf(
+                            dataFormat to 15
                         ))
 
-                        val userPreferences = view.context.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+                        val userPreferences = view.context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
                         val editor: SharedPreferences.Editor = userPreferences.edit()
 
                         editor.putString("email", mail)
@@ -134,15 +126,15 @@ object Controller {
             val message = Toast.makeText(view.context, "Alguno de los campos esta vacio", Toast.LENGTH_LONG)
             message.show()
         } else {
-            val userPreferences = view.context.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+            val userPreferences = view.context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
             val user = userPreferences.getString("email", "")
             if (user != "") {
-                data.collection("USERS").document(user.toString())
+                data.collection(userTable).document(user.toString())
                     .get().addOnSuccessListener {
                         val check_pass = it.get("password").toString()
                         if (check_pass == old) {
                             if (new == confirm) {
-                                data.collection("USERS").document(user.toString()).update(mapOf(
+                                data.collection(userTable).document(user.toString()).update(mapOf(
                                     "password" to new
                                 )).addOnSuccessListener {
                                     val message = Toast.makeText(view.context, "Contraseña actualizada", Toast.LENGTH_LONG)
@@ -169,17 +161,35 @@ object Controller {
     }
 
     fun autologin(context: Context) {
-        val userPreferences = context.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
         if (user != "") {
+            val date = craftData()
+            data.collection(progressTable).document(date).get().addOnFailureListener {
+                data.collection(progressTable).document(date).set(mapOf(
+                    date to 0
+                ))
+            }
             val intent = Intent (context, MainActivity::class.java)
             context.startActivity(intent)
         }
 
     }
 
+    private fun craftData() : String {
+        return "" + LocalDateTime.now().dayOfMonth + "/" +
+                LocalDateTime.now().month + "/" + LocalDateTime.now().year
+
+    }
+
+    private fun craftData(day: Int) : String {
+        return "" + day + "/" +
+                LocalDateTime.now().month + "/" + LocalDateTime.now().year
+
+    }
+
     fun removeUser(context: Context) {
-        val userPreferences = context.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val editor: SharedPreferences.Editor = userPreferences.edit()
 
         editor.remove("email")
@@ -228,12 +238,11 @@ object Controller {
 
     }
 
-
     fun loadProfile(context: ProfileActivity){
-        val userPreferences = context.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
         if (user != "") {
-            data.collection("USERS").document(user.toString())
+            data.collection(userTable).document(user.toString())
                 .get().addOnSuccessListener {
                     val name = it.get("name").toString()
                     val age = it.get("age").toString()
@@ -255,27 +264,27 @@ object Controller {
 
     fun saveProfileData(context: Context, age: String, weight: String, height: String, wheelChair : Boolean) {
 
-        val userPreferneces = context.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+        val userPreferneces = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferneces.getString("email", "")
 
         if (user != "") {
-            data.collection("USERS").document(user.toString()).get().addOnSuccessListener {
+            data.collection(userTable).document(user.toString()).get().addOnSuccessListener {
                 if (!age.equals("Not Set")) {
-                    data.collection("USERS").document(user.toString()).update(mapOf(
+                    data.collection(userTable).document(user.toString()).update(mapOf(
                         "age" to age
                     ))
                 }
                 if (!weight.equals("Not Set")) {
-                    data.collection("USERS").document(user.toString()).update(mapOf(
+                    data.collection(userTable).document(user.toString()).update(mapOf(
                         "weight" to weight
                     ))
                 }
                 if (!height.equals("Not Set")) {
-                    data.collection("USERS").document(user.toString()).update(mapOf(
+                    data.collection(userTable).document(user.toString()).update(mapOf(
                         "height" to height
                     ))
                 }
-                data.collection("USERS").document(user.toString()).update(mapOf(
+                data.collection(userTable).document(user.toString()).update(mapOf(
                     "wheel" to wheelChair
                 ))
             }
@@ -284,10 +293,10 @@ object Controller {
     }
 
     fun loadProfileHints(context: EditProfileActivity) {
-        val userPreferences = context.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
         if (user != "") {
-            data.collection("USERS").document(user.toString())
+            data.collection(userTable).document(user.toString())
                 .get().addOnSuccessListener {
                     val name = it.get("name").toString()
                     val age = it.get("age").toString()
@@ -318,6 +327,78 @@ object Controller {
 
                 }
         }
+    }
+
+    fun loadProgressData(context: ProgressActivity){
+        val progress_chart = context.findViewById<LineChart>(R.id.progress_content)
+
+        progress_chart.isDragEnabled = true
+        progress_chart.setScaleEnabled(true)
+        val desc = Description()
+        desc.text = ""
+        progress_chart.description = desc
+
+        progress_chart.axisLeft.setDrawLabels(false)
+        progress_chart.axisRight.setDrawLabels(false)
+        progress_chart.xAxis.setDrawLabels(true)
+        progress_chart.setTouchEnabled(false)
+
+
+
+
+        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        val user = userPreferences.getString("email", "")
+        if (user != "") {
+            data.collection(progressTable).document(user!!).get().addOnSuccessListener {
+                val y_values = ArrayList<Entry>()
+                for (x in 0 until 32) {
+                    val actual : String? = it.get(craftData(x)).toString()
+                    if (actual != null) {
+                        y_values.add(Entry(x.toFloat(), actual.toFloat()))
+                    }
+
+                }
+                val set1 = LineDataSet(y_values, "Number of exercices")
+                set1.lineWidth = 6f
+                set1.circleRadius = 6f
+                set1.valueTextSize = 15f
+                set1.setCircleColor(Color.LTGRAY)
+                set1.setDrawCircleHole(false)
+
+                val dataSets = ArrayList<ILineDataSet>()
+                dataSets.add(set1)
+
+                val data = LineData(dataSets)
+
+                progress_chart.data = data
+            }
+        } else {
+            val y_values = ArrayList<Entry>()
+            y_values.add(Entry(0f, 6f))
+            y_values.add(Entry(1f, 3f))
+            y_values.add(Entry(2f, 7f))
+            y_values.add(Entry(3f, 5f))
+            y_values.add(Entry(4f, 5f))
+            y_values.add(Entry(5f, 4f))
+            y_values.add(Entry(6f, 5f))
+
+            val set1 = LineDataSet(y_values, "Number of exercices")
+            set1.lineWidth = 6f
+            set1.circleRadius = 6f
+            set1.valueTextSize = 15f
+            set1.setCircleColor(Color.LTGRAY)
+            set1.setDrawCircleHole(false)
+
+            val dataSets = ArrayList<ILineDataSet>()
+            dataSets.add(set1)
+
+            val data = LineData(dataSets)
+
+            progress_chart.data = data
+        }
+
+
+
     }
 
 
