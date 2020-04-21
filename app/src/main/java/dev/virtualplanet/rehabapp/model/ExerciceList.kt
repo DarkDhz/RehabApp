@@ -1,7 +1,7 @@
 package dev.virtualplanet.rehabapp.model
 
 class ExerciceList {
-
+    private val factory = ModelFactory
     var content : List<Exercice>
 
     constructor() {

@@ -21,10 +21,10 @@ class User {
 
     //private var num = 0
 
-    constructor(us: String, pass: String, ma: String) {
-        this.user = us
+    constructor(user: String, pass: String, mail: String) {
+        this.user = user
         this.password = pass
-        this.mail = ma
+        this.mail = mail
         this.sex = 0
         this.height = 0
         this.weight = 0
