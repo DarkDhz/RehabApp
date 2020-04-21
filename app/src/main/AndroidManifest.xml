@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".view.SelectStaticActivity"></activity>
-        <activity android:name=".view.selMus2Activity" />
+        <activity android:name=".view.SelectMuscleActivity" />
         <activity android:name=".view.ChangePswdActivity" />
         <activity android:name=".view.SettingsActivity" />
         <activity android:name=".view.EditProfileActivity" />

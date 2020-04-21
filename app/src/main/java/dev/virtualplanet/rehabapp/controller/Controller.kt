@@ -32,6 +32,7 @@ object Controller {
     private const val userTable = "USERS"
     private const val progressTable = "PROGRESS"
     private const val sharedTable = "userInfo"
+    private const val sharedExercices = "selected"
 
     private const val notSetString = "Not Set"
 
