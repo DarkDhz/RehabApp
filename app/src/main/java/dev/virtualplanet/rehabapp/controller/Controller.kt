@@ -20,13 +20,17 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
+import com.google.type.Date
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.model.Exercice
 import dev.virtualplanet.rehabapp.model.ExerciceList
 import dev.virtualplanet.rehabapp.view.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_profile.view.*
+import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -49,6 +53,7 @@ object Controller {
     }
 
     fun validateLogin(user: String, pass: String, view: View) {
+        //FireAuth
         if (!user.isBlank() && !pass.isBlank()) {
             data.collection(userTable).document(user)
                 .get().addOnSuccessListener {
@@ -78,6 +83,7 @@ object Controller {
 
     }
 
+
     fun validateRegister(user: String, pass: String, confirm: String, mail: String, view: View) {
         if ((user.isBlank()) || (pass.isBlank()) || (confirm.isBlank()) || (mail.isBlank())) {
             val message = Toast.makeText(view.context, "Alguno de los campos esta vacio", Toast.LENGTH_LONG)
@@ -99,9 +105,13 @@ object Controller {
                             "height" to "Not Set",
                             "wheel" to false
                         ))
-                        var dataFormat = craftData()
+                        //TODO REMOVER PARA LA ENTREGA
                         data.collection(progressTable).document(mail).set(mapOf(
-                            dataFormat to 15
+                            craftData() to 15,
+                            craftData(23) to 0,
+                            craftData(7) to 5,
+                            craftData(18) to 9,
+                            craftData(2) to 12
                         ))
 
                         val userPreferences = view.context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
@@ -177,15 +187,22 @@ object Controller {
     }
 
     private fun craftData() : String {
-        return "" + LocalDateTime.now().dayOfMonth + "/" +
-                LocalDateTime.now().month + "/" + LocalDateTime.now().year
+        return SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().time)
 
     }
 
     private fun craftData(day: Int) : String {
-        return "" + day + "/" +
-                LocalDateTime.now().month + "/" + LocalDateTime.now().year
+        var month : String = SimpleDateFormat("MM-yyyy").format(Calendar.getInstance().time)
+        return day.toString() + "-" + month
+    }
+    
+    private fun craftData(day: Int, month: Int) : String {
+        var year : String = SimpleDateFormat("yyyy").format(Calendar.getInstance().time)
+        return day.toString() + "-" + month + "-" + year
+    }
 
+    private fun craftData(day: Int, month: Int, year: Int) : String {
+        return day.toString() + "-" + month.toString() + "-" + year.toString()
     }
 
     fun removeUser(context: Context) {
@@ -347,17 +364,46 @@ object Controller {
 
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
-        if (user != "") {
-            data.collection(progressTable).document(user!!).get().addOnSuccessListener {
-                val y_values = ArrayList<Entry>()
-                for (x in 0 until 32) {
-                    val actual : String? = it.get(craftData(x)).toString()
-                    if (actual != null) {
-                        y_values.add(Entry(x.toFloat(), actual.toFloat()))
-                    }
 
+        if (user != "") {
+            data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
+
+                val yValues = ArrayList<Entry>()
+                var text : String = ""
+                for (x in 1 until 32) {
+                    var actual : String? = it.get(craftData(x)).toString()
+                    if (actual != null && actual != "" && actual != "null") {
+                        //text = text + "" + x + ":" + actual+ ","
+                        yValues.add(Entry(x.toFloat(), actual.toFloat()))
+                    }
+                    Toast.makeText(context, text,  Toast.LENGTH_LONG ).show()
+
+                    val set1 = LineDataSet(yValues, "Number of exercices")
+                    set1.lineWidth = 6f
+                    set1.circleRadius = 6f
+                    set1.valueTextSize = 15f
+                    set1.setCircleColor(Color.LTGRAY)
+                    set1.setDrawCircleHole(false)
+
+                    val dataSets = ArrayList<ILineDataSet>()
+                    dataSets.add(set1)
+
+                    val data = LineData(dataSets)
+
+                    progress_chart.data = data
                 }
-                val set1 = LineDataSet(y_values, "Number of exercices")
+
+            }.addOnFailureListener {
+                val yValues = ArrayList<Entry>()
+                //y_values.add(Entry(0f, 6f))
+                //y_values.add(Entry(1f, 3f))
+                //y_values.add(Entry(2f, 7f))
+                //y_values.add(Entry(3f, 5f))
+                //y_values.add(Entry(4f, 5f))
+                //y_values.add(Entry(5f, 4f))
+                //y_values.add(Entry(6f, 5f))
+
+                val set1 = LineDataSet(yValues, "Number of exercices")
                 set1.lineWidth = 6f
                 set1.circleRadius = 6f
                 set1.valueTextSize = 15f
@@ -371,33 +417,7 @@ object Controller {
 
                 progress_chart.data = data
             }
-        } else {
-            val y_values = ArrayList<Entry>()
-            y_values.add(Entry(0f, 6f))
-            y_values.add(Entry(1f, 3f))
-            y_values.add(Entry(2f, 7f))
-            y_values.add(Entry(3f, 5f))
-            y_values.add(Entry(4f, 5f))
-            y_values.add(Entry(5f, 4f))
-            y_values.add(Entry(6f, 5f))
-
-            val set1 = LineDataSet(y_values, "Number of exercices")
-            set1.lineWidth = 6f
-            set1.circleRadius = 6f
-            set1.valueTextSize = 15f
-            set1.setCircleColor(Color.LTGRAY)
-            set1.setDrawCircleHole(false)
-
-            val dataSets = ArrayList<ILineDataSet>()
-            dataSets.add(set1)
-
-            val data = LineData(dataSets)
-
-            progress_chart.data = data
         }
-
-
-
     }
 
 

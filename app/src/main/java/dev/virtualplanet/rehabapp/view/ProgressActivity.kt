@@ -37,9 +37,7 @@ class ProgressActivity : AppCompatActivity() {
     private fun init() {
         val sel_spiner = findViewById<Spinner>(R.id.select_static_spinner)
         val values = ArrayList<String>()
-        values.add("Number of Exercices")
-        values.add("Example 2")
-        values.add("Example 3")
+        values.add("Numero de ejercicios")
 
         val sel_adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, values)
         sel_spiner.adapter = sel_adapter
