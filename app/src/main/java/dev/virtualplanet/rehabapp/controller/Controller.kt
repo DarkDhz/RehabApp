@@ -195,7 +195,7 @@ object Controller {
         var month : String = SimpleDateFormat("MM-yyyy").format(Calendar.getInstance().time)
         return day.toString() + "-" + month
     }
-    
+
     private fun craftData(day: Int, month: Int) : String {
         var year : String = SimpleDateFormat("yyyy").format(Calendar.getInstance().time)
         return day.toString() + "-" + month + "-" + year

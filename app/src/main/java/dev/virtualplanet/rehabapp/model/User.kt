@@ -1,12 +1,14 @@
 package dev.virtualplanet.rehabapp.model
 
+import android.text.style.LineHeightSpan
+
 class User {
 
-    private var user = String()
-    private var password = String()
-    private var mail = String()
+    private var user : String
+    private var password : String
+    private var mail : String
 
-    private var sex = 0 // 0 man, 1 Woman
+    var sex : Int // 0 man, 1 Woman
 
     //HEALTH VARS
     private var age = 0
@@ -15,14 +17,28 @@ class User {
     //IN KG
     private var weight = 0
     //WHEELCHAIR ?
-    private var wheel = false
+    private var wheel : Boolean
 
     //private var num = 0
 
     constructor(us: String, pass: String, ma: String) {
-        user = us
-        password = pass
-        mail = ma
+        this.user = us
+        this.password = pass
+        this.mail = ma
+        this.sex = 0
+        this.height = 0
+        this.weight = 0
+        this.wheel = false
+    }
+
+    constructor(user: String, pass: String, mail: String, sex : Int, height: Int, weight : Int, wheel : Boolean) {
+        this.user = user
+        this.password = pass
+        this.mail = mail
+        this.sex = sex
+        this.height = height
+        this.weight = weight
+        this.wheel = wheel
     }
 
 
