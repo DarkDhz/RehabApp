@@ -36,6 +36,8 @@ object Controller {
 
     private const val notSetString = "Not Set"
 
+
+    //TODO https://stackoverflow.com/questions/15832335/android-custom-row-item-for-listview
     private val factory = ModelFactory
 
     private val exList = factory.makeExerciceList()
