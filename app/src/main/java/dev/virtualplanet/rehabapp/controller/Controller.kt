@@ -18,6 +18,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.model.Exercice
+import dev.virtualplanet.rehabapp.model.ExerciceList
 import dev.virtualplanet.rehabapp.model.ModelFactory
 import dev.virtualplanet.rehabapp.view.*
 import java.text.SimpleDateFormat
@@ -360,14 +361,11 @@ object Controller {
             data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
 
                 val yValues = ArrayList<Entry>()
-                var text : String = ""
                 for (x in 1 until 32) {
                     var actual : String? = it.get(craftData(x)).toString()
                     if (actual != null && actual != "" && actual != "null") {
-                        //text = text + "" + x + ":" + actual+ ","
                         yValues.add(Entry(x.toFloat(), actual.toFloat()))
                     }
-                    Toast.makeText(context, text,  Toast.LENGTH_LONG ).show()
 
                     val set1 = LineDataSet(yValues, "Number of exercices")
                     set1.lineWidth = 6f

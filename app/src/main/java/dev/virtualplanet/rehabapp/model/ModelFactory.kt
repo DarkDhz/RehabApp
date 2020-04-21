@@ -13,4 +13,12 @@ object ModelFactory {
     fun makeUser(user: String, pass: String, mail: String, sex : Int, height: Int, weight : Int, wheel : Boolean): User {
         return User(user, pass, mail, sex, height, weight, wheel)
     }
+
+    fun makeExerciceList() : ExerciceList {
+        return ExerciceList()
+    }
+
+    fun makeExerciceList(list: List<Exercice>) : ExerciceList {
+        return ExerciceList(list)
+    }
 }
