@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.Entry
@@ -18,7 +19,6 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.model.Exercice
-import dev.virtualplanet.rehabapp.model.ExerciceList
 import dev.virtualplanet.rehabapp.model.ModelFactory
 import dev.virtualplanet.rehabapp.view.*
 import java.text.SimpleDateFormat
@@ -197,7 +197,12 @@ object Controller {
     }
 
     private fun craftData(day: Int, month: Int, year: Int) : String {
-        return day.toString() + "-" + month.toString() + "-" + year.toString()
+        if (month > 9) {
+            return day.toString() + "-" + month.toString() + "-" + year.toString()
+        } else {
+            return day.toString() + "-0" + month.toString() + "-" + year.toString()
+        }
+
     }
 
     fun removeUser(context: Context) {
@@ -257,23 +262,29 @@ object Controller {
             data.collection(userTable).document(user.toString())
                 .get().addOnSuccessListener {
                     val name = it.get("name").toString()
+                    val pass = it.get("password").toString()
                     val age = it.get("age").toString()
                     val sex = it.get("sex").toString()
                     val height = it.get("height").toString()
                     val weight = it.get("weight").toString()
                     val wheelchair = it.get("wheel").toString().toBoolean()
-
                     changeProfile(context, name, age, sex, height, weight, wheelchair)
                 }
         }
     }
 
+    /**
+     * Method to calculate de IMC of a person
+     */
     private fun calculateIMC(weight: Double, height: Double) : Double {
         //kg/m^2
         //DOUBLE TO GET ALL DECIMALS
         return (weight/(height*height))
     }
 
+    /**
+     * Method to save File Data
+     */
     fun saveProfileData(context: Context, age: String, weight: String, height: String, wheelChair : Boolean) {
 
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
@@ -304,6 +315,9 @@ object Controller {
 
     }
 
+    /**
+     * Method to load the hints content from EditProfileActivity
+     */
     fun loadProfileHints(context: EditProfileActivity) {
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
@@ -340,21 +354,10 @@ object Controller {
         }
     }
 
+    /**
+     * Method to load All the chart data
+     */
     fun loadProgressData(context: ProgressActivity){
-        val progress_chart = context.findViewById<LineChart>(R.id.progress_content)
-
-        progress_chart.isDragEnabled = true
-        progress_chart.setScaleEnabled(true)
-        val desc = Description()
-        desc.text = ""
-        progress_chart.description = desc
-
-        progress_chart.axisLeft.setDrawLabels(false)
-        progress_chart.axisRight.setDrawLabels(false)
-        progress_chart.xAxis.setDrawLabels(true)
-        progress_chart.setTouchEnabled(false)
-
-
 
 
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
@@ -362,52 +365,84 @@ object Controller {
 
         if (user != "") {
             data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
+                val progressChart = context.findViewById<LineChart>(R.id.progress_content)
+                progressChart.isEnabled = false
+                progressChart.isDragEnabled = true
+                progressChart.setScaleEnabled(true)
+                val desc = Description()
+                desc.text = ""
+                progressChart.description = desc
 
+                progressChart.axisLeft.setDrawLabels(false)
+                progressChart.axisRight.setDrawLabels(false)
+                progressChart.xAxis.setDrawLabels(true)
+                progressChart.setTouchEnabled(false)
                 val yValues = ArrayList<Entry>()
                 for (x in 1 until 32) {
-                    var actual : String? = it.get(craftData(x)).toString()
+                    val actual : String? = it.get(craftData(x)).toString()
                     if (actual != null && actual != "" && actual != "null") {
                         yValues.add(Entry(x.toFloat(), actual.toFloat()))
                     }
-
-                    val set1 = LineDataSet(yValues, "Number of exercices")
-                    set1.lineWidth = 6f
-                    set1.circleRadius = 6f
-                    set1.valueTextSize = 15f
-                    set1.setCircleColor(Color.LTGRAY)
-                    set1.setDrawCircleHole(false)
-
-                    val dataSets = ArrayList<ILineDataSet>()
-                    dataSets.add(set1)
-
-                    val data = LineData(dataSets)
-
-                    progress_chart.data = data
                 }
-
-            }.addOnFailureListener {
-                val yValues = ArrayList<Entry>()
-                //y_values.add(Entry(0f, 6f))
-                //y_values.add(Entry(1f, 3f))
-                //y_values.add(Entry(2f, 7f))
-                //y_values.add(Entry(3f, 5f))
-                //y_values.add(Entry(4f, 5f))
-                //y_values.add(Entry(5f, 4f))
-                //y_values.add(Entry(6f, 5f))
-
-                val set1 = LineDataSet(yValues, "Number of exercices")
+                val set1 = LineDataSet(yValues, "Número de Ejercicios")
                 set1.lineWidth = 6f
                 set1.circleRadius = 6f
                 set1.valueTextSize = 15f
                 set1.setCircleColor(Color.LTGRAY)
                 set1.setDrawCircleHole(false)
-
                 val dataSets = ArrayList<ILineDataSet>()
                 dataSets.add(set1)
 
-                val data = LineData(dataSets)
+                val dat = LineData(dataSets)
 
-                progress_chart.data = data
+                progressChart.data = dat
+                progressChart.isVisible = true
+
+            }
+        }
+    }
+
+    fun loadProgressData(context: ProgressActivity, month : Int, year: Int){
+        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        val user = userPreferences.getString("email", "")
+        var month2 = month+1
+        if (user != "") {
+            data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
+                val progressChart = context.findViewById<LineChart>(R.id.progress_content)
+                progressChart.isEnabled = false
+                progressChart.isDragEnabled = true
+                progressChart.setScaleEnabled(true)
+                val desc = Description()
+                desc.text = ""
+                progressChart.description = desc
+
+                progressChart.axisLeft.setDrawLabels(false)
+                progressChart.axisRight.setDrawLabels(false)
+                progressChart.xAxis.setDrawLabels(true)
+                progressChart.setTouchEnabled(false)
+
+                val yValues = ArrayList<Entry>()
+                for (x in 1 until 32) {
+                    val actual : String? = it.get(craftData(x, month2, year)).toString()
+                    if (actual != null && actual != "" && actual != "null") {
+                        yValues.add(Entry(x.toFloat(), actual.toFloat()))
+                    }
+
+                }
+                val set1 = LineDataSet(yValues, "Número de Ejercicios")
+                set1.lineWidth = 6f
+                set1.circleRadius = 6f
+                set1.valueTextSize = 15f
+                set1.setCircleColor(Color.LTGRAY)
+                set1.setDrawCircleHole(false)
+                val dataSets = ArrayList<ILineDataSet>()
+                dataSets.add(set1)
+
+                val dat = LineData(dataSets)
+
+                progressChart.data = dat
+                progressChart.isVisible = true
+                progressChart.invalidate()
             }
         }
     }

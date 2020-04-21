@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goToProgressActivity(view: View) {
-        val intent = Intent(this, ProgressActivity::class.java)
+        val intent = Intent(this, SelectStaticActivity::class.java)
         startActivity(intent)
     }
 

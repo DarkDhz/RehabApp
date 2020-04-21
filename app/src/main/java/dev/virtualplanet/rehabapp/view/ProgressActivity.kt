@@ -1,20 +1,17 @@
 package dev.virtualplanet.rehabapp.view
 
+import android.app.DatePickerDialog
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.components.Description
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
+import java.util.*
 
 
 class ProgressActivity : AppCompatActivity() {
@@ -25,26 +22,42 @@ class ProgressActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_progress)
         this.init()
+
     }
 
     fun returnToMain(view: View) {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, SelectStaticActivity::class.java)
         startActivity(intent)
     }
 
 
 
     private fun init() {
-        val sel_spiner = findViewById<Spinner>(R.id.select_static_spinner)
+        val selSpiner = findViewById<Spinner>(R.id.select_static_spinner)
         val values = ArrayList<String>()
-        values.add("Numero de ejercicios")
+        values.add("Número de ejercicios")
 
-        val sel_adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, values)
-        sel_spiner.adapter = sel_adapter
+        val selAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, values)
+        selSpiner.adapter = selAdapter
 
+
+        val progressChart = findViewById<LineChart>(R.id.progress_content)
+        progressChart.isVisible = false
         Controller.loadProgressData(this)
-
-
     }
+
+    fun openMonthSelector(view: View) {
+        val cal = Calendar.getInstance()
+        val year = cal.get(Calendar.YEAR)
+        val month = cal.get(Calendar.MONTH)
+        val day = cal.get(Calendar.DAY_OF_MONTH)
+        val picker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, day ->
+            Controller.loadProgressData(this, month, year)
+
+        }, year, month, day)
+        picker.datePicker.maxDate = Calendar.getInstance().timeInMillis
+        picker.show()
+    }
+
 
 }
