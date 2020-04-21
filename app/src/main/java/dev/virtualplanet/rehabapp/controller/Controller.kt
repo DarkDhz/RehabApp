@@ -29,15 +29,18 @@ import kotlin.collections.ArrayList
 object Controller {
 
     private val data = FirebaseFirestore.getInstance()
-    private val userTable = "USERS"
-    private val progressTable = "PROGRESS"
-    private val sharedTable = "userInfo"
+    private const val userTable = "USERS"
+    private const val progressTable = "PROGRESS"
+    private const val sharedTable = "userInfo"
+
+    private const val notSetString = "Not Set"
+
     private val factory = ModelFactory
 
-    val ex_list = ExerciceList()
+    private val exList = factory.makeExerciceList()
 
     fun getExerciceByName(name: String) : Exercice? {
-        return ex_list.getExerciceByName(name)
+        return exList.getExerciceByName(name)
     }
 
     fun getExerciceByID(id: String) : Exercice? {
@@ -91,10 +94,10 @@ object Controller {
                             "name" to user,
                             "mail" to mail,
                             "password" to pass,
-                            "sex" to "Not Set",
-                            "age" to "Not Set",
-                            "weight" to "Not Set",
-                            "height" to "Not Set",
+                            "sex" to notSetString,
+                            "age" to notSetString,
+                            "weight" to notSetString,
+                            "height" to notSetString,
                             "wheel" to false
                         ))
                         //TODO REMOVER PARA LA ENTREGA
@@ -210,16 +213,16 @@ object Controller {
     fun changeProfile(context: ProfileActivity, age: String, height: String, weight: String, wheelchair: Boolean) {
 
         context.findViewById<TextView>(R.id.textView_Age_Value).text = age
-        if (age.equals("Not Set")) {
+        if (age.equals("notSetString")) {
             context.findViewById<TextView>(R.id.textView_Age_Units).text = ""
         }
 
         context.findViewById<TextView>(R.id.textView_Height_Value).text = height
-        if (height.equals("Not Set")) {
+        if (height.equals(notSetString)) {
             context.findViewById<TextView>(R.id.textView_Height_Units).text = ""
         }
         context.findViewById<TextView>(R.id.textView_Weight_Value).text = weight
-        if (weight.equals("Not Set")) {
+        if (weight.equals(notSetString)) {
             context.findViewById<TextView>(R.id.textView_Weight_Units).text = ""
         }
 
@@ -229,7 +232,7 @@ object Controller {
             context.findViewById<TextView>(R.id.textView_WheelChair_Value).text = "NO"
         }
 
-        if (height.equals("Not Set") || weight.equals("Not Set")) {
+        if (height.equals(notSetString) || weight.equals(notSetString)) {
             context.findViewById<TextView>(R.id.textView_IMC_Value).text = "No se puede calcular sin altura y peso"
         } else {
             context.findViewById<TextView>(R.id.textView_IMC_Value).text =
@@ -278,17 +281,17 @@ object Controller {
 
         if (user != "") {
             data.collection(userTable).document(user.toString()).get().addOnSuccessListener {
-                if (!age.equals("Not Set")) {
+                if (!age.equals(notSetString)) {
                     data.collection(userTable).document(user.toString()).update(mapOf(
                         "age" to age
                     ))
                 }
-                if (!weight.equals("Not Set")) {
+                if (!weight.equals(notSetString)) {
                     data.collection(userTable).document(user.toString()).update(mapOf(
                         "weight" to weight
                     ))
                 }
-                if (!height.equals("Not Set")) {
+                if (!height.equals(notSetString)) {
                     data.collection(userTable).document(user.toString()).update(mapOf(
                         "height" to height
                     ))
@@ -316,14 +319,14 @@ object Controller {
 
 
                     context.findViewById<TextView>(R.id.e_profile_content).text = name
-                    if (!age.equals("Not Set")) {
+                    if (!age.equals(notSetString)) {
                         context.findViewById<EditText>(R.id.e_textView_Age_Value).hint = age
                     }
 
-                    if (!height.equals("Not Set")) {
+                    if (!height.equals(notSetString)) {
                         context.findViewById<TextView>(R.id.e_textView_Height_Value).hint = height
                     }
-                    if (!weight.equals("Not Set")) {
+                    if (!weight.equals(notSetString)) {
                         context.findViewById<TextView>(R.id.e_textView_Weight_Value).hint = weight
                     }
 
