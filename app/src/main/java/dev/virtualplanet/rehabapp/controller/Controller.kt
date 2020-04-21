@@ -49,8 +49,8 @@ object Controller {
         if (!user.isBlank() && !pass.isBlank()) {
             data.collection(userTable).document(user)
                 .get().addOnSuccessListener {
-                    val check_pass = it.get("password").toString()
-                    if (check_pass == pass) {
+                    val checkPass = it.get("password").toString()
+                    if (checkPass == pass) {
                         val userPreferences = view.context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
                         val editor: SharedPreferences.Editor = userPreferences.edit()
 
@@ -133,8 +133,8 @@ object Controller {
             if (user != "") {
                 data.collection(userTable).document(user.toString())
                     .get().addOnSuccessListener {
-                        val check_pass = it.get("password").toString()
-                        if (check_pass == old) {
+                        val checkPass = it.get("password").toString()
+                        if (checkPass == old) {
                             if (new == confirm) {
                                 data.collection(userTable).document(user.toString()).update(mapOf(
                                     "password" to new
@@ -273,8 +273,8 @@ object Controller {
 
     fun saveProfileData(context: Context, age: String, weight: String, height: String, wheelChair : Boolean) {
 
-        val userPreferneces = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
-        val user = userPreferneces.getString("email", "")
+        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        val user = userPreferences.getString("email", "")
 
         if (user != "") {
             data.collection(userTable).document(user.toString()).get().addOnSuccessListener {
