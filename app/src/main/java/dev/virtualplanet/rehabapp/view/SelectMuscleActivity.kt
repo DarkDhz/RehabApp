@@ -94,7 +94,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Hombro derecho")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -108,7 +108,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Hombro izquierdo")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -122,7 +122,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Codo derecho")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -137,7 +137,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 setResult(Activity.RESULT_OK, intent)
                                 finish()
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -151,7 +151,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Muñeca derecha")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -165,7 +165,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Muñeca izquierda")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -179,7 +179,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Rodilla derecha")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -193,7 +193,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Rodilla izquierda")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -207,7 +207,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Tobillo derecho")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -221,7 +221,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Tobillo izquierdo")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -238,7 +238,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Hombro derecho")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -252,7 +252,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Hombro izquierdo")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -266,7 +266,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Codo derecho")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -280,7 +280,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Codo izquierdo")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -294,7 +294,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Muñeca derecha")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -308,7 +308,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                     Controller.addSavedExercices(context, "Muñeca izquierda")
                                     imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -322,7 +322,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Rodilla derecha")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -336,7 +336,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Rodilla izquierda")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -350,7 +350,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Tobillo derecho")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()
@@ -364,7 +364,7 @@ class SelectMuscleActivity : AppCompatActivity() {
                                 Controller.addSavedExercices(context, "Tobillo izquierdo")
                                 imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
-                                Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
+                                
                                 imagen.setImageResource(R.drawable.original)
                             }
                             val dialogo: AlertDialog = builder.create()

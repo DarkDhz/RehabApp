@@ -10,11 +10,11 @@ import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
+import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Description
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.data.*
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
@@ -369,7 +369,7 @@ object Controller {
     /**
      * Method to load All the chart data
      */
-    fun loadProgressData(context: ProgressActivity){
+    fun loadProgressData(context: LinearProgressActivity){
 
 
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
@@ -377,18 +377,6 @@ object Controller {
 
         if (user != "") {
             data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
-                val progressChart = context.findViewById<LineChart>(R.id.progress_content)
-                progressChart.isEnabled = false
-                progressChart.isDragEnabled = true
-                progressChart.setScaleEnabled(true)
-                val desc = Description()
-                desc.text = ""
-                progressChart.description = desc
-
-                progressChart.axisLeft.setDrawLabels(false)
-                progressChart.axisRight.setDrawLabels(false)
-                progressChart.xAxis.setDrawLabels(true)
-                progressChart.setTouchEnabled(false)
                 val yValues = ArrayList<Entry>()
                 val list = ArrayList<Int>()
                 for (x in 1 until 32) {
@@ -400,44 +388,19 @@ object Controller {
                         }
                     }
                 }
-                context.findViewById<TextView>(R.id.progress_media).text = "Media: " + calculateAverage(list).toString()
-                val set1 = LineDataSet(yValues, "Número de Ejercicios")
-                set1.lineWidth = 6f
-                set1.circleRadius = 6f
-                set1.valueTextSize = 15f
-                set1.setCircleColor(Color.LTGRAY)
-                set1.setDrawCircleHole(false)
-                val dataSets = ArrayList<ILineDataSet>()
-                dataSets.add(set1)
+                setLineChartData(context, yValues, list)
 
-                val dat = LineData(dataSets)
-
-                progressChart.data = dat
-                progressChart.isVisible = true
 
             }
         }
     }
 
-    fun loadProgressData(context: ProgressActivity, month : Int, year: Int){
+    fun loadProgressData(context: LinearProgressActivity, month : Int, year: Int){
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
         var month2 = month+1
         if (user != "") {
             data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
-                val progressChart = context.findViewById<LineChart>(R.id.progress_content)
-                progressChart.isEnabled = false
-                progressChart.isDragEnabled = true
-                progressChart.setScaleEnabled(true)
-                val desc = Description()
-                desc.text = ""
-                progressChart.description = desc
-
-                progressChart.axisLeft.setDrawLabels(false)
-                progressChart.axisRight.setDrawLabels(false)
-                progressChart.xAxis.setDrawLabels(true)
-                progressChart.setTouchEnabled(false)
-
                 val yValues = ArrayList<Entry>()
                 val list = ArrayList<Int>()
                 for (x in 1 until 32) {
@@ -449,27 +412,119 @@ object Controller {
                         }
                     }
                 }
-                context.findViewById<TextView>(R.id.progress_media).text = "Media: " + calculateAverage(list).toString()
-                val set1 = LineDataSet(yValues, "Número de Ejercicios")
-                set1.lineWidth = 6f
-                set1.circleRadius = 6f
-                set1.valueTextSize = 15f
-                set1.setCircleColor(Color.LTGRAY)
-                set1.setDrawCircleHole(false)
-                val dataSets = ArrayList<ILineDataSet>()
-                dataSets.add(set1)
+                setLineChartData(context, yValues, list)
 
-                val dat = LineData(dataSets)
+            }
+        }
+    }
 
-                progressChart.data = dat
-                progressChart.isVisible = true
-                progressChart.invalidate()
+    private fun setLineChartData(context: LinearProgressActivity , values: ArrayList<Entry>, list : ArrayList<Int>) {
+        context.findViewById<TextView>(R.id.progress_media).text = "Media: " + calculateAverage(list).toString()
+        val chart = context.findViewById<LineChart>(R.id.progress_content)
+        chart.isEnabled = false
+        chart.isDragEnabled = true
+        chart.setScaleEnabled(true)
+        val desc = Description()
+        desc.text = ""
+        chart.description = desc
+
+        chart.axisLeft.setDrawLabels(false)
+        chart.axisRight.setDrawLabels(false)
+        chart.xAxis.setDrawLabels(true)
+        chart.setTouchEnabled(false)
+
+        val set1 = LineDataSet(values, "Número de Ejercicios")
+        set1.lineWidth = 6f
+        set1.circleRadius = 6f
+        set1.valueTextSize = 15f
+        set1.setCircleColor(Color.LTGRAY)
+        set1.setDrawCircleHole(false)
+        val dataSets = ArrayList<ILineDataSet>()
+        dataSets.add(set1)
+        val dat = LineData(dataSets)
+        chart.data = dat
+        chart.isVisible = true
+        chart.invalidate()
+
+    }
+
+    private fun setBarChartData(context: BarProgressActivity , values: ArrayList<BarEntry>, list : ArrayList<Int>) {
+        context.findViewById<TextView>(R.id.bar_progress_media).text = "Media: " + calculateAverage(list).toString()
+        val chart = context.findViewById<BarChart>(R.id.bar_progress_content)
+        context.findViewById<TextView>(R.id.bar_progress_media).text = "Media: " + calculateAverage(list).toString()
+        val set1 = BarDataSet(values, "Número de ejercicios")
+        set1.setDrawIcons(false)
+        set1.valueTextSize = 15f
+        val dataSets: java.util.ArrayList<IBarDataSet> = java.util.ArrayList()
+        dataSets.add(set1)
+
+        val data = BarData(dataSets)
+        data.barWidth = 1.5f
+        val desc = Description()
+        chart.isEnabled = false
+        chart.isDragEnabled = true
+        desc.text = ""
+        chart.axisLeft.setDrawLabels(false)
+        chart.axisRight.setDrawLabels(false)
+        chart.xAxis.setDrawLabels(true)
+        chart.setTouchEnabled(false)
+        chart.description = desc
+        chart.data = data
+        chart.isVisible = true
+        chart.invalidate()
+
+    }
+
+    fun loadProgressData(context: BarProgressActivity){
+        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        val user = userPreferences.getString("email", "")
+        if (user != "") {
+            data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
+                val yValues = ArrayList<BarEntry>()
+                val list = ArrayList<Int>()
+                for (x in 1 until 32) {
+                    val actual : String? = it.get(craftData(x)).toString()
+                    if (actual != null && actual != "" && actual != "null") {
+                        if (actual.toInt() > 0){
+                            yValues.add(BarEntry(x.toFloat(), actual.toFloat()))
+                            list.add(actual.toInt())
+                        }
+                    }
+                }
+                setBarChartData(context, yValues, list)
+
+            }
+        }
+    }
+
+    fun loadProgressData(context: BarProgressActivity, month : Int, year: Int){
+        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        val user = userPreferences.getString("email", "")
+        var month2 = month+1
+        if (user != "") {
+            data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
+                val yValues = ArrayList<BarEntry>()
+                val list = ArrayList<Int>()
+                for (x in 1 until 32) {
+                    val actual : String? = it.get(craftData(x, month2, year)).toString()
+                    if (actual != null && actual != "" && actual != "null") {
+                        if (actual.toInt() > 0){
+                            yValues.add(BarEntry(x.toFloat(), actual.toFloat()))
+                            list.add(actual.toInt())
+                        }
+                    }
+                }
+                setBarChartData(context, yValues, list)
+
             }
         }
     }
 
 
     private fun calculateAverage(list: List<Int>) : Int {
+        if (list.isEmpty()) {
+            return 0
+        }
         var toReturn = 0
         for (x in list) {
             toReturn += x

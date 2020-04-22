@@ -11,12 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".view.SelectStaticActivity"></activity>
+        <activity android:name=".view.BarProgressActivity"></activity>
+        <activity android:name=".view.SelectStaticActivity" />
         <activity android:name=".view.SelectMuscleActivity" />
         <activity android:name=".view.ChangePswdActivity" />
         <activity android:name=".view.SettingsActivity" />
         <activity android:name=".view.EditProfileActivity" />
-        <activity android:name=".view.ProgressActivity" />
+        <activity android:name=".view.LinearProgressActivity" />
         <activity android:name=".view.RegisterActivity" />
         <activity android:name=".view.MainActivity" />
         <activity android:name=".view.RecoverPassActivity" />

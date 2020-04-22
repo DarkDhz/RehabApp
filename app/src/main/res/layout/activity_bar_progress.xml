@@ -2,13 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/progress_main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/background4"
-    tools:context=".view.ProgressActivity">
-
+    tools:context=".view.BarProgressActivity">
 
     <ImageButton
         android:id="@+id/global_return_bt"
@@ -26,7 +22,7 @@
         android:contentDescription="@string/global_returnbt_desc" />
 
     <TextView
-        android:id="@+id/progress_header"
+        android:id="@+id/bar_progress_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -44,8 +40,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/progress_content"
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/bar_progress_content"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_marginStart="25dp"
@@ -54,19 +50,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.68"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/bar_constraintLayout" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/bar_constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress_header">
+        app:layout_constraintTop_toBottomOf="@+id/bar_progress_header">
 
         <TextView
-            android:id="@+id/progress_media"
+            android:id="@+id/bar_progress_media"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -75,7 +71,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/progress_date_bt"
+            android:id="@+id/bar_rogress_date_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="30dp"
@@ -90,6 +86,5 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
