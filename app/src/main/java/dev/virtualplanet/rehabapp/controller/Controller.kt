@@ -281,10 +281,10 @@ object Controller {
     /**
      * Method to calculate de IMC of a person
      */
-    private fun calculateIMC(weight: Double, height: Double) : Double {
+    private fun calculateIMC(weight: Double, height: Double) : Long {
         //kg/m^2
         //DOUBLE TO GET ALL DECIMALS
-        return (weight/(height*height))
+        return Math.round(weight/(height*height))
     }
 
     /**

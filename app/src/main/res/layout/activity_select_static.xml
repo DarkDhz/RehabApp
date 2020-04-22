@@ -33,7 +33,7 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="15"
-        android:text="Selecciona una estadística"
+        android:text="@string/select_static_header"
         android:textColor="@android:color/white"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,42 +42,62 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/selst_buttonLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/selst_title">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/selst_dayly_near1"
             android:layout_width="150dp"
             android:layout_height="100dp"
-            android:text="Daily Exercice"
+            android:background="@drawable/main_button"
             android:onClick="goExercice"
-            android:background="@drawable/main_button"
             android:padding="15dp"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="25dp"
-            android:text="Daily Pills"
-            android:background="@drawable/main_button"
-            android:padding="15dp"
+            android:text="next update"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/selst_dayly_bt"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/main_button"
+            android:onClick="goExercice"
+            android:padding="15dp"
+            android:text="Daily Exercice"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selst_dayly_near1" />
+
+        <Button
+            android:id="@+id/selst_pills_bt"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/main_button"
+            android:padding="15dp"
+            android:text="Daily Pills"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selst_dayly_bt" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

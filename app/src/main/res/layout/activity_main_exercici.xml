@@ -30,7 +30,7 @@
         android:layout_marginBottom="50dp"
         android:background="@drawable/boton_1"
         android:onClick="goToMuscle"
-        android:text="Seleccionar musculo"
+        android:text="@string/main_exercice_select_button"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

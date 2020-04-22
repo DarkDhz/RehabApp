@@ -11,8 +11,6 @@ import dev.virtualplanet.rehabapp.controller.Controller
 class MainExerciciActivity : ListActivity() {
 
     private val controller = Controller
-    private val muscleList = ArrayList<String>()
-    //lateinit var l : ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
