@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Switch
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
@@ -57,6 +58,16 @@ class EditProfileActivity : AppCompatActivity() {
         new_wheelChair = this.e_textView_WheelChair_Value.isChecked
 
         controller.saveProfileData(this, new_age, new_weight, new_height, new_wheelChair)
+
+        val intent = Intent(this, ProfileActivity::class.java)
+
+        intent.putExtra("AGE", new_age)
+        intent.putExtra("HEIGHT", new_height)
+        intent.putExtra("WEIGHT", new_weight)
+        intent.putExtra("WHEEL", new_wheelChair)
+
+        startActivity(intent)
+
         Toast.makeText(this, "Datos Guardados", Toast.LENGTH_LONG).show()
 
     }

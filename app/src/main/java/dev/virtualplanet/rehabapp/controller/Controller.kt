@@ -245,6 +245,8 @@ object Controller {
         } else {
             context.findViewById<TextView>(R.id.textView_IMC_Value).text =
                 calculateIMC(weight.toDouble(), (height.toDouble()/100)).toString()
+
+
         }
     }
 
@@ -349,6 +351,7 @@ object Controller {
 
                     if (wheelchair) {
                         context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).text = "SI"
+                        context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).setChecked(true)
                     } else {
                         context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).text = "NO"
                     }
