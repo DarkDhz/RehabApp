@@ -1,38 +1,34 @@
 package dev.virtualplanet.rehabapp.view
 
-import android.R.attr.data
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.get
-import androidx.core.view.setPadding
 import dev.virtualplanet.rehabapp.R
-import kotlinx.android.synthetic.main.delete_muscle_alert.view.*
+import dev.virtualplanet.rehabapp.controller.Controller
 
 
 class Adaptador : BaseAdapter {
-    lateinit var actividad : Activity
-    var lista = ArrayList<String>()
+    private var activity : MainExerciciActivity
+    private var list = ArrayList<String>()
 
-    constructor(actividad: Activity, lista: ArrayList<String>) : super() {
-        this.actividad = actividad
-        this.lista = lista
+    constructor(actividad: MainExerciciActivity, lista: ArrayList<String>) : super() {
+        this.activity = actividad
+        this.list = lista
     }
 
     override fun getView(pos: Int, view: View?, p2: ViewGroup?): View {
-        var inflater : LayoutInflater  = actividad.layoutInflater
+        var inflater : LayoutInflater  = activity.layoutInflater
         var vi: View? = view
         if (vi == null)  {
             vi = inflater.inflate(R.layout.list_item, null)
         }
-        vi!!.findViewById<TextView>(R.id.list_item_header).text = lista[pos]
+        vi!!.findViewById<TextView>(R.id.list_item_header).text = list[pos]
         vi!!.findViewById<Button>(R.id.list_item_play).setOnClickListener {
-            var i : Intent = Intent(vi!!.context, ViewExercicesActivity::class.java).putExtra("exercice", lista[pos])
+            var i : Intent = Intent(vi!!.context, ViewExercicesActivity::class.java).putExtra("exercice", list[pos])
             vi!!.context.startActivity(i)
         }
         vi!!.findViewById<Button>(R.id.list_item_delete).setOnClickListener {
@@ -40,13 +36,15 @@ class Adaptador : BaseAdapter {
             builder.setView(inflater.inflate(R.layout.delete_muscle_alert, null))
             val dialog: AlertDialog = builder.create()
             var alertView = inflater.inflate(R.layout.delete_muscle_alert, null)
-            alertView.findViewById<TextView>(R.id.delete_muscle_alert_header).text = "¿Seguro que quieres eliminar " + lista[pos] + "?"
+            alertView.findViewById<TextView>(R.id.delete_muscle_alert_header).text = "¿Seguro que quieres eliminar " + list[pos] + "?"
             alertView.findViewById<Button>(R.id.delete_muscle_alert_cancel).setOnClickListener {
                 dialog.cancel()
             }
             alertView.findViewById<Button>(R.id.delete_muscle_alert_confirm).setOnClickListener {
                 dialog.cancel()
-                //TODO REMOVE FROM SHARED AND UPDATE
+                Controller.removeSavedExercice(activity, list[pos])
+                activity.loadList()
+
             }
 
             dialog.setView(alertView)
@@ -58,7 +56,7 @@ class Adaptador : BaseAdapter {
 
 
     override fun getItem(p0: Int): Any {
-        return lista[p0]
+        return list[p0]
     }
 
     override fun getItemId(p0: Int): Long {
@@ -66,6 +64,6 @@ class Adaptador : BaseAdapter {
     }
 
     override fun getCount(): Int {
-        return lista.size
+        return list.size
     }
 }

@@ -17,6 +17,7 @@ class MainExerciciActivity : ListActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_exercici)
+        loadList()
         //l = findViewById(android.R.id.list)
 
     }
@@ -27,37 +28,15 @@ class MainExerciciActivity : ListActivity() {
     }
 
 
-    fun ListarMusclus(){
-        var adapt = Adaptador(this, muscleList)
+    fun loadList() {
+        val list = controller.loadSavedExercices(this)
+        var adapt = Adaptador(this, list)
         listAdapter = adapt
-    }
-    fun añadir(s : String){
-        if (s != "null" && !muscleList.contains(s)) {
-            muscleList.add(s)
-            ListarMusclus()
-        }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        var muscle : String? = "null"
-        if (data != null) {
-            muscle = data.getStringExtra("musculo")
-            when (muscle) {
-                "hombro_derecho" -> muscle = "Hombro derecho"
-                "hombro_izquierdo" -> muscle = "Hombro izquierdo"
-                "codo_derecho" -> muscle = "Codo derecho"
-                "codo_izquierdo" -> muscle = "Codo izquierdo"
-                "muneca_derecha" -> muscle = "Muñeca derecha"
-                "muneca_izq" -> muscle = "Muñeca izquierda"
-                "rodilla_derecha" -> muscle = "Rodilla derecha"
-                "rodilla_izquierda" -> muscle = "Rodilla izquierda"
-                "tobillo_derecho" -> muscle = "Tobillo derecho"
-                "tobillo_izquierdo" -> muscle = "Tobillo izquierdo"
-            }
-            añadir(muscle!!)
-        }
-
+        this.loadList()
     }
 }
 
