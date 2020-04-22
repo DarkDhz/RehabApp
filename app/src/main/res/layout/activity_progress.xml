@@ -26,7 +26,7 @@
         android:contentDescription="@string/global_returnbt_desc" />
 
     <TextView
-        android:id="@+id/main_app_title"
+        android:id="@+id/progress_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -63,19 +63,18 @@
         android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_app_title">
+        app:layout_constraintTop_toBottomOf="@+id/progress_header">
 
-        <Spinner
-            android:id="@+id/select_static_spinner"
+        <TextView
+            android:id="@+id/progress_media"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:prompt="@string/app_name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button_test"
+            android:id="@+id/progress_date_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
@@ -85,7 +84,7 @@
             android:paddingEnd="10sp"
             android:text="@string/progress_select_date"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/select_static_spinner"
+            app:layout_constraintStart_toEndOf="@+id/progress_media"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

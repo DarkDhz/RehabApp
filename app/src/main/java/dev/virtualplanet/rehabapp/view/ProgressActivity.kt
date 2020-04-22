@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.github.mikephil.charting.charts.LineChart
@@ -33,17 +34,25 @@ class ProgressActivity : AppCompatActivity() {
 
 
     private fun init() {
-        val selSpiner = findViewById<Spinner>(R.id.select_static_spinner)
+        if (intent.extras != null) {
+            val type = intent.getStringExtra("type")
+            if (type.contains("Exercice")) {
+                findViewById<TextView>(R.id.progress_header).text = "Resumen de ejercicios"
+            }
+        }
+        /*val selSpiner = findViewById<Spinner>(R.id.select_static_spinner)
         val values = ArrayList<String>()
         values.add("Número de ejercicios")
 
         val selAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, values)
-        selSpiner.adapter = selAdapter
+        selSpiner.adapter = selAdapter*/
 
 
         val progressChart = findViewById<LineChart>(R.id.progress_content)
         progressChart.isVisible = false
         Controller.loadProgressData(this)
+
+
     }
 
     fun openMonthSelector(view: View) {

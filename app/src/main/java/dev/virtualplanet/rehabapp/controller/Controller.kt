@@ -172,11 +172,17 @@ object Controller {
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
         if (user != "") {
-            val date = craftData()
-            data.collection(progressTable).document(date).get().addOnFailureListener {
-                data.collection(progressTable).document(date).set(mapOf(
-                    date to 0
-                ))
+            val date = craftData(30)
+
+            data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
+                val actual : String? = it.get(craftData()).toString()
+                if (actual == null || actual != "" || actual == "null") {
+                    data.collection(progressTable).document(user.toString()).update(
+                        mapOf(
+                            date to 23
+                        )
+                    )
+                }
             }
             val intent = Intent (context, MainActivity::class.java)
             context.startActivity(intent)
@@ -384,12 +390,17 @@ object Controller {
                 progressChart.xAxis.setDrawLabels(true)
                 progressChart.setTouchEnabled(false)
                 val yValues = ArrayList<Entry>()
+                val list = ArrayList<Int>()
                 for (x in 1 until 32) {
                     val actual : String? = it.get(craftData(x)).toString()
                     if (actual != null && actual != "" && actual != "null") {
-                        yValues.add(Entry(x.toFloat(), actual.toFloat()))
+                        if (actual.toInt() > 0){
+                            yValues.add(Entry(x.toFloat(), actual.toFloat()))
+                            list.add(actual.toInt())
+                        }
                     }
                 }
+                context.findViewById<TextView>(R.id.progress_media).text = "Media: " + calculateAverage(list).toString()
                 val set1 = LineDataSet(yValues, "Número de Ejercicios")
                 set1.lineWidth = 6f
                 set1.circleRadius = 6f
@@ -428,13 +439,17 @@ object Controller {
                 progressChart.setTouchEnabled(false)
 
                 val yValues = ArrayList<Entry>()
+                val list = ArrayList<Int>()
                 for (x in 1 until 32) {
                     val actual : String? = it.get(craftData(x, month2, year)).toString()
                     if (actual != null && actual != "" && actual != "null") {
-                        yValues.add(Entry(x.toFloat(), actual.toFloat()))
+                        if (actual.toInt() > 0){
+                            yValues.add(Entry(x.toFloat(), actual.toFloat()))
+                            list.add(actual.toInt())
+                        }
                     }
-
                 }
+                context.findViewById<TextView>(R.id.progress_media).text = "Media: " + calculateAverage(list).toString()
                 val set1 = LineDataSet(yValues, "Número de Ejercicios")
                 set1.lineWidth = 6f
                 set1.circleRadius = 6f
@@ -453,6 +468,14 @@ object Controller {
         }
     }
 
+
+    private fun calculateAverage(list: List<Int>) : Int {
+        var toReturn = 0
+        for (x in list) {
+            toReturn += x
+        }
+        return toReturn/list.size
+    }
 
     fun addSavedExercices(context: Context, name : String) : Boolean {
         val exercicePreferences = context.getSharedPreferences(sharedExercices, Context.MODE_PRIVATE)
