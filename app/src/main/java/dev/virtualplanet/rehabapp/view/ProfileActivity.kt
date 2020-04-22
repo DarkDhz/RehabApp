@@ -4,12 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
+import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_profile.*
 
 
@@ -34,15 +36,21 @@ class ProfileActivity : AppCompatActivity() {
     private fun init() {
         if (intent.extras != null) {
 
-            val age = intent.getStringExtra("AGE")
+
+            //val age = intent.getStringExtra("AGE")
+            //Toast.makeText(this, age, Toast.LENGTH_LONG).show()
+            //findViewById<TextView>(R.id.textView_Age_Value).text = age
+            //Controller.changeProfile(this, age, "0", "0", false)
+            /*
             val height = intent.getStringExtra("HEIGHT")
             val weight = intent.getStringExtra("WEIGHT")
             val wheel = intent.getBooleanExtra("WHEEL", false)
 
             Controller.changeProfile(this, age, height, weight, wheel)
-
+            */
         } else {
-            Controller.loadProfile(this)
+           // this.findViewById<TextView>(R.id.textView_Age_Value).text = "33"
+            //Controller.loadProfile(this)
         }
     }
 

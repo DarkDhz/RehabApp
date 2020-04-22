@@ -68,7 +68,7 @@ class EditProfileActivity : AppCompatActivity() {
 
         startActivity(intent)
 
-        //Toast.makeText(this, "Datos Guardados", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Datos Guardados", Toast.LENGTH_LONG).show()
 
     }
 

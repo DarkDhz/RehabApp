@@ -243,6 +243,8 @@ object Controller {
         } else {
             context.findViewById<TextView>(R.id.textView_IMC_Value).text =
                 calculateIMC(weight.toDouble(), (height.toDouble()/100)).toString()
+
+
         }
     }
 
