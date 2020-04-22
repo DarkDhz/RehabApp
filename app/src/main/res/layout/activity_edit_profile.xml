@@ -37,35 +37,65 @@
 
 
     <LinearLayout
-        android:id="@+id/e_profile_layout"
+    android:id="@+id/e_profile_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="25dp"
+    android:layout_marginTop="125dp"
+    android:orientation="horizontal"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+
+    <TextView
+        android:id="@+id/e_profile_title"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:paddingEnd="50dp"
+        android:paddingStart="0dp"
+        android:text="@string/profile_title" />
+
+    <TextView
+        android:id="@+id/e_profile_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:enabled="false"
+        android:text="@string/UserName" />
+
+</LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/e_sex_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="125dp"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/e_profile_layout">
 
 
         <TextView
-            android:id="@+id/e_profile_title"
+            android:id="@+id/e_sex_title"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:enabled="false"
-            android:paddingEnd="50dp"
             android:paddingStart="0dp"
-            android:text="@string/profile_title" />
+            android:paddingEnd="50dp"
+            android:text="@string/profile_sex_title" />
 
         <TextView
-            android:id="@+id/e_profile_content"
+            android:id="@+id/e_sex_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:enabled="false"
-            android:text="@string/UserName" />
+            android:text="Hombre" />
 
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/e_age_layout"
@@ -75,25 +105,25 @@
         android:layout_marginTop="50dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/e_profile_layout">
+        app:layout_constraintTop_toBottomOf="@+id/e_sex_layout">
 
         <TextView
             android:id="@+id/e_textView_Age_Title"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:paddingEnd="50dp"
             android:paddingStart="0dp"
-            android:text="@string/profile_age_title" />
+            android:paddingEnd="50dp"
+            android:text="@string/profile_age_title"
+            android:textColor="@android:color/black" />
 
         <EditText
             android:id="@+id/e_textView_Age_Value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="numberSigned"
             android:hint="@string/profile_age_value"
-            android:textColor="@android:color/black"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:inputType="numberSigned"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/e_textView_Age_Units"
@@ -102,11 +132,9 @@
             android:paddingStart="10dp"
             android:paddingEnd="0dp"
             android:text="@string/age_unit"
-            android:textColor="@android:color/black"
-            />
+            android:textColor="@android:color/black" />
 
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/e_height_layout"
