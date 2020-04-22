@@ -16,9 +16,11 @@
 
         android:layout_width="325dp"
         android:layout_height="500dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
         android:divider="#00000000"
         android:dividerHeight="10dip"
+        app:layout_constraintBottom_toTopOf="@+id/main_exercice_select"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +29,7 @@
         android:id="@+id/main_exercice_select"
         android:layout_width="175dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/boton_1"
         android:onClick="goToMuscle"
         android:text="@string/main_exercice_select_button"
