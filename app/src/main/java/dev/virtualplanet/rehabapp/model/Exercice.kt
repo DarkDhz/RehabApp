@@ -5,10 +5,10 @@ import java.io.File
 class Exercice {
     var name = String()
     var description = String()
-    var num_rep = 0
-    var num_ser = 0
-    var break_time = 0
-    var video = File("")
+    var num_rep : Int
+    var num_ser : Int
+    var break_time : Int
+    var video : File
 
     constructor(n: String, des: String, rep: Int, ser: Int, time: Int, url: String) {
         this.name = n

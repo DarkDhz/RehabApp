@@ -25,7 +25,7 @@ class MainExerciciActivity : ListActivity() {
     }
 
     fun goToMuscle(view: View) {
-        val intent = Intent(this, selMus2Activity::class.java)
+        val intent = Intent(this, SelectMuscleActivity::class.java)
         startActivityForResult(intent,1234)
     }
 
@@ -47,6 +47,27 @@ class MainExerciciActivity : ListActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (data != null) {
             musculo = data.getStringExtra("musculo")
+            if (musculo.equals("hombro_derecho")) {
+                musculo = "Hombro derecho"
+            } else if (musculo.equals("hombro_izquierdo")) {
+                musculo = "Hombro izquierdo"
+            } else if (musculo.equals("codo_derecho")) {
+                musculo = "Codo derecho"
+            } else if (musculo.equals("codo_izquierdo")) {
+                musculo = "Codo izquierdo"
+            } else if (musculo.equals("muneca_derecha")) {
+                musculo = "Muñeca derecha"
+            } else if (musculo.equals("muneca_izq")) {
+                musculo = "Muñeca izquierda"
+            } else if (musculo.equals("rodilla_derecha")) {
+                musculo = "Rodilla derecha"
+            } else if (musculo.equals("rodilla_izquierda")) {
+                musculo = "Rodilla izquierda"
+            } else if (musculo.equals("tobillo_derecho")) {
+                musculo = "Tobillo derecho"
+            } else if (musculo.equals("tobillo_izquierdo")) {
+                musculo = "Tobillo izquierdo"
+            }
         }
         añadir(musculo)
     }

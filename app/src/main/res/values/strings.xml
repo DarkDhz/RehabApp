@@ -67,4 +67,5 @@
     <string name="recover_insert_value">Correo electrónico</string>
     <string name="recover_send_bt">Enviar</string>
     <string name="register_go_button">Registrarse</string>
+    <string name="progress_select_date">Cambiar fecha</string>
 </resources>
