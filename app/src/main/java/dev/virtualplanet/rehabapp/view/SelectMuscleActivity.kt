@@ -380,4 +380,9 @@ class SelectMuscleActivity : AppCompatActivity() {
     }
 
 
+    fun goBack(view: View) {
+        val intent = Intent(this, MainExerciciActivity::class.java)
+        startActivity(intent)
+    }
+
 }

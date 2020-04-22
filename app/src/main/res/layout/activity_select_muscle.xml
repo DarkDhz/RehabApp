@@ -8,6 +8,21 @@
     tools:context=".view.SelectMuscleActivity"
     android:background="@drawable/background">
 
+    <ImageButton
+        android:id="@+id/global_return_bt"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/img_return"
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="407dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:onClick="goBack"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/global_returnbt_desc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <TextView
         android:id="@+id/titulo"

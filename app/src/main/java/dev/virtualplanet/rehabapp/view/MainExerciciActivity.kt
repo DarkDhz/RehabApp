@@ -38,6 +38,11 @@ class MainExerciciActivity : ListActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         this.loadList()
     }
+
+    fun goBack(view: View) {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
 }
 
 
