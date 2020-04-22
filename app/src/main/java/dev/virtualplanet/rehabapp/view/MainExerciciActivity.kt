@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import dev.virtualplanet.rehabapp.R
-import android.widget.AdapterView
-import android.widget.ListView
 
 import dev.virtualplanet.rehabapp.controller.Controller
 
@@ -13,14 +11,13 @@ import dev.virtualplanet.rehabapp.controller.Controller
 class MainExerciciActivity : ListActivity() {
 
     private val controller = Controller
-    lateinit var musculo : String
-    val musculos = ArrayList<String>()
-    lateinit var l : ListView
+    private val muscleList = ArrayList<String>()
+    //lateinit var l : ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_exercici)
-        l = findViewById(android.R.id.list)
+        //l = findViewById(android.R.id.list)
 
     }
 
@@ -31,47 +28,36 @@ class MainExerciciActivity : ListActivity() {
 
 
     fun ListarMusclus(){
-        var adapt = Adaptador(this, musculos)
+        var adapt = Adaptador(this, muscleList)
         listAdapter = adapt
-        l.setOnItemClickListener(AdapterView.OnItemClickListener(){ adapterView: AdapterView<*>, view1: View, i: Int, l: Long ->
-            var i : Intent = Intent(this, ViewExercicesActivity::class.java)
-            startActivity(i)
-        })
     }
     fun añadir(s : String){
-        if (!musculos.contains(s)) {
-            musculos.add(s)
+        if (s != "null" && !muscleList.contains(s)) {
+            muscleList.add(s)
             ListarMusclus()
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        var muscle : String? = "null"
         if (data != null) {
-            musculo = data.getStringExtra("musculo")
-            if (musculo.equals("hombro_derecho")) {
-                musculo = "Hombro derecho"
-            } else if (musculo.equals("hombro_izquierdo")) {
-                musculo = "Hombro izquierdo"
-            } else if (musculo.equals("codo_derecho")) {
-                musculo = "Codo derecho"
-            } else if (musculo.equals("codo_izquierdo")) {
-                musculo = "Codo izquierdo"
-            } else if (musculo.equals("muneca_derecha")) {
-                musculo = "Muñeca derecha"
-            } else if (musculo.equals("muneca_izq")) {
-                musculo = "Muñeca izquierda"
-            } else if (musculo.equals("rodilla_derecha")) {
-                musculo = "Rodilla derecha"
-            } else if (musculo.equals("rodilla_izquierda")) {
-                musculo = "Rodilla izquierda"
-            } else if (musculo.equals("tobillo_derecho")) {
-                musculo = "Tobillo derecho"
-            } else if (musculo.equals("tobillo_izquierdo")) {
-                musculo = "Tobillo izquierdo"
+            muscle = data.getStringExtra("musculo")
+            when (muscle) {
+                "hombro_derecho" -> muscle = "Hombro derecho"
+                "hombro_izquierdo" -> muscle = "Hombro izquierdo"
+                "codo_derecho" -> muscle = "Codo derecho"
+                "codo_izquierdo" -> muscle = "Codo izquierdo"
+                "muneca_derecha" -> muscle = "Muñeca derecha"
+                "muneca_izq" -> muscle = "Muñeca izquierda"
+                "rodilla_derecha" -> muscle = "Rodilla derecha"
+                "rodilla_izquierda" -> muscle = "Rodilla izquierda"
+                "tobillo_derecho" -> muscle = "Tobillo derecho"
+                "tobillo_izquierdo" -> muscle = "Tobillo izquierdo"
             }
+            añadir(muscle!!)
         }
-        añadir(musculo)
+
     }
 }
 
