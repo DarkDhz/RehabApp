@@ -23,8 +23,8 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.init()
         setContentView(R.layout.activity_profile)
+        this.init()
     }
 
     fun editProfile(view: View) {
@@ -36,21 +36,17 @@ class ProfileActivity : AppCompatActivity() {
     private fun init() {
         if (intent.extras != null) {
 
-
-            //val age = intent.getStringExtra("AGE")
-            //Toast.makeText(this, age, Toast.LENGTH_LONG).show()
-            //findViewById<TextView>(R.id.textView_Age_Value).text = age
-            //Controller.changeProfile(this, age, "0", "0", false)
-            /*
+            val name = intent.getStringExtra("NAME")
+            val sex = intent.getStringExtra("SEX")
+            val age = intent.getStringExtra("AGE")
             val height = intent.getStringExtra("HEIGHT")
             val weight = intent.getStringExtra("WEIGHT")
             val wheel = intent.getBooleanExtra("WHEEL", false)
 
-            Controller.changeProfile(this, age, height, weight, wheel)
-            */
+            Controller.changeProfile(this, name, age, sex, height, weight, wheel)
+
         } else {
-           // this.findViewById<TextView>(R.id.textView_Age_Value).text = "33"
-            //Controller.loadProfile(this)
+            Controller.loadProfile(this)
         }
     }
 

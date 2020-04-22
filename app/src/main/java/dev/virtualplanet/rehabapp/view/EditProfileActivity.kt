@@ -12,6 +12,7 @@ import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_edit_profile.view.*
+import kotlinx.android.synthetic.main.activity_profile.*
 
 class EditProfileActivity : AppCompatActivity() {
 
@@ -35,10 +36,13 @@ class EditProfileActivity : AppCompatActivity() {
     */
     fun saveProfile(view: View) {
 
+        val name : String
+        val sex : String
         val new_age : String
         val new_height : String
         val new_weight : String
         val new_wheelChair : Boolean
+
 
         if (this.e_textView_Age_Value.text.toString().isBlank())
             new_age = "Not Set"
@@ -56,11 +60,15 @@ class EditProfileActivity : AppCompatActivity() {
             new_weight = this.e_textView_Weight_Value.text.toString()
 
         new_wheelChair = this.e_textView_WheelChair_Value.isChecked
+        name = this.e_profile_content.text.toString()
+        sex = this.e_sex_content.text.toString()
 
         controller.saveProfileData(this, new_age, new_weight, new_height, new_wheelChair)
 
         val intent = Intent(this, ProfileActivity::class.java)
 
+        intent.putExtra("NAME", name)
+        intent.putExtra("SEX", sex)
         intent.putExtra("AGE", new_age)
         intent.putExtra("HEIGHT", new_height)
         intent.putExtra("WEIGHT", new_weight)
