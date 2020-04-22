@@ -36,6 +36,8 @@ object Controller {
 
     private const val notSetString = "Not Set"
 
+
+    //TODO https://stackoverflow.com/questions/15832335/android-custom-row-item-for-listview
     private val factory = ModelFactory
 
     private val exList = factory.makeExerciceList()
@@ -448,6 +450,45 @@ object Controller {
                 progressChart.isVisible = true
                 progressChart.invalidate()
             }
+        }
+    }
+
+
+    fun addSavedExercices(context: Context, name : String) : Boolean {
+        val exercicePreferences = context.getSharedPreferences(sharedExercices, Context.MODE_PRIVATE)
+        val valid = exercicePreferences.getString(name, "null")
+        if (valid == "null") {
+            val editor: SharedPreferences.Editor = exercicePreferences.edit()
+            editor.putString(name, "valid")
+            editor.apply()
+            return true
+        } else {
+            return false
+        }
+
+    }
+
+    fun loadSavedExercices(context: Context) : ArrayList<String> {
+        val toReturn = ArrayList<String>()
+        val exercicePreferences = context.getSharedPreferences(sharedExercices, Context.MODE_PRIVATE)
+        val valid = exercicePreferences.all
+        for ( value in valid.keys) {
+            toReturn.add(value)
+        }
+        //Toast.makeText(context, toReturn.toString(), Toast.LENGTH_LONG).show()
+        return toReturn
+    }
+
+    fun removeSavedExercice(context: Context, name: String) : Boolean {
+        val exercicePreferences = context.getSharedPreferences(sharedExercices, Context.MODE_PRIVATE)
+        val valid = exercicePreferences.getString(name, "null")
+        if (valid != "null") {
+            val editor: SharedPreferences.Editor = exercicePreferences.edit()
+            editor.remove(name)
+            editor.apply()
+            return true
+        } else {
+            return false
         }
     }
 

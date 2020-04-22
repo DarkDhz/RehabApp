@@ -27,6 +27,7 @@ class SelectMuscleActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this@SelectMuscleActivity, R.style.AlertDialog)
         var displayMetrics : DisplayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
+        var context = this
         //this.prueba.text = "x: " + displayMetrics.widthPixels + " y: " + displayMetrics.heightPixels
         var imagen : ImageView = findViewById(R.id.cuerpo)
         imagen.setOnTouchListener(object : View.OnTouchListener {
@@ -90,9 +91,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.hombro_derecho)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el hombro derecho").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "hombro_derecho")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Hombro derecho")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -105,9 +105,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.hombro_izq)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el hombro izquierdo").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "hombro_izquierdo")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Hombro izquierdo")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -120,9 +119,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.codo_derecho)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el codo derecho").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "codo_derecho")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Codo derecho")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -150,9 +148,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.muneca_derecha)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar la muñeca derecha").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "muneca_derecha")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Muñeca derecha")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -165,9 +162,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.muneca_izq)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar la muñeza izquierda").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "muneca_izq")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Muñeca izquierda")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -180,9 +176,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.rodilla_derecha)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar la rodilla derecha").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "rodilla_derecha")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Rodilla derecha")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -195,9 +190,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.rodilla_izq)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar la rodilla izquierda").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "rodilla_izquierda")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Rodilla izquierda")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -210,9 +204,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.tobillo_derecho)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el tobillo derecho").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "tobillo_derecho")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Tobillo derecho")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -225,9 +218,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.tobillo_izq)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el tobillo izquierdo").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "tobillo_izquierdo")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Tobillo izquierdo")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -243,9 +235,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.hombro_derecho)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el hombro derecho").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "hombro_derecho")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Hombro derecho")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -258,9 +249,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.hombro_izq)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el hombro izquierdo").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "hombro_izquierdo")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Hombro izquierdo")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -273,9 +263,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.codo_derecho)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el codo derecho").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "codo_derecho")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Codo derecho")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -288,9 +277,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.codo_izq)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el codo izquierdo").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "codo_izquierdo")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Codo izquierdo")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -303,9 +291,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.muneca_derecha)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar la muñeca derecha").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "muneca_derecha")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Muñeca derecha")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -318,8 +305,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.muneca_izq)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el muñeca izquierda").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("muneca_izquierda", "muneca_izquierda")
-                                startActivity(i)
+                                    Controller.addSavedExercices(context, "Muñeca izquierda")
+                                    imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -332,9 +319,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.rodilla_derecha)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar la rodilla derecha").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "rodilla_derecha")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Rodilla derecha")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -347,9 +333,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.rodilla_izq)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar la rodilla izquierda").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "rodilla_izquierda")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Rodilla izquierda")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -362,9 +347,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.tobillo_derecho)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el tobillo derecho").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "tobillo_derecho")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Tobillo derecho")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -377,9 +361,8 @@ class SelectMuscleActivity : AppCompatActivity() {
                             imagen.setImageResource(R.drawable.tobillo_izq)
                             builder.setTitle("Confirmar").setMessage("Estas seguro de que deseas seleccionar el tobillo izquierdo").setPositiveButton("SÍ"){
                                     dialog, which ->
-                                i.putExtra("musculo", "tobillo_izquierdo")
-                                setResult(Activity.RESULT_OK, intent)
-                                finish()
+                                Controller.addSavedExercices(context, "Tobillo izquierdo")
+                                imagen.setImageResource(R.drawable.original)
                             }.setNegativeButton("NO"){dialog,which ->
                                 Toast.makeText(applicationContext,"Selecciona otro",Toast.LENGTH_SHORT).show()
                                 imagen.setImageResource(R.drawable.original)
@@ -396,8 +379,5 @@ class SelectMuscleActivity : AppCompatActivity() {
         )
     }
 
-    override fun onBackPressed() {
-        //BLOCKED FOR SECURITY
-    }
 
 }
