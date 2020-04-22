@@ -15,7 +15,7 @@ class ViewExercicesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.exercise_viewpager_layout)
+        setContentView(R.layout.activity_view_exercices)
 
         var intent = intent
         var hombro = intent.getStringExtra("hombro_derecho")

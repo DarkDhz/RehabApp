@@ -58,7 +58,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,6 +69,7 @@
             android:id="@+id/progress_media"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -77,14 +78,15 @@
             android:id="@+id/progress_date_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
+            android:layout_marginEnd="30dp"
             android:background="@drawable/boton_1"
             android:onClick="openMonthSelector"
             android:paddingStart="10sp"
             android:paddingEnd="10sp"
             android:text="@string/progress_select_date"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/progress_media"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
