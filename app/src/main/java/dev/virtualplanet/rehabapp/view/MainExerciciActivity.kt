@@ -39,8 +39,10 @@ class MainExerciciActivity : ListActivity() {
         })
     }
     fun añadir(s : String){
-        musculos.add(s)
-        ListarMusclus()
+        if (!musculos.contains(s)) {
+            musculos.add(s)
+            ListarMusclus()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -17,7 +17,6 @@
         <activity android:name=".view.SettingsActivity" />
         <activity android:name=".view.EditProfileActivity" />
         <activity android:name=".view.ProgressActivity" />
-        <activity android:name=".view.SelectMuscleActivity" />
         <activity android:name=".view.RegisterActivity" />
         <activity android:name=".view.MainActivity" />
         <activity android:name=".view.RecoverPassActivity" />
