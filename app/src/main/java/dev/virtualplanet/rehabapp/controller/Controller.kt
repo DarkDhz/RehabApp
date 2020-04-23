@@ -78,9 +78,7 @@ object Controller {
             val message = Toast.makeText(view.context, "Alguno de los campos esta vacio", Toast.LENGTH_LONG)
             message.show()
         }
-
     }
-
 
     fun validateRegister(user: String, pass: String, confirm: String, mail: String, view: View) {
         if ((user.isBlank()) || (pass.isBlank()) || (confirm.isBlank()) || (mail.isBlank())) {
@@ -197,31 +195,45 @@ object Controller {
 
     private fun craftData(day: Int) : String {
         var month : String = SimpleDateFormat("MM-yyyy").format(Calendar.getInstance().time)
-        return day.toString() + "-" + month
+        return ("$day-$month")
     }
 
     private fun craftData(day: Int, month: Int) : String {
         var year : String = SimpleDateFormat("yyyy").format(Calendar.getInstance().time)
-        return day.toString() + "-" + month + "-" + year
-    }
+        when (month > 9) {
+            true -> return ("$day-$month-$year")
+            false -> return ("$day-0$month-$year")
+        }
+
+}
 
     private fun craftData(day: Int, month: Int, year: Int) : String {
-        if (month > 9) {
-            return day.toString() + "-" + month.toString() + "-" + year.toString()
-        } else {
-            return day.toString() + "-0" + month.toString() + "-" + year.toString()
+        when (month > 9) {
+            true -> return ("$day-$month-$year")
+            false -> return ("$day-0$month-$year")
         }
 
     }
 
-    fun removeUser(context: Context) {
+    fun logOut(context: Context) {
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
-        val editor: SharedPreferences.Editor = userPreferences.edit()
+        var editor: SharedPreferences.Editor = userPreferences.edit()
 
         editor.remove("email")
         editor.apply()
+
+        val exercicePreferences = context.getSharedPreferences(sharedExercices, Context.MODE_PRIVATE)
+        editor = exercicePreferences.edit()
+
+        for (key in exercicePreferences.all.keys) {
+            editor.remove(key)
+        }
+
+        editor.apply()
+
         val intent = Intent(context, LoginActivity::class.java)
         context.startActivity(intent)
+
     }
 
     fun changeProfile(context: ProfileActivity, age: String, height: String, weight: String, wheelchair: Boolean) {
@@ -241,13 +253,13 @@ object Controller {
         }
 
         if (wheelchair) {
-            context.findViewById<TextView>(R.id.textView_WheelChair_Value).text = "SI"
+            context.findViewById<TextView>(R.id.textView_WheelChair_Value).text = ("SI")
         } else {
-            context.findViewById<TextView>(R.id.textView_WheelChair_Value).text = "NO"
+            context.findViewById<TextView>(R.id.textView_WheelChair_Value).text = ("NO")
         }
 
         if (height.equals(notSetString) || weight.equals(notSetString)) {
-            context.findViewById<TextView>(R.id.textView_IMC_Value).text = "No se puede calcular sin altura y peso"
+            context.findViewById<TextView>(R.id.textView_IMC_Value).text = ("No se puede calcular sin altura y peso")
         } else {
             context.findViewById<TextView>(R.id.textView_IMC_Value).text =
                 calculateIMC(weight.toDouble(), (height.toDouble()/100)).toString()
@@ -419,7 +431,7 @@ object Controller {
     }
 
     private fun setLineChartData(context: LinearProgressActivity , values: ArrayList<Entry>, list : ArrayList<Int>) {
-        context.findViewById<TextView>(R.id.progress_media).text = "Media: " + calculateAverage(list).toString()
+        context.findViewById<TextView>(R.id.progress_media).text = ("Media: " + calculateAverage(list).toString())
         val chart = context.findViewById<LineChart>(R.id.progress_content)
         chart.isEnabled = false
         chart.isDragEnabled = true
@@ -449,9 +461,9 @@ object Controller {
     }
 
     private fun setBarChartData(context: BarProgressActivity , values: ArrayList<BarEntry>, list : ArrayList<Int>) {
-        context.findViewById<TextView>(R.id.bar_progress_media).text = "Media: " + calculateAverage(list).toString()
+        context.findViewById<TextView>(R.id.bar_progress_media).text = ("Media: " + calculateAverage(list).toString())
         val chart = context.findViewById<BarChart>(R.id.bar_progress_content)
-        context.findViewById<TextView>(R.id.bar_progress_media).text = "Media: " + calculateAverage(list).toString()
+        context.findViewById<TextView>(R.id.bar_progress_media).text = ("Media: " + calculateAverage(list).toString())
         val set1 = BarDataSet(values, "Número de ejercicios")
         set1.setDrawIcons(false)
         set1.valueTextSize = 15f
@@ -500,7 +512,7 @@ object Controller {
     fun loadProgressData(context: BarProgressActivity, month : Int, year: Int){
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
-        var month2 = month+1
+        val month2 = month+1
         if (user != "") {
             data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
                 val yValues = ArrayList<BarEntry>()
@@ -549,8 +561,7 @@ object Controller {
     fun loadSavedExercices(context: Context) : ArrayList<String> {
         val toReturn = ArrayList<String>()
         val exercicePreferences = context.getSharedPreferences(sharedExercices, Context.MODE_PRIVATE)
-        val valid = exercicePreferences.all
-        for ( value in valid.keys) {
+        for ( value in exercicePreferences.all.keys) {
             toReturn.add(value)
         }
         //Toast.makeText(context, toReturn.toString(), Toast.LENGTH_LONG).show()

@@ -11,7 +11,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
-import kotlinx.android.synthetic.main.activity_settings.view.*
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -50,7 +49,7 @@ class SettingsActivity : AppCompatActivity() {
         }
         alertView.findViewById<Button>(R.id.delete_muscle_alert_confirm).setOnClickListener {
             dialog.cancel()
-            Controller.removeUser(this)
+            Controller.logOut(this)
         }
 
         dialog.setView(alertView)

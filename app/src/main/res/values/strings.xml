@@ -70,4 +70,5 @@
     <string name="progress_select_date">Cambiar fecha</string>
     <string name="main_exercice_select_button">Seleccionar musculo</string>
     <string name="select_static_header">Selecciona una estadística</string>
+    <string name="select_representation_type_txt">Selecciona como quieres visualizar:</string>
 </resources>
