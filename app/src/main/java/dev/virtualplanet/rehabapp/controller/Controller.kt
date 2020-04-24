@@ -4,11 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
+import android.net.Uri
 import android.view.View
 import android.widget.EditText
 import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.isVisible
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.LineChart
@@ -31,8 +33,8 @@ object Controller {
     private val data = FirebaseFirestore.getInstance()
     private const val userTable = "USERS"
     private const val progressTable = "PROGRESS"
-    private const val sharedTable = "userInfo"
-    private const val sharedExercices = "selected"
+    const val sharedTable = "userInfo"
+    const val sharedExercices = "selected"
 
     private const val notSetString = "Not Set"
 
@@ -50,46 +52,35 @@ object Controller {
         return null
     }
 
-    fun validateLogin(user: String, pass: String, view: View) {
-        //FireAuth
+    fun validateLogin(user: String, pass: String, loginCallback: Callback<String>) {
         if (!user.isBlank() && !pass.isBlank()) {
             data.collection(userTable).document(user)
                 .get().addOnSuccessListener {
                     val checkPass = it.get("password").toString()
                     if (checkPass == pass) {
-                        val userPreferences = view.context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
-                        val editor: SharedPreferences.Editor = userPreferences.edit()
-
-                        editor.putString("email", user)
-                        editor.apply()
-
-                        val intent = Intent(view.context, MainActivity::class.java)
-                        view.context.startActivity(intent)
+                        loginCallback.onCallback("success")
                     } else {
-                        val message = Toast.makeText(view.context, "Contraseña incorrecta", Toast.LENGTH_LONG)
-                        message.show()
+                        loginCallback.onCallback("Contraseña incorrecta")
                     }
                 }.addOnFailureListener {
-                    val message = Toast.makeText(view.context, "Contraseña o usuario incorrecto", Toast.LENGTH_LONG)
-                    message.show()
+                    loginCallback.onCallback("Contraseña o usuario incorrecto")
                 }
 
         } else {
-            val message = Toast.makeText(view.context, "Alguno de los campos esta vacio", Toast.LENGTH_LONG)
-            message.show()
+            loginCallback.onCallback("Alguno de los campos esta vacio")
         }
     }
 
-    fun validateRegister(user: String, pass: String, confirm: String, mail: String, view: View) {
+
+
+    fun validateRegister(user: String, pass: String, confirm: String, mail: String, callback: Callback<String>) {
         if ((user.isBlank()) || (pass.isBlank()) || (confirm.isBlank()) || (mail.isBlank())) {
-            val message = Toast.makeText(view.context, "Alguno de los campos esta vacio", Toast.LENGTH_LONG)
-            message.show()
+            callback.onCallback("Alguno de los campos esta vacio")
         } else {
             if (pass == confirm) {
                 data.collection(userTable).document(mail)
                     .get().addOnSuccessListener {
-                        val message = Toast.makeText(view.context, "Esta cuenta ya existe", Toast.LENGTH_LONG)
-                        message.show()
+                        callback.onCallback("Esta cuenta ya existe")
                     }.addOnFailureListener {
                         data.collection(userTable).document(mail).set(mapOf(
                             "name" to user,
@@ -109,60 +100,41 @@ object Controller {
                             craftData(18) to 9,
                             craftData(2) to 12
                         ))
-
-                        val userPreferences = view.context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
-                        val editor: SharedPreferences.Editor = userPreferences.edit()
-
-                        editor.putString("email", mail)
-                        editor.apply()
-
-                        val intent = Intent (view.context, MainActivity::class.java)
-                        view.context.startActivity(intent)
+                        callback.onCallback("success")
                     }
 
             } else {
-                val message = Toast.makeText(view.context, "Las contraseñas no coinciden", Toast.LENGTH_LONG)
-                message.show()
+                callback.onCallback("Las contraseñas no coinciden")
             }
         }
     }
 
-    fun changePass(old: String, new: String, confirm: String, view: View) {
-        if ((old == "") || (new == "") || (confirm == "")) {
-            val message = Toast.makeText(view.context, "Alguno de los campos esta vacio", Toast.LENGTH_LONG)
-            message.show()
+    fun changePass(user: String?, old: String, new: String, confirm: String, callback: Callback<String>) {
+        if (old.isBlank()|| new.isBlank() || confirm.isBlank() || user!!.isBlank()) {
+            callback.onCallback("Alguno de los campos esta vacio")
         } else {
-            val userPreferences = view.context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
-            val user = userPreferences.getString("email", "")
-            if (user != "") {
-                data.collection(userTable).document(user.toString())
-                    .get().addOnSuccessListener {
-                        val checkPass = it.get("password").toString()
-                        if (checkPass == old) {
-                            if (new == confirm) {
-                                data.collection(userTable).document(user.toString()).update(mapOf(
-                                    "password" to new
-                                )).addOnSuccessListener {
-                                    val message = Toast.makeText(view.context, "Contraseña actualizada", Toast.LENGTH_LONG)
-                                    message.show()
-                                    val intent = Intent (view.context, MainActivity::class.java)
-                                    view.context.startActivity(intent)
-                                }.addOnFailureListener {
-                                    val message = Toast.makeText(view.context, "Ha sucedido un error", Toast.LENGTH_LONG)
-                                    message.show()
-                                }
+            data.collection(userTable).document(user.toString())
+                .get().addOnSuccessListener {
+                    val checkPass = it.get("password").toString()
+                    if (checkPass == old) {
+                        if (new == confirm) {
+                            data.collection(userTable).document(user.toString()).update(mapOf(
+                                "password" to new
+                            )).addOnSuccessListener {
+                                callback.onCallback("success")
 
-                            } else {
-                                val message = Toast.makeText(view.context, "La contraseñas nuevas no coinciden.", Toast.LENGTH_LONG)
-                                message.show()
+                            }.addOnFailureListener {
+                                callback.onCallback("Ha sucedido un error")
                             }
                         } else {
-                            val message = Toast.makeText(view.context, "La contraseña antigua no coinicide.", Toast.LENGTH_LONG)
-                            message.show()
+                            callback.onCallback("La contraseñas nuevas no coinciden.")
                         }
+                    } else {
+                        callback.onCallback("La contraseña antigua no coinicide.")
                     }
+                }
 
-            }
+
         }
     }
 
@@ -531,7 +503,6 @@ object Controller {
             }
         }
     }
-
 
     private fun calculateAverage(list: List<Int>) : Int {
         if (list.isEmpty()) {

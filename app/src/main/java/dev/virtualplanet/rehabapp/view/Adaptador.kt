@@ -21,14 +21,14 @@ class Adaptador : BaseAdapter {
     }
 
     override fun getView(pos: Int, view: View?, p2: ViewGroup?): View {
-        var inflater : LayoutInflater  = activity.layoutInflater
+        val inflater : LayoutInflater  = activity.layoutInflater
         var vi: View? = view
         if (vi == null)  {
             vi = inflater.inflate(R.layout.list_item, null)
         }
         vi!!.findViewById<TextView>(R.id.list_item_header).text = list[pos]
         vi!!.findViewById<Button>(R.id.list_item_play).setOnClickListener {
-            var i : Intent = Intent(vi!!.context, ViewExercicesActivity::class.java).putExtra("exercice", list[pos])
+            val i : Intent = Intent(vi!!.context, ViewExercicesActivity::class.java).putExtra("exercice", list[pos])
             vi!!.context.startActivity(i)
         }
         vi!!.findViewById<Button>(R.id.list_item_delete).setOnClickListener {
