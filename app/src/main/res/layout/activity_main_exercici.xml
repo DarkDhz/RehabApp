@@ -12,7 +12,7 @@
     tools:context=".view.MainExerciciActivity">
 
     <ListView
-        android:id="@android:id/list"
+        android:id="@+id/main_exercici_list"
 
         android:layout_width="325dp"
         android:layout_height="500dp"

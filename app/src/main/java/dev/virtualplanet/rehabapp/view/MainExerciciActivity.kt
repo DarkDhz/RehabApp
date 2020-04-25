@@ -1,14 +1,16 @@
 package dev.virtualplanet.rehabapp.view
-import android.app.ListActivity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
 import dev.virtualplanet.rehabapp.R
 
 import dev.virtualplanet.rehabapp.controller.Controller
+import dev.virtualplanet.rehabapp.view.adaptors.MuscleSelectAdaptor
 
 
-class MainExerciciActivity : ListActivity() {
+class MainExerciciActivity : AppCompatActivity() {
 
     private val controller = Controller
 
@@ -28,9 +30,8 @@ class MainExerciciActivity : ListActivity() {
 
     fun loadList() {
         val list = controller.loadSavedExercices(this)
-        var adapt = Adaptador(this, list)
-        listAdapter = adapt
-
+        val adapt = MuscleSelectAdaptor(this, list)
+        findViewById<ListView>(R.id.main_exercici_list).adapter = adapt
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
