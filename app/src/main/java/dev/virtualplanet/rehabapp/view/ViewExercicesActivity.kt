@@ -13,15 +13,22 @@ import dev.virtualplanet.rehabapp.model.ExerciceList
 
 class ViewExercicesActivity : AppCompatActivity() {
     private lateinit var mediaController: MediaController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_exercices)
+        this.init()
+    }
+
+    private fun init() {
+        if (intent.extras == null) {
+            return
+        }
         val progressBar = findViewById<ProgressBar>(R.id.ce_progressBar)
         progressBar.progress = 0
         mediaController = MediaController(this)
         val intent = intent
         val muscle = intent.getStringExtra("exercice")
-
 
 
         if (muscle.equals("Hombro derecho") || muscle.equals("Hombro izquierdo")) {
