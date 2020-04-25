@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "937088587511",
-    "firebase_url": "https://ultimointento-5cdbd.firebaseio.com",
-    "project_id": "ultimointento-5cdbd",
-    "storage_bucket": "ultimointento-5cdbd.appspot.com"
+    "project_number": "504349756541",
+    "firebase_url": "https://rehapp-aff5e.firebaseio.com",
+    "project_id": "rehapp-aff5e",
+    "storage_bucket": "rehapp-aff5e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:937088587511:android:8264b14f3404e8585be5f2",
+        "mobilesdk_app_id": "1:504349756541:android:6ae833af3a583d2a95b514",
         "android_client_info": {
           "package_name": "dev.virtualplanet.rehabapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "937088587511-5v6emq3b2rsl83451u3lpr9sf6rja88n.apps.googleusercontent.com",
+          "client_id": "504349756541-9ohrvlirmoro6cb568g10omqvspp7v64.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCMxGDUpCInEJ5qWIICvTownTu1ZooCAIk"
+          "current_key": "AIzaSyB8T1JWg6-jld9luHlvokUftYHyJ0i0lRE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "937088587511-5v6emq3b2rsl83451u3lpr9sf6rja88n.apps.googleusercontent.com",
+              "client_id": "504349756541-9ohrvlirmoro6cb568g10omqvspp7v64.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
