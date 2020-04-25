@@ -10,12 +10,28 @@ object ModelFactory {
         return Exercice(n, des, rep, ser, time, path, videoView, mediaController)
     }
 
-    fun makeUser(user: String, pass: String, mail: String): User {
-        return User(user, pass, mail)
+    fun saveUser(user: String, pass: String, mail: String): User {
+        User.user = user
+        User.password = pass
+        User.mail = mail
+        return User
     }
 
-    fun makeUser(user: String, pass: String, mail: String, sex : Int, height: Int, weight : Int, wheel : Boolean): User {
-        return User(user, pass, mail, sex, height, weight, wheel)
+    fun saveUser(pass: String, mail: String): User {
+        User.password = pass
+        User.mail = mail
+        return User
+    }
+
+    fun saveUser(user: String, pass: String, mail: String, sex : Int, height: Int, weight : Int, wheel : Boolean) : User{
+        User.user = user
+        User.password = pass
+        User.mail = mail
+        User.sex = sex
+        User.height = height
+        User.weight = weight
+        User.wheel = wheel
+        return User
     }
 
     fun makeExerciceList() : ExerciceList {

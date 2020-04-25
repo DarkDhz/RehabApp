@@ -29,7 +29,7 @@ class ChangePswdActivity : AppCompatActivity() {
         val old = findViewById<EditText>(R.id.pswd_old_value).text.toString()
         val new = findViewById<EditText>(R.id.pswd_new_value).text.toString()
         val repeat = findViewById<EditText>(R.id.pswd_repeat).text.toString()
-        
+
         controller.changePass(user, old , new, repeat, object : Callback<String> {
             override fun onCallback(value: String) {
                 when (value) {

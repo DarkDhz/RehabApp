@@ -57,6 +57,7 @@ object Controller {
             data.collection(userTable).document(user)
                 .get().addOnSuccessListener {
                     val checkPass = it.get("password").toString()
+
                     if (checkPass == pass) {
                         loginCallback.onCallback("success")
                     } else {
