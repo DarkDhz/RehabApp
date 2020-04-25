@@ -1,26 +1,41 @@
 package dev.virtualplanet.rehabapp.model
 
-import java.io.File
+import android.media.MediaPlayer
+import android.net.Uri
+import android.view.View
+import android.widget.MediaController
+import android.widget.VideoView
+import com.google.common.reflect.Reflection.getPackageName
 
-class Exercice {
+class Exercice{
+
+
     var name = String()
     var description = String()
     var num_rep : Int
     var num_ser : Int
     var break_time : Int
-    var video : File
+    lateinit var path : String
+    lateinit var videoView : VideoView
+    lateinit var mediaController : MediaController
 
-    constructor(n: String, des: String, rep: Int, ser: Int, time: Int, url: String) {
+    constructor(n: String, des: String, rep: Int, ser: Int, time: Int, path : String, videoView : VideoView, mediaController : MediaController) {
         this.name = n
         this.description = des
         this.num_rep = rep
         this.num_ser = ser
         this.break_time = time
-        this.video = File(url)
+        this.path = path
+        this.videoView = videoView
+        this.mediaController = mediaController
     }
 
     fun playExercice() {
-
+        var uri : Uri = Uri.parse(path)
+        videoView.setVideoURI(uri)
+        videoView.setMediaController(mediaController)
+        mediaController.setAnchorView(videoView)
+        videoView.start()
     }
 
 }

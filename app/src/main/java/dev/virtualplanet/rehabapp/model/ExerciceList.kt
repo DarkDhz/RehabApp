@@ -1,11 +1,13 @@
 package dev.virtualplanet.rehabapp.model
 
 class ExerciceList {
+    private var i : Int = 0
     private val factory = ModelFactory
     var content : List<Exercice>
 
     constructor() {
         content = ArrayList<Exercice>()
+        i = 0
         //NOTHING
     }
 
@@ -20,5 +22,10 @@ class ExerciceList {
             }
         }
         return null
+    }
+
+    fun playNetxtExercici() {
+        content[i].playExercice()
+        i++
     }
 }

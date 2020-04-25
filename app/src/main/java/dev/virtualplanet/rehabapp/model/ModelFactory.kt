@@ -1,9 +1,13 @@
 package dev.virtualplanet.rehabapp.model
 
+import android.media.MediaPlayer
+import android.widget.MediaController
+import android.widget.VideoView
+
 object ModelFactory {
 
-    fun makeExerice(n: String, des: String, rep: Int, ser: Int, time: Int, url: String): Exercice {
-        return Exercice(n, des, rep, ser, time, url)
+    fun makeExerice(n: String, des: String, rep: Int, ser: Int, time: Int, path : String, videoView : VideoView, mediaController : MediaController): Exercice {
+        return Exercice(n, des, rep, ser, time, path, videoView, mediaController)
     }
 
     fun makeUser(user: String, pass: String, mail: String): User {
