@@ -2,8 +2,7 @@ package dev.virtualplanet.rehabapp.model
 
 class ExerciceList {
     private var i : Int = 0
-    private val factory = ModelFactory
-    var content : List<Exercice>
+    private var content : ArrayList<Exercice>
 
     constructor() {
         content = ArrayList<Exercice>()
@@ -11,8 +10,23 @@ class ExerciceList {
         //NOTHING
     }
 
-    constructor(content: List<Exercice>) {
+    constructor(content: ArrayList<Exercice>) {
         this.content = content
+    }
+
+    fun add(ex: Exercice) {
+        if (validateExercice(ex)) {
+            content.add(ex)
+        }
+    }
+
+    private fun validateExercice(ex : Exercice) : Boolean {
+        for (item in content) {
+            if (item.isSimilar(ex)) {
+                return false
+            }
+        }
+        return true
     }
 
     fun getExerciceByName(name: String) : Exercice? {
@@ -24,8 +38,18 @@ class ExerciceList {
         return null
     }
 
-    fun playNetxtExercici() {
-        content[i].playExercice()
-        i++
+    fun getSize() : Int {
+        return content.size
     }
+
+    fun playNextExercice() : Exercice? {
+        if (i < content.size) {
+            val toReturn = content[i]
+            i++
+            return toReturn
+
+        }
+        return null
+    }
+
 }

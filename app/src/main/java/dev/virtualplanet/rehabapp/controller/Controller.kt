@@ -6,10 +6,7 @@ import android.content.SharedPreferences
 import android.graphics.Color
 import android.net.Uri
 import android.view.View
-import android.widget.EditText
-import android.widget.Switch
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.isVisible
 import com.github.mikephil.charting.charts.BarChart
@@ -21,6 +18,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.model.Exercice
+import dev.virtualplanet.rehabapp.model.ExerciceList
 import dev.virtualplanet.rehabapp.model.ModelFactory
 import dev.virtualplanet.rehabapp.view.*
 import java.text.SimpleDateFormat
@@ -551,6 +549,14 @@ object Controller {
         } else {
             return false
         }
+    }
+
+    fun createExerciceList(): ExerciceList {
+        return factory.makeExerciceList()
+    }
+
+    fun createExercice(n: String, des: String, rep: Int, ser: Int, time: Int, path : String) : Exercice {
+       return factory.makeExerice(n, des, rep, ser, time, path)
     }
 
 
