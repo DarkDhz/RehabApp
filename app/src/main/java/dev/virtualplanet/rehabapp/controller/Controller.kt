@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.net.Uri
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat.startActivity
@@ -141,14 +142,14 @@ object Controller {
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
         if (user != "") {
-            val date = craftData(30)
+            val date = craftData()
 
             data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
-                val actual : String? = it.get(craftData()).toString()
-                if (actual == null || actual != "" || actual == "null") {
+                val actual : String? = it.get(date).toString()
+                if (actual == null || actual == "null") {
                     data.collection(progressTable).document(user.toString()).update(
                         mapOf(
-                            date to 23
+                            date to 0
                         )
                     )
                 }
@@ -381,7 +382,7 @@ object Controller {
     fun loadProgressData(context: LinearProgressActivity, month : Int, year: Int){
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
-        var month2 = month+1
+        val month2 = month+1
         if (user != "") {
             data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
                 val yValues = ArrayList<Entry>()
@@ -557,6 +558,25 @@ object Controller {
 
     fun createExercice(n: String, des: String, rep: Int, ser: Int, time: Int, path : String) : Exercice {
        return factory.makeExerice(n, des, rep, ser, time, path)
+    }
+
+    fun addExerciceCount(user: String?, num: Int) {
+        if (user != "") {
+            val date = craftData()
+
+            data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
+                val actual : String? = it.get(craftData()).toString()
+
+                if (actual == null || actual != "" || actual == "null") {
+                    val act = actual!!.toInt()
+                    data.collection(progressTable).document(user.toString()).update(
+                        mapOf(
+                            date to (act + num)
+                        )
+                    )
+                }
+            }
+        }
     }
 
 

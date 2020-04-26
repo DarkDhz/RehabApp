@@ -1,8 +1,10 @@
 package dev.virtualplanet.rehabapp.view
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +14,8 @@ import dev.virtualplanet.rehabapp.model.Exercice
 import dev.virtualplanet.rehabapp.model.ExerciceList
 
 class ViewExercicesActivity : AppCompatActivity() {
+
+    private var count = 0
     private lateinit var mediaController: MediaController
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +43,7 @@ class ViewExercicesActivity : AppCompatActivity() {
             exerciceList.add(Controller.createExercice("Rotación Interna del Hombro", "TODO", 10, 1, 20, "android.resource://"+ packageName + "/" + R.raw.a1))
             exerciceList.add(Controller.createExercice("Abducción del Hombro", "TODO", 10, 3, 20, "android.resource://"+ packageName + "/" + R.raw.a1))
             play(exerciceList.playNextExercice()!!)
-
+            count++
             findViewById<Button>(R.id.ce_fab).setOnClickListener {
                 val next = exerciceList.playNextExercice()
                 if (next != null) {
@@ -51,6 +55,7 @@ class ViewExercicesActivity : AppCompatActivity() {
     }
 
     private fun play(ex : Exercice) {
+        count++
         val resultTitle = findViewById<TextView>(R.id.ce_title_txt)
         val resultVideo = findViewById<VideoView>(R.id.ce_videoView)
         val des = findViewById<TextView>(R.id.ce_descripction_txt)
@@ -71,6 +76,22 @@ class ViewExercicesActivity : AppCompatActivity() {
     }
 
     fun goBack(view: View) {
+        if (count > 0) {
+            val userPreferences = getSharedPreferences(Controller.sharedTable, Context.MODE_PRIVATE)
+            val user = userPreferences.getString("email", "")
+            Controller.addExerciceCount(user, count)
+        }
+
+        val intent = Intent(this, MainExerciciActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun onBackPressed() {
+        if (count > 0) {
+            val userPreferences = getSharedPreferences(Controller.sharedTable, Context.MODE_PRIVATE)
+            val user = userPreferences.getString("email", "")
+            Controller.addExerciceCount(user, count)
+        }
         val intent = Intent(this, MainExerciciActivity::class.java)
         startActivity(intent)
     }

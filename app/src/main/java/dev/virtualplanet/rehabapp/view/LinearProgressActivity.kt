@@ -38,13 +38,6 @@ class LinearProgressActivity : AppCompatActivity() {
                 findViewById<TextView>(R.id.progress_header).text = "Resumen de ejercicios"
             }
         }
-        /*val selSpiner = findViewById<Spinner>(R.id.select_static_spinner)
-        val values = ArrayList<String>()
-        values.add("Número de ejercicios")
-
-        val selAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, values)
-        selSpiner.adapter = selAdapter*/
-
 
         val progressChart = findViewById<LineChart>(R.id.progress_content)
         progressChart.isVisible = false
