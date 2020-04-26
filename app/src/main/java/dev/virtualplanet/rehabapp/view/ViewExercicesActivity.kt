@@ -36,24 +36,8 @@ class ViewExercicesActivity : AppCompatActivity() {
         val muscle = intent.getStringExtra("exercice")
 
 
-        if (muscle.equals("Hombro derecho") || muscle.equals("Hombro izquierdo") || true) {
-            val exerciceList : ExerciceList = Controller.createExerciceList()
-            val path = "android.resource://$packageName/"
-            exerciceList.add(Controller.createExercice("Flexión del Hombro", "Eleve su brazo hasta señalar el techo manteniendo su codo.",
-                15, 3, 30, path + R.raw.hombro_flexion))
-
-            exerciceList.add(Controller.createExercice("Rotación del Hombro con apoyo", "Mantenga el codo apoyado en un lugar (como muestra la figura) y las escápulas (paletas) hacia abajo y juntas. Gire el antebrazo hacia delante y hacia atrás.",
-                10, 1, 20, path + R.raw.hombro_rot_in))
-
-            exerciceList.add(Controller.createExercice("Caminado por pared de dedos", "Con el codo, utilice los dedos para caminar hacia arriba por la pared o en el marco de la puerta lo más alto posible.",
-                10, 3, 20, path + R.raw.hombro_pared))
-
-            exerciceList.add(Controller.createExercice("Rotación Interna del Hombro", "Lleve su mano detrás de la espalda y hacia el lado opuesto.",
-                10, 1, 20, path + R.raw.hombro_rotacion))
-
-            exerciceList.add(Controller.createExercice("Abducción del Hombro", "Levante los brazos lateralmente, con los codos  y las palmas hacia abajo. No encoja los hombros, ni incline el tronco.",
-                10, 3, 20, path + R.raw.hombro_abd))
-
+        if (muscle.contains("Hombro") ) {
+            val exerciceList = Controller.getList("Hombro", packageName)
             play(exerciceList.playNextExercice()!!)
             count++
             findViewById<Button>(R.id.ce_fab).setOnClickListener {
@@ -63,6 +47,20 @@ class ViewExercicesActivity : AppCompatActivity() {
                     progressBar.progress = (progressBar.progress + 20) % 120
                 }
             }
+            return
+        }
+        if (muscle.contains("Codo") || true) {
+            val exerciceList = Controller.getList("Codo", packageName)
+            play(exerciceList.playNextExercice()!!)
+            count++
+            findViewById<Button>(R.id.ce_fab).setOnClickListener {
+                val next = exerciceList.playNextExercice()
+                if (next != null) {
+                    play(next)
+                    progressBar.progress = (progressBar.progress + 20) % 120
+                }
+            }
+            return
         }
     }
 

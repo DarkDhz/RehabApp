@@ -25,7 +25,7 @@ class MuscleSelectAdaptor : BaseAdapter {
         val inflater : LayoutInflater  = activity.layoutInflater
         var vi: View? = view
         if (vi == null)  {
-            vi = inflater.inflate(R.layout.list_item, null)
+            vi = inflater.inflate(R.layout.muscle_list_item, null)
         }
         vi!!.findViewById<TextView>(R.id.list_item_header).text = list[pos]
         vi!!.findViewById<Button>(R.id.list_item_play).setOnClickListener {
@@ -67,7 +67,6 @@ class MuscleSelectAdaptor : BaseAdapter {
             dialog.cancel()
             Controller.removeSavedExercice(activity, pos)
             activity.loadList()
-
         }
 
         dialog.setView(alertView)

@@ -576,5 +576,46 @@ object Controller {
         }
     }
 
+    fun getList(name: String, packageName: String) : ExerciceList {
+        val exerciceList : ExerciceList = createExerciceList()
+        val path = "android.resource://$packageName/"
+        when (name) {
+            "Hombro" -> {
+
+                exerciceList.add(createExercice("Flexión del Hombro", "Eleve su brazo hasta señalar el techo manteniendo su codo.",
+                    15, 3, 30, path + R.raw.hombro_flexion))
+
+                exerciceList.add(createExercice("Rotación del Hombro con apoyo", "Mantenga el codo apoyado en un lugar (como muestra la figura) y las escápulas (paletas) hacia abajo y juntas. Gire el antebrazo hacia delante y hacia atrás.",
+                    10, 1, 20, path + R.raw.hombro_rot_in))
+
+                exerciceList.add(createExercice("Caminado por pared de dedos", "Con el codo, utilice los dedos para caminar hacia arriba por la pared o en el marco de la puerta lo más alto posible.",
+                    10, 3, 20, path + R.raw.hombro_pared))
+
+                exerciceList.add(createExercice("Rotación Interna del Hombro", "Lleve su mano detrás de la espalda y hacia el lado opuesto.",
+                    10, 1, 20, path + R.raw.hombro_rotacion))
+
+                exerciceList.add(createExercice("Abducción del Hombro", "Levante los brazos lateralmente, con los codos  y las palmas hacia abajo. No encoja los hombros, ni incline el tronco.",
+                    10, 3, 20, path + R.raw.hombro_abd))
+                return exerciceList
+            }
+            "Codo" -> {
+                exerciceList.add(createExercice("Flexo-Extensión del codo", "Elevar lentamente la extremidad superior hasta que esté totalmente horizontal con el codo extendido.",
+                    15, 3, 30, path + R.raw.codo_fl_ex))
+
+                exerciceList.add(createExercice("Flexión de codo", "Realizar rotación de la extremidad de forma que la mano (conel peso) mire hacia arriba.",
+                    15, 3, 30, path + R.raw.codo_fl))
+
+                exerciceList.add(createExercice("Flexo-Extensión del codo estirado", "Estirado, los brazos extendidos lateralmente a la altura de los hombros,  flexión-extensión de los antebrazos sobre los brazos.",
+                    15, 3, 30, path + R.raw.codo_estirado))
+
+                exerciceList.add(createExercice("Flexo-Extensión del codo frontal", "Sentado en una silla o de pie, las manos juntas sobre el pecho, extender los brazos hacia delante.",
+                    15, 3, 30, path + R.raw.codo_adelante))
+
+                return exerciceList
+            }
+        }
+        return exerciceList
+    }
+
 
 }
