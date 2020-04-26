@@ -35,10 +35,9 @@ object Controller {
     const val sharedTable = "userInfo"
     const val sharedExercices = "selected"
 
+    private const val TAG = "CONTROLLER"
     private const val notSetString = "Not Set"
-
-
-    //TODO https://stackoverflow.com/questions/15832335/android-custom-row-item-for-listview
+    
     private val factory = ModelFactory
 
     private val exList = factory.makeExerciceList()
@@ -120,12 +119,8 @@ object Controller {
                         if (new == confirm) {
                             data.collection(userTable).document(user.toString()).update(mapOf(
                                 "password" to new
-                            )).addOnSuccessListener {
-                                callback.onCallback("success")
-
-                            }.addOnFailureListener {
-                                callback.onCallback("Ha sucedido un error")
-                            }
+                            ))
+                            callback.onCallback("success")
                         } else {
                             callback.onCallback("La contraseñas nuevas no coinciden.")
                         }
@@ -405,6 +400,16 @@ object Controller {
     private fun setLineChartData(context: LinearProgressActivity , values: ArrayList<Entry>, list : ArrayList<Int>) {
         context.findViewById<TextView>(R.id.progress_media).text = ("Media: " + calculateAverage(list).toString())
         val chart = context.findViewById<LineChart>(R.id.progress_content)
+        val set1 = LineDataSet(values, "Número de Ejercicios")
+        set1.lineWidth = 6f
+        set1.circleRadius = 6f
+        set1.valueTextSize = 15f
+        set1.setCircleColor(Color.LTGRAY)
+        set1.setDrawCircleHole(false)
+        val dataSets = ArrayList<ILineDataSet>()
+        dataSets.add(set1)
+        val dat = LineData(dataSets)
+        chart.data = dat
         chart.isEnabled = false
         chart.isDragEnabled = true
         chart.setScaleEnabled(true)
@@ -416,17 +421,7 @@ object Controller {
         chart.axisRight.setDrawLabels(false)
         chart.xAxis.setDrawLabels(true)
         chart.setTouchEnabled(false)
-
-        val set1 = LineDataSet(values, "Número de Ejercicios")
-        set1.lineWidth = 6f
-        set1.circleRadius = 6f
-        set1.valueTextSize = 15f
-        set1.setCircleColor(Color.LTGRAY)
-        set1.setDrawCircleHole(false)
-        val dataSets = ArrayList<ILineDataSet>()
-        dataSets.add(set1)
-        val dat = LineData(dataSets)
-        chart.data = dat
+        chart.setScaleEnabled(false)
         chart.isVisible = true
         chart.invalidate()
 
@@ -435,10 +430,11 @@ object Controller {
     private fun setBarChartData(context: BarProgressActivity , values: ArrayList<BarEntry>, list : ArrayList<Int>) {
         context.findViewById<TextView>(R.id.bar_progress_media).text = ("Media: " + calculateAverage(list).toString())
         val chart = context.findViewById<BarChart>(R.id.bar_progress_content)
-        context.findViewById<TextView>(R.id.bar_progress_media).text = ("Media: " + calculateAverage(list).toString())
         val set1 = BarDataSet(values, "Número de ejercicios")
         set1.setDrawIcons(false)
         set1.valueTextSize = 15f
+        set1.barBorderColor = Color.LTGRAY
+        set1.barBorderWidth = 2f
         val dataSets: java.util.ArrayList<IBarDataSet> = java.util.ArrayList()
         dataSets.add(set1)
 
@@ -449,9 +445,10 @@ object Controller {
         chart.isDragEnabled = true
         desc.text = ""
         chart.axisLeft.setDrawLabels(false)
-        chart.axisRight.setDrawLabels(false)
+        chart.axisRight.setDrawLabels(true)
         chart.xAxis.setDrawLabels(true)
         chart.setTouchEnabled(false)
+        chart.setScaleEnabled(false)
         chart.description = desc
         chart.data = data
         chart.isVisible = true

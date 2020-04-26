@@ -39,7 +39,7 @@ class LinearProgressActivity : AppCompatActivity() {
             }
         }
 
-        val progressChart = findViewById<LineChart>(R.id.progress_content)
+        val progressChart = findViewById<LineChart>(R.id.progress_content) as LineChart
         progressChart.isVisible = false
         Controller.loadProgressData(this)
 
