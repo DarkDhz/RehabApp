@@ -11,19 +11,32 @@
 
     tools:context=".view.MainExerciciActivity">
 
+    <ImageButton
+        android:id="@+id/global_return_bt"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/img_return"
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="407dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:onClick="goBack"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/global_returnbt_desc" />
+
     <ListView
         android:id="@+id/main_exercici_list"
 
         android:layout_width="325dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="40dp"
+        android:layout_height="450dp"
+        android:layout_marginTop="25dp"
         android:divider="#00000000"
         android:dividerHeight="10dip"
-        app:layout_constraintBottom_toTopOf="@+id/main_exercice_select"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/global_return_bt" />
 
     <Button
         android:id="@+id/main_exercice_select"
