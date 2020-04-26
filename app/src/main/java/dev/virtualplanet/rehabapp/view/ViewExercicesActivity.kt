@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
 import dev.virtualplanet.rehabapp.model.Exercice
@@ -44,7 +45,7 @@ class ViewExercicesActivity : AppCompatActivity() {
                 val next = exerciceList.playNextExercice()
                 if (next != null) {
                     play(next)
-                    progressBar.progress = (progressBar.progress + 20) % 120
+                    progressBar.progress = (progressBar.progress + (100/(next.size-1))) % 120
                 }
             }
             return
@@ -57,14 +58,18 @@ class ViewExercicesActivity : AppCompatActivity() {
                 val next = exerciceList.playNextExercice()
                 if (next != null) {
                     play(next)
-                    progressBar.progress = (progressBar.progress + 20) % 120
+                    progressBar.progress = (progressBar.progress + (100/(next.size-1))) % 120
                 }
             }
             return
         }
     }
 
-    private fun play(ex : Exercice) {
+    private fun play(returnable : ExerciceList.Returnable) {
+        val ex = returnable.exercice
+        if (returnable.pos == returnable.size) {
+            findViewById<Button>(R.id.ce_fab).isEnabled = false
+        }
         count++
         val resultTitle = findViewById<TextView>(R.id.ce_title_txt)
         val resultVideo = findViewById<VideoView>(R.id.ce_videoView)
@@ -82,6 +87,9 @@ class ViewExercicesActivity : AppCompatActivity() {
         resultVideo.setVideoURI(uri)
         resultVideo.setMediaController(mediaController)
         mediaController.setAnchorView(resultVideo)
+        resultVideo.setOnPreparedListener { mp ->
+            mp.isLooping = true
+        }
         resultVideo.start()
     }
 

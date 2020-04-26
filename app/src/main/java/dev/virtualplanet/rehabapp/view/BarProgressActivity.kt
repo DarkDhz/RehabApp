@@ -41,8 +41,19 @@ class BarProgressActivity : AppCompatActivity() {
             }
         }
 
+
         val chart = findViewById<BarChart>(R.id.bar_progress_content)
         chart.isVisible = false
+        val desc = Description()
+        chart.isEnabled = false
+        chart.isDragEnabled = true
+        desc.text = ""
+        chart.axisLeft.setDrawLabels(false)
+        chart.axisRight.setDrawLabels(true)
+        chart.xAxis.setDrawLabels(true)
+        chart.setTouchEnabled(false)
+        chart.setScaleEnabled(false)
+        chart.description = desc
         Controller.loadProgressData(this)
 
 

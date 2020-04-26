@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
@@ -45,5 +46,14 @@ class SelectStaticActivity : AppCompatActivity() {
 
         dialog.setView(alertView)
         dialog.show()
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun unimplemented(view: View) {
+        Toast.makeText(this, "Esto aún no esta implementado :(", Toast.LENGTH_LONG).show()
     }
 }

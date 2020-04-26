@@ -410,18 +410,6 @@ object Controller {
         dataSets.add(set1)
         val dat = LineData(dataSets)
         chart.data = dat
-        chart.isEnabled = false
-        chart.isDragEnabled = true
-        chart.setScaleEnabled(true)
-        val desc = Description()
-        desc.text = ""
-        chart.description = desc
-
-        chart.axisLeft.setDrawLabels(false)
-        chart.axisRight.setDrawLabels(false)
-        chart.xAxis.setDrawLabels(true)
-        chart.setTouchEnabled(false)
-        chart.setScaleEnabled(false)
         chart.isVisible = true
         chart.invalidate()
 
@@ -437,19 +425,8 @@ object Controller {
         set1.barBorderWidth = 2f
         val dataSets: java.util.ArrayList<IBarDataSet> = java.util.ArrayList()
         dataSets.add(set1)
-
         val data = BarData(dataSets)
         data.barWidth = 1.5f
-        val desc = Description()
-        chart.isEnabled = false
-        chart.isDragEnabled = true
-        desc.text = ""
-        chart.axisLeft.setDrawLabels(false)
-        chart.axisRight.setDrawLabels(true)
-        chart.xAxis.setDrawLabels(true)
-        chart.setTouchEnabled(false)
-        chart.setScaleEnabled(false)
-        chart.description = desc
         chart.data = data
         chart.isVisible = true
         chart.invalidate()

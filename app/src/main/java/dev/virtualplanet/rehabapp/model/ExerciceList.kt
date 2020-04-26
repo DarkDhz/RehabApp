@@ -42,11 +42,24 @@ class ExerciceList {
         return content.size
     }
 
-    fun playNextExercice() : Exercice? {
+    class Returnable {
+        var exercice : Exercice
+        var pos : Int
+        var size : Int
+
+        constructor(ex: Exercice, p: Int, s: Int) {
+            exercice = ex
+            pos = p
+            size = s
+        }
+
+    }
+
+    fun playNextExercice() : Returnable? {
         if (i < content.size) {
             val toReturn = content[i]
             i++
-            return toReturn
+            return Returnable(toReturn, i, getSize())
 
         }
         return null

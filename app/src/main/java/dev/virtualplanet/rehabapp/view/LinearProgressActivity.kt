@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.Description
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
 import java.util.*
@@ -39,8 +40,20 @@ class LinearProgressActivity : AppCompatActivity() {
             }
         }
 
-        val progressChart = findViewById<LineChart>(R.id.progress_content) as LineChart
-        progressChart.isVisible = false
+        val chart = findViewById<LineChart>(R.id.progress_content) as LineChart
+        chart.isVisible = false
+        chart.isEnabled = false
+        chart.isDragEnabled = true
+        chart.setScaleEnabled(true)
+        val desc = Description()
+        desc.text = ""
+        chart.description = desc
+
+        chart.axisLeft.setDrawLabels(false)
+        chart.axisRight.setDrawLabels(false)
+        chart.xAxis.setDrawLabels(true)
+        chart.setTouchEnabled(false)
+        chart.setScaleEnabled(false)
         Controller.loadProgressData(this)
 
 
