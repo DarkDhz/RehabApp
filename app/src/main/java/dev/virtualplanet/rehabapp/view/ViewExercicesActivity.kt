@@ -13,6 +13,7 @@ import androidx.core.view.isVisible
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
 import dev.virtualplanet.rehabapp.model.ExerciceList
+import android.widget.SeekBar
 
 class ViewExercicesActivity : AppCompatActivity() {
 
@@ -128,9 +129,20 @@ class ViewExercicesActivity : AppCompatActivity() {
         builder.setView(inflater.inflate(R.layout.save_exercice_alert, null))
         val dialog: AlertDialog = builder.create()
         val alertView = inflater.inflate(R.layout.save_exercice_alert, null)
+        //alertView.findViewById<SeekBar>(R.id.sea_seekBar)
 
-        alertView.findViewById<SeekBar>(R.id.sea_seekBar)
+        alertView.findViewById<SeekBar>(R.id.sea_seekBar).setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                alertView.findViewById<TextView>(R.id.sea_seekValue).setText(progress.toString())
+            }
+           override fun onStopTrackingTouch(seekBar: SeekBar) {
+                // TODO Auto-generated method stub
+            }
 
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+                // TODO Auto-generated method stub
+            }
+        })
 
         alertView.findViewById<Button>(R.id.sea_finish).setOnClickListener {
             dialog.cancel()
@@ -151,6 +163,6 @@ class ViewExercicesActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    
+
 }
 
