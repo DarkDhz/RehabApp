@@ -2,17 +2,16 @@ package dev.virtualplanet.rehabapp.view
 
 import android.content.Context
 import android.content.Intent
-import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
-import dev.virtualplanet.rehabapp.model.Exercice
 import dev.virtualplanet.rehabapp.model.ExerciceList
 
 class ViewExercicesActivity : AppCompatActivity() {
@@ -27,13 +26,20 @@ class ViewExercicesActivity : AppCompatActivity() {
     }
 
     private fun init() {
+
         if (intent.extras == null) {
+            val intent = Intent(this, MainExerciciActivity::class.java)
+            startActivity(intent)
             return
         }
+
+        findViewById<Button>(R.id.ce_done_bt).isVisible = false
+
         val progressBar = findViewById<ProgressBar>(R.id.ce_progressBar)
         progressBar.progress = 0
+
         mediaController = MediaController(this)
-        val intent = intent
+
         val muscle = intent.getStringExtra("exercice")
 
 
@@ -41,7 +47,7 @@ class ViewExercicesActivity : AppCompatActivity() {
             val exerciceList = Controller.getList("Hombro", packageName)
             play(exerciceList.playNextExercice()!!)
             count++
-            findViewById<Button>(R.id.ce_fab).setOnClickListener {
+            findViewById<Button>(R.id.ce_next).setOnClickListener {
                 val next = exerciceList.playNextExercice()
                 if (next != null) {
                     play(next)
@@ -54,7 +60,7 @@ class ViewExercicesActivity : AppCompatActivity() {
             val exerciceList = Controller.getList("Codo", packageName)
             play(exerciceList.playNextExercice()!!)
             count++
-            findViewById<Button>(R.id.ce_fab).setOnClickListener {
+            findViewById<Button>(R.id.ce_next).setOnClickListener {
                 val next = exerciceList.playNextExercice()
                 if (next != null) {
                     play(next)
@@ -68,7 +74,8 @@ class ViewExercicesActivity : AppCompatActivity() {
     private fun play(returnable : ExerciceList.Returnable) {
         val ex = returnable.exercice
         if (returnable.pos == returnable.size) {
-            findViewById<Button>(R.id.ce_fab).isEnabled = false
+            findViewById<Button>(R.id.ce_done_bt).isVisible = true
+            findViewById<Button>(R.id.ce_next).isVisible = false
         }
         count++
         val resultTitle = findViewById<TextView>(R.id.ce_title_txt)
@@ -94,25 +101,56 @@ class ViewExercicesActivity : AppCompatActivity() {
     }
 
     fun goBack(view: View) {
+        save()
+    }
+
+    override fun onBackPressed() {
+        save()
+    }
+
+    private fun save() {
         if (count > 0) {
             val userPreferences = getSharedPreferences(Controller.sharedTable, Context.MODE_PRIVATE)
             val user = userPreferences.getString("email", "")
             Controller.addExerciceCount(user, count)
         }
-
         val intent = Intent(this, MainExerciciActivity::class.java)
         startActivity(intent)
     }
 
-    override fun onBackPressed() {
-        if (count > 0) {
-            val userPreferences = getSharedPreferences(Controller.sharedTable, Context.MODE_PRIVATE)
-            val user = userPreferences.getString("email", "")
-            Controller.addExerciceCount(user, count)
+    fun openFinish(view: View) {
+        openFinishAlert()
+    }
+
+    private fun openFinishAlert() {
+        val inflater : LayoutInflater = layoutInflater
+        val builder = AlertDialog.Builder(this, R.style.AlertDialog)
+        builder.setView(inflater.inflate(R.layout.save_exercice_alert, null))
+        val dialog: AlertDialog = builder.create()
+        val alertView = inflater.inflate(R.layout.save_exercice_alert, null)
+
+        alertView.findViewById<SeekBar>(R.id.sea_seekBar)
+
+
+        alertView.findViewById<Button>(R.id.sea_finish).setOnClickListener {
+            dialog.cancel()
+            save()
+            val intent = Intent(this, MainExerciciActivity::class.java)
+            startActivity(intent)
         }
-        val intent = Intent(this, MainExerciciActivity::class.java)
-        startActivity(intent)
+        /*alertView.findViewById<TextView>(R.id.delete_muscle_alert_header).text = "¿Estás seguro que quieres cerrar sesión?"
+        alertView.findViewById<Button>(R.id.delete_muscle_alert_cancel).setOnClickListener {
+            dialog.cancel()
+        }
+        alertView.findViewById<Button>(R.id.delete_muscle_alert_confirm).setOnClickListener {
+            dialog.cancel()
+            Controller.logOut(this)
+        }*/
+
+        dialog.setView(alertView)
+        dialog.show()
     }
 
     
 }
+
