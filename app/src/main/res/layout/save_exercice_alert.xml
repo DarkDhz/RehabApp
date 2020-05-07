@@ -10,8 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sea_mainLayout"
-        android:layout_width="326dp"
-        android:layout_height="573dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,14 +19,37 @@
 
 
         <TextView
-            android:id="@+id/sea_mov_title"
+            android:id="@+id/sea_list_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¿Como esta tu nivel de movilidad?"
+            android:text="Marca los ejercicios completados:"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ListView
+            android:id="@+id/sea_listView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:divider="#00000000"
+            android:dividerHeight="10dip"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sea_list_title" />
+
+
+        <TextView
+            android:id="@+id/sea_mov_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="¿Como esta tu nivel de movilidad?"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sea_listView" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -62,24 +85,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="¿Te has sentido comodo?"
+            android:text="¿Te has sentido cómodo?"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sea_seekLayout" />
-
-        <Button
-            android:id="@+id/sea_finish"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Guardar datos"
-            android:background="@drawable/boton_1"
-            android:padding="5dp"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/sea_boxLayout"
@@ -106,7 +116,22 @@
                 android:text="No"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sea_afirmative_box" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/sea_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/boton_1"
+            android:padding="5dp"
+            android:text="Guardar datos"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sea_boxLayout" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,12 +3,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ListView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import dev.virtualplanet.rehabapp.R
 
 import dev.virtualplanet.rehabapp.controller.Controller
-import dev.virtualplanet.rehabapp.view.adaptors.ExerciceSelectAdaptor
 import dev.virtualplanet.rehabapp.view.adaptors.MuscleSelectAdaptor
 
 
@@ -20,7 +18,6 @@ class MainExerciciActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_exercici)
         loadList()
-        //l = findViewById(android.R.id.list)
 
     }
 

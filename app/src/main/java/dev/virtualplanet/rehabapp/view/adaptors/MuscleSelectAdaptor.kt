@@ -29,7 +29,6 @@ class MuscleSelectAdaptor : BaseAdapter {
         }
         vi!!.findViewById<TextView>(R.id.list_item_header).text = list[pos]
         vi!!.findViewById<Button>(R.id.list_item_play).setOnClickListener {
-            //manageOpenAlert(vi, inflater, list[pos])
             val i : Intent = Intent(vi!!.context, ViewExercicesActivity::class.java).putExtra("exercice", list[pos])
             vi!!.context.startActivity(i)
         }
@@ -37,21 +36,6 @@ class MuscleSelectAdaptor : BaseAdapter {
             manageDelete(vi, inflater, list[pos])
         }
         return vi
-    }
-
-    private fun manageOpenAlert(vi : View?, inflater: LayoutInflater, pos : String) {
-        val builder = AlertDialog.Builder(vi!!.context, R.style.AlertDialog)
-        builder.setView(inflater.inflate(R.layout.select_exercice_alert, null))
-        val dialog: AlertDialog = builder.create()
-        val alertView = inflater.inflate(R.layout.select_exercice_alert, null)
-        val list = alertView.findViewById<ListView>(R.id.alert_select_exercice_list)
-        val arry = ArrayList<String>()
-        arry.add("test")
-        arry.add("test2")
-        list.adapter = ExerciceSelectAdaptor(activity, arry)
-
-        dialog.setView(alertView)
-        dialog.show()
     }
 
     private fun manageDelete(vi : View?, inflater: LayoutInflater, pos : String) {

@@ -2,7 +2,7 @@ package dev.virtualplanet.rehabapp.model
 
 class ExerciceList {
     private var i : Int = 0
-    private var content : ArrayList<Exercice>
+    var content : ArrayList<Exercice>
 
     constructor() {
         content = ArrayList<Exercice>()
