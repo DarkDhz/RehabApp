@@ -33,12 +33,7 @@ class LinearProgressActivity : AppCompatActivity() {
 
 
     private fun init() {
-        if (intent.extras != null) {
-            val type = intent.getStringExtra("type")
-            if (type.contains("Exercice")) {
-                findViewById<TextView>(R.id.progress_header).text = "Resumen de ejercicios"
-            }
-        }
+
 
         val chart = findViewById<LineChart>(R.id.progress_content) as LineChart
         chart.isVisible = false
@@ -54,7 +49,19 @@ class LinearProgressActivity : AppCompatActivity() {
         chart.xAxis.setDrawLabels(true)
         chart.setTouchEnabled(false)
         chart.setScaleEnabled(false)
-        Controller.loadProgressData(this)
+
+        if (intent.extras != null) {
+            val type = intent.getStringExtra("type")
+            when (type) {
+                "Exercice" -> {
+                    findViewById<TextView>(R.id.progress_header).text = "Resumen de ejercicios"
+                    Controller.loadExericeProgressData(this)
+                }
+                "Movility" -> {
+                    findViewById<TextView>(R.id.progress_header).text = "Resumen de movilidad"
+                }
+            }
+        }
 
 
     }
@@ -65,7 +72,7 @@ class LinearProgressActivity : AppCompatActivity() {
         val month = cal.get(Calendar.MONTH)
         val day = cal.get(Calendar.DAY_OF_MONTH)
         val picker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, day ->
-            Controller.loadProgressData(this, month, year)
+            Controller.loadExericeProgressData(this, month, year)
 
         }, year, month, day)
         picker.datePicker.maxDate = Calendar.getInstance().timeInMillis

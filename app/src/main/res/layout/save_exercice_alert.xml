@@ -56,14 +56,58 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+        <TextView
+            android:id="@+id/sea_cm_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="¿Te has sentido comodo?"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sea_seekLayout" />
+
         <Button
             android:id="@+id/sea_finish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Guardar datos"
+            android:background="@drawable/boton_1"
+            android:padding="5dp"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/sea_boxLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sea_cm_title">
+
+            <CheckBox
+                android:id="@+id/sea_afirmative_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Si"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckBox
+                android:id="@+id/sea_negative_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="No"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sea_afirmative_box" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -3,21 +3,10 @@ package dev.virtualplanet.rehabapp.controller
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Color
-import android.net.Uri
-import android.util.Log
-import android.view.View
 import android.widget.*
-import androidx.core.content.ContextCompat.startActivity
-import androidx.core.view.isVisible
-import com.github.mikephil.charting.charts.BarChart
-import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.components.Description
-import com.github.mikephil.charting.data.*
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
+import dev.virtualplanet.rehabapp.controller.data.ProgressDataManager
 import dev.virtualplanet.rehabapp.model.Exercice
 import dev.virtualplanet.rehabapp.model.ExerciceList
 import dev.virtualplanet.rehabapp.model.ModelFactory
@@ -29,9 +18,9 @@ import kotlin.collections.ArrayList
 
 object Controller {
 
-    private val data = FirebaseFirestore.getInstance()
+    val data = FirebaseFirestore.getInstance()
     private const val userTable = "USERS"
-    private const val progressTable = "PROGRESS"
+    const val progressTable = "PROGRESS"
     const val sharedTable = "userInfo"
     const val sharedExercices = "selected"
 
@@ -148,6 +137,12 @@ object Controller {
                         )
                     )
                 }
+            }.addOnFailureListener {
+                data.collection(progressTable).document(user.toString()).update(
+                    mapOf(
+                        date to 0
+                    )
+                )
             }
             val intent = Intent (context, MainActivity::class.java)
             context.startActivity(intent)
@@ -155,18 +150,21 @@ object Controller {
 
     }
 
-    private fun craftData() : String {
+    fun craftData() : String {
         return SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().time)
 
     }
 
-    private fun craftData(day: Int) : String {
-        var month : String = SimpleDateFormat("MM-yyyy").format(Calendar.getInstance().time)
-        return ("$day-$month")
+    fun craftData(day: Int) : String {
+        val month : String = SimpleDateFormat("MM-yyyy").format(Calendar.getInstance().time)
+        when (day > 9) {
+            true -> return ("$day-$month")
+            false -> return ("0$day-$month")
+        }
     }
 
-    private fun craftData(day: Int, month: Int) : String {
-        var year : String = SimpleDateFormat("yyyy").format(Calendar.getInstance().time)
+    fun craftData(day: Int, month: Int) : String {
+        val year : String = SimpleDateFormat("yyyy").format(Calendar.getInstance().time)
         when (month > 9) {
             true -> return ("$day-$month-$year")
             false -> return ("$day-0$month-$year")
@@ -174,10 +172,22 @@ object Controller {
 
 }
 
-    private fun craftData(day: Int, month: Int, year: Int) : String {
+    fun craftData(day: Int, month: Int, year: Int) : String {
         when (month > 9) {
-            true -> return ("$day-$month-$year")
-            false -> return ("$day-0$month-$year")
+            true -> {
+                when (day > 9) {
+                    true -> return ("$day-$month-$year")
+                    false -> return ("0$day-$month-$year")
+                }
+            }
+            false -> {
+                when (day > 9) {
+                    true -> return ("$day-0$month-$year")
+                    false -> return ("0$day-0$month-$year")
+
+                }
+
+            }
         }
 
     }
@@ -348,137 +358,40 @@ object Controller {
     /**
      * Method to load All the chart data
      */
-    fun loadProgressData(context: LinearProgressActivity){
-
-
+    fun loadExericeProgressData(context: LinearProgressActivity){
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
 
         if (user != "") {
-            data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
-                val yValues = ArrayList<Entry>()
-                val list = ArrayList<Int>()
-                for (x in 1 until 32) {
-                    val actual : String? = it.get(craftData(x)).toString()
-                    if (actual != null && actual != "" && actual != "null") {
-                        if (actual.toInt() > 0){
-                            yValues.add(Entry(x.toFloat(), actual.toFloat()))
-                            list.add(actual.toInt())
-                        }
-                    }
-                }
-                setLineChartData(context, yValues, list)
-
-
-            }
+            ProgressDataManager.loadExericeProgressData(context, user.toString())
         }
     }
 
-    fun loadProgressData(context: LinearProgressActivity, month : Int, year: Int){
-        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
-        val user = userPreferences.getString("email", "")
-        val month2 = month+1
-        if (user != "") {
-            data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
-                val yValues = ArrayList<Entry>()
-                val list = ArrayList<Int>()
-                for (x in 1 until 32) {
-                    val actual : String? = it.get(craftData(x, month2, year)).toString()
-                    if (actual != null && actual != "" && actual != "null") {
-                        if (actual.toInt() > 0){
-                            yValues.add(Entry(x.toFloat(), actual.toFloat()))
-                            list.add(actual.toInt())
-                        }
-                    }
-                }
-                setLineChartData(context, yValues, list)
-
-            }
-        }
-    }
-
-    private fun setLineChartData(context: LinearProgressActivity , values: ArrayList<Entry>, list : ArrayList<Int>) {
-        context.findViewById<TextView>(R.id.progress_media).text = ("Media: " + calculateAverage(list).toString())
-        val chart = context.findViewById<LineChart>(R.id.progress_content)
-        val set1 = LineDataSet(values, "Número de Ejercicios")
-        set1.lineWidth = 6f
-        set1.circleRadius = 6f
-        set1.valueTextSize = 15f
-        set1.setCircleColor(Color.LTGRAY)
-        set1.setDrawCircleHole(false)
-        val dataSets = ArrayList<ILineDataSet>()
-        dataSets.add(set1)
-        val dat = LineData(dataSets)
-        chart.data = dat
-        chart.isVisible = true
-        chart.invalidate()
-
-    }
-
-    private fun setBarChartData(context: BarProgressActivity , values: ArrayList<BarEntry>, list : ArrayList<Int>) {
-        context.findViewById<TextView>(R.id.bar_progress_media).text = ("Media: " + calculateAverage(list).toString())
-        val chart = context.findViewById<BarChart>(R.id.bar_progress_content)
-        val set1 = BarDataSet(values, "Número de ejercicios")
-        set1.setDrawIcons(false)
-        set1.valueTextSize = 15f
-        set1.barBorderColor = Color.LTGRAY
-        set1.barBorderWidth = 2f
-        val dataSets: java.util.ArrayList<IBarDataSet> = java.util.ArrayList()
-        dataSets.add(set1)
-        val data = BarData(dataSets)
-        data.barWidth = 1.5f
-        chart.data = data
-        chart.isVisible = true
-        chart.invalidate()
-
-    }
-
-    fun loadProgressData(context: BarProgressActivity){
+    fun loadExericeProgressData(context: LinearProgressActivity, month : Int, year: Int){
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
         if (user != "") {
-            data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
-                val yValues = ArrayList<BarEntry>()
-                val list = ArrayList<Int>()
-                for (x in 1 until 32) {
-                    val actual : String? = it.get(craftData(x)).toString()
-                    if (actual != null && actual != "" && actual != "null") {
-                        if (actual.toInt() > 0){
-                            yValues.add(BarEntry(x.toFloat(), actual.toFloat()))
-                            list.add(actual.toInt())
-                        }
-                    }
-                }
-                setBarChartData(context, yValues, list)
-
-            }
+            ProgressDataManager.loadExericeProgressData(context, month, year, user.toString())
         }
     }
 
-    fun loadProgressData(context: BarProgressActivity, month : Int, year: Int){
+    fun loadExericeProgressData(context: BarProgressActivity){
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
-        val month2 = month+1
         if (user != "") {
-            data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
-                val yValues = ArrayList<BarEntry>()
-                val list = ArrayList<Int>()
-                for (x in 1 until 32) {
-                    val actual : String? = it.get(craftData(x, month2, year)).toString()
-                    if (actual != null && actual != "" && actual != "null") {
-                        if (actual.toInt() > 0){
-                            yValues.add(BarEntry(x.toFloat(), actual.toFloat()))
-                            list.add(actual.toInt())
-                        }
-                    }
-                }
-                setBarChartData(context, yValues, list)
-
-            }
+            ProgressDataManager.loadExericeProgressData(context, user.toString())
         }
     }
 
-    private fun calculateAverage(list: List<Int>) : Int {
+    fun loadExericeProgressData(context: BarProgressActivity, month : Int, year: Int){
+        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        val user = userPreferences.getString("email", "")
+        if (user != "") {
+            ProgressDataManager.loadExericeProgressData(context, month, year, user.toString())
+        }
+    }
+
+    fun calculateAverage(list: List<Int>) : Int {
         if (list.isEmpty()) {
             return 0
         }

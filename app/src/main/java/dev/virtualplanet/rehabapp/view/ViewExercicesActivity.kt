@@ -33,6 +33,12 @@ class ViewExercicesActivity : AppCompatActivity() {
             startActivity(intent)
             return
         }
+        initButtons()
+
+
+    }
+
+    private fun initButtons() {
 
         findViewById<Button>(R.id.ce_done_bt).isVisible = false
 
@@ -43,11 +49,9 @@ class ViewExercicesActivity : AppCompatActivity() {
 
         val muscle = intent.getStringExtra("exercice")
 
-
         if (muscle.contains("Hombro") ) {
             val exerciceList = Controller.getList("Hombro", packageName)
             play(exerciceList.playNextExercice()!!)
-            count++
             findViewById<Button>(R.id.ce_next).setOnClickListener {
                 val next = exerciceList.playNextExercice()
                 if (next != null) {
@@ -60,7 +64,6 @@ class ViewExercicesActivity : AppCompatActivity() {
         if (muscle.contains("Codo") || true) {
             val exerciceList = Controller.getList("Codo", packageName)
             play(exerciceList.playNextExercice()!!)
-            count++
             findViewById<Button>(R.id.ce_next).setOnClickListener {
                 val next = exerciceList.playNextExercice()
                 if (next != null) {
@@ -129,18 +132,19 @@ class ViewExercicesActivity : AppCompatActivity() {
         builder.setView(inflater.inflate(R.layout.save_exercice_alert, null))
         val dialog: AlertDialog = builder.create()
         val alertView = inflater.inflate(R.layout.save_exercice_alert, null)
-        //alertView.findViewById<SeekBar>(R.id.sea_seekBar)
 
         alertView.findViewById<SeekBar>(R.id.sea_seekBar).setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                alertView.findViewById<TextView>(R.id.sea_seekValue).setText(progress.toString())
+                alertView.findViewById<TextView>(R.id.sea_seekValue).setText((progress/10).toString())
             }
            override fun onStopTrackingTouch(seekBar: SeekBar) {
                 // TODO Auto-generated method stub
+               return
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
                 // TODO Auto-generated method stub
+                return
             }
         })
 
@@ -149,6 +153,14 @@ class ViewExercicesActivity : AppCompatActivity() {
             save()
             val intent = Intent(this, MainExerciciActivity::class.java)
             startActivity(intent)
+        }
+
+        alertView.findViewById<CheckBox>(R.id.sea_afirmative_box).setOnClickListener {
+            alertView.findViewById<CheckBox>(R.id.sea_negative_box).isChecked = false
+        }
+
+        alertView.findViewById<CheckBox>(R.id.sea_negative_box).setOnClickListener {
+            alertView.findViewById<CheckBox>(R.id.sea_afirmative_box).isChecked = false
         }
         /*alertView.findViewById<TextView>(R.id.delete_muscle_alert_header).text = "¿Estás seguro que quieres cerrar sesión?"
         alertView.findViewById<Button>(R.id.delete_muscle_alert_cancel).setOnClickListener {

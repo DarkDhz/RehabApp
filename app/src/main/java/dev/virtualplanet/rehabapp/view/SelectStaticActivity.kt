@@ -36,11 +36,11 @@ class SelectStaticActivity : AppCompatActivity() {
         val dialog: AlertDialog = builder.create()
         var alertView = inflater.inflate(R.layout.select_representation_alert, null)
         alertView.findViewById<ImageView>(R.id.representation_bar).setOnClickListener {
-            val intent = Intent(this, BarProgressActivity::class.java).putExtra("type", "Exercice")
+            val intent = Intent(this, BarProgressActivity::class.java).putExtra("type", type)
             startActivity(intent)
         }
         alertView.findViewById<ImageView>(R.id.representation_line).setOnClickListener {
-            val intent = Intent(this, LinearProgressActivity::class.java).putExtra("type", "Exercice")
+            val intent = Intent(this, LinearProgressActivity::class.java).putExtra("type", type)
             startActivity(intent)
         }
 
@@ -55,5 +55,9 @@ class SelectStaticActivity : AppCompatActivity() {
 
     fun unimplemented(view: View) {
         Toast.makeText(this, "Esto aún no esta implementado :(", Toast.LENGTH_LONG).show()
+    }
+
+    fun goMovility(view: View) {
+        openAlert("Movility")
     }
 }

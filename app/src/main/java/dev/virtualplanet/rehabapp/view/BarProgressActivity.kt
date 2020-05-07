@@ -9,10 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.Description
-import com.github.mikephil.charting.data.BarData
-import com.github.mikephil.charting.data.BarDataSet
-import com.github.mikephil.charting.data.BarEntry
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
 import java.util.*
@@ -34,12 +30,7 @@ class BarProgressActivity : AppCompatActivity() {
 
 
     private fun init() {
-        if (intent.extras != null) {
-            val type = intent.getStringExtra("type")
-            if (type.contains("Exercice")) {
-                findViewById<TextView>(R.id.bar_progress_header).text = "Resumen de ejercicios"
-            }
-        }
+
 
 
         val chart = findViewById<BarChart>(R.id.bar_progress_content)
@@ -54,14 +45,18 @@ class BarProgressActivity : AppCompatActivity() {
         chart.setTouchEnabled(false)
         chart.setScaleEnabled(false)
         chart.description = desc
-        Controller.loadProgressData(this)
 
-
-
-        //progressChart.isVisible = false
-        //Controller.loadProgressData(this)
-
-
+        if (intent.extras != null) {
+            when (intent.getStringExtra("type")) {
+                "Exercice" -> {
+                    findViewById<TextView>(R.id.bar_progress_header).text = "Resumen de ejercicios"
+                    Controller.loadExericeProgressData(this)
+                }
+                "Movility" -> {
+                    findViewById<TextView>(R.id.bar_progress_header).text = "Resumen de movilidad"
+                }
+            }
+        }
     }
 
     fun openMonthSelector(view: View) {
@@ -70,7 +65,7 @@ class BarProgressActivity : AppCompatActivity() {
         val month = cal.get(Calendar.MONTH)
         val day = cal.get(Calendar.DAY_OF_MONTH)
         val picker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, day ->
-            Controller.loadProgressData(this, month, year)
+            Controller.loadExericeProgressData(this, month, year)
 
         }, year, month, day)
         picker.datePicker.maxDate = Calendar.getInstance().timeInMillis
