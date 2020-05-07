@@ -7,7 +7,7 @@ import android.widget.*
 import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.data.Callback
-import dev.virtualplanet.rehabapp.controller.data.ProgressDataManager
+import dev.virtualplanet.rehabapp.controller.data.ProgressExerciceDataManager
 import dev.virtualplanet.rehabapp.controller.data.UserDataManager
 import dev.virtualplanet.rehabapp.controller.utils.Calculator
 import dev.virtualplanet.rehabapp.controller.utils.CraftData
@@ -15,8 +15,6 @@ import dev.virtualplanet.rehabapp.model.Exercice
 import dev.virtualplanet.rehabapp.model.ExerciceList
 import dev.virtualplanet.rehabapp.model.ModelFactory
 import dev.virtualplanet.rehabapp.view.*
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -62,7 +60,7 @@ object Controller {
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
         if (user != "") {
-            ProgressDataManager.generateData(user.toString())
+            ProgressExerciceDataManager.generateData(user.toString())
             val intent = Intent (context, MainActivity::class.java)
             context.startActivity(intent)
         }
@@ -232,7 +230,7 @@ object Controller {
         val user = userPreferences.getString("email", "")
 
         if (user != "") {
-            ProgressDataManager.loadExericeProgressData(context, user.toString())
+            ProgressExerciceDataManager.loadExericeProgressData(context, user.toString())
         }
     }
 
@@ -240,7 +238,7 @@ object Controller {
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
         if (user != "") {
-            ProgressDataManager.loadExericeProgressData(context, month, year, user.toString())
+            ProgressExerciceDataManager.loadExericeProgressData(context, month, year, user.toString())
         }
     }
 
@@ -248,7 +246,7 @@ object Controller {
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
         if (user != "") {
-            ProgressDataManager.loadExericeProgressData(context, user.toString())
+            ProgressExerciceDataManager.loadExericeProgressData(context, user.toString())
         }
     }
 
@@ -256,7 +254,7 @@ object Controller {
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
         if (user != "") {
-            ProgressDataManager.loadExericeProgressData(context, month, year, user.toString())
+            ProgressExerciceDataManager.loadExericeProgressData(context, month, year, user.toString())
         }
     }
 
@@ -308,22 +306,7 @@ object Controller {
     }
 
     fun addExerciceCount(user: String?, num: Int) {
-        if (user != "") {
-            val date = CraftData.craftData()
-
-            data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
-                val actual : String? = it.get(date).toString()
-
-                if (actual == null || actual != "" || actual == "null") {
-                    val act = actual!!.toInt()
-                    data.collection(progressTable).document(user.toString()).update(
-                        mapOf(
-                            date to (act + num)
-                        )
-                    )
-                }
-            }
-        }
+        ProgressExerciceDataManager.addExerciceCount(user, num)
     }
 
     fun getList(name: String, packageName: String) : ExerciceList {

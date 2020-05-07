@@ -15,7 +15,7 @@ import dev.virtualplanet.rehabapp.controller.utils.CraftData
 import dev.virtualplanet.rehabapp.view.BarProgressActivity
 import dev.virtualplanet.rehabapp.view.LinearProgressActivity
 
-object ProgressDataManager {
+object ProgressExerciceDataManager {
 
     fun loadExericeProgressData(context: LinearProgressActivity, user: String){
         Controller.data.collection(Controller.progressTable).document(user).get().addOnSuccessListener {
@@ -159,6 +159,25 @@ object ProgressDataManager {
             CraftData.craftData(18) to 9,
             CraftData.craftData(2) to 12
         ))
+    }
+
+    fun addExerciceCount(user: String?, num: Int) {
+        if (user != "") {
+            val date = CraftData.craftData()
+
+            Controller.data.collection(Controller.progressTable).document(user.toString()).get().addOnSuccessListener {
+                val actual : String? = it.get(date).toString()
+
+                if (actual == null || actual != "" || actual == "null") {
+                    val act = actual!!.toInt()
+                    Controller.data.collection(Controller.progressTable).document(user.toString()).update(
+                        mapOf(
+                            date to (act + num)
+                        )
+                    )
+                }
+            }
+        }
     }
 
 
