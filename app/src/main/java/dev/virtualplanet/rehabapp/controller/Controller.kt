@@ -6,7 +6,9 @@ import android.content.SharedPreferences
 import android.widget.*
 import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
+import dev.virtualplanet.rehabapp.controller.data.Callback
 import dev.virtualplanet.rehabapp.controller.data.ProgressDataManager
+import dev.virtualplanet.rehabapp.controller.utils.Calculator
 import dev.virtualplanet.rehabapp.model.Exercice
 import dev.virtualplanet.rehabapp.model.ExerciceList
 import dev.virtualplanet.rehabapp.model.ModelFactory
@@ -239,9 +241,7 @@ object Controller {
             context.findViewById<TextView>(R.id.textView_IMC_Value).text = ("No se puede calcular sin altura y peso")
         } else {
             context.findViewById<TextView>(R.id.textView_IMC_Value).text =
-                calculateIMC(weight.toDouble(), (height.toDouble()/100)).toString()
-
-
+                Calculator.calculateIMC(weight.toDouble(), (height.toDouble()/100)).toString()
         }
     }
 
@@ -273,14 +273,7 @@ object Controller {
         }
     }
 
-    /**
-     * Method to calculate de IMC of a person
-     */
-    private fun calculateIMC(weight: Double, height: Double) : Long {
-        //kg/m^2
-        //DOUBLE TO GET ALL DECIMALS
-        return Math.round(weight/(height*height))
-    }
+
 
     /**
      * Method to save File Data
@@ -391,16 +384,7 @@ object Controller {
         }
     }
 
-    fun calculateAverage(list: List<Int>) : Int {
-        if (list.isEmpty()) {
-            return 0
-        }
-        var toReturn = 0
-        for (x in list) {
-            toReturn += x
-        }
-        return toReturn/list.size
-    }
+
 
     fun addSavedExercices(context: Context, name : String) : Boolean {
         val exercicePreferences = context.getSharedPreferences(sharedExercices, Context.MODE_PRIVATE)

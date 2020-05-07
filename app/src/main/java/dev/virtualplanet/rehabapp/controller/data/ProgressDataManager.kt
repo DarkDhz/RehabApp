@@ -10,6 +10,7 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
+import dev.virtualplanet.rehabapp.controller.utils.Calculator
 import dev.virtualplanet.rehabapp.view.BarProgressActivity
 import dev.virtualplanet.rehabapp.view.LinearProgressActivity
 
@@ -51,7 +52,7 @@ object ProgressDataManager {
     }
 
     private fun setExerciceLineChartData(context: LinearProgressActivity, values: ArrayList<Entry>, list : ArrayList<Int>) {
-        context.findViewById<TextView>(R.id.progress_media).text = ("Media: " + Controller.calculateAverage(
+        context.findViewById<TextView>(R.id.progress_media).text = ("Media: " + Calculator.calculateAverage(
             list
         ).toString())
         val chart = context.findViewById<LineChart>(R.id.progress_content)
@@ -109,7 +110,7 @@ object ProgressDataManager {
     }
 
     private fun setExericeBarChartData(context: BarProgressActivity, values: ArrayList<BarEntry>, list : ArrayList<Int>) {
-        context.findViewById<TextView>(R.id.bar_progress_media).text = ("Media: " + Controller.calculateAverage(
+        context.findViewById<TextView>(R.id.bar_progress_media).text = ("Media: " + Calculator.calculateAverage(
             list
         ).toString())
         val chart = context.findViewById<BarChart>(R.id.bar_progress_content)

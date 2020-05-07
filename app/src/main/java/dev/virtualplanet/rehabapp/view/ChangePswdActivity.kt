@@ -4,14 +4,12 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import dev.virtualplanet.rehabapp.R
-import dev.virtualplanet.rehabapp.controller.Callback
+import dev.virtualplanet.rehabapp.controller.data.Callback
 import dev.virtualplanet.rehabapp.controller.Controller
-import kotlinx.android.synthetic.main.activity_change_pswd.*
 
 class ChangePswdActivity : AppCompatActivity() {
 
@@ -34,7 +32,8 @@ class ChangePswdActivity : AppCompatActivity() {
             val new = findViewById<EditText>(R.id.pswd_new_value).text.toString()
             val repeat = findViewById<EditText>(R.id.pswd_repeat).text.toString()
 
-            controller.changePass(user, old , new, repeat, object : Callback<String> {
+            controller.changePass(user, old , new, repeat, object :
+                Callback<String> {
                 override fun onCallback(value: String) {
                     updatting = false
                     when (value) {

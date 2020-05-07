@@ -8,13 +8,10 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QuerySnapshot
 import dev.virtualplanet.rehabapp.R
-import dev.virtualplanet.rehabapp.controller.Callback
+import dev.virtualplanet.rehabapp.controller.data.Callback
 import dev.virtualplanet.rehabapp.controller.Controller
-import kotlinx.android.synthetic.main.activity_login.*
 
 
 class LoginActivity : AppCompatActivity() {
@@ -42,7 +39,8 @@ class LoginActivity : AppCompatActivity() {
 
         val user = findViewById<EditText>(R.id.username_login).text.toString()
         val pass = findViewById<EditText>(R.id.password_login).text.toString()
-        controller.validateLogin(user, pass, object : Callback<String> {
+        controller.validateLogin(user, pass, object :
+            Callback<String> {
             override fun onCallback(value: String) {
                 when (value) {
                     "success" -> {

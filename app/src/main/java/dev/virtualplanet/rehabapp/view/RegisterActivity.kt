@@ -7,13 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
-import dev.virtualplanet.rehabapp.controller.Callback
+import dev.virtualplanet.rehabapp.controller.data.Callback
 import dev.virtualplanet.rehabapp.controller.Controller
-import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -39,7 +37,8 @@ class RegisterActivity : AppCompatActivity() {
         val mail = findViewById<EditText>(R.id.email_register).text.toString()
 
 
-        controller.validateRegister(user, pass, confirm, mail, object : Callback<String> {
+        controller.validateRegister(user, pass, confirm, mail, object :
+            Callback<String> {
 
             override fun onCallback(value: String) {
                 when (value) {
