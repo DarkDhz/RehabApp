@@ -8,7 +8,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.data.Callback
 import dev.virtualplanet.rehabapp.controller.data.ProgressDataManager
+import dev.virtualplanet.rehabapp.controller.data.UserDataManager
 import dev.virtualplanet.rehabapp.controller.utils.Calculator
+import dev.virtualplanet.rehabapp.controller.utils.CraftData
 import dev.virtualplanet.rehabapp.model.Exercice
 import dev.virtualplanet.rehabapp.model.ExerciceList
 import dev.virtualplanet.rehabapp.model.ModelFactory
@@ -21,178 +23,53 @@ import kotlin.collections.ArrayList
 object Controller {
 
     val data = FirebaseFirestore.getInstance()
-    private const val userTable = "USERS"
+    const val userTable = "USERS"
     const val progressTable = "PROGRESS"
     const val sharedTable = "userInfo"
     const val sharedExercices = "selected"
 
-    private const val TAG = "CONTROLLER"
-    private const val notSetString = "Not Set"
+    const val notSetString = "Not Set"
     
     private val factory = ModelFactory
 
-    private val exList = factory.makeExerciceList()
-
-    fun getExerciceByName(name: String) : Exercice? {
-        return exList.getExerciceByName(name)
-    }
-
-    fun getExerciceByID(id: String) : Exercice? {
-        return null
-    }
-
-    fun validateLogin(user: String, pass: String, loginCallback: Callback<String>) {
-        if (!user.isBlank() && !pass.isBlank()) {
-            data.collection(userTable).document(user)
-                .get().addOnSuccessListener {
-                    val checkPass = it.get("password").toString()
-
-                    if (checkPass == pass) {
-                        loginCallback.onCallback("success")
-                    } else {
-                        loginCallback.onCallback("Contraseña incorrecta")
-                    }
-                }.addOnFailureListener {
-                    loginCallback.onCallback("Contraseña o usuario incorrecto")
-                }
-
-        } else {
-            loginCallback.onCallback("Alguno de los campos esta vacio")
-        }
+    fun validateLogin(user: String, pass: String, callback: Callback<String>) {
+        UserDataManager.validateLogin(user, pass, object : Callback<String> {
+            override fun onCallback(value: String) {
+                callback.onCallback(value)
+            }
+        })
     }
 
 
 
     fun validateRegister(user: String, pass: String, confirm: String, mail: String, callback: Callback<String>) {
-        if ((user.isBlank()) || (pass.isBlank()) || (confirm.isBlank()) || (mail.isBlank())) {
-            callback.onCallback("Alguno de los campos esta vacio")
-        } else {
-            if (pass == confirm) {
-                data.collection(userTable).document(mail)
-                    .get().addOnSuccessListener {
-                        callback.onCallback("Esta cuenta ya existe")
-                    }.addOnFailureListener {
-                        data.collection(userTable).document(mail).set(mapOf(
-                            "name" to user,
-                            "mail" to mail,
-                            "password" to pass,
-                            "sex" to notSetString,
-                            "age" to notSetString,
-                            "weight" to notSetString,
-                            "height" to notSetString,
-                            "wheel" to false
-                        ))
-                        //TODO REMOVER PARA LA ENTREGA
-                        data.collection(progressTable).document(mail).set(mapOf(
-                            craftData() to 15,
-                            craftData(23) to 0,
-                            craftData(7) to 5,
-                            craftData(18) to 9,
-                            craftData(2) to 12
-                        ))
-                        callback.onCallback("success")
-                    }
-
-            } else {
-                callback.onCallback("Las contraseñas no coinciden")
+        UserDataManager.addNewUser(user, pass, confirm, mail, object : Callback<String> {
+            override fun onCallback(value: String) {
+                callback.onCallback(value)
             }
-        }
+        })
     }
 
     fun changePass(user: String?, old: String, new: String, confirm: String, callback: Callback<String>) {
-        if (old.isBlank()|| new.isBlank() || confirm.isBlank() || user!!.isBlank()) {
-            callback.onCallback("Alguno de los campos esta vacio")
-        } else {
-            data.collection(userTable).document(user.toString())
-                .get().addOnSuccessListener {
-                    val checkPass = it.get("password").toString()
-                    if (checkPass == old) {
-                        if (new == confirm) {
-                            data.collection(userTable).document(user.toString()).update(mapOf(
-                                "password" to new
-                            ))
-                            callback.onCallback("success")
-                        } else {
-                            callback.onCallback("La contraseñas nuevas no coinciden.")
-                        }
-                    } else {
-                        callback.onCallback("La contraseña antigua no coinicide.")
-                    }
-                }
-
-
-        }
+        UserDataManager.changePass(user, old, new, confirm, object : Callback<String> {
+            override fun onCallback(value: String) {
+                callback.onCallback(value)
+            }
+        })
     }
 
     fun autologin(context: Context) {
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
         if (user != "") {
-            val date = craftData()
-
-            data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
-                val actual : String? = it.get(date).toString()
-                if (actual == null || actual == "null") {
-                    data.collection(progressTable).document(user.toString()).update(
-                        mapOf(
-                            date to 0
-                        )
-                    )
-                }
-            }.addOnFailureListener {
-                data.collection(progressTable).document(user.toString()).update(
-                    mapOf(
-                        date to 0
-                    )
-                )
-            }
+            ProgressDataManager.generateData(user.toString())
             val intent = Intent (context, MainActivity::class.java)
             context.startActivity(intent)
         }
 
     }
 
-    fun craftData() : String {
-        return SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().time)
 
-    }
-
-    fun craftData(day: Int) : String {
-        val month : String = SimpleDateFormat("MM-yyyy").format(Calendar.getInstance().time)
-        when (day > 9) {
-            true -> return ("$day-$month")
-            false -> return ("0$day-$month")
-        }
-    }
-
-    fun craftData(day: Int, month: Int) : String {
-        val year : String = SimpleDateFormat("yyyy").format(Calendar.getInstance().time)
-        when (month > 9) {
-            true -> return ("$day-$month-$year")
-            false -> return ("$day-0$month-$year")
-        }
-
-}
-
-    fun craftData(day: Int, month: Int, year: Int) : String {
-        when (month > 9) {
-            true -> {
-                when (day > 9) {
-                    true -> return ("$day-$month-$year")
-                    false -> return ("0$day-$month-$year")
-                }
-            }
-            false -> {
-                when (day > 9) {
-                    true -> return ("$day-0$month-$year")
-                    false -> return ("0$day-0$month-$year")
-
-                }
-
-            }
-        }
-
-    }
 
     fun logOut(context: Context) {
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
@@ -262,7 +139,6 @@ object Controller {
             data.collection(userTable).document(user.toString())
                 .get().addOnSuccessListener {
                     val name = it.get("name").toString()
-                    val pass = it.get("password").toString()
                     val age = it.get("age").toString()
                     val sex = it.get("sex").toString()
                     val height = it.get("height").toString()
@@ -433,10 +309,10 @@ object Controller {
 
     fun addExerciceCount(user: String?, num: Int) {
         if (user != "") {
-            val date = craftData()
+            val date = CraftData.craftData()
 
             data.collection(progressTable).document(user.toString()).get().addOnSuccessListener {
-                val actual : String? = it.get(craftData()).toString()
+                val actual : String? = it.get(date).toString()
 
                 if (actual == null || actual != "" || actual == "null") {
                     val act = actual!!.toInt()

@@ -39,7 +39,6 @@ class RegisterActivity : AppCompatActivity() {
 
         controller.validateRegister(user, pass, confirm, mail, object :
             Callback<String> {
-
             override fun onCallback(value: String) {
                 when (value) {
                     "success" -> {

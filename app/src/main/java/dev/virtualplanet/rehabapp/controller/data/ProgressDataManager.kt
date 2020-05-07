@@ -11,6 +11,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
 import dev.virtualplanet.rehabapp.controller.utils.Calculator
+import dev.virtualplanet.rehabapp.controller.utils.CraftData
 import dev.virtualplanet.rehabapp.view.BarProgressActivity
 import dev.virtualplanet.rehabapp.view.LinearProgressActivity
 
@@ -21,7 +22,7 @@ object ProgressDataManager {
             val yValues = ArrayList<Entry>()
             val list = ArrayList<Int>()
             for (x in 1 until 32) {
-                val actual : String? = it.get(Controller.craftData(x)).toString()
+                val actual : String? = it.get(CraftData.craftData(x)).toString()
                 if (actual != null && actual != "" && actual != "null") {
                     if (actual.toInt() > 0){
                         yValues.add(Entry(x.toFloat(), actual.toFloat()))
@@ -39,7 +40,7 @@ object ProgressDataManager {
             val yValues = ArrayList<Entry>()
             val list = ArrayList<Int>()
             for (x in 1 until 32) {
-                val actual : String? = it.get(Controller.craftData(x, month2, year)).toString()
+                val actual : String? = it.get(CraftData.craftData(x, month2, year)).toString()
                 if (actual != null && actual != "" && actual != "null") {
                     if (actual.toInt() > 0){
                         yValues.add(Entry(x.toFloat(), actual.toFloat()))
@@ -77,7 +78,7 @@ object ProgressDataManager {
             val yValues = ArrayList<BarEntry>()
             val list = ArrayList<Int>()
             for (x in 1 until 32) {
-                val actual : String? = it.get(Controller.craftData(x)).toString()
+                val actual : String? = it.get(CraftData.craftData(x)).toString()
                 if (actual != null && actual != "" && actual != "null") {
                     if (actual.toInt() > 0){
                         yValues.add(BarEntry(x.toFloat(), actual.toFloat()))
@@ -95,7 +96,7 @@ object ProgressDataManager {
             val yValues = ArrayList<BarEntry>()
             val list = ArrayList<Int>()
             for (x in 1 until 32) {
-                val actual : String? = it.get(Controller.craftData(x, month2, year)).toString()
+                val actual : String? = it.get(CraftData.craftData(x, month2, year)).toString()
                 if (actual != null && actual != "" && actual != "null") {
                     if (actual.toInt() > 0){
                         yValues.add(BarEntry(x.toFloat(), actual.toFloat()))
@@ -127,6 +128,37 @@ object ProgressDataManager {
         chart.isVisible = true
         chart.invalidate()
 
+    }
+
+    fun generateData(user: String) {
+        val date = CraftData.craftData()
+
+        Controller.data.collection(Controller.progressTable).document(user).get().addOnSuccessListener {
+            val actual : String? = it.get(date).toString()
+            if (actual == null || actual == "null") {
+                Controller.data.collection(Controller.progressTable).document(user).update(
+                    mapOf(
+                        date to 0
+                    )
+                )
+            }
+        }.addOnFailureListener {
+            Controller.data.collection(Controller.progressTable).document(user).update(
+                mapOf(
+                    date to 0
+                )
+            )
+        }
+    }
+
+    fun generateTestData(mail: String) {
+        Controller.data.collection(Controller.progressTable).document(mail).set(mapOf(
+            CraftData.craftData() to 15,
+            CraftData.craftData(23) to 0,
+            CraftData.craftData(7) to 5,
+            CraftData.craftData(18) to 9,
+            CraftData.craftData(2) to 12
+        ))
     }
 
 
