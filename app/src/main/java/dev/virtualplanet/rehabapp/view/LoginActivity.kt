@@ -44,11 +44,7 @@ class LoginActivity : AppCompatActivity() {
             override fun onCallback(value: String) {
                 when (value) {
                     "success" -> {
-                        val userPreferences = getSharedPreferences(controller.sharedTable, Context.MODE_PRIVATE)
-                        val editor: SharedPreferences.Editor = userPreferences.edit()
-
-                        editor.putString("email", user)
-                        editor.apply()
+                        controller.saveSharedUser(view.context, user)
 
                         val intent = Intent(view.context, MainActivity::class.java)
                         startActivity(intent)

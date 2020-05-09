@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
-import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.data.Callback
 import dev.virtualplanet.rehabapp.controller.Controller
@@ -40,11 +39,7 @@ class RegisterActivity : AppCompatActivity() {
             override fun onCallback(value: String) {
                 when (value) {
                     "success" -> {
-                        val userPreferences = getSharedPreferences(controller.sharedTable, Context.MODE_PRIVATE)
-                        val editor: SharedPreferences.Editor = userPreferences.edit()
-
-                        editor.putString("email", mail)
-                        editor.apply()
+                        controller.saveSharedUser(view.context, user)
 
                         val intent = Intent (view.context, MainActivity::class.java)
                         startActivity(intent)

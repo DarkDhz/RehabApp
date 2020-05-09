@@ -1,20 +1,70 @@
 package dev.virtualplanet.rehabapp.controller.data
 
+import android.content.Context
+import android.widget.EditText
+import android.widget.Switch
+import android.widget.TextView
+import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
 import dev.virtualplanet.rehabapp.controller.utils.CraftData
+import dev.virtualplanet.rehabapp.controller.utils.ProfileHelper
+import dev.virtualplanet.rehabapp.view.EditProfileActivity
+import dev.virtualplanet.rehabapp.view.ProfileActivity
 
 object UserDataManager {
+
+    private const val userTable = "USERS"
+
+    fun saveProfileData(context: Context, age: String, weight: String, height: String, wheelChair : Boolean, user: String) {
+
+        Controller.data.collection(userTable).document(user).get().addOnSuccessListener {
+            if (!age.equals(Controller.notSetString)) {
+                Controller.data.collection(userTable).document(user).update(mapOf(
+                    "age" to age
+                ))
+            }
+            if (!weight.equals(Controller.notSetString)) {
+                Controller.data.collection(userTable).document(user).update(mapOf(
+                    "weight" to weight
+                ))
+            }
+            if (!height.equals(Controller.notSetString)) {
+                Controller.data.collection(userTable).document(user).update(mapOf(
+                    "height" to height
+                ))
+            }
+            Controller.data.collection(userTable).document(user).update(mapOf(
+                "wheel" to wheelChair
+            ))
+        }
+
+
+    }
+
+    fun loadProfile(context: ProfileActivity, user: String){
+        Controller.data.collection(userTable).document(user)
+            .get().addOnSuccessListener {
+                val name = it.get("name").toString()
+                val age = it.get("age").toString()
+                val sex = it.get("sex").toString()
+                val height = it.get("height").toString()
+                val weight = it.get("weight").toString()
+                val wheelchair = it.get("wheel").toString().toBoolean()
+                ProfileHelper.changeProfile(context, name, age, sex, height, weight, wheelchair)
+            }
+
+    }
 
     fun addNewUser(user: String, pass: String, confirm: String, mail: String, callback: Callback<String>) {
         if ((user.isBlank()) || (pass.isBlank()) || (confirm.isBlank()) || (mail.isBlank())) {
             callback.onCallback("Alguno de los campos esta vacio")
         } else {
             if (pass == confirm) {
-                Controller.data.collection(Controller.userTable).document(mail)
+                Controller.data.collection(userTable).document(mail)
                     .get().addOnSuccessListener {
                         callback.onCallback("Esta cuenta ya existe")
                     }.addOnFailureListener {
-                        Controller.data.collection(Controller.userTable).document(mail).set(mapOf(
+                        Controller.data.collection(userTable).document(mail).set(mapOf(
                             "name" to user,
                             "mail" to mail,
                             "password" to pass,
@@ -48,7 +98,7 @@ object UserDataManager {
 
     fun validateLogin(user: String, pass: String, loginCallback: Callback<String>) {
         if (!user.isBlank() && !pass.isBlank()) {
-            Controller.data.collection(Controller.userTable).document(user)
+            Controller.data.collection(userTable).document(user)
                 .get().addOnSuccessListener {
                     val checkPass = it.get("password").toString()
 
@@ -70,12 +120,12 @@ object UserDataManager {
         if (old.isBlank()|| new.isBlank() || confirm.isBlank() || user!!.isBlank()) {
             callback.onCallback("Alguno de los campos esta vacio")
         } else {
-            Controller.data.collection(Controller.userTable).document(user.toString())
+            Controller.data.collection(userTable).document(user.toString())
                 .get().addOnSuccessListener {
                     val checkPass = it.get("password").toString()
                     if (checkPass == old) {
                         if (new == confirm) {
-                            Controller.data.collection(Controller.userTable).document(user.toString()).update(mapOf(
+                            Controller.data.collection(userTable).document(user.toString()).update(mapOf(
                                 "password" to new
                             ))
                             callback.onCallback("success")
@@ -89,5 +139,38 @@ object UserDataManager {
 
 
         }
+    }
+
+    fun loadProfileHints(context: EditProfileActivity, user: String) {
+        Controller.data.collection(userTable).document(user).get().addOnSuccessListener {
+                val name = it.get("name").toString()
+                val age = it.get("age").toString()
+                val sex = it.get("sex").toString()
+                val height = it.get("height").toString()
+                val weight = it.get("weight").toString()
+                val wheelchair = it.get("wheel").toString().toBoolean()
+
+
+                context.findViewById<TextView>(R.id.e_profile_content).text = name
+                if (!age.equals(Controller.notSetString)) {
+                    context.findViewById<EditText>(R.id.e_textView_Age_Value).hint = age
+                }
+
+                if (!height.equals(Controller.notSetString)) {
+                    context.findViewById<TextView>(R.id.e_textView_Height_Value).hint = height
+                }
+                if (!weight.equals(Controller.notSetString)) {
+                    context.findViewById<TextView>(R.id.e_textView_Weight_Value).hint = weight
+                }
+
+                if (wheelchair) {
+                    context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).text = "SI"
+                    context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).isChecked = true
+                } else {
+                    context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).text = "NO"
+                }
+
+            }
+
     }
 }

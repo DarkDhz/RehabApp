@@ -1,6 +1,5 @@
 package dev.virtualplanet.rehabapp.view
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,8 +24,8 @@ class ChangePswdActivity : AppCompatActivity() {
         //TODO
         if (!updatting) {
             updatting = true
-            val userPreferences = view.context.getSharedPreferences(Controller.sharedTable, Context.MODE_PRIVATE)
-            val user = userPreferences.getString("email", "")
+
+            val user = controller.getSharedUser(applicationContext)
 
             val old = findViewById<EditText>(R.id.pswd_old_value).text.toString()
             val new = findViewById<EditText>(R.id.pswd_new_value).text.toString()

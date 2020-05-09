@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
@@ -16,7 +15,6 @@ import dev.virtualplanet.rehabapp.controller.Controller
 import dev.virtualplanet.rehabapp.model.ExerciceList
 import android.widget.SeekBar
 import dev.virtualplanet.rehabapp.view.adaptors.MarkCompletedAdaptor
-import dev.virtualplanet.rehabapp.view.adaptors.MuscleSelectAdaptor
 
 class ViewExercicesActivity : AppCompatActivity() {
 
@@ -117,8 +115,7 @@ class ViewExercicesActivity : AppCompatActivity() {
     }
 
     private fun save(count: Int, progress: Int) {
-        val userPreferences = getSharedPreferences(Controller.sharedTable, Context.MODE_PRIVATE)
-        val user = userPreferences.getString("email", "")
+        val user = Controller.getSharedUser(applicationContext)
         if (user != "") {
             if (count > 0) {
                 Controller.addExerciceCount(user.toString(), count)
@@ -144,18 +141,17 @@ class ViewExercicesActivity : AppCompatActivity() {
 
         val adapt = MarkCompletedAdaptor(this, exerciceList)
         alertView.findViewById<ListView>(R.id.sea_listView).adapter = adapt
+        alertView.findViewById<SeekBar>(R.id.sea_seekBar).progress = 50
 
         alertView.findViewById<SeekBar>(R.id.sea_seekBar).setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 alertView.findViewById<TextView>(R.id.sea_seekValue).text = (progress/10).toString()
             }
            override fun onStopTrackingTouch(seekBar: SeekBar) {
-                // TODO Auto-generated method stub
                return
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
-                // TODO Auto-generated method stub
                 return
             }
         })
