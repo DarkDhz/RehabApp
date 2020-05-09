@@ -3,6 +3,7 @@ package dev.virtualplanet.rehabapp.controller
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.util.Log
 import android.widget.*
 import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
@@ -281,6 +282,14 @@ object Controller {
     }
 
 
+    fun addExerciceCount(user: String, num: Int) {
+        ProgressDataManager.add(user, num, progressExerciceTable)
+    }
+
+    fun addMov(user: String, num: Int) {
+        ProgressDataManager.add(user, num, progressMovilityTable)
+    }
+
     fun addSavedExercices(context: Context, name : String) : Boolean {
         val exercicePreferences = context.getSharedPreferences(sharedExercices, Context.MODE_PRIVATE)
         val valid = exercicePreferences.getString(name, "null")
@@ -326,13 +335,6 @@ object Controller {
        return factory.makeExerice(n, des, rep, ser, time, path)
     }
 
-    fun addExerciceCount(user: String, num: Int) {
-        ProgressDataManager.add(user, num, progressExerciceTable)
-    }
-
-    fun addMov(user: String, num: Int) {
-        ProgressDataManager.add(user, num, progressMovilityTable)
-    }
 
     fun getList(name: String, packageName: String) : ExerciceList {
         val exerciceList : ExerciceList = createExerciceList()

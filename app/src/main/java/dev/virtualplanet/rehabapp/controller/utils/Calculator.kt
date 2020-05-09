@@ -21,4 +21,7 @@ object Calculator {
         }
         return toReturn/list.size
     }
+
+
+
 }

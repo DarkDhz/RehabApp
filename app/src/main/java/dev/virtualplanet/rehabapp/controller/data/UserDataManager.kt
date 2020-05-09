@@ -1,6 +1,7 @@
 package dev.virtualplanet.rehabapp.controller.data
 
 import dev.virtualplanet.rehabapp.controller.Controller
+import dev.virtualplanet.rehabapp.controller.utils.CraftData
 
 object UserDataManager {
 
@@ -24,7 +25,7 @@ object UserDataManager {
                             "wheel" to false
                         ))
                         //TODO REMOVER PARA LA ENTREGA
-                        ProgressDataManager.generateTestData(mail)
+                        generateTestData(mail)
 
                         callback.onCallback("success")
                     }
@@ -33,6 +34,16 @@ object UserDataManager {
             }
         }
 
+    }
+
+    private fun generateTestData(mail: String) {
+        Controller.data.collection(Controller.progressExerciceTable).document(mail).set(mapOf(
+            CraftData.craftData() to 15,
+            CraftData.craftData(23) to 0,
+            CraftData.craftData(7) to 5,
+            CraftData.craftData(18) to 9,
+            CraftData.craftData(2) to 12
+        ))
     }
 
     fun validateLogin(user: String, pass: String, loginCallback: Callback<String>) {

@@ -116,15 +116,17 @@ class ViewExercicesActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun save(count: Int) {
-        if (count > 0) {
-            val userPreferences = getSharedPreferences(Controller.sharedTable, Context.MODE_PRIVATE)
-            val user = userPreferences.getString("email", "")
-            if (user != null) {
+    private fun save(count: Int, progress: Int) {
+        val userPreferences = getSharedPreferences(Controller.sharedTable, Context.MODE_PRIVATE)
+        val user = userPreferences.getString("email", "")
+        if (user != "") {
+            if (count > 0) {
                 Controller.addExerciceCount(user.toString(), count)
             }
-
+            Controller.addMov(user.toString(), progress)
         }
+
+
         val intent = Intent(this, MainExerciciActivity::class.java)
         startActivity(intent)
     }
@@ -160,7 +162,8 @@ class ViewExercicesActivity : AppCompatActivity() {
 
         alertView.findViewById<Button>(R.id.sea_finish).setOnClickListener {
             val adapt2 = alertView.findViewById<ListView>(R.id.sea_listView).adapter as MarkCompletedAdaptor
-            save(adapt2.getMarkedCount())
+            val prg = (alertView.findViewById<SeekBar>(R.id.sea_seekBar).progress/10)
+            save(adapt2.getMarkedCount(), prg)
             dialog.cancel()
         }
 

@@ -35,7 +35,6 @@ class MarkCompletedAdaptor : BaseAdapter {
         }
         val markButton = vi!!.findViewById<CheckBox>(R.id.mkcomp_name)
         markButton.text = list.content[pos].name
-        Log.i("myapp23", marked.toString())
         markButton.setOnClickListener {
             if(markButton.isChecked) {
                 marked++
