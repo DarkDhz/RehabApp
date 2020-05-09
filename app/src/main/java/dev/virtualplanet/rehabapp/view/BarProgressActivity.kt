@@ -31,8 +31,6 @@ class BarProgressActivity : AppCompatActivity() {
 
     private fun init() {
 
-
-
         val chart = findViewById<BarChart>(R.id.bar_progress_content)
         chart.isVisible = false
         val desc = Description()
@@ -54,6 +52,7 @@ class BarProgressActivity : AppCompatActivity() {
                 }
                 "Movility" -> {
                     findViewById<TextView>(R.id.bar_progress_header).text = "Resumen de movilidad"
+                    Controller.loadMovData(this)
                 }
             }
         }

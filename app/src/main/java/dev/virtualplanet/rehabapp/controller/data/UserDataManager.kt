@@ -24,7 +24,7 @@ object UserDataManager {
                             "wheel" to false
                         ))
                         //TODO REMOVER PARA LA ENTREGA
-                        ProgressExerciceDataManager.generateTestData(mail)
+                        ProgressDataManager.generateTestData(mail)
 
                         callback.onCallback("success")
                     }

@@ -59,6 +59,7 @@ class LinearProgressActivity : AppCompatActivity() {
                 }
                 "Movility" -> {
                     findViewById<TextView>(R.id.progress_header).text = "Resumen de movilidad"
+                    Controller.loadMovData(this)
                 }
             }
         }

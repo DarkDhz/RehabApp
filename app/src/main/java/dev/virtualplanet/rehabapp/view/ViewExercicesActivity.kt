@@ -120,7 +120,10 @@ class ViewExercicesActivity : AppCompatActivity() {
         if (count > 0) {
             val userPreferences = getSharedPreferences(Controller.sharedTable, Context.MODE_PRIVATE)
             val user = userPreferences.getString("email", "")
-            Controller.addExerciceCount(user, count)
+            if (user != null) {
+                Controller.addExerciceCount(user.toString(), count)
+            }
+
         }
         val intent = Intent(this, MainExerciciActivity::class.java)
         startActivity(intent)

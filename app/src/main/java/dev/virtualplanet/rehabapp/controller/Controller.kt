@@ -6,9 +6,7 @@ import android.content.SharedPreferences
 import android.widget.*
 import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
-import dev.virtualplanet.rehabapp.controller.data.Callback
-import dev.virtualplanet.rehabapp.controller.data.ProgressExerciceDataManager
-import dev.virtualplanet.rehabapp.controller.data.UserDataManager
+import dev.virtualplanet.rehabapp.controller.data.*
 import dev.virtualplanet.rehabapp.controller.utils.Calculator
 import dev.virtualplanet.rehabapp.controller.utils.CraftData
 import dev.virtualplanet.rehabapp.model.Exercice
@@ -22,7 +20,8 @@ object Controller {
 
     val data = FirebaseFirestore.getInstance()
     const val userTable = "USERS"
-    const val progressTable = "PROGRESS"
+    const val progressExerciceTable = "PROGRESS_EXERCICE"
+    const val progressMovilityTable = "PROGRESS_MOV"
     const val sharedTable = "userInfo"
     const val sharedExercices = "selected"
 
@@ -60,7 +59,8 @@ object Controller {
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
         if (user != "") {
-            ProgressExerciceDataManager.generateData(user.toString())
+            ProgressDataManager.generateData(user.toString(), progressExerciceTable)
+            ProgressDataManager.generateData(user.toString(), progressMovilityTable)
             val intent = Intent (context, MainActivity::class.java)
             context.startActivity(intent)
         }
@@ -149,6 +149,8 @@ object Controller {
 
 
 
+
+
     /**
      * Method to save File Data
      */
@@ -228,9 +230,8 @@ object Controller {
     fun loadExericeProgressData(context: LinearProgressActivity){
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
-
         if (user != "") {
-            ProgressExerciceDataManager.loadExericeProgressData(context, user.toString())
+            ProgressDataManager.load(context, user.toString(), progressExerciceTable)
         }
     }
 
@@ -238,7 +239,7 @@ object Controller {
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
         if (user != "") {
-            ProgressExerciceDataManager.loadExericeProgressData(context, month, year, user.toString())
+            ProgressDataManager.load(context, month, year, user.toString(), progressExerciceTable)
         }
     }
 
@@ -246,7 +247,7 @@ object Controller {
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
         if (user != "") {
-            ProgressExerciceDataManager.loadExericeProgressData(context, user.toString())
+            ProgressDataManager.load(context, user.toString(), progressExerciceTable)
         }
     }
 
@@ -254,10 +255,30 @@ object Controller {
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val user = userPreferences.getString("email", "")
         if (user != "") {
-            ProgressExerciceDataManager.loadExericeProgressData(context, month, year, user.toString())
+            ProgressDataManager.load(context, month, year, user.toString(), progressExerciceTable)
         }
     }
 
+
+    fun loadMovData(context: LinearProgressActivity) {
+        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        val user = userPreferences.getString("email", "")
+        if (user != "") {
+            ProgressDataManager.load(context, user.toString(), progressMovilityTable)
+        }
+    }
+
+    fun loadMovData(context: BarProgressActivity) {
+        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        val user = userPreferences.getString("email", "")
+        if (user != "") {
+            ProgressDataManager.load(context, user.toString(), progressMovilityTable)
+        }
+    }
+
+    fun loadMovData(context: LinearProgressActivity, month: Int, year: Int) {
+
+    }
 
 
     fun addSavedExercices(context: Context, name : String) : Boolean {
@@ -305,8 +326,12 @@ object Controller {
        return factory.makeExerice(n, des, rep, ser, time, path)
     }
 
-    fun addExerciceCount(user: String?, num: Int) {
-        ProgressExerciceDataManager.addExerciceCount(user, num)
+    fun addExerciceCount(user: String, num: Int) {
+        ProgressDataManager.add(user, num, progressExerciceTable)
+    }
+
+    fun addMov(user: String, num: Int) {
+        ProgressDataManager.add(user, num, progressMovilityTable)
     }
 
     fun getList(name: String, packageName: String) : ExerciceList {
