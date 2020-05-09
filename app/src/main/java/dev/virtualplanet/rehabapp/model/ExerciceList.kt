@@ -120,7 +120,7 @@ class ExerciceList {
                 exerciceList.add(
                     ModelFactory.makeExerice(
                         "Abducción del Hombro",
-                        "Levante los brazos lateralmente, con los codos  y las palmas hacia abajo. No encoja los hombros, ni incline el tronco.",
+                        "Levante los brazos lateralmente, con los codos y las palmas hacia abajo. No encoja los hombros, ni incline el tronco.",
                         10,
                         3,
                         20,
