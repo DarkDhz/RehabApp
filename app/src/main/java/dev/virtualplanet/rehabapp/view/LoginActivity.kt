@@ -27,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun goToRegisterActivity(view: View) {
-        val intent = Intent (this, RegisterActivity::class.java)
+        val intent = Intent (view.context, RegisterActivity::class.java)
         startActivity(intent)
     }
 
@@ -50,11 +50,11 @@ class LoginActivity : AppCompatActivity() {
                         editor.putString("email", user)
                         editor.apply()
 
-                        val intent = Intent(applicationContext, MainActivity::class.java)
+                        val intent = Intent(view.context, MainActivity::class.java)
                         startActivity(intent)
                     }
                     else -> {
-                        Toast.makeText(applicationContext, value, Toast.LENGTH_LONG).show()
+                        Toast.makeText(view.context, value, Toast.LENGTH_LONG).show()
                     }
                 }
             }
@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun goToRecoverPass(view: View) {
-        val intent = Intent (this, RecoverPassActivity::class.java)
+        val intent = Intent (view.context, RecoverPassActivity::class.java)
         startActivity(intent)
     }
 

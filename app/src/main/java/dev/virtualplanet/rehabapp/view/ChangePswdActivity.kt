@@ -38,28 +38,28 @@ class ChangePswdActivity : AppCompatActivity() {
                     updatting = false
                     when (value) {
                         "success" -> {
-                            Toast.makeText(applicationContext, "Contraseña actualizada", Toast.LENGTH_LONG).show()
-                            val intent = Intent(applicationContext, SettingsActivity::class.java)
+                            Toast.makeText(view.context, "Contraseña actualizada", Toast.LENGTH_LONG).show()
+                            val intent = Intent(view.context, SettingsActivity::class.java)
                             startActivity(intent)
                         }
                         else -> {
-                            Toast.makeText(applicationContext, value, Toast.LENGTH_LONG).show()
+                            Toast.makeText(view.context, value, Toast.LENGTH_LONG).show()
                         }
                     }
                 }
             })
         } else {
-            Toast.makeText(this, "La contraseña se esta actualizando, espera unos segundos para volver a cambiarla", Toast.LENGTH_LONG).show()
+            Toast.makeText(view.context, "La contraseña se esta actualizando, espera unos segundos para volver a cambiarla", Toast.LENGTH_LONG).show()
         }
     }
 
     fun goBack(view: View) {
-        val intent = Intent(this, SettingsActivity::class.java)
+        val intent = Intent(view.context, SettingsActivity::class.java)
         startActivity(intent)
     }
 
     override fun onBackPressed() {
-        val intent = Intent(this, SettingsActivity::class.java)
+        val intent = Intent(applicationContext, SettingsActivity::class.java)
         startActivity(intent)
     }
 }

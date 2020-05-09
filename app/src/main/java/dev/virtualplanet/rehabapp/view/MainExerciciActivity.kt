@@ -22,7 +22,7 @@ class MainExerciciActivity : AppCompatActivity() {
     }
 
     fun goToMuscle(view: View) {
-        val intent = Intent(this, SelectMuscleActivity::class.java)
+        val intent = Intent(view.context, SelectMuscleActivity::class.java)
         startActivityForResult(intent,1234)
     }
 
@@ -38,12 +38,12 @@ class MainExerciciActivity : AppCompatActivity() {
     }
 
     fun goBack(view: View) {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(view.context, MainActivity::class.java)
         startActivity(intent)
     }
 
     override fun onBackPressed() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(applicationContext, MainActivity::class.java)
         startActivity(intent)
     }
 

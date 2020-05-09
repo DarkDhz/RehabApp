@@ -1,5 +1,6 @@
 package dev.virtualplanet.rehabapp.view
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,21 +27,21 @@ class SelectStaticActivity : AppCompatActivity() {
     }
 
     fun goExercice(view: View) {
-        openAlert("Exercice")
+        openAlert("Exercice", view.context)
     }
 
-    private fun openAlert(type: String) {
+    private fun openAlert(type: String, context: Context) {
         var inflater : LayoutInflater = layoutInflater
-        val builder = AlertDialog.Builder(this, R.style.AlertDialog)
+        val builder = AlertDialog.Builder(context, R.style.AlertDialog)
         builder.setView(inflater.inflate(R.layout.select_representation_alert, null))
         val dialog: AlertDialog = builder.create()
         var alertView = inflater.inflate(R.layout.select_representation_alert, null)
         alertView.findViewById<ImageView>(R.id.representation_bar).setOnClickListener {
-            val intent = Intent(this, BarProgressActivity::class.java).putExtra("type", type)
+            val intent = Intent(context, BarProgressActivity::class.java).putExtra("type", type)
             startActivity(intent)
         }
         alertView.findViewById<ImageView>(R.id.representation_line).setOnClickListener {
-            val intent = Intent(this, LinearProgressActivity::class.java).putExtra("type", type)
+            val intent = Intent(context, LinearProgressActivity::class.java).putExtra("type", type)
             startActivity(intent)
         }
 
@@ -49,15 +50,15 @@ class SelectStaticActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(applicationContext, MainActivity::class.java)
         startActivity(intent)
     }
 
     fun unimplemented(view: View) {
-        Toast.makeText(this, "Esto aún no esta implementado :(", Toast.LENGTH_LONG).show()
+        Toast.makeText(view.context, "Esto aún no esta implementado :(", Toast.LENGTH_LONG).show()
     }
 
     fun goMovility(view: View) {
-        openAlert("Movility")
+        openAlert("Movility", view.context)
     }
 }

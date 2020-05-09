@@ -216,7 +216,7 @@ object Controller {
 
                     if (wheelchair) {
                         context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).text = "SI"
-                        context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).setChecked(true)
+                        context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).isChecked = true
                     } else {
                         context.findViewById<Switch>(R.id.e_textView_WheelChair_Value).text = "NO"
                     }
@@ -278,8 +278,21 @@ object Controller {
     }
 
     fun loadMovData(context: LinearProgressActivity, month: Int, year: Int) {
-
+        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        val user = userPreferences.getString("email", "")
+        if (user != "") {
+            ProgressDataManager.load(context, month, year, user.toString(), progressMovilityTable)
+        }
     }
+
+    fun loadMovData(context: BarProgressActivity, month: Int, year: Int) {
+        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        val user = userPreferences.getString("email", "")
+        if (user != "") {
+            ProgressDataManager.load(context, month, year, user.toString(), progressMovilityTable)
+        }
+    }
+
 
 
     fun addExerciceCount(user: String, num: Int) {
@@ -327,11 +340,11 @@ object Controller {
         }
     }
 
-    fun createExerciceList(): ExerciceList {
+    private fun createExerciceList(): ExerciceList {
         return factory.makeExerciceList()
     }
 
-    fun createExercice(n: String, des: String, rep: Int, ser: Int, time: Int, path : String) : Exercice {
+    private fun createExercice(n: String, des: String, rep: Int, ser: Int, time: Int, path : String) : Exercice {
        return factory.makeExerice(n, des, rep, ser, time, path)
     }
 

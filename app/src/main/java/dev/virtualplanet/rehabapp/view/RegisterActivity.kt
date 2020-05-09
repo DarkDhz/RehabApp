@@ -17,8 +17,6 @@ class RegisterActivity : AppCompatActivity() {
 
     private val controller = Controller
 
-    private val data = FirebaseFirestore.getInstance()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -26,7 +24,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     fun goToLoginActivity(view: View) {
-        val intent = Intent (this, LoginActivity::class.java)
+        val intent = Intent (view.context, LoginActivity::class.java)
         startActivity(intent)
     }
 
@@ -48,12 +46,12 @@ class RegisterActivity : AppCompatActivity() {
                         editor.putString("email", mail)
                         editor.apply()
 
-                        val intent = Intent (applicationContext, MainActivity::class.java)
+                        val intent = Intent (view.context, MainActivity::class.java)
                         startActivity(intent)
 
                     }
                     else -> {
-                        Toast.makeText(applicationContext, value, Toast.LENGTH_LONG).show()
+                        Toast.makeText(view.context, value, Toast.LENGTH_LONG).show()
                     }
                 }
             }

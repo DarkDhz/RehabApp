@@ -22,7 +22,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     fun returnToMain(view: View) {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(view.context, MainActivity::class.java)
         startActivity(intent)
     }
 
@@ -39,7 +39,7 @@ class SettingsActivity : AppCompatActivity() {
 
     fun logOut(view: View) {
         var inflater : LayoutInflater = layoutInflater
-        val builder = AlertDialog.Builder(this, R.style.AlertDialog)
+        val builder = AlertDialog.Builder(view.context, R.style.AlertDialog)
         builder.setView(inflater.inflate(R.layout.delete_muscle_alert, null))
         val dialog: AlertDialog = builder.create()
         var alertView = inflater.inflate(R.layout.delete_muscle_alert, null)
@@ -59,7 +59,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     fun changePassword(view: View) {
-        val intent = Intent(this, ChangePswdActivity::class.java)
+        val intent = Intent(view.context, ChangePswdActivity::class.java)
         startActivity(intent)
     }
 

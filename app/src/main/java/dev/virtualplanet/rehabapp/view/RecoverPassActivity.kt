@@ -14,7 +14,7 @@ class RecoverPassActivity : AppCompatActivity() {
     }
 
     fun sendMail(view: View) {
-        val intent = Intent (this, LoginActivity::class.java)
+        val intent = Intent (view.context, LoginActivity::class.java)
         startActivity(intent)
     }
 }

@@ -107,12 +107,12 @@ class ViewExercicesActivity : AppCompatActivity() {
     }
 
     fun goBack(view: View) {
-        val intent = Intent(this, MainExerciciActivity::class.java)
+        val intent = Intent(view.context, MainExerciciActivity::class.java)
         startActivity(intent)
     }
 
     override fun onBackPressed() {
-        val intent = Intent(this, MainExerciciActivity::class.java)
+        val intent = Intent(applicationContext, MainExerciciActivity::class.java)
         startActivity(intent)
     }
 
@@ -127,17 +127,17 @@ class ViewExercicesActivity : AppCompatActivity() {
         }
 
 
-        val intent = Intent(this, MainExerciciActivity::class.java)
+        val intent = Intent(applicationContext, MainExerciciActivity::class.java)
         startActivity(intent)
     }
 
     fun openFinish(view: View) {
-        openFinishAlert()
+        openFinishAlert(view.context)
     }
 
-    private fun openFinishAlert() {
+    private fun openFinishAlert(context: Context) {
         val inflater : LayoutInflater = layoutInflater
-        val builder = AlertDialog.Builder(this, R.style.AlertDialog)
+        val builder = AlertDialog.Builder(context, R.style.AlertDialog)
         builder.setView(inflater.inflate(R.layout.save_exercice_alert, null))
         val dialog: AlertDialog = builder.create()
         val alertView = inflater.inflate(R.layout.save_exercice_alert, null)
@@ -147,7 +147,7 @@ class ViewExercicesActivity : AppCompatActivity() {
 
         alertView.findViewById<SeekBar>(R.id.sea_seekBar).setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                alertView.findViewById<TextView>(R.id.sea_seekValue).setText((progress/10).toString())
+                alertView.findViewById<TextView>(R.id.sea_seekValue).text = (progress/10).toString()
             }
            override fun onStopTrackingTouch(seekBar: SeekBar) {
                 // TODO Auto-generated method stub

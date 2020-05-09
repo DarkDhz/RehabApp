@@ -4,13 +4,11 @@ import android.util.Log
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.Entry
 import dev.virtualplanet.rehabapp.controller.Controller
-import dev.virtualplanet.rehabapp.controller.utils.Calculator
 import dev.virtualplanet.rehabapp.controller.utils.ChartHelper
 import dev.virtualplanet.rehabapp.controller.utils.CraftData
 import dev.virtualplanet.rehabapp.controller.utils.Serializer
 import dev.virtualplanet.rehabapp.view.BarProgressActivity
 import dev.virtualplanet.rehabapp.view.LinearProgressActivity
-import java.io.Serializable
 
 object ProgressDataManager {
 
@@ -175,14 +173,14 @@ object ProgressDataManager {
                 if (actual == null || actual == "null") {
                     Controller.data.collection(table).document(user).update(
                         mapOf(
-                            date to Serializer.serializeList(ArrayList<Int>())
+                            date to Serializer.serializeList(ArrayList())
                         )
                     )
                 }
             }.addOnFailureListener {
                 Controller.data.collection(table).document(user).update(
                     mapOf(
-                        date to Serializer.serializeList(ArrayList<Int>())
+                        date to Serializer.serializeList(ArrayList())
                     )
                 )
             }
@@ -208,7 +206,7 @@ object ProgressDataManager {
                 }.addOnFailureListener {
                     Controller.data.collection(table).document(user).set(
                         mapOf(
-                            date to Serializer.serializeList(ArrayList<Int>())
+                            date to Serializer.serializeList(ArrayList())
                         )
                     )
                 }

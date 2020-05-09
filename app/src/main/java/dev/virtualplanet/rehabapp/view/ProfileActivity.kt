@@ -17,10 +17,6 @@ import kotlinx.android.synthetic.main.activity_profile.*
 
 class ProfileActivity : AppCompatActivity() {
 
-    private val controller = Controller
-
-    private val data = FirebaseFirestore.getInstance()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
@@ -28,7 +24,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     fun editProfile(view: View) {
-        val intent = Intent(this, EditProfileActivity::class.java)
+        val intent = Intent(view.context, EditProfileActivity::class.java)
         startActivity(intent)
 
     }
@@ -51,7 +47,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     fun returnToMain(view: View) {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(view.context, MainActivity::class.java)
         startActivity(intent)
     }
 }

@@ -18,8 +18,6 @@ class EditProfileActivity : AppCompatActivity() {
 
     private val controller = Controller
 
-    private val data = FirebaseFirestore.getInstance()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
@@ -65,7 +63,7 @@ class EditProfileActivity : AppCompatActivity() {
 
         controller.saveProfileData(this, new_age, new_weight, new_height, new_wheelChair)
 
-        val intent = Intent(this, ProfileActivity::class.java)
+        val intent = Intent(view.context, ProfileActivity::class.java)
 
         intent.putExtra("NAME", name)
         intent.putExtra("SEX", sex)
@@ -76,12 +74,12 @@ class EditProfileActivity : AppCompatActivity() {
 
         startActivity(intent)
 
-        Toast.makeText(this, "Datos Guardados", Toast.LENGTH_LONG).show()
+        Toast.makeText(view.context, "Datos Guardados", Toast.LENGTH_LONG).show()
 
     }
 
     fun returnToMain(view: View) {
-        val intent = Intent(this, ProfileActivity::class.java)
+        val intent = Intent(view.context, ProfileActivity::class.java)
         startActivity(intent)
     }
 }

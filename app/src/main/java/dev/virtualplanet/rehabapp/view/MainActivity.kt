@@ -13,16 +13,10 @@ import java.time.LocalDateTime
 
 class MainActivity : AppCompatActivity() {
 
-    private val controller = Controller
-
-    private val data = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        //CHECK IF USER IS LOGED IF NOT requiereLogin()
-
         this.init()
 
     }
@@ -32,28 +26,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goToProfileActivity(view: View) {
-        val intent = Intent(this, ProfileActivity::class.java)
+        val intent = Intent(view.context, ProfileActivity::class.java)
         startActivity(intent)
 
-    }
-
-    private fun requiereLogin() {
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
     }
 
     fun goToExercicesActivity(view: View) {
-        val intent = Intent(this, MainExerciciActivity::class.java)
+        val intent = Intent(view.context, MainExerciciActivity::class.java)
         startActivity(intent)
     }
 
     fun goToProgressActivity(view: View) {
-        val intent = Intent(this, SelectStaticActivity::class.java)
+        val intent = Intent(view.context, SelectStaticActivity::class.java)
         startActivity(intent)
     }
 
     fun goToSettingsActivity(view: View) {
-        val intent = Intent(this, SettingsActivity::class.java)
+        val intent = Intent(view.context, SettingsActivity::class.java)
         startActivity(intent)
     }
 

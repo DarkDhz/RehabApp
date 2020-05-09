@@ -16,7 +16,6 @@ import dev.virtualplanet.rehabapp.controller.Controller
 
 class SelectMuscleActivity : AppCompatActivity() {
 
-    private val controller = Controller
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
