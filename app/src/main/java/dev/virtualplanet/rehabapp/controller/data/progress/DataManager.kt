@@ -11,6 +11,7 @@ interface DataManager {
     fun loadB(barData: ArrayList<BarEntry>, counter: ArrayList<Int>, it : DocumentSnapshot)
     fun loadB(barData: ArrayList<BarEntry>, counter: ArrayList<Int>, it : DocumentSnapshot, month: Int, year: Int)
 
+    fun isTable(table: String) : Boolean
     fun loadL(lineData: ArrayList<Entry>, counter: ArrayList<Int>, it : DocumentSnapshot)
     fun loadL(lineData: ArrayList<Entry>, counter: ArrayList<Int>, it : DocumentSnapshot, month: Int, year: Int)
 

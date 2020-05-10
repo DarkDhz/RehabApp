@@ -1,7 +1,6 @@
 package dev.virtualplanet.rehabapp.controller.utils
 
 import android.graphics.Color
-import android.util.Log
 import android.widget.TextView
 import androidx.core.view.isVisible
 import com.github.mikephil.charting.charts.BarChart
@@ -71,10 +70,8 @@ object ChartHelper {
         val dat = LineData(dataSets)
         chart.data = dat
         chart.isVisible = true
-        //chart.scaleX = 31f
         chart.setVisibleXRange(0.0f, 31.0f)
         chart.invalidate()
-
 
     }
 }

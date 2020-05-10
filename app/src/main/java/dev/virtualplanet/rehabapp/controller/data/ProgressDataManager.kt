@@ -7,25 +7,29 @@ import dev.virtualplanet.rehabapp.controller.data.progress.DataManager
 import dev.virtualplanet.rehabapp.controller.data.progress.ExerciceDataManager
 import dev.virtualplanet.rehabapp.controller.data.progress.MovilityDataManager
 import dev.virtualplanet.rehabapp.controller.utils.ChartHelper
-import dev.virtualplanet.rehabapp.controller.utils.CraftData
 import dev.virtualplanet.rehabapp.view.BarProgressActivity
 import dev.virtualplanet.rehabapp.view.LinearProgressActivity
 
 object ProgressDataManager {
 
-    private val exManager : DataManager = ExerciceDataManager()
-    private val movManager : DataManager = MovilityDataManager()
+
+    private val managers : List<DataManager> = init()
+
+    fun init() : ArrayList<DataManager> {
+        val toReturn = ArrayList<DataManager>()
+        toReturn.add(ExerciceDataManager())
+        toReturn.add(MovilityDataManager())
+        return toReturn
+    }
 
     fun load(context: LinearProgressActivity, user: String, table: String){
         Controller.data.collection(table).document(user).get().addOnSuccessListener {
             val yValues = ArrayList<Entry>()
             val list = ArrayList<Int>()
-            when (table) {
-                Controller.progressExerciceTable -> {
-                    exManager.loadL(yValues, list, it)
-                }
-                Controller.progressMovilityTable -> {
-                    movManager.loadL(yValues, list, it)
+            for (manager in managers) {
+                if (manager.isTable(table)) {
+                    manager.loadL(yValues, list, it)
+                    break
                 }
             }
             ChartHelper.setExerciceLineChartData(context, yValues, list, table)
@@ -37,12 +41,10 @@ object ProgressDataManager {
         Controller.data.collection(table).document(user).get().addOnSuccessListener {
             val yValues = ArrayList<Entry>()
             val list = ArrayList<Int>()
-            when (table) {
-                Controller.progressExerciceTable -> {
-                    exManager.loadL(yValues, list, it, month2, year)
-                }
-                Controller.progressMovilityTable -> {
-                    movManager.loadL(yValues, list, it, month2, year)
+            for (manager in managers) {
+                if (manager.isTable(table)) {
+                    manager.loadL(yValues, list, it, month2, year)
+                    break
                 }
             }
             ChartHelper.setExerciceLineChartData(context, yValues, list, table)
@@ -53,12 +55,10 @@ object ProgressDataManager {
         Controller.data.collection(table).document(user).get().addOnSuccessListener {
             val yValues = ArrayList<BarEntry>()
             val list = ArrayList<Int>()
-            when (table) {
-                Controller.progressExerciceTable -> {
-                    exManager.loadB(yValues, list, it)
-                }
-                Controller.progressMovilityTable -> {
-                    movManager.loadB(yValues, list, it)
+            for (manager in managers) {
+                if (manager.isTable(table)) {
+                    manager.loadB(yValues, list, it)
+                    break
                 }
             }
             ChartHelper.setExericeBarChartData(context, yValues, list, table)
@@ -71,12 +71,10 @@ object ProgressDataManager {
         Controller.data.collection(table).document(user).get().addOnSuccessListener {
             val yValues = ArrayList<BarEntry>()
             val list = ArrayList<Int>()
-            when (table) {
-                Controller.progressExerciceTable -> {
-                    exManager.loadB(yValues, list, it, month2, year)
-                }
-                Controller.progressMovilityTable -> {
-                    movManager.loadB(yValues, list, it, month2, year)
+            for (manager in managers) {
+                if (manager.isTable(table)) {
+                    manager.loadB(yValues, list, it, month2, year)
+                    break
                 }
             }
             ChartHelper.setExericeBarChartData(context, yValues, list, table)
@@ -85,23 +83,19 @@ object ProgressDataManager {
     }
 
     fun generateData(user: String, table: String) {
-        when (table) {
-            Controller.progressMovilityTable -> {
-                movManager.generateData(user)
-            }
-            Controller.progressExerciceTable -> {
-                exManager.generateData(user)
+        for (manager in managers) {
+            if (manager.isTable(table)) {
+                manager.generateData(user)
+                break
             }
         }
     }
 
     fun add(user: String, num: Int, table: String) {
-        when (table) {
-            Controller.progressMovilityTable -> {
-                movManager.addData(user, num)
-            }
-            Controller.progressExerciceTable -> {
-                exManager.addData(user, num)
+        for (manager in managers) {
+            if (manager.isTable(table)) {
+                manager.addData(user, num)
+                break
             }
         }
     }

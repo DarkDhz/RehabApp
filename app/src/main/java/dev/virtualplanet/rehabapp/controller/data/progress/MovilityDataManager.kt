@@ -1,6 +1,5 @@
 package dev.virtualplanet.rehabapp.controller.data.progress
 
-import android.util.Log
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.Entry
 import com.google.firebase.firestore.DocumentSnapshot
@@ -12,6 +11,10 @@ import dev.virtualplanet.rehabapp.controller.utils.Serializer
 class MovilityDataManager : DataManager{
 
     private val table = Controller.progressMovilityTable
+
+    override fun isTable(table: String) : Boolean {
+        return (table.equals(this.table))
+    }
 
     override fun loadB(barData: ArrayList<BarEntry>, counter: ArrayList<Int>, it : DocumentSnapshot) {
         for (x in 1 until 32) {
