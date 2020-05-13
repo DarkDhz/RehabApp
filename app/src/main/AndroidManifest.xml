@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".view.BarProgressActivity"></activity>
+        <activity android:name=".view.MedicinasActivity"></activity>
+        <activity android:name=".view.BarProgressActivity" />
         <activity android:name=".view.SelectStaticActivity" />
         <activity android:name=".view.SelectMuscleActivity" />
         <activity android:name=".view.ChangePswdActivity" />

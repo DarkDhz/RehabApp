@@ -90,7 +90,7 @@
             android:layout_marginTop="25dp"
             android:background="@drawable/main_button"
             android:padding="15dp"
-            android:onClick="unimplemented"
+            android:onClick="goMedicinas"
             android:text="Medicamentos"
             android:textAlignment="center"
             android:textColor="#FFFFFF"

@@ -11,12 +11,14 @@ object ExerciceSharedManager {
     fun clear(context: Context) {
         val exercicePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val editor = exercicePreferences.edit()
-
-        for (key in exercicePreferences.all.keys) {
-            editor.remove(key)
+        editor.clear()
+    }
+    fun contains(context: Context, name : String) : Boolean {
+        val exercicePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        if (exercicePreferences.contains(name)){
+            return true
         }
-
-        editor.apply()
+        return false
     }
 
     fun addSavedExercices(context: Context, name : String) : Boolean {

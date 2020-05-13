@@ -8,6 +8,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.data.*
 import dev.virtualplanet.rehabapp.controller.shared.ExerciceSharedManager
+import dev.virtualplanet.rehabapp.controller.shared.MedicineSharedManager
 import dev.virtualplanet.rehabapp.controller.shared.UserSharedManager
 import dev.virtualplanet.rehabapp.controller.utils.Calculator
 import dev.virtualplanet.rehabapp.controller.utils.ProfileHelper
@@ -196,6 +197,34 @@ object Controller {
 
     }
 
+    fun addSavedDay(context: Context, name : String, key : String) : Boolean {
+        return MedicineSharedManager.addSavedDay(context,name, key)
+    }
+
+    fun loadSavedDay(context: Context, key : String) : String {
+        return MedicineSharedManager.loadSavedDay(context, key)
+    }
+
+    fun addSavedMedicineInt(context: Context, i : Int, key : String) : Boolean {
+        return MedicineSharedManager.addSavedMedicineInt(context, i, key)
+    }
+
+    fun loadMedicineInt(context: Context, key : String) : Int {
+        return MedicineSharedManager.loadMedicineInt(context, key)
+    }
+
+    fun contains(context: Context, name : String) : Boolean {
+        return MedicineSharedManager.contains(context, name)
+    }
+
+    fun loadSavedMedicines(context: Context) : ArrayList<String> {
+        return MedicineSharedManager.loadSavedMedicines(context)
+    }
+
+    fun addSavedMedicines(context: Context, name : String) : Boolean {
+        return MedicineSharedManager.addSavedMedicines(context,name)
+
+    }
     fun loadSavedExercices(context: Context) : ArrayList<String> {
         return ExerciceSharedManager.loadSavedExercices(context)
     }

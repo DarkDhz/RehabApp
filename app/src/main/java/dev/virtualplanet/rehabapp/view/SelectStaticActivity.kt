@@ -30,6 +30,11 @@ class SelectStaticActivity : AppCompatActivity() {
         openAlert("Exercice", view.context)
     }
 
+    fun goMedicinas(view: View) {
+        val intent = Intent(this, MedicinasActivity::class.java)
+        startActivity(intent)
+    }
+
     private fun openAlert(type: String, context: Context) {
         var inflater : LayoutInflater = layoutInflater
         val builder = AlertDialog.Builder(context, R.style.AlertDialog)
