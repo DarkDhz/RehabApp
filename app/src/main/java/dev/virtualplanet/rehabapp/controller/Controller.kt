@@ -233,12 +233,26 @@ object Controller {
         return ExerciceSharedManager.removeSavedExercice(context, name)
     }
 
+    fun putBoleano(context: Context, checked : Boolean, key : String){
+        return MedicineSharedManager.putBoleano(context, key, checked)
+    }
+
+    fun getBoleano(context: Context, key : String): Boolean {
+        return MedicineSharedManager.getBoleano(context, key)
+    }
+
+    fun removeBoleano(context: Context, name: String) {
+        return MedicineSharedManager.removeBoleano(context, name)
+    }
+
     fun getList(name: String, packageName: String) : ExerciceList {
         val exerciceList = factory.makeExerciceList()
         val path = "android.resource://$packageName/"
         exerciceList.loadList(exerciceList, name, path)
         return exerciceList
     }
-
+    fun removeSavedMedicine(context: Context, name: String) : Boolean {
+        return MedicineSharedManager.removeSavedMedicine(context, name)
+    }
 
 }

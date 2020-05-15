@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 
 object MedicineSharedManager {
-    private const val sharedTable = "selected"
+    private const val sharedTable = "selected2"
 
     fun clear(context: Context) {
         val medicinePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
@@ -92,25 +92,45 @@ object MedicineSharedManager {
         val toReturn = ArrayList<String>()
         val medicinePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         for ( value in medicinePreferences.all.keys) {
-            if (value == "Analgesico" || value == "Relajante" || value == "Antiinflamatorio"|| value == "Afavorecidor de circulacion"|| value == "Antitrombotico") toReturn.add(value)
+            if (value == "Analgesico" || value == "Relajante" || value == "Antiinflamatorio"|| value == "Afavorecidor"|| value == "Antitrombotico") toReturn.add(value)
         }
         //Toast.makeText(context, toReturn.toString(), Toast.LENGTH_LONG).show()
         return toReturn
     }
 
+    fun putBoleano(context: Context, key : String, checked : Boolean){
+        val medicinePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = medicinePreferences.edit()
+        editor.putBoolean(key, checked)
+        editor.apply()
+    }
+    fun getBoleano(context: Context, key : String): Boolean {
+        val medicinePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        val variable = medicinePreferences.getBoolean(key, false)
+        if (variable != null) return variable
+        return false
+    }
+    fun removeBoleano(context: Context, name: String) {
+        val medicinePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = medicinePreferences.edit()
+        val value = getBoleano(context, name)
+        if(value==true) {
+            editor.remove(name)
+            editor.commit()
+            editor.apply()
 
-
+        }
+    }
     fun removeSavedMedicine(context: Context, name: String) : Boolean {
         val medicinePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val valid = medicinePreferences.getString(name, "null")
+        val editor: SharedPreferences.Editor = medicinePreferences.edit()
         if (valid != "null") {
-            val editor: SharedPreferences.Editor = medicinePreferences.edit()
             editor.remove(name)
             editor.commit()
             editor.apply()
             return true
         } else {
-            val editor: SharedPreferences.Editor = medicinePreferences.edit()
             editor.remove(name)
             editor.commit()
             return true
