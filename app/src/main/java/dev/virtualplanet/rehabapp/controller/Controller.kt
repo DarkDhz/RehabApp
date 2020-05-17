@@ -2,17 +2,12 @@ package dev.virtualplanet.rehabapp.controller
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.widget.*
 import com.google.firebase.firestore.FirebaseFirestore
-import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.data.*
 import dev.virtualplanet.rehabapp.controller.shared.ExerciceSharedManager
 import dev.virtualplanet.rehabapp.controller.shared.MedicineSharedManager
 import dev.virtualplanet.rehabapp.controller.shared.UserSharedManager
-import dev.virtualplanet.rehabapp.controller.utils.Calculator
 import dev.virtualplanet.rehabapp.controller.utils.ProfileHelper
-import dev.virtualplanet.rehabapp.model.Exercice
 import dev.virtualplanet.rehabapp.model.ExerciceList
 import dev.virtualplanet.rehabapp.model.ModelFactory
 import dev.virtualplanet.rehabapp.view.*
@@ -79,6 +74,7 @@ object Controller {
     fun logOut(context: Context) {
         UserSharedManager.clear(context)
         ExerciceSharedManager.clear(context)
+        MedicineSharedManager.clear(context)
 
         val intent = Intent(context, LoginActivity::class.java)
         context.startActivity(intent)

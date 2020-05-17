@@ -10,7 +10,9 @@ object MedicineSharedManager {
         val medicinePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val editor = medicinePreferences.edit()
         editor.clear()
+        editor.apply()
     }
+
     fun contains(context: Context, name : String) : Boolean {
         val medicinePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         if (medicinePreferences.contains(name)){
@@ -25,7 +27,6 @@ object MedicineSharedManager {
         if (valid == "null") {
             val editor: SharedPreferences.Editor = medicinePreferences.edit()
             editor.putString(name, "valid")
-            editor.commit()
             editor.apply()
             return true
         } else {
@@ -40,7 +41,6 @@ object MedicineSharedManager {
         val editor: SharedPreferences.Editor = medicinePreferences.edit()
         if (valid == "null") {
             editor.putString(key, day)
-            editor.commit()
             editor.apply()
             return true
         } else {
@@ -53,7 +53,7 @@ object MedicineSharedManager {
 
     fun loadSavedDay(context: Context, key : String) : String {
         val medicinePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
-        var value = medicinePreferences.getString(key, "")
+        val value = medicinePreferences.getString(key, "")
         if (value != null) {
             return value
         }
@@ -67,7 +67,6 @@ object MedicineSharedManager {
         val editor: SharedPreferences.Editor = medicinePreferences.edit()
         if (valid == 0) {
             editor.putInt(key, i)
-            editor.commit()
             editor.apply()
             return true
         } else {
@@ -80,7 +79,7 @@ object MedicineSharedManager {
 
     fun loadMedicineInt(context: Context, key : String) : Int {
         val medicinePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
-        var value = medicinePreferences.getInt(key, 0)
+        val value = medicinePreferences.getInt(key, 0)
         if (value != null) {
             return value
         }
@@ -104,30 +103,31 @@ object MedicineSharedManager {
         editor.putBoolean(key, checked)
         editor.apply()
     }
+
     fun getBoleano(context: Context, key : String): Boolean {
         val medicinePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val variable = medicinePreferences.getBoolean(key, false)
         if (variable != null) return variable
         return false
     }
+
     fun removeBoleano(context: Context, name: String) {
         val medicinePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val editor: SharedPreferences.Editor = medicinePreferences.edit()
         val value = getBoleano(context, name)
-        if(value==true) {
+        if (value) {
             editor.remove(name)
-            editor.commit()
             editor.apply()
 
         }
     }
+
     fun removeSavedMedicine(context: Context, name: String) : Boolean {
         val medicinePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val valid = medicinePreferences.getString(name, "null")
         val editor: SharedPreferences.Editor = medicinePreferences.edit()
         if (valid != "null") {
             editor.remove(name)
-            editor.commit()
             editor.apply()
             return true
         } else {

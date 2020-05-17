@@ -145,7 +145,7 @@ object UserDataManager {
         Controller.data.collection(userTable).document(user).get().addOnSuccessListener {
                 val name = it.get("name").toString()
                 val age = it.get("age").toString()
-                val sex = it.get("sex").toString()
+                //val sex = it.get("sex").toString()
                 val height = it.get("height").toString()
                 val weight = it.get("weight").toString()
                 val wheelchair = it.get("wheel").toString().toBoolean()

@@ -2,7 +2,6 @@ package dev.virtualplanet.rehabapp.controller.shared
 
 import android.content.Context
 import android.content.SharedPreferences
-import dev.virtualplanet.rehabapp.controller.Controller
 
 object ExerciceSharedManager {
 
@@ -12,6 +11,7 @@ object ExerciceSharedManager {
         val exercicePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
         val editor = exercicePreferences.edit()
         editor.clear()
+        editor.apply()
     }
     fun contains(context: Context, name : String) : Boolean {
         val exercicePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
