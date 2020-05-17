@@ -1,10 +1,8 @@
 package dev.virtualplanet.rehabapp.model
 
-import android.view.Display
 import dev.virtualplanet.rehabapp.R
-import dev.virtualplanet.rehabapp.controller.Controller
 
-class ExerciceList {
+class ExerciceList : CustomList<Exercice>{
     private var i : Int = 0
     var content : ArrayList<Exercice>
 
@@ -18,13 +16,13 @@ class ExerciceList {
         this.content = content
     }
 
-    fun add(ex: Exercice) {
-        if (validateExercice(ex)) {
+    override fun add(ex: Exercice) {
+        if (validate(ex)) {
             content.add(ex)
         }
     }
 
-    private fun validateExercice(ex : Exercice) : Boolean {
+    private fun validate(ex : Exercice) : Boolean {
         for (item in content) {
             if (item.isSimilar(ex)) {
                 return false
@@ -33,7 +31,7 @@ class ExerciceList {
         return true
     }
 
-    fun getExerciceByName(name: String) : Exercice? {
+    override fun getByName(name: String) : Exercice? {
         for (exercice in content) {
             if (exercice.name == name) {
                 return exercice
@@ -42,7 +40,7 @@ class ExerciceList {
         return null
     }
 
-    fun getSize() : Int {
+    override fun getSize() : Int {
         return content.size
     }
 
@@ -191,7 +189,7 @@ class ExerciceList {
                         path + R.raw.rodilla_sentado))
                 exerciceList.add(
                         ModelFactory.makeExerice(
-                            "Subir rodilla",
+                            "Haciendo la escalera",
                             "TODO",
                             15,
                             3,

@@ -9,6 +9,7 @@ import dev.virtualplanet.rehabapp.controller.shared.MedicineSharedManager
 import dev.virtualplanet.rehabapp.controller.shared.UserSharedManager
 import dev.virtualplanet.rehabapp.controller.utils.ProfileHelper
 import dev.virtualplanet.rehabapp.model.ExerciceList
+import dev.virtualplanet.rehabapp.model.MedicineList
 import dev.virtualplanet.rehabapp.model.ModelFactory
 import dev.virtualplanet.rehabapp.view.*
 import kotlin.collections.ArrayList
@@ -247,8 +248,13 @@ object Controller {
         exerciceList.loadList(exerciceList, name, path)
         return exerciceList
     }
+
     fun removeSavedMedicine(context: Context, name: String) : Boolean {
         return MedicineSharedManager.removeSavedMedicine(context, name)
+    }
+
+    fun getMedicineList() : MedicineList {
+        return ModelFactory.makeMedicineList()
     }
 
 }

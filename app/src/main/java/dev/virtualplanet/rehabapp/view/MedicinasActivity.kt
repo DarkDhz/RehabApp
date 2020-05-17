@@ -18,6 +18,7 @@ import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.NotificationCompat
 import androidx.core.view.marginLeft
 import dev.virtualplanet.rehabapp.R
@@ -49,10 +50,10 @@ class MedicinasActivity : AppCompatActivity() {
         setContentView(R.layout.activity_medicinas)
         val medicinas = resources.getStringArray(R.array.Medicinas)
         val datas = resources.getStringArray(R.array.Datas)
-        val spinner = findViewById<Spinner>(R.id.spinner)
-        val l : LinearLayout = findViewById(R.id.layout)
+        val spinner = findViewById<Spinner>(R.id.med_spinner)
+        val l : LinearLayout = findViewById(R.id.med_layout)
         val lista = Controller.loadSavedMedicines(this)
-        var i : Int = 0
+        var i = 0
         e = EditText(this)
         e2 = EditText(this)
         e3 = EditText(this)
@@ -594,6 +595,11 @@ class MedicinasActivity : AppCompatActivity() {
         Controller.addSavedMedicineInt(this, spinner4.selectedItemPosition, "s3")
         Controller.addSavedMedicineInt(this, spinner5.selectedItemPosition, "s4")
         Controller.addSavedMedicineInt(this, spinner6.selectedItemPosition, "s5")
+    }
+
+    fun goBack(view: View) {
+        val intent = Intent(view.context, SelectStaticActivity::class.java)
+        startActivity(intent)
     }
 
 }

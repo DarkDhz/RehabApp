@@ -17,4 +17,12 @@ object ModelFactory {
     fun makeExerciceList(list: ArrayList<Exercice>) : ExerciceList {
         return ExerciceList(list)
     }
+
+    fun makeMedicine(name: String) : Medicine {
+        return Medicine(name)
+    }
+
+    fun makeMedicineList() : MedicineList {
+        return MedicineList()
+    }
 }

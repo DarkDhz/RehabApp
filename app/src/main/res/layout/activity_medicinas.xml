@@ -8,10 +8,10 @@
     android:background="@drawable/background"
     android:orientation="vertical"
     android:padding="20dp"
-    android:id="@+id/layout">
+    android:id="@+id/med_layout">
 
     <TextView
-        android:id="@+id/titulo"
+        android:id="@+id/med_title"
         android:layout_width="155dp"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center"
@@ -25,34 +25,43 @@
         android:text="@string/titulo_medicinas"
         android:textColor="@android:color/white"
         android:textSize="25sp" />
-    <LinearLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/med_addLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingTop="20dp">
-    <TextView
-        android:id="@+id/textView3"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/escoger_medicinas"
-        android:textSize="18dp"
-        android:textColor="@android:color/white"/>
-
-        <Spinner
-            android:id="@+id/spinner"
+        <TextView
+            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:text="@string/escoger_medicinas"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+        <Spinner
+            android:id="@+id/med_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/med_save_bt"
         android:layout_width="wrap_content"
         android:layout_height="38dp"
         android:layout_gravity="center|bottom"
         android:onClick="guardar"
-        android:text="Guardar" />
+        android:layout_marginTop="10dp"
+        android:background="@drawable/boton_1"
+        android:textColor="@color/common_google_signin_btn_text_dark"
+        android:text="@string/edit_profile_save" />
 
 </LinearLayout>
