@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 
 object MedicineSharedManager {
-    private const val sharedTable = "selected2"
+    private const val sharedTable = "medicine_selected"
 
     fun clear(context: Context) {
         val medicinePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)

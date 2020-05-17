@@ -15,7 +15,7 @@ object ProgressDataManager {
 
     private val managers : List<DataManager> = init()
 
-    fun init() : ArrayList<DataManager> {
+    private fun init() : ArrayList<DataManager> {
         val toReturn = ArrayList<DataManager>()
         toReturn.add(ExerciceDataManager())
         toReturn.add(MovilityDataManager())

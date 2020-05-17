@@ -6,7 +6,7 @@ import dev.virtualplanet.rehabapp.controller.Controller
 
 object ExerciceSharedManager {
 
-    private const val sharedTable = "selected"
+    private const val sharedTable = "exercices_selected"
 
     fun clear(context: Context) {
         val exercicePreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
