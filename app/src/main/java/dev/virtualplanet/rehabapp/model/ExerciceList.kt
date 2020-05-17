@@ -46,7 +46,7 @@ class ExerciceList {
         return content.size
     }
 
-    class Returnable {
+    inner class Returnable {
         var exercice : Exercice
         var pos : Int
         var size : Int
