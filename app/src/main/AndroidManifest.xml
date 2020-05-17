@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".view.MedicinasActivity"></activity>
+        <activity android:name=".view.MainMedicineActivity"></activity>
+        <activity android:name=".view.MedicinasActivity" />
         <activity android:name=".view.BarProgressActivity" />
         <activity android:name=".view.SelectStaticActivity" />
         <activity android:name=".view.SelectMuscleActivity" />
@@ -36,8 +37,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".view.MedicinasActivity$ServicioNotis"/>
-    </application>
 
+        <service android:name=".view.MedicinasActivity$ServicioNotis" />
+    </application>
 
 </manifest>

@@ -8,12 +8,10 @@ class MedicineList : CustomList<Medicine> {
     constructor() {
         content = ArrayList()
         load()
-        //NOTHING
     }
 
     constructor(list: ArrayList<Medicine>) {
         content = ArrayList()
-        //NOTHING
     }
 
     private fun load() {

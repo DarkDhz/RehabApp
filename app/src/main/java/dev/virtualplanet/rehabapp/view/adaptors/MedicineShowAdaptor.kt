@@ -1,10 +1,12 @@
 package dev.virtualplanet.rehabapp.view.adaptors
 
+import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.CheckBox
+import android.widget.TextView
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.model.Exercice
 import dev.virtualplanet.rehabapp.model.Medicine
@@ -25,13 +27,15 @@ class MedicineShowAdaptor : BaseAdapter {
         val inflater : LayoutInflater = activity.layoutInflater
         var vi: View? = view
         if (vi == null)  {
-            vi = inflater.inflate(R.layout.mkcomp_item, null)
+            vi = inflater.inflate(R.layout.medicine_list_item, null)
         }
-        val markButton = vi!!.findViewById<CheckBox>(R.id.mkcomp_name)
+        vi!!.findViewById<TextView>(R.id.itmed_list_item_header).text = list.content[pos].name
         return vi
     }
 
+    private fun manageDelete(vi : View?, inflater: LayoutInflater, pos : String) {
 
+    }
 
     override fun getItem(pos: Int): Medicine {
         return list.content[pos]

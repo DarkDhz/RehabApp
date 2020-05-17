@@ -61,6 +61,10 @@ class ViewExercicesActivity : AppCompatActivity() {
             load("Rodilla")
             return
         }
+        if (muscle.contains("Muñeca")) {
+            load("Muñeca")
+            return
+        }
         if (muscle.contains("Tobillo")) {
             load("Tobillo")
             return

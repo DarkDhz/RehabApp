@@ -162,6 +162,42 @@ class ExerciceList : CustomList<Exercice>{
 
                 return
             }
+            "Muñeca" -> {
+                exerciceList.add(
+                    ModelFactory.makeExerice(
+                        "Pulsaciones de palma",
+                        "TODO",
+                        15,
+                        3,
+                        30,
+                        path + R.raw.muneca_puls))
+                exerciceList.add(
+                    ModelFactory.makeExerice(
+                        "Rotación de codo",
+                        "TODO",
+                        15,
+                        3,
+                        30,
+                        path + R.raw.muneca_rot))
+                exerciceList.add(
+                    ModelFactory.makeExerice(
+                        "Estiramiento de muñeca (lado a lado)",
+                        "TODO",
+                        15,
+                        3,
+                        30,
+                        path + R.raw.muneca_est))
+                exerciceList.add(
+                    ModelFactory.makeExerice(
+                        "Estiramiento de muñeca frontal",
+                        "TODO",
+                        15,
+                        3,
+                        30,
+                        path + R.raw.muneca_est_frontal))
+
+                return
+            }
             "Rodilla" -> {
                 exerciceList.add(
                     ModelFactory.makeExerice(
