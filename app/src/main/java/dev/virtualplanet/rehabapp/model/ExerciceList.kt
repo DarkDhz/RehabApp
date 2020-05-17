@@ -113,9 +113,7 @@ class ExerciceList {
                         10,
                         1,
                         20,
-                        path + R.raw.hombro_rotacion
-                    )
-                )
+                        path + R.raw.hombro_rotacion))
 
                 exerciceList.add(
                     ModelFactory.makeExerice(
@@ -124,9 +122,7 @@ class ExerciceList {
                         10,
                         3,
                         20,
-                        path + R.raw.hombro_abd
-                    )
-                )
+                        path + R.raw.hombro_abd))
                 return
             }
             "Codo" -> {
@@ -137,9 +133,7 @@ class ExerciceList {
                         15,
                         3,
                         30,
-                        path + R.raw.codo_fl_ex
-                    )
-                )
+                        path + R.raw.codo_fl_ex))
 
                 exerciceList.add(
                     ModelFactory.makeExerice(
@@ -148,9 +142,7 @@ class ExerciceList {
                         15,
                         3,
                         30,
-                        path + R.raw.codo_fl
-                    )
-                )
+                        path + R.raw.codo_fl))
 
                 exerciceList.add(
                     ModelFactory.makeExerice(
@@ -159,9 +151,7 @@ class ExerciceList {
                         15,
                         3,
                         30,
-                        path + R.raw.codo_estirado
-                    )
-                )
+                        path + R.raw.codo_estirado))
 
                 exerciceList.add(
                     ModelFactory.makeExerice(
@@ -170,12 +160,94 @@ class ExerciceList {
                         15,
                         3,
                         30,
-                        path + R.raw.codo_adelante
-                    )
-                )
+                        path + R.raw.codo_adelante))
 
                 return
             }
+            "Rodilla" -> {
+                exerciceList.add(
+                    ModelFactory.makeExerice(
+                        "Elevación lateral de rodilla",
+                        "TODO",
+                        15,
+                        3,
+                        30,
+                        path + R.raw.rodilla_lateral))
+                exerciceList.add(
+                    ModelFactory.makeExerice(
+                        "Elevación frontal de rodilla",
+                        "TODO",
+                        15,
+                        3,
+                        30,
+                        path + R.raw.rodilla_frontal))
+                exerciceList.add(
+                    ModelFactory.makeExerice(
+                        "Elevación frontal de rodilla sentado",
+                        "TODO",
+                        15,
+                        3,
+                        30,
+                        path + R.raw.rodilla_sentado))
+                exerciceList.add(
+                        ModelFactory.makeExerice(
+                            "Subir rodilla",
+                            "TODO",
+                            15,
+                            3,
+                            30,
+                            path + R.raw.rodilla_silla))
+                exerciceList.add(
+                    ModelFactory.makeExerice(
+                        "Encogimiento de rodilla",
+                        "TODO",
+                        15,
+                        3,
+                        30,
+                        path + R.raw.rodilla_encogimiento ))
+                return
+            }
+            "Tobillo" -> {
+                exerciceList.add(
+                    ModelFactory.makeExerice(
+                        "Apoyo monopodal en suelo",
+                        "Nos colocaremos de pie y sin calzado sobre el suelo y cerca de algo donde poder sujetarnos por seguridad. Levantaremos un pie del suelo de modo que carguemos todo el peso sobre el otro. Se hará sin sujetarnos en nada a nuestro alrededor, únicamente lo haremos si nos desequilibramos para evitar caernos",
+                        15,
+                        3,
+                        30,
+                        path + R.raw.tobillo_monopodal))
+                exerciceList.add(
+                    ModelFactory.makeExerice(
+                        "Rotación de tobillo",
+                        "TODO",
+                        15,
+                        3,
+                        30,
+                        path + R.raw.tobillo_rotacion))
+
+                exerciceList.add(
+                    ModelFactory.makeExerice(
+                        "Movimiento de tobillos",
+                        "TODO",
+                        15,
+                        3,
+                        30,
+                        path + R.raw.tobillo_paso))
+                exerciceList.add(
+                    ModelFactory.makeExerice(
+                        "Elevación de tobillos",
+                        "TODO",
+                        15,
+                        3,
+                        30,
+                        path + R.raw.tobillo_elevacion))
+
+
+                return
+            }
+
+
+
         }
     }
 

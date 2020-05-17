@@ -49,31 +49,41 @@ class ViewExercicesActivity : AppCompatActivity() {
         mediaController = MediaController(this)
 
         val muscle = intent.getStringExtra("exercice")
-
         if (muscle.contains("Hombro") ) {
-            exerciceList = Controller.getList("Hombro", packageName)
-            play(exerciceList.playNextExercice()!!)
-            findViewById<Button>(R.id.ce_next).setOnClickListener {
-                val next = exerciceList.playNextExercice()
-                if (next != null) {
-                    play(next)
-                    progressBar.progress = (progressBar.progress + (100/(next.size-1))) % 120
-                }
-            }
+            load("Hombro")
             return
         }
-        if (muscle.contains("Codo") || true) {
-            exerciceList = Controller.getList("Codo", packageName)
-            play(exerciceList.playNextExercice()!!)
-            findViewById<Button>(R.id.ce_next).setOnClickListener {
-                val next = exerciceList.playNextExercice()
-                if (next != null) {
-                    play(next)
-                    progressBar.progress = (progressBar.progress + (100/(next.size-1))) % 120
-                }
-            }
+        if (muscle.contains("Codo")) {
+            load("Codo")
             return
         }
+        if (muscle.contains("Rodilla")) {
+            load("Rodilla")
+            return
+        }
+        if (muscle.contains("Tobillo")) {
+            load("Tobillo")
+            return
+        } else {
+            load("Hombro")
+        }
+
+    }
+
+    private fun load(exercice: String) {
+        val progressBar = findViewById<ProgressBar>(R.id.ce_progressBar)
+
+        exerciceList = Controller.getList(exercice, packageName)
+        play(exerciceList.playNextExercice()!!)
+        findViewById<Button>(R.id.ce_next).setOnClickListener {
+            val next = exerciceList.playNextExercice()
+            if (next != null) {
+                play(next)
+                progressBar.progress = (progressBar.progress + (100/(next.size-1))) % 120
+            }
+        }
+        return
+
     }
 
     private fun play(returnable : ExerciceList.Returnable) {
