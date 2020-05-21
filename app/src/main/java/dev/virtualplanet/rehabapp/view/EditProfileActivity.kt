@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Spinner
+import android.widget.Switch
 import android.widget.Toast
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
@@ -76,5 +78,13 @@ class EditProfileActivity : AppCompatActivity() {
     fun returnToMain(view: View) {
         val intent = Intent(view.context, ProfileActivity::class.java)
         startActivity(intent)
+    }
+
+    fun editWC(view: View) {
+        if (view.findViewById<Switch>(R.id.e_textView_WheelChair_Value).isChecked) {
+            view.findViewById<Switch>(R.id.e_textView_WheelChair_Value).text = "SI"
+        } else {
+            view.findViewById<Switch>(R.id.e_textView_WheelChair_Value).text = "NO"
+        }
     }
 }

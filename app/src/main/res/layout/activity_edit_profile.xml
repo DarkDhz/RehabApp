@@ -72,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="24dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/e_profile_layout">
@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:enabled="true"
-            android:hint="Hombre"
+            android:hint="@string/profile_sex_value"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/e_sex_title"
             app:layout_constraintTop_toTopOf="parent" />
@@ -109,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="24dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/e_sex_layout">
@@ -148,7 +148,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="24dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/e_age_layout">
@@ -157,19 +157,19 @@
             android:id="@+id/e_textView_Height_Title"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:paddingEnd="50dp"
             android:paddingStart="0dp"
-            android:textColor="@android:color/black"
-            android:text="@string/profile_height_title" />
+            android:paddingEnd="50dp"
+            android:text="@string/profile_height_title"
+            android:textColor="@android:color/black" />
 
         <EditText
             android:id="@+id/e_textView_Height_Value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="numberSigned"
             android:hint="@string/profile_height_value"
-            android:textColor="@android:color/black"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:inputType="numberSigned"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/e_textView_Height_Units"
@@ -177,9 +177,8 @@
             android:layout_height="wrap_content"
             android:paddingStart="10dp"
             android:paddingEnd="0dp"
-            android:textColor="@android:color/black"
             android:text="@string/height_units"
-            />
+            android:textColor="@android:color/black" />
 
     </LinearLayout>
 
@@ -189,7 +188,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="24dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/e_height_layout">
@@ -199,19 +198,19 @@
             android:id="@+id/e_TextView_Weight_Title"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:paddingEnd="50dp"
             android:paddingStart="0dp"
-            android:textColor="@android:color/black"
-            android:text="@string/profile_weight_title" />
+            android:paddingEnd="50dp"
+            android:text="@string/profile_weight_title"
+            android:textColor="@android:color/black" />
 
         <EditText
             android:id="@+id/e_textView_Weight_Value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="numberSigned"
             android:hint="@string/profile_weight_value"
-            android:textColor="@android:color/black"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:inputType="numberSigned"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/e_textView_Weight_Units"
@@ -219,21 +218,18 @@
             android:layout_height="wrap_content"
             android:paddingStart="10dp"
             android:paddingEnd="0dp"
-            android:textColor="@android:color/black"
             android:text="@string/weight_units"
-            />
+            android:textColor="@android:color/black" />
 
     </LinearLayout>
 
 
-
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/e_wheel_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="24dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -244,19 +240,25 @@
             android:id="@+id/e_TextView_WheelChair_Title"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:paddingEnd="50dp"
-            android:textColor="@android:color/black"
             android:paddingStart="0dp"
-            android:text="@string/profile_chair_title" />
+            android:paddingEnd="50dp"
+            android:text="@string/profile_chair_title"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Switch
             android:id="@+id/e_textView_WheelChair_Value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-             />
+            android:layout_marginStart="4dp"
+            android:onClick="editWC"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/e_TextView_WheelChair_Title"
+            app:layout_constraintTop_toTopOf="parent" />
 
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

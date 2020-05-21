@@ -7,18 +7,17 @@ class ExerciceList : CustomList<Exercice>{
     var content : ArrayList<Exercice>
 
     constructor() {
-        content = ArrayList<Exercice>()
+        content = ArrayList()
         i = 0
-        //NOTHING
     }
 
     constructor(content: ArrayList<Exercice>) {
         this.content = content
     }
 
-    override fun add(ex: Exercice) {
-        if (validate(ex)) {
-            content.add(ex)
+    override fun add(item: Exercice) {
+        if (validate(item)) {
+            content.add(item)
         }
     }
 
