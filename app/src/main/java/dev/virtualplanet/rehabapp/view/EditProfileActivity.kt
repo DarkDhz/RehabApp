@@ -1,18 +1,13 @@
 package dev.virtualplanet.rehabapp.view
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Switch
 import android.widget.Toast
-import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
 import kotlinx.android.synthetic.main.activity_edit_profile.*
-import kotlinx.android.synthetic.main.activity_edit_profile.view.*
-import kotlinx.android.synthetic.main.activity_profile.*
 
 class EditProfileActivity : AppCompatActivity() {
 
@@ -34,43 +29,43 @@ class EditProfileActivity : AppCompatActivity() {
     */
     fun saveProfile(view: View) {
 
-        val name : String
-        val sex : String
-        val new_age : String
-        val new_height : String
-        val new_weight : String
-        val new_wheelChair : Boolean
+        val newName = this.e_profile_content.text.toString()
+        val newSex : String
+        val newAge : String
+        val newHeight : String
+        val newWeight : String
+        val newWheelchair = this.e_textView_WheelChair_Value.isChecked
 
+        if (this.e_sex_content.text.toString().isBlank())
+            newSex = "Not Set"
+        else
+            newSex = this.e_sex_content.text.toString()
 
         if (this.e_textView_Age_Value.text.toString().isBlank())
-            new_age = "Not Set"
+            newAge = "Not Set"
         else
-            new_age = this.e_textView_Age_Value.text.toString()
+            newAge = this.e_textView_Age_Value.text.toString()
 
         if (this.e_textView_Height_Value.text.toString().isBlank())
-            new_height = "Not Set"
+            newHeight = "Not Set"
         else
-            new_height = this.e_textView_Height_Value.text.toString()
+            newHeight = this.e_textView_Height_Value.text.toString()
 
         if (this.e_textView_Weight_Value.text.toString().isBlank())
-            new_weight = "Not Set"
+            newWeight = "Not Set"
         else
-            new_weight = this.e_textView_Weight_Value.text.toString()
+            newWeight = this.e_textView_Weight_Value.text.toString()
 
-        new_wheelChair = this.e_textView_WheelChair_Value.isChecked
-        name = this.e_profile_content.text.toString()
-        sex = this.e_sex_content.text.toString()
-
-        controller.saveProfileData(this, new_age, new_weight, new_height, new_wheelChair)
+        controller.saveProfileData(this, newSex, newAge, newWeight, newHeight, newWheelchair)
 
         val intent = Intent(view.context, ProfileActivity::class.java)
 
-        intent.putExtra("NAME", name)
-        intent.putExtra("SEX", sex)
-        intent.putExtra("AGE", new_age)
-        intent.putExtra("HEIGHT", new_height)
-        intent.putExtra("WEIGHT", new_weight)
-        intent.putExtra("WHEEL", new_wheelChair)
+        intent.putExtra("NAME", newName)
+        intent.putExtra("SEX", newSex)
+        intent.putExtra("AGE", newAge)
+        intent.putExtra("HEIGHT", newHeight)
+        intent.putExtra("WEIGHT", newWeight)
+        intent.putExtra("WHEEL", newWheelchair)
 
         startActivity(intent)
 

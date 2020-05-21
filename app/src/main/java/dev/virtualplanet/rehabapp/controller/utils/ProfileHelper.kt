@@ -42,6 +42,7 @@ object ProfileHelper {
 
         changeProfile(context, age, height, weight, wheelchair)
         context.findViewById<TextView>(R.id.profile_content).text = name
+        context.findViewById<TextView>(R.id.sex_content).text = sex
         context.findViewById<TextView>(R.id.textView_Age_Value).text = age
 
 

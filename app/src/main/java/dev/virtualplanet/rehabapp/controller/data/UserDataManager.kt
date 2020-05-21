@@ -15,30 +15,28 @@ object UserDataManager {
 
     private const val userTable = "USERS"
 
-    fun saveProfileData(context: Context, age: String, weight: String, height: String, wheelChair : Boolean, user: String) {
+    fun saveProfileData(context: Context, sex : String, age: String, weight: String, height: String, wheelChair : Boolean, user: String) {
 
         Controller.data.collection(userTable).document(user).get().addOnSuccessListener {
+
+
+            val map = HashMap<String, Any>()
+            map.put("wheel", wheelChair)
+
             if (!age.equals(Controller.notSetString)) {
-                Controller.data.collection(userTable).document(user).update(mapOf(
-                    "age" to age
-                ))
+                map.put("age", age)
             }
             if (!weight.equals(Controller.notSetString)) {
-                Controller.data.collection(userTable).document(user).update(mapOf(
-                    "weight" to weight
-                ))
+                map.put("weight", weight)
             }
             if (!height.equals(Controller.notSetString)) {
-                Controller.data.collection(userTable).document(user).update(mapOf(
-                    "height" to height
-                ))
+                map.put("height", height)
             }
-            Controller.data.collection(userTable).document(user).update(mapOf(
-                "wheel" to wheelChair
-            ))
+            if (!sex.equals(Controller.notSetString)) {
+                map.put("sex", sex)
+            }
+            Controller.data.collection(userTable).document(user).update(map)
         }
-
-
     }
 
     fun loadProfile(context: ProfileActivity, user: String){

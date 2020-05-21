@@ -95,16 +95,13 @@ object Controller {
     }
 
 
-
-
-
     /**
      * Method to save File Data
      */
-    fun saveProfileData(context: Context, age: String, weight: String, height: String, wheelChair : Boolean) {
+    fun saveProfileData(context: Context, sex: String, age: String, weight: String, height: String, wheelChair : Boolean) {
         val user = getSharedUser(context)
         if (user != "") {
-            UserDataManager.saveProfileData(context, age, weight, height, wheelChair, user.toString())
+            UserDataManager.saveProfileData(context,sex, age, weight, height, wheelChair, user.toString())
         }
 
     }

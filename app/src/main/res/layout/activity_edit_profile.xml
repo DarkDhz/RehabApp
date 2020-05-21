@@ -67,7 +67,7 @@
 </LinearLayout>
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/e_sex_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,20 +82,27 @@
             android:id="@+id/e_sex_title"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:enabled="false"
+            android:enabled="true"
             android:paddingStart="0dp"
             android:paddingEnd="50dp"
-            android:text="@string/profile_sex_title" />
+            android:text="@string/profile_sex_title"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <EditText
             android:id="@+id/e_sex_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:enabled="false"
-            android:text="Hombre" />
+            android:enabled="true"
+            android:hint="Hombre"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/e_sex_title"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/e_age_layout"
