@@ -1,6 +1,7 @@
 package dev.virtualplanet.rehabapp.controller.utils
 
 import android.widget.TextView
+import androidx.core.view.isVisible
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.Controller
 import dev.virtualplanet.rehabapp.view.ProfileActivity
@@ -35,6 +36,15 @@ object ProfileHelper {
             context.findViewById<TextView>(R.id.textView_IMC_Value).text =
                 Calculator.calculateIMC(weight.toDouble(), (height.toDouble()/100)).toString()
         }
+
+        context.findViewById<TextView>(R.id.textView_Age_Value).isVisible = true
+        context.findViewById<TextView>(R.id.textView_WheelChair_Value).isVisible = true
+        context.findViewById<TextView>(R.id.textView_IMC_Value).isVisible = true
+        context.findViewById<TextView>(R.id.sex_content).isVisible = true
+        context.findViewById<TextView>(R.id.profile_content).isVisible = true
+        context.findViewById<TextView>(R.id.textView_Weight_Value).isVisible = true
+        context.findViewById<TextView>(R.id.textView_Height_Value).isVisible = true
+
     }
 
     fun changeProfile(context: ProfileActivity, name: String, age: String, sex: String, height: String,
