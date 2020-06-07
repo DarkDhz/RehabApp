@@ -40,6 +40,11 @@ object Controller {
     }
 
     fun saveSharedUser(context: Context, user: String) {
+        val last = UserSharedManager.getLastUser(context)
+        if (!last.equals(user)) {
+            ExerciceSharedManager.clear(context)
+            MedicineSharedManager.clear(context)
+        }
         UserSharedManager.saveUser(context, user)
     }
 
@@ -74,9 +79,6 @@ object Controller {
 
     fun logOut(context: Context) {
         UserSharedManager.clear(context)
-        ExerciceSharedManager.clear(context)
-        MedicineSharedManager.clear(context)
-
         val intent = Intent(context, LoginActivity::class.java)
         context.startActivity(intent)
 

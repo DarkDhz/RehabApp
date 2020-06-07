@@ -15,6 +15,7 @@ object UserSharedManager {
 
     fun clear(context: Context) {
         val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        setLastUser(context, userPreferences.getString("email", ""))
         val editor: SharedPreferences.Editor = userPreferences.edit()
 
         editor.remove("email")
@@ -28,4 +29,20 @@ object UserSharedManager {
         editor.putString("email", user)
         editor.apply()
     }
+
+    private fun setLastUser(context: Context, user: String?) {
+        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = userPreferences.edit()
+
+        editor.putString("last", user)
+        editor.apply()
+
+    }
+
+    fun getLastUser(context: Context) : String? {
+        val userPreferences = context.getSharedPreferences(sharedTable, Context.MODE_PRIVATE)
+        return userPreferences.getString("last", "")
+    }
+
+
 }
