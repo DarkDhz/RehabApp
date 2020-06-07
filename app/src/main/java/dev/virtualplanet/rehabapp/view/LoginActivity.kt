@@ -12,6 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import dev.virtualplanet.rehabapp.R
 import dev.virtualplanet.rehabapp.controller.data.Callback
 import dev.virtualplanet.rehabapp.controller.Controller
+import kotlinx.android.synthetic.main.activity_login.*
 
 
 class LoginActivity : AppCompatActivity() {
